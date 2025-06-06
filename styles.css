@@ -408,6 +408,7 @@ nav {
 .content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
 .section h2 {
@@ -661,6 +662,24 @@ footer {
     body.menu-open {
         overflow: hidden;
     }
+    
+    .content-wrapper {
+        padding: 0 1.5rem;
+        width: 100%;
+    }
+    
+    .section {
+        padding: 3rem 0;
+    }
+    
+    .features-grid {
+        gap: 1.5rem;
+        padding: 0;
+    }
+    
+    .feature {
+        margin: 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -708,6 +727,18 @@ footer {
     .nav-links a {
         padding: 0.7rem 1.2rem;
         font-size: 0.9rem;
+    }
+    
+    .content-wrapper {
+        padding: 0 1.2rem;
+    }
+    
+    .section {
+        padding: 2.5rem 0;
+    }
+    
+    .features-grid {
+        gap: 1.2rem;
     }
 }
 
