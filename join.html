@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join 2 Seasons - Property Inquiry</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .join-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .join-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .form-section {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        .property-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .property-option {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .property-option:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .property-option.selected {
+            background: #3498db;
+            color: white;
+        }
+
+        .submit-button {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            transform: scale(1.02);
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">2 Seasons</a>
+            <button type="button" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#residential">Residential</a></li>
+                <li><a href="index.html#villas">Villas</a></li>
+                <li><a href="index.html#wellness">Wellness</a></li>
+                <li><a href="index.html#content">Content Village</a></li>
+                <li><a href="join.html" class="join-button">Join Now</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="menu-overlay"></div>
+
+    <main>
+        <section class="join-hero">
+            <h1>Join 2 Seasons</h1>
+            <p>Start Your Journey to Luxury Living</p>
+        </section>
+
+        <section class="form-section">
+            <form id="propertyInquiryForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label>What would you like to own?</label>
+                    <div class="property-options">
+                        <div class="property-option" data-value="residential">
+                            <i class="fas fa-home"></i>
+                            <h4>Residential Plot</h4>
+                        </div>
+                        <div class="property-option" data-value="villa3">
+                            <i class="fas fa-building"></i>
+                            <h4>3-Bedroom Villa</h4>
+                        </div>
+                        <div class="property-option" data-value="villa4">
+                            <i class="fas fa-building"></i>
+                            <h4>4-Bedroom Villa</h4>
+                        </div>
+                        <div class="property-option" data-value="villa5">
+                            <i class="fas fa-building"></i>
+                            <h4>5-Bedroom Villa</h4>
+                        </div>
+                        <div class="property-option" data-value="content">
+                            <i class="fas fa-video"></i>
+                            <h4>Content Pod</h4>
+                        </div>
+                        <div class="property-option" data-value="farm">
+                            <i class="fas fa-seedling"></i>
+                            <h4>Farm Land</h4>
+                        </div>
+                    </div>
+                    <input type="hidden" id="propertyType" name="propertyType" required>
+                </div>
+
+                <button type="submit" class="submit-button">Submit Inquiry</button>
+            </form>
+
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                <h3>Thank You!</h3>
+                <p>We have received your inquiry and will contact you shortly.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>2 Seasons</h3>
+                <p>Where luxury meets nature in perfect harmony</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Abeokuta, Nigeria</p>
+                <p>Email: info@2seasons.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 2 Seasons. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const propertyOptions = document.querySelectorAll('.property-option');
+            const propertyTypeInput = document.getElementById('propertyType');
+            const form = document.getElementById('propertyInquiryForm');
+            const successMessage = document.getElementById('successMessage');
+
+            propertyOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    propertyOptions.forEach(opt => opt.classList.remove('selected'));
+                    option.classList.add('selected');
+                    propertyTypeInput.value = option.dataset.value;
+                });
+            });
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Here you would typically send the form data to your server
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html> 

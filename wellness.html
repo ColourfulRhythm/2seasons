@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 Seasons Wellness Village - Health & Nature Retreat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .wellness-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.pexels.com/photos/2255935/pexels-photo-2255935.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .wellness-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .wellness-hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .facilities-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .facility-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .facility-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .facility-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .facility-card:hover .facility-image img {
+            transform: scale(1.1);
+        }
+
+        .facility-content {
+            padding: 2rem;
+        }
+
+        .facility-content h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .facility-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-section {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-card ul li {
+            color: #666;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-card ul li:before {
+            content: "•";
+            color: #3498db;
+            position: absolute;
+            left: 0;
+        }
+
+        .purpose-section {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .purpose-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .purpose-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">2 Seasons</a>
+            <button type="button" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#residential">Residential</a></li>
+                <li><a href="index.html#villas">Villas</a></li>
+                <li><a href="index.html#wellness">Wellness</a></li>
+                <li><a href="index.html#content">Content Village</a></li>
+                <li><a href="join.html" class="join-button">Join Now</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="menu-overlay"></div>
+
+    <main>
+        <section class="wellness-hero">
+            <h1>2 Seasons Wellness Village</h1>
+            <p>Where nature meets wellness in perfect harmony</p>
+        </section>
+
+        <section class="facilities-section">
+            <div class="facility-grid">
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="https://images.pexels.com/photos/2255935/pexels-photo-2255935.jpeg" alt="Organic Farm">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Organic Farm & Fruit Forest</h3>
+                        <p>Experience the bounty of nature with our organic farm and diverse fruit forest, providing fresh produce and a connection to the earth.</p>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="https://images.pexels.com/photos/2729899/pexels-photo-2729899.jpeg" alt="Sports Zone">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Sports & Recreation</h3>
+                        <p>State-of-the-art facilities including mini football fields, tennis courts, and outdoor gym equipment for an active lifestyle.</p>
+                    </div>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="https://images.pexels.com/photos/3822621/pexels-photo-3822621.jpeg" alt="Natural Therapy">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Natural Therapy Clinic</h3>
+                        <p>Holistic wellness center featuring massage rooms, yoga pavilions, and spa services for complete mind-body rejuvenation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="features-container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-leaf"></i>
+                        <h3>Herbs & Spices Center</h3>
+                        <ul>
+                            <li>Medicinal herb garden</li>
+                            <li>Spice cultivation</li>
+                            <li>Educational workshops</li>
+                            <li>Natural remedies</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Sports Zone</h3>
+                        <ul>
+                            <li>Mini football pitches</li>
+                            <li>Tennis courts</li>
+                            <li>Outdoor gym equipment</li>
+                            <li>Fitness classes</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-spa"></i>
+                        <h3>Natural Therapy</h3>
+                        <ul>
+                            <li>Massage rooms</li>
+                            <li>Yoga pavilions</li>
+                            <li>Spa services</li>
+                            <li>Meditation spaces</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Healthy Dining</h3>
+                        <ul>
+                            <li>Plant-based restaurant</li>
+                            <li>Juice bars</li>
+                            <li>Tea house</li>
+                            <li>Organic cafe</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="purpose-section">
+            <h2>Health-Focused Lifestyle</h2>
+            <p>2 Seasons Wellness Village is designed to promote a health-focused lifestyle while adding eco-luxury brand value. Our comprehensive wellness facilities and natural surroundings create the perfect environment for both residents and tourists seeking a balanced, healthy lifestyle.</p>
+        </section>
+
+        <section class="cta-section">
+            <h2>Begin Your Wellness Journey</h2>
+            <p>Experience the perfect blend of nature and wellness</p>
+            <a href="#contact" class="cta-button">Contact Us</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>2 Seasons</h3>
+                <p>Where luxury meets nature in perfect harmony</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Abeokuta, Nigeria</p>
+                <p>Email: info@2seasons.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 2 Seasons. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

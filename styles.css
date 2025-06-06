@@ -277,21 +277,29 @@ nav {
 
 .logo {
     font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    color: var(--primary-color);
-    letter-spacing: 1px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: var(--accent-color);
 }
 
 .nav-links {
     display: flex;
-    list-style: none;
+    align-items: center;
     gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
-    text-decoration: none;
     color: var(--text-color);
+    text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
     font-family: 'Montserrat', sans-serif;
@@ -302,6 +310,40 @@ nav {
 
 .nav-links a:hover {
     color: var(--secondary-color);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #2c3e50;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+}
+
+.menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.menu-overlay.active {
+    display: block;
+    opacity: 1;
 }
 
 /* Hero Section */
@@ -513,20 +555,218 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
+@media (max-width: 1200px) {
+    .content-wrapper {
+        padding: 0 2rem;
     }
     
     .hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero p {
-        font-size: 1.2rem;
+        font-size: 3.5rem;
     }
     
     .section h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero p {
+        font-size: 1.3rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 0.5rem 0;
+        position: relative;
+        z-index: 1000;
+    }
+    
+    nav {
+        padding: 0.5rem 1rem;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+        align-items: center;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        padding: 5rem 2rem;
+        gap: 1.5rem;
+        transition: right 0.3s ease;
+        z-index: 999;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links a {
+        font-size: 1.2rem;
+        width: 100%;
+        display: block;
+    }
+    
+    body.menu-open {
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .hero h1 {
         font-size: 2rem;
     }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .feature h3 {
+        font-size: 1.5rem;
+    }
+    
+    .feature p {
+        font-size: 0.9rem;
+    }
+    
+    .join-button {
+        width: 100%;
+        margin: 0.5rem 0;
+        padding: 0.7rem 1rem !important;
+        font-size: 0.8rem;
+    }
+    
+    .nav-links {
+        width: 100%;
+    }
+    
+    .mobile-menu-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .nav-links a {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Weather animation responsive adjustments */
+@media (max-width: 768px) {
+    .sun {
+        width: 60px;
+        height: 60px;
+        top: 30px;
+        right: 30px;
+    }
+    
+    .cloud {
+        width: 200px;
+        height: 60px;
+    }
+    
+    .cloud:nth-child(2) {
+        width: 150px;
+        height: 45px;
+    }
+    
+    .cloud:nth-child(3) {
+        width: 180px;
+        height: 50px;
+    }
+}
+
+/* Feature image responsive adjustments */
+@media (max-width: 768px) {
+    .feature-image {
+        height: 180px;
+    }
+}
+
+/* Footer responsive adjustments */
+@media (max-width: 768px) {
+    footer {
+        padding: 3rem 1rem 1rem;
+    }
+    
+    .footer-section {
+        margin-bottom: 2rem;
+    }
+    
+    .footer-bottom {
+        padding-top: 1.5rem;
+    }
+}
+
+.join-button {
+    background: #e74c3c;
+    color: white !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+    border: 2px solid #c0392b;
+    box-shadow: 0 4px 6px rgba(231, 76, 60, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    position: relative;
+    display: inline-block;
+    background-color: #fff;
+    color: #e74c3c !important;
+    border: 2px solid #e74c3c;
+}
+
+.join-button::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: -4px;
+    bottom: -4px;
+    background: #e74c3c;
+    z-index: -1;
+    border-radius: 4px;
+}
+
+.join-button:hover {
+    background: #e74c3c;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(231, 76, 60, 0.3);
 } 

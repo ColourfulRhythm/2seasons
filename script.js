@@ -57,4 +57,119 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrollPosition = window.scrollY;
         hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
     });
+
+    // Mobile Menu Functionality
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const menuOverlay = document.querySelector('.menu-overlay');
+    const body = document.body;
+
+    // Toggle menu function
+    function toggleMenu() {
+        navLinks.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
+        body.classList.toggle('menu-open');
+    }
+
+    // Toggle menu on button click
+    mobileMenuBtn.addEventListener('click', () => {
+        toggleMenu();
+    });
+
+    // Close menu when clicking overlay
+    menuOverlay.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+
+    // Handle navigation link clicks
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768 && navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // Close menu on window resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+
+    // Initialize map points if we're on the explore page
+    const mapPoints = document.querySelector('.map-points');
+    if (mapPoints) {
+        const features = [
+            {
+                x: 20,
+                y: 30,
+                title: 'Residential Area',
+                description: 'Luxury living spaces with modern amenities and beautiful surroundings'
+            },
+            {
+                x: 40,
+                y: 25,
+                title: 'Villas',
+                description: 'Premium accommodations for short-term stays and vacation rentals'
+            },
+            {
+                x: 60,
+                y: 35,
+                title: 'Wellness Village',
+                description: 'Holistic wellness facilities including spa, yoga, and natural therapy'
+            },
+            {
+                x: 80,
+                y: 30,
+                title: 'Content Village',
+                description: 'State-of-the-art facilities for content creators and media production'
+            },
+            {
+                x: 50,
+                y: 50,
+                title: 'Artificial Lake',
+                description: 'Serene water features perfect for relaxation and water activities'
+            },
+            {
+                x: 30,
+                y: 60,
+                title: 'Organic Farm',
+                description: 'Sustainable farming and fresh produce for the community'
+            }
+        ];
+
+        features.forEach((feature, index) => {
+            const point = document.createElement('div');
+            point.className = 'map-point';
+            point.style.left = `${feature.x}%`;
+            point.style.top = `${feature.y}%`;
+            
+            const info = document.createElement('div');
+            info.className = 'feature-info';
+            info.innerHTML = `
+                <h3>${feature.title}</h3>
+                <p>${feature.description}</p>
+            `;
+            
+            point.appendChild(info);
+            mapPoints.appendChild(point);
+
+            // Add click event to show/hide info
+            point.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const allInfos = document.querySelectorAll('.feature-info');
+                allInfos.forEach(info => info.classList.remove('active'));
+                info.classList.add('active');
+            });
+        });
+
+        // Close info when clicking outside
+        document.addEventListener('click', () => {
+            const allInfos = document.querySelectorAll('.feature-info');
+            allInfos.forEach(info => info.classList.remove('active'));
+        });
+    }
 }); 

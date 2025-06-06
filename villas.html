@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 Seasons Villas - Luxury Getaways & Vacation Stays</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .villas-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/1643384/pexels-photo-1643384.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .villas-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .villas-hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accommodations {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .accommodation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .accommodation-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .accommodation-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .accommodation-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .accommodation-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .accommodation-card:hover .accommodation-image img {
+            transform: scale(1.1);
+        }
+
+        .accommodation-content {
+            padding: 2rem;
+        }
+
+        .accommodation-content h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .accommodation-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .amenities-section {
+            background: #f8f9fa;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .amenities-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .amenity-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .amenity-card i {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .amenity-card h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .amenity-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .purpose-section {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .purpose-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .purpose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .purpose-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .purpose-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .purpose-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .purpose-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .purpose-card p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">2 Seasons</a>
+            <button type="button" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#residential">Residential</a></li>
+                <li><a href="index.html#villas">Villas</a></li>
+                <li><a href="index.html#wellness">Wellness</a></li>
+                <li><a href="index.html#content">Content Village</a></li>
+                <li><a href="join.html" class="join-button">Join Now</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="menu-overlay"></div>
+
+    <main>
+        <section class="villas-hero">
+            <h1>2 Seasons Villas</h1>
+            <p>Experience luxury short-stay accommodations surrounded by nature's beauty</p>
+        </section>
+
+        <section class="accommodations">
+            <div class="accommodation-grid">
+                <div class="accommodation-card">
+                    <div class="accommodation-image">
+                        <img src="https://images.pexels.com/photos/1643384/pexels-photo-1643384.jpeg" alt="Luxury Villa">
+                    </div>
+                    <div class="accommodation-content">
+                        <h3>Luxury Villas</h3>
+                        <p>Spacious and elegantly designed villas perfect for families and groups seeking a premium getaway experience.</p>
+                    </div>
+                </div>
+                <div class="accommodation-card">
+                    <div class="accommodation-image">
+                        <img src="https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg" alt="Artificial Lake">
+                    </div>
+                    <div class="accommodation-content">
+                        <h3>Lake View Pods</h3>
+                        <p>Modern, cozy pods offering stunning views of our artificial lake, ideal for couples and small groups.</p>
+                    </div>
+                </div>
+                <div class="accommodation-card">
+                    <div class="accommodation-image">
+                        <img src="https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg" alt="Waterfall View">
+                    </div>
+                    <div class="accommodation-content">
+                        <h3>Waterfall Retreats</h3>
+                        <p>Unique accommodations with private views of our spectacular waterfall, perfect for a romantic escape.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="amenities-section">
+            <div class="amenities-container">
+                <div class="amenities-grid">
+                    <div class="amenity-card">
+                        <i class="fas fa-water"></i>
+                        <h3>Artificial Lake</h3>
+                        <p>Serene water features perfect for relaxation and water activities</p>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-mountain"></i>
+                        <h3>Waterfall</h3>
+                        <p>Spectacular waterfall creating a natural focal point</p>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <h3>Private Beach</h3>
+                        <p>Exclusive beach area for villa guests</p>
+                    </div>
+                    <div class="amenity-card">
+                        <i class="fas fa-spa"></i>
+                        <h3>Wellness Services</h3>
+                        <p>Access to spa and wellness facilities</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="purpose-section">
+            <h2>Investment & Experience</h2>
+            <div class="purpose-grid">
+                <div class="purpose-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Short-Stay Tourism</h3>
+                    <p>Premium accommodations designed for memorable short-term stays, perfect for tourists seeking luxury experiences.</p>
+                </div>
+                <div class="purpose-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Airbnb Income</h3>
+                    <p>High-yield investment opportunity with strong potential for consistent rental income through premium short-term stays.</p>
+                </div>
+                <div class="purpose-card">
+                    <i class="fas fa-crown"></i>
+                    <h3>Luxury Branding</h3>
+                    <p>Exclusive positioning in the market, offering high-end amenities and services that attract discerning guests.</p>
+                </div>
+                <div class="purpose-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>Influencer Retreats</h3>
+                    <p>Perfect setting for content creators and influencers, featuring Instagram-worthy locations and modern amenities.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Book Your Stay</h2>
+            <p>Experience the perfect blend of luxury and nature</p>
+            <a href="#contact" class="cta-button">Reserve Now</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>2 Seasons</h3>
+                <p>Where luxury meets nature in perfect harmony</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Abeokuta, Nigeria</p>
+                <p>Email: info@2seasons.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 2 Seasons. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
