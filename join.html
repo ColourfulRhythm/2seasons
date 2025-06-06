@@ -226,28 +226,6 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const propertyOptions = document.querySelectorAll('.property-option');
-            const propertyTypeInput = document.getElementById('propertyType');
-            const form = document.getElementById('propertyInquiryForm');
-            const successMessage = document.getElementById('successMessage');
-
-            propertyOptions.forEach(option => {
-                option.addEventListener('click', () => {
-                    propertyOptions.forEach(opt => opt.classList.remove('selected'));
-                    option.classList.add('selected');
-                    propertyTypeInput.value = option.dataset.value;
-                });
-            });
-
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                // Here you would typically send the form data to your server
-                form.style.display = 'none';
-                successMessage.style.display = 'block';
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html> 

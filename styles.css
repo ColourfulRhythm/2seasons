@@ -511,6 +511,32 @@ nav {
     border-color: var(--secondary-color);
 }
 
+/* Stronger word wrapping for all feature/card headings */
+.feature h3,
+.feature-content h3,
+.feature-card h3,
+.accommodation-content h3,
+.amenity-card h3,
+.purpose-card h3,
+.facility-content h3 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+@media (max-width: 600px) {
+    .feature h3,
+    .feature-content h3,
+    .feature-card h3,
+    .accommodation-content h3,
+    .amenity-card h3,
+    .purpose-card h3,
+    .facility-content h3 {
+        font-size: 1.1rem;
+        line-height: 1.2;
+    }
+}
+
 /* Footer */
 footer {
     background: var(--primary-color);
@@ -769,4 +795,11 @@ footer {
     color: white !important;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(231, 76, 60, 0.3);
+}
+
+.small-title {
+    font-size: 1.1rem !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0;
+    font-weight: 600;
 } 
