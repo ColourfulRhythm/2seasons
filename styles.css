@@ -802,4 +802,35 @@ footer {
     line-height: 1.1 !important;
     letter-spacing: 0;
     font-weight: 600;
+}
+
+.property-option {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.property-option:active {
+    transform: scale(0.98);
+}
+
+.property-option.selected {
+    background: #3498db;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .property-option {
+        padding: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .property-options {
+        gap: 0.8rem;
+    }
 } 

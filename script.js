@@ -172,4 +172,19 @@ document.addEventListener('DOMContentLoaded', () => {
             allInfos.forEach(info => info.classList.remove('active'));
         });
     }
+
+    // Property option selection handling
+    const propertyOptions = document.querySelectorAll('.property-option');
+    const propertyTypeInput = document.getElementById('propertyType');
+
+    propertyOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            // Remove selected class from all options
+            propertyOptions.forEach(opt => opt.classList.remove('selected'));
+            // Add selected class to clicked option
+            this.classList.add('selected');
+            // Update hidden input value
+            propertyTypeInput.value = this.dataset.value;
+        });
+    });
 }); 
