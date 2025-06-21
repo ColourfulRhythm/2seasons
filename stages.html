@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 Seasons - Investment Stages & Founder Benefits</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .stages-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .stages-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stages-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .founder-benefit {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .founder-benefit h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .founder-benefit p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .stages-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .stage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stage-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stage-card.stage1 {
+            border: 3px solid #e74c3c;
+        }
+
+        .stage-card.stage1::before {
+            content: 'FOUNDER';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .stage-card h3 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stage-card .price {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .stage-card .plots {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .stage-card .status {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .status.open {
+            background: #27ae60;
+            color: white;
+        }
+
+        .status.coming-soon {
+            background: #f39c12;
+            color: white;
+        }
+
+        .stage-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .stage-card ul li {
+            color: #666;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .stage-card ul li:before {
+            content: "✓";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+            margin: 0 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .cta-button.primary {
+            background: #e74c3c;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .stages-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .stage-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-button {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">2 Seasons</a>
+            <button type="button" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="residential.html">Residential</a></li>
+                <li><a href="villas.html">True Vine Villas</a></li>
+                <li><a href="wellness.html">Wellness Hub</a></li>
+                <li><a href="content.html">Hygge Town</a></li>
+                <li><a href="stages.html">Investment Stages</a></li>
+                <li><a href="join.html" class="join-button">Join Now</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="menu-overlay"></div>
+
+    <main>
+        <section class="stages-hero">
+            <h1>Investment Stages</h1>
+            <p>Join Africa's First Regenerative Innovation & Lifestyle Village</p>
+        </section>
+
+        <section class="founder-benefit">
+            <h2>Buy Stage 1, Earn Forever</h2>
+            <p>Founders get 0.5% of sales from all future stages. That's passive income from the growth you helped build.</p>
+        </section>
+
+        <section class="stages-container">
+            <div class="stage-grid">
+                <div class="stage-card stage1">
+                    <h3>Stage 1 - FOUNDERS</h3>
+                    <div class="price">₦2,500,000</div>
+                    <div class="plots">30 Plots Available</div>
+                    <div class="status open">NOW OPEN</div>
+                    <ul>
+                        <li>Limited to 30 plots only</li>
+                        <li>Founder status for life</li>
+                        <li>0.5% of all future stage sales</li>
+                        <li>Priority access to all amenities</li>
+                        <li>Exclusive founder events</li>
+                        <li>Lifetime community membership</li>
+                    </ul>
+                </div>
+
+                <div class="stage-card">
+                    <h3>Stage 2</h3>
+                    <div class="price">₦5,000,000</div>
+                    <div class="plots">15 Plots Available</div>
+                    <div class="status coming-soon">LAUNCH</div>
+                    <ul>
+                        <li>Premium location plots</li>
+                        <li>Access to all amenities</li>
+                        <li>Community membership</li>
+                        <li>Investment potential</li>
+                    </ul>
+                </div>
+
+                <div class="stage-card">
+                    <h3>Stage 3</h3>
+                    <div class="price">₦7,500,000</div>
+                    <div class="plots">15 Plots Available</div>
+                    <div class="status coming-soon">FUTURE</div>
+                    <ul>
+                        <li>Premium location plots</li>
+                        <li>Access to all amenities</li>
+                        <li>Community membership</li>
+                        <li>Investment potential</li>
+                    </ul>
+                </div>
+
+                <div class="stage-card">
+                    <h3>Stage 4</h3>
+                    <div class="price">₦10,000,000</div>
+                    <div class="plots">15 Plots Available</div>
+                    <div class="status coming-soon">FUTURE</div>
+                    <ul>
+                        <li>Premium location plots</li>
+                        <li>Access to all amenities</li>
+                        <li>Community membership</li>
+                        <li>Investment potential</li>
+                    </ul>
+                </div>
+
+                <div class="stage-card">
+                    <h3>Stage 5</h3>
+                    <div class="price">₦12,500,000</div>
+                    <div class="plots">15 Plots Available</div>
+                    <div class="status coming-soon">FUTURE</div>
+                    <ul>
+                        <li>Premium location plots</li>
+                        <li>Access to all amenities</li>
+                        <li>Community membership</li>
+                        <li>Investment potential</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Become a Founder Today</h2>
+            <p>Secure your plot in Stage 1 and start earning from all future sales</p>
+            <a href="join.html" class="cta-button primary">Buy Stage 1 Plot</a>
+            <a href="index.html" class="cta-button">Learn More</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>2 Seasons</h3>
+                <p>Africa's First Regenerative Innovation & Lifestyle Village</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Abeokuta, Nigeria</p>
+                <p>Email: info@2seasons.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 2 Seasons. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
