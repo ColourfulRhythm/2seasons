@@ -84,6 +84,27 @@
 
         .stage-card.stage1 {
             border: 3px solid #e74c3c;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .stage-card.stage1:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+            border-color: #c0392b;
+        }
+
+        .stage-card.stage1 a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .stage-card.stage1 h3,
+        .stage-card.stage1 .price,
+        .stage-card.stage1 .plots,
+        .stage-card.stage1 .status,
+        .stage-card.stage1 ul li {
+            color: inherit;
         }
 
         .stage-card.stage1::before {
@@ -240,7 +261,7 @@
 
         <section class="stages-container">
             <div class="stage-grid">
-                <div class="stage-card stage1">
+                <a href="join.html" class="stage-card stage1" style="text-decoration: none; display: block; cursor: pointer;">
                     <h3>Stage 1 - FOUNDERS</h3>
                     <div class="price">₦2,500,000</div>
                     <div class="plots">30 Plots Available</div>
@@ -253,7 +274,7 @@
                         <li>Exclusive founder events</li>
                         <li>Lifetime community membership</li>
                     </ul>
-                </div>
+                </a>
 
                 <div class="stage-card">
                     <h3>Stage 2</h3>
