@@ -112,19 +112,19 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 x: 40,
                 y: 25,
-                title: 'Villas',
+                title: 'True Vine Villas',
                 description: 'Premium accommodations for short-term stays and vacation rentals'
             },
             {
                 x: 60,
                 y: 35,
-                title: 'Wellness Village',
+                title: 'Wellness Hub',
                 description: 'Holistic wellness facilities including spa, yoga, and natural therapy'
             },
             {
                 x: 80,
                 y: 30,
-                title: 'Content Village',
+                title: 'Hygge Town',
                 description: 'State-of-the-art facilities for content creators and media production'
             },
             {

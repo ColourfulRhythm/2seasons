@@ -16,19 +16,19 @@ A modern, responsive landing page for 2 Seasons, featuring an interactive weathe
   - Active lifestyle amenities
   - Shopping facilities
 
-- **Premium Villas**
+- **Premium True Vine Villas**
   - Modern architectural villas
   - Artificial lake views
   - Instagrammable boulevard
   - Exclusive accommodations
 
-- **Wellness Village**
+- **Wellness Hub**
   - Organic farms
   - Sports facilities
   - Natural therapy centers
   - Healthy dining options
 
-- **Content Village**
+- **Hygge Town**
   - Collaborative workspaces
   - High-speed internet
   - Creator marketplace
