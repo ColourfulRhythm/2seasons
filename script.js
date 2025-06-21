@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 x: 60,
                 y: 35,
                 title: 'Wellness Hub',
-                description: 'Holistic wellness facilities including spa, yoga, and natural therapy'
+                description: 'Natural therapy, yoga, spa, outdoor fitness, plant-based restaurants, farming & nature, and comprehensive sports facilities'
             },
             {
                 x: 80,
