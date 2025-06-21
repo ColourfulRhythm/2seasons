@@ -176,15 +176,60 @@ document.addEventListener('DOMContentLoaded', () => {
     // Property option selection handling
     const propertyOptions = document.querySelectorAll('.property-option');
     const propertyTypeInput = document.getElementById('propertyType');
+    const selectedCountDiv = document.getElementById('selectedCount');
+    const plotsForm = document.getElementById('plotsForm');
 
     propertyOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            // Remove selected class from all options
-            propertyOptions.forEach(opt => opt.classList.remove('selected'));
-            // Add selected class to clicked option
-            this.classList.add('selected');
-            // Update hidden input value
-            propertyTypeInput.value = this.dataset.value;
+        const checkbox = option.querySelector('input[type="checkbox"]');
+        
+        option.addEventListener('click', function(e) {
+            // Don't toggle if clicking directly on checkbox
+            if (e.target.type === 'checkbox') {
+                return;
+            }
+            
+            // Toggle checkbox
+            checkbox.checked = !checkbox.checked;
+            updateSelection();
+        });
+
+        // Handle checkbox change
+        checkbox.addEventListener('change', function() {
+            updateSelection();
         });
     });
+
+    function updateSelection() {
+        const selectedOptions = document.querySelectorAll('.property-option input[type="checkbox"]:checked');
+        const selectedValues = Array.from(selectedOptions).map(checkbox => checkbox.value);
+        
+        // Update visual selection
+        propertyOptions.forEach(option => {
+            const checkbox = option.querySelector('input[type="checkbox"]');
+            if (checkbox.checked) {
+                option.classList.add('selected');
+            } else {
+                option.classList.remove('selected');
+            }
+        });
+
+        // Update hidden input with comma-separated values
+        propertyTypeInput.value = selectedValues.join(', ');
+
+        // Show/hide plots form
+        const hasResidential = selectedValues.includes('residential');
+        if (hasResidential) {
+            plotsForm.classList.add('show');
+        } else {
+            plotsForm.classList.remove('show');
+        }
+
+        // Update selected count display
+        if (selectedValues.length > 0) {
+            selectedCountDiv.textContent = `Selected: ${selectedValues.length} option(s)`;
+            selectedCountDiv.classList.add('show');
+        } else {
+            selectedCountDiv.classList.remove('show');
+        }
+    }
 }); 
