@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 x: 80,
                 y: 30,
                 title: 'Hygge Town',
-                description: 'State-of-the-art facilities for content creators and media production'
+                description: 'Content & Creator Zone, Startup/Innovation Hub, and Support Ecosystem for creators and entrepreneurs'
             },
             {
                 x: 50,
