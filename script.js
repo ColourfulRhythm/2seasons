@@ -1,21 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     const storm = document.querySelector('.storm');
     let isStormActive = false;
-
-    // Function to handle scroll events
-    window.addEventListener('scroll', () => {
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-        
-        // Start storm animation when scrolled past 50% of the viewport
-        if (scrollPosition > windowHeight * 0.5 && !isStormActive) {
-            storm.classList.add('active');
-            isStormActive = true;
-        } else if (scrollPosition <= windowHeight * 0.5 && isStormActive) {
-            storm.classList.remove('active');
-            isStormActive = false;
-        }
-    });
+    if (storm) {
+        // Function to handle scroll events
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            
+            // Start storm animation when scrolled past 50% of the viewport
+            if (scrollPosition > windowHeight * 0.5 && !isStormActive) {
+                storm.classList.add('active');
+                isStormActive = true;
+            } else if (scrollPosition <= windowHeight * 0.5 && isStormActive) {
+                storm.classList.remove('active');
+                isStormActive = false;
+            }
+        });
+    }
 
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -53,51 +54,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add parallax effect to hero section
     const hero = document.querySelector('.hero');
-    window.addEventListener('scroll', () => {
-        const scrollPosition = window.scrollY;
-        hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
-    });
+    if (hero) {
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+        });
+    }
 
     // Mobile Menu Functionality
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     const menuOverlay = document.querySelector('.menu-overlay');
     const body = document.body;
-
-    // Toggle menu function
-    function toggleMenu() {
-        navLinks.classList.toggle('active');
-        menuOverlay.classList.toggle('active');
-        body.classList.toggle('menu-open');
-    }
-
-    // Toggle menu on button click
-    mobileMenuBtn.addEventListener('click', () => {
-        toggleMenu();
-    });
-
-    // Close menu when clicking overlay
-    menuOverlay.addEventListener('click', () => {
-        if (navLinks.classList.contains('active')) {
-            toggleMenu();
+    if (mobileMenuBtn && navLinks && menuOverlay) {
+        // Toggle menu function
+        function toggleMenu() {
+            navLinks.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            body.classList.toggle('menu-open');
         }
-    });
 
-    // Handle navigation link clicks
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768 && navLinks.classList.contains('active')) {
+        // Toggle menu on button click
+        mobileMenuBtn.addEventListener('click', () => {
+            toggleMenu();
+        });
+
+        // Close menu when clicking overlay
+        menuOverlay.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
                 toggleMenu();
             }
         });
-    });
 
-    // Close menu on window resize
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
+        // Handle navigation link clicks
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768 && navLinks.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Close menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    }
 
     // Initialize map points if we're on the explore page
     const mapPoints = document.querySelector('.map-points');
@@ -178,58 +182,59 @@ document.addEventListener('DOMContentLoaded', () => {
     const propertyTypeInput = document.getElementById('propertyType');
     const selectedCountDiv = document.getElementById('selectedCount');
     const plotsForm = document.getElementById('plotsForm');
-
-    propertyOptions.forEach(option => {
-        const checkbox = option.querySelector('input[type="checkbox"]');
-        
-        option.addEventListener('click', function(e) {
-            // Don't toggle if clicking directly on checkbox
-            if (e.target.type === 'checkbox') {
-                return;
-            }
-            
-            // Toggle checkbox
-            checkbox.checked = !checkbox.checked;
-            updateSelection();
-        });
-
-        // Handle checkbox change
-        checkbox.addEventListener('change', function() {
-            updateSelection();
-        });
-    });
-
-    function updateSelection() {
-        const selectedOptions = document.querySelectorAll('.property-option input[type="checkbox"]:checked');
-        const selectedValues = Array.from(selectedOptions).map(checkbox => checkbox.value);
-        
-        // Update visual selection
+    if (propertyOptions.length && propertyTypeInput && selectedCountDiv && plotsForm) {
         propertyOptions.forEach(option => {
             const checkbox = option.querySelector('input[type="checkbox"]');
-            if (checkbox.checked) {
-                option.classList.add('selected');
-            } else {
-                option.classList.remove('selected');
-            }
+            
+            option.addEventListener('click', function(e) {
+                // Don't toggle if clicking directly on checkbox
+                if (e.target.type === 'checkbox') {
+                    return;
+                }
+                
+                // Toggle checkbox
+                checkbox.checked = !checkbox.checked;
+                updateSelection();
+            });
+
+            // Handle checkbox change
+            checkbox.addEventListener('change', function() {
+                updateSelection();
+            });
         });
 
-        // Update hidden input with comma-separated values
-        propertyTypeInput.value = selectedValues.join(', ');
+        function updateSelection() {
+            const selectedOptions = document.querySelectorAll('.property-option input[type="checkbox"]:checked');
+            const selectedValues = Array.from(selectedOptions).map(checkbox => checkbox.value);
+            
+            // Update visual selection
+            propertyOptions.forEach(option => {
+                const checkbox = option.querySelector('input[type="checkbox"]');
+                if (checkbox.checked) {
+                    option.classList.add('selected');
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
 
-        // Show/hide plots form
-        const hasResidential = selectedValues.includes('residential');
-        if (hasResidential) {
-            plotsForm.classList.add('show');
-        } else {
-            plotsForm.classList.remove('show');
-        }
+            // Update hidden input with comma-separated values
+            propertyTypeInput.value = selectedValues.join(', ');
 
-        // Update selected count display
-        if (selectedValues.length > 0) {
-            selectedCountDiv.textContent = `Selected: ${selectedValues.length} option(s)`;
-            selectedCountDiv.classList.add('show');
-        } else {
-            selectedCountDiv.classList.remove('show');
+            // Show/hide plots form
+            const hasResidential = selectedValues.includes('residential');
+            if (hasResidential) {
+                plotsForm.classList.add('show');
+            } else {
+                plotsForm.classList.remove('show');
+            }
+
+            // Update selected count display
+            if (selectedValues.length > 0) {
+                selectedCountDiv.textContent = `Selected: ${selectedValues.length} option(s)`;
+                selectedCountDiv.classList.add('show');
+            } else {
+                selectedCountDiv.classList.remove('show');
+            }
         }
     }
 }); 
