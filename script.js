@@ -108,38 +108,38 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mapPoints) {
         const features = [
             {
-                x: 20,
-                y: 30,
+                x: 25,
+                y: 35,
                 title: 'Residential Area',
                 description: 'Luxury living spaces with modern amenities and beautiful surroundings'
             },
             {
-                x: 40,
-                y: 25,
+                x: 45,
+                y: 30,
                 title: 'True Vine Villas',
                 description: 'Premium accommodations for short-term stays and vacation rentals'
             },
             {
-                x: 60,
-                y: 35,
+                x: 65,
+                y: 40,
                 title: 'Wellness Hub',
                 description: 'Natural therapy, yoga, spa, outdoor fitness, plant-based restaurants, farming & nature, and comprehensive sports facilities'
             },
             {
-                x: 80,
-                y: 30,
+                x: 75,
+                y: 35,
                 title: 'Hygge Town',
                 description: 'Content & Creator Zone, Startup/Innovation Hub, and Support Ecosystem for creators and entrepreneurs'
             },
             {
-                x: 50,
-                y: 50,
+                x: 55,
+                y: 55,
                 title: 'Artificial Lake',
                 description: 'Serene water features perfect for relaxation and water activities'
             },
             {
-                x: 30,
-                y: 60,
+                x: 35,
+                y: 65,
                 title: 'Organic Farm',
                 description: 'Sustainable farming and fresh produce for the community'
             }
