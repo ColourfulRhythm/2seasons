@@ -163,12 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isMobile) {
                     // Use precise mobile coordinates
                     const mobileCoordinates = {
-                        '2 Seasons Residential': { x: 27.1, y: 24.6 },
-                        'The Wellness Hub': { x: 67.9, y: 52.0 },
-                        'Fruit Forest': { x: 54.7, y: 58.4 },
-                        'True Vine Villas': { x: 83.8, y: 61.2 },
-                        'Lake': { x: 76.8, y: 70.0 },
-                        'Sports Academy': { x: 99.4, y: 77.8 },
+                        '2 Seasons Residential': { x: 28.2, y: 24.0 },
+                        'The Wellness Hub': { x: 65.9, y: 56.4 },
+                        'Fruit Forest': { x: 58.7, y: 58.6 },
+                        'True Vine Villas': { x: 85.5, y: 59.4 },
+                        'Lake': { x: 83.5, y: 60.0 },
+                        'Sports Academy': { x: 96.9, y: 76.8 },
                         'Hygge Town': { x: 81.3, y: 88.4 }
                     };
                     
