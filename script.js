@@ -108,40 +108,46 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mapPoints) {
         const features = [
             {
-                x: 20,
-                y: 25,
-                title: 'Residential Area',
-                description: 'Luxury living spaces with modern amenities and beautiful surroundings'
+                x: 41.6,
+                y: 24.3,
+                title: '2 Seasons Residential',
+                description: 'A serene gated community with modern apartments, cottages, and duplexes. Designed with jogging and cycling lanes, landscaped streets, playgrounds, and essential amenities for families and young professionals.'
             },
             {
-                x: 40,
-                y: 20,
+                x: 57.3,
+                y: 50.7,
+                title: 'The Wellness Hub',
+                description: 'A holistic wellness center featuring a spa, sauna, swimming pools, gym, yoga pavilion, and therapy rooms—dedicated to fitness, healing, and mental well-being.'
+            },
+            {
+                x: 51.2,
+                y: 62.1,
+                title: 'Fruit Forest',
+                description: 'An expansive orchard with over 3,000 fruit trees, providing fresh harvests, shaded walkways, and a connection to nature. A key part of 2 Seasons\' regenerative lifestyle.'
+            },
+            {
+                x: 63.0,
+                y: 61.1,
                 title: 'True Vine Villas',
-                description: 'Premium accommodations for short-term stays and vacation rentals'
+                description: 'Luxury lakefront villas ideal for second homes or Airbnb. Each villa overlooks the artificial lake, offering privacy, elegance, and opportunities for relaxation or income generation.'
             },
             {
-                x: 60,
-                y: 30,
-                title: 'Wellness Hub',
-                description: 'Natural therapy, yoga, spa, outdoor fitness, plant-based restaurants, farming & nature, and comprehensive sports facilities'
+                x: 61.3,
+                y: 69.9,
+                title: 'Lake',
+                description: 'A 4-acre artificial lake with a cascading waterfall, designed for water activities, scenic views, and community gatherings. The heart of relaxation within 2 Seasons.'
             },
             {
-                x: 80,
-                y: 25,
+                x: 71.8,
+                y: 73.8,
+                title: 'Sports Academy',
+                description: 'A dynamic academy training 100 youths annually in football, tennis, and athletics. Equipped with courts, pitches, and coaching facilities to nurture future champions.'
+            },
+            {
+                x: 64.4,
+                y: 87.3,
                 title: 'Hygge Town',
-                description: 'Content & Creator Zone, Startup/Innovation Hub, and Support Ecosystem for creators and entrepreneurs'
-            },
-            {
-                x: 50,
-                y: 50,
-                title: 'Artificial Lake',
-                description: 'Serene water features perfect for relaxation and water activities'
-            },
-            {
-                x: 30,
-                y: 60,
-                title: 'Organic Farm',
-                description: 'Sustainable farming and fresh produce for the community'
+                description: 'A vibrant commercial and creative hub featuring luxury retail, cafes, co-working spaces, and partnerships with global tech and creative giants. The cultural heartbeat of 2 Seasons.'
             }
         ];
 
