@@ -358,19 +358,120 @@
 
     <script src="script.js"></script>
     <script>
-        // Ensure site map image loads properly
-        document.addEventListener('DOMContentLoaded', function() {
-            const mapImage = document.querySelector('.map-image img');
-            if (mapImage) {
-                mapImage.addEventListener('load', function() {
-                    console.log('Site map image loaded successfully');
-                });
-                mapImage.addEventListener('error', function() {
-                    console.error('Site map image failed to load');
-                });
-            }
+            // Ensure site map image loads properly
+            document.addEventListener('DOMContentLoaded', function() {
+                const mapImage = document.querySelector('.map-image img');
+                if (mapImage) {
+                    mapImage.addEventListener('load', function() {
+                        console.log('Site map image loaded successfully');
+                    });
+                    mapImage.addEventListener('error', function() {
+                        console.error('Site map image failed to load');
+                    });
+                }
 
-        });
+                // Developer mode for map positioning (Desktop & Mobile)
+                const mapContainer = document.querySelector('.map-image');
+                if (mapContainer) {
+                    let devMode = false;
+                    let isMobile = window.innerWidth <= 768;
+                    
+                    // Add a visible button to toggle dev mode
+                    const devButton = document.createElement('button');
+                    devButton.innerHTML = isMobile ? '📱 MOBILE DEV' : '🔧 DESKTOP DEV';
+                    devButton.style.position = 'fixed';
+                    devButton.style.top = '10px';
+                    devButton.style.right = '10px';
+                    devButton.style.zIndex = '9999';
+                    devButton.style.padding = '10px 15px';
+                    devButton.style.background = '#e74c3c';
+                    devButton.style.color = 'white';
+                    devButton.style.border = 'none';
+                    devButton.style.borderRadius = '5px';
+                    devButton.style.cursor = 'pointer';
+                    devButton.style.fontSize = '12px';
+                    devButton.style.fontWeight = 'bold';
+                    document.body.appendChild(devButton);
+                    
+                    // Update button text on resize
+                    window.addEventListener('resize', () => {
+                        isMobile = window.innerWidth <= 768;
+                        if (!devMode) {
+                            devButton.innerHTML = isMobile ? '📱 MOBILE DEV' : '🔧 DESKTOP DEV';
+                        }
+                    });
+                    
+                    // Toggle dev mode with button or Ctrl+Shift+D
+                    function toggleDevMode() {
+                        devMode = !devMode;
+                        isMobile = window.innerWidth <= 768;
+                        console.log(`🔧 ${isMobile ? 'Mobile' : 'Desktop'} Developer Mode:`, devMode ? 'ON' : 'OFF');
+                        if (devMode) {
+                            console.log(`Click anywhere on the map to get ${isMobile ? 'mobile' : 'desktop'} coordinates!`);
+                            mapContainer.style.cursor = 'crosshair';
+                            devButton.style.background = '#27ae60';
+                            devButton.innerHTML = isMobile ? '📱 MOBILE ON' : '🔧 DESKTOP ON';
+                        } else {
+                            mapContainer.style.cursor = 'default';
+                            devButton.style.background = '#e74c3c';
+                            devButton.innerHTML = isMobile ? '📱 MOBILE DEV' : '🔧 DESKTOP DEV';
+                        }
+                    }
+                    
+                    devButton.addEventListener('click', toggleDevMode);
+                    
+                    document.addEventListener('keydown', function(e) {
+                        if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+                            toggleDevMode();
+                        }
+                    });
+
+                    // Click handler for getting coordinates
+                    mapContainer.addEventListener('click', function(e) {
+                        console.log('Map clicked! Dev mode:', devMode, 'Mobile:', isMobile);
+                        if (!devMode) {
+                            console.log('Dev mode is OFF. Click the DEV MODE button first!');
+                            return;
+                        }
+                        
+                        const rect = mapContainer.getBoundingClientRect();
+                        const x = ((e.clientX - rect.left) / rect.width) * 100;
+                        const y = ((e.clientY - rect.top) / rect.height) * 100;
+                        
+                        console.log(`📍 Clicked at ${isMobile ? 'mobile' : 'desktop'} coordinates:`);
+                        console.log(`x: ${x.toFixed(1)}, y: ${y.toFixed(1)}`);
+                        console.log('Copy this for your map point:');
+                        if (isMobile) {
+                            console.log(`Mobile adjustment: { x: ${(x - 41.6).toFixed(1)}, y: ${(y - 24.3).toFixed(1)} }`);
+                            console.log(`Full mobile coordinates: { x: ${x.toFixed(1)}, y: ${y.toFixed(1)}, title: 'Your Title Here', description: 'Your description here' }`);
+                        } else {
+                            console.log(`{ x: ${x.toFixed(1)}, y: ${y.toFixed(1)}, title: 'Your Title Here', description: 'Your description here' }`);
+                        }
+                        
+                        // Visual indicator
+                        const indicator = document.createElement('div');
+                        indicator.style.position = 'absolute';
+                        indicator.style.left = `${x}%`;
+                        indicator.style.top = `${y}%`;
+                        indicator.style.width = '10px';
+                        indicator.style.height = '10px';
+                        indicator.style.background = isMobile ? '#3498db' : 'red';
+                        indicator.style.borderRadius = '50%';
+                        indicator.style.transform = 'translate(-50%, -50%)';
+                        indicator.style.zIndex = '1000';
+                        indicator.style.border = '2px solid white';
+                        indicator.style.boxShadow = `0 0 10px rgba(${isMobile ? '52,152,219' : '255,0,0'},0.8)`;
+                        mapContainer.appendChild(indicator);
+                        
+                        // Remove indicator after 3 seconds
+                        setTimeout(() => {
+                            if (indicator.parentNode) {
+                                indicator.parentNode.removeChild(indicator);
+                            }
+                        }, 3000);
+                    });
+                }
+            });
     </script>
 </body>
 </html> 
