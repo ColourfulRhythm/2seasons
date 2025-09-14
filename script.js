@@ -154,8 +154,36 @@ document.addEventListener('DOMContentLoaded', () => {
         features.forEach((feature, index) => {
             const point = document.createElement('div');
             point.className = 'map-point';
-            point.style.left = `${feature.x}%`;
-            point.style.top = `${feature.y}%`;
+            
+            // Function to set position based on screen size
+            function setPosition() {
+                const isMobile = window.innerWidth <= 768;
+                if (isMobile) {
+                    // Adjust positions for mobile - fine-tune based on mobile layout
+                    const mobileAdjustments = {
+                        '2 Seasons Residential': { x: feature.x + 2, y: feature.y - 1 },
+                        'The Wellness Hub': { x: feature.x - 1, y: feature.y + 1 },
+                        'Fruit Forest': { x: feature.x + 1, y: feature.y + 2 },
+                        'True Vine Villas': { x: feature.x - 2, y: feature.y + 1 },
+                        'Lake': { x: feature.x - 1, y: feature.y + 2 },
+                        'Sports Academy': { x: feature.x - 3, y: feature.y + 1 },
+                        'Hygge Town': { x: feature.x - 2, y: feature.y + 3 }
+                    };
+                    
+                    const adjustment = mobileAdjustments[feature.title] || { x: 0, y: 0 };
+                    point.style.left = `${Math.max(0, Math.min(100, feature.x + adjustment.x))}%`;
+                    point.style.top = `${Math.max(0, Math.min(100, feature.y + adjustment.y))}%`;
+                } else {
+                    point.style.left = `${feature.x}%`;
+                    point.style.top = `${feature.y}%`;
+                }
+            }
+            
+            // Set initial position
+            setPosition();
+            
+            // Update position on window resize
+            window.addEventListener('resize', setPosition);
             
             const info = document.createElement('div');
             info.className = 'feature-info';
