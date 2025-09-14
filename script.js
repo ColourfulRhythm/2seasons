@@ -167,11 +167,28 @@ document.addEventListener('DOMContentLoaded', () => {
             point.appendChild(info);
             mapPoints.appendChild(point);
 
-            // Add click event to show/hide info
+            // Add click event to show/hide info with smart positioning
             point.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const allInfos = document.querySelectorAll('.feature-info');
                 allInfos.forEach(info => info.classList.remove('active'));
+                
+                // Smart positioning based on marker location
+                info.className = 'feature-info';
+                if (feature.y < 30) {
+                    info.classList.add('position-bottom'); // Show below for top markers
+                } else if (feature.y > 70) {
+                    info.classList.add('position-top'); // Show above for bottom markers
+                } else {
+                    info.classList.add('position-bottom'); // Default to below
+                }
+                
+                if (feature.x < 20) {
+                    info.classList.add('position-right'); // Show to right for left markers
+                } else if (feature.x > 80) {
+                    info.classList.add('position-left'); // Show to left for right markers
+                }
+                
                 info.classList.add('active');
             });
         });
