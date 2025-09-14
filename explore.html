@@ -315,23 +315,54 @@
             if (mapContainer) {
                 let devMode = false;
                 
-                // Toggle dev mode with Ctrl+Shift+D
+                // Add a visible button to toggle dev mode
+                const devButton = document.createElement('button');
+                devButton.innerHTML = '🔧 DEV MODE';
+                devButton.style.position = 'fixed';
+                devButton.style.top = '10px';
+                devButton.style.right = '10px';
+                devButton.style.zIndex = '9999';
+                devButton.style.padding = '10px 15px';
+                devButton.style.background = '#e74c3c';
+                devButton.style.color = 'white';
+                devButton.style.border = 'none';
+                devButton.style.borderRadius = '5px';
+                devButton.style.cursor = 'pointer';
+                devButton.style.fontSize = '12px';
+                devButton.style.fontWeight = 'bold';
+                document.body.appendChild(devButton);
+                
+                // Toggle dev mode with button or Ctrl+Shift+D
+                function toggleDevMode() {
+                    devMode = !devMode;
+                    console.log('🔧 Developer Mode:', devMode ? 'ON' : 'OFF');
+                    if (devMode) {
+                        console.log('Click anywhere on the map to get coordinates!');
+                        mapContainer.style.cursor = 'crosshair';
+                        devButton.style.background = '#27ae60';
+                        devButton.innerHTML = '🔧 DEV ON';
+                    } else {
+                        mapContainer.style.cursor = 'default';
+                        devButton.style.background = '#e74c3c';
+                        devButton.innerHTML = '🔧 DEV MODE';
+                    }
+                }
+                
+                devButton.addEventListener('click', toggleDevMode);
+                
                 document.addEventListener('keydown', function(e) {
                     if (e.ctrlKey && e.shiftKey && e.key === 'D') {
-                        devMode = !devMode;
-                        console.log('🔧 Developer Mode:', devMode ? 'ON' : 'OFF');
-                        if (devMode) {
-                            console.log('Click anywhere on the map to get coordinates!');
-                            mapContainer.style.cursor = 'crosshair';
-                        } else {
-                            mapContainer.style.cursor = 'default';
-                        }
+                        toggleDevMode();
                     }
                 });
 
                 // Click handler for getting coordinates
                 mapContainer.addEventListener('click', function(e) {
-                    if (!devMode) return;
+                    console.log('Map clicked! Dev mode:', devMode);
+                    if (!devMode) {
+                        console.log('Dev mode is OFF. Click the DEV MODE button first!');
+                        return;
+                    }
                     
                     const rect = mapContainer.getBoundingClientRect();
                     const x = ((e.clientX - rect.left) / rect.width) * 100;
