@@ -159,20 +159,20 @@ document.addEventListener('DOMContentLoaded', () => {
             function setPosition() {
                 const isMobile = window.innerWidth <= 768;
                 if (isMobile) {
-                    // Adjust positions for mobile - fine-tune based on mobile layout
-                    const mobileAdjustments = {
-                        '2 Seasons Residential': { x: feature.x + 2, y: feature.y - 1 },
-                        'The Wellness Hub': { x: feature.x - 1, y: feature.y + 1 },
-                        'Fruit Forest': { x: feature.x + 1, y: feature.y + 2 },
-                        'True Vine Villas': { x: feature.x - 2, y: feature.y + 1 },
-                        'Lake': { x: feature.x - 1, y: feature.y + 2 },
-                        'Sports Academy': { x: feature.x - 3, y: feature.y + 1 },
-                        'Hygge Town': { x: feature.x - 2, y: feature.y + 3 }
+                    // Use precise mobile coordinates
+                    const mobileCoordinates = {
+                        '2 Seasons Residential': { x: 27.1, y: 24.6 },
+                        'The Wellness Hub': { x: 67.9, y: 52.0 },
+                        'Fruit Forest': { x: 54.7, y: 58.4 },
+                        'True Vine Villas': { x: 83.8, y: 61.2 },
+                        'Lake': { x: 76.8, y: 70.0 },
+                        'Sports Academy': { x: 99.4, y: 77.8 },
+                        'Hygge Town': { x: 81.3, y: 88.4 }
                     };
                     
-                    const adjustment = mobileAdjustments[feature.title] || { x: 0, y: 0 };
-                    point.style.left = `${Math.max(0, Math.min(100, feature.x + adjustment.x))}%`;
-                    point.style.top = `${Math.max(0, Math.min(100, feature.y + adjustment.y))}%`;
+                    const mobilePos = mobileCoordinates[feature.title] || { x: feature.x, y: feature.y };
+                    point.style.left = `${Math.max(0, Math.min(100, mobilePos.x))}%`;
+                    point.style.top = `${Math.max(0, Math.min(100, mobilePos.y))}%`;
                 } else {
                     point.style.left = `${feature.x}%`;
                     point.style.top = `${feature.y}%`;
