@@ -164,12 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Use precise mobile coordinates
                     const mobileCoordinates = {
                         '2 Seasons Residential': { x: 28.2, y: 24.0 },
-                        'The Wellness Hub': { x: 65.9, y: 56.4 },
+                        'The Wellness Hub': { x: 67.5, y: 58.0 },
                         'Fruit Forest': { x: 58.7, y: 58.6 },
                         'True Vine Villas': { x: 85.5, y: 59.4 },
-                        'Lake': { x: 83.5, y: 60.0 },
-                        'Sports Academy': { x: 96.9, y: 76.8 },
-                        'Hygge Town': { x: 81.3, y: 88.4 }
+                        'Lake': { x: 85.0, y: 62.5 },
+                        'Sports Academy': { x: 98.5, y: 80.0 },
+                        'Hygge Town': { x: 83.0, y: 90.0 }
                     };
                     
                     const mobilePos = mobileCoordinates[feature.title] || { x: feature.x, y: feature.y };
