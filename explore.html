@@ -309,6 +309,62 @@
                     console.error('Site map image failed to load');
                 });
             }
+
+            // Developer mode for map positioning
+            const mapContainer = document.querySelector('.map-image');
+            if (mapContainer) {
+                let devMode = false;
+                
+                // Toggle dev mode with Ctrl+Shift+D
+                document.addEventListener('keydown', function(e) {
+                    if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+                        devMode = !devMode;
+                        console.log('🔧 Developer Mode:', devMode ? 'ON' : 'OFF');
+                        if (devMode) {
+                            console.log('Click anywhere on the map to get coordinates!');
+                            mapContainer.style.cursor = 'crosshair';
+                        } else {
+                            mapContainer.style.cursor = 'default';
+                        }
+                    }
+                });
+
+                // Click handler for getting coordinates
+                mapContainer.addEventListener('click', function(e) {
+                    if (!devMode) return;
+                    
+                    const rect = mapContainer.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    
+                    console.log('📍 Clicked at coordinates:');
+                    console.log(`x: ${x.toFixed(1)}, y: ${y.toFixed(1)}`);
+                    console.log('Copy this for your map point:');
+                    console.log(`{ x: ${x.toFixed(1)}, y: ${y.toFixed(1)}, title: 'Your Title Here', description: 'Your description here' }`);
+                    
+                    // Visual indicator
+                    const indicator = document.createElement('div');
+                    indicator.style.position = 'absolute';
+                    indicator.style.left = `${x}%`;
+                    indicator.style.top = `${y}%`;
+                    indicator.style.width = '10px';
+                    indicator.style.height = '10px';
+                    indicator.style.background = 'red';
+                    indicator.style.borderRadius = '50%';
+                    indicator.style.transform = 'translate(-50%, -50%)';
+                    indicator.style.zIndex = '1000';
+                    indicator.style.border = '2px solid white';
+                    indicator.style.boxShadow = '0 0 10px rgba(255,0,0,0.8)';
+                    mapContainer.appendChild(indicator);
+                    
+                    // Remove indicator after 3 seconds
+                    setTimeout(() => {
+                        if (indicator.parentNode) {
+                            indicator.parentNode.removeChild(indicator);
+                        }
+                    }, 3000);
+                });
+            }
         });
     </script>
 </body>
