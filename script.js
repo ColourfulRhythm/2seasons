@@ -158,6 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Function to set position based on screen size
             function setPosition() {
                 const isMobile = window.innerWidth <= 768;
+                console.log('Setting position - isMobile:', isMobile, 'width:', window.innerWidth);
+                
                 if (isMobile) {
                     // Use precise mobile coordinates
                     const mobileCoordinates = {
@@ -171,9 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     };
                     
                     const mobilePos = mobileCoordinates[feature.title] || { x: feature.x, y: feature.y };
+                    console.log(`Mobile position for ${feature.title}:`, mobilePos);
                     point.style.left = `${Math.max(0, Math.min(100, mobilePos.x))}%`;
                     point.style.top = `${Math.max(0, Math.min(100, mobilePos.y))}%`;
                 } else {
+                    console.log(`Desktop position for ${feature.title}:`, { x: feature.x, y: feature.y });
                     point.style.left = `${feature.x}%`;
                     point.style.top = `${feature.y}%`;
                 }

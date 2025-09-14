@@ -393,6 +393,23 @@
                     devButton.style.fontWeight = 'bold';
                     document.body.appendChild(devButton);
                     
+                    // Add mobile force button
+                    const mobileForceButton = document.createElement('button');
+                    mobileForceButton.innerHTML = '📱 FORCE MOBILE';
+                    mobileForceButton.style.position = 'fixed';
+                    mobileForceButton.style.top = '50px';
+                    mobileForceButton.style.right = '10px';
+                    mobileForceButton.style.zIndex = '9999';
+                    mobileForceButton.style.padding = '8px 12px';
+                    mobileForceButton.style.background = '#3498db';
+                    mobileForceButton.style.color = 'white';
+                    mobileForceButton.style.border = 'none';
+                    mobileForceButton.style.borderRadius = '5px';
+                    mobileForceButton.style.cursor = 'pointer';
+                    mobileForceButton.style.fontSize = '10px';
+                    mobileForceButton.style.fontWeight = 'bold';
+                    document.body.appendChild(mobileForceButton);
+                    
                     // Update button text on resize
                     window.addEventListener('resize', () => {
                         isMobile = window.innerWidth <= 768;
@@ -419,6 +436,35 @@
                     }
                     
                     devButton.addEventListener('click', toggleDevMode);
+                    
+                    // Force mobile mode button
+                    mobileForceButton.addEventListener('click', function() {
+                        isMobile = true;
+                        console.log('🔧 Forced Mobile Mode ON');
+                        console.log('Markers will now use mobile coordinates');
+                        // Trigger position update for all markers
+                        const allMarkers = document.querySelectorAll('.map-point');
+                        allMarkers.forEach(marker => {
+                            const title = marker.querySelector('h3')?.textContent;
+                            if (title) {
+                                const mobileCoordinates = {
+                                    '2 Seasons Residential': { x: 27.1, y: 24.6 },
+                                    'The Wellness Hub': { x: 67.9, y: 52.0 },
+                                    'Fruit Forest': { x: 54.7, y: 58.4 },
+                                    'True Vine Villas': { x: 83.8, y: 61.2 },
+                                    'Lake': { x: 76.8, y: 70.0 },
+                                    'Sports Academy': { x: 99.4, y: 77.8 },
+                                    'Hygge Town': { x: 81.3, y: 88.4 }
+                                };
+                                const mobilePos = mobileCoordinates[title];
+                                if (mobilePos) {
+                                    marker.style.left = `${mobilePos.x}%`;
+                                    marker.style.top = `${mobilePos.y}%`;
+                                    console.log(`Updated ${title} to mobile position:`, mobilePos);
+                                }
+                            }
+                        });
+                    });
                     
                     document.addEventListener('keydown', function(e) {
                         if (e.ctrlKey && e.shiftKey && e.key === 'D') {
