@@ -23,6 +23,21 @@
             padding: 2rem;
         }
 
+        /* Ensure hero clears fixed header on all viewports */
+        @media (min-width: 769px) {
+            .villas-hero {
+                margin-top: 0; /* override global margin to avoid double spacing */
+                padding-top: 120px; /* reliable offset below fixed header */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .villas-hero {
+                margin-top: 0; /* ensure no collapsed margin on mobile */
+                padding-top: 90px;
+            }
+        }
+
         .villas-hero h1 {
             font-size: 4rem;
             margin-bottom: 1rem;
