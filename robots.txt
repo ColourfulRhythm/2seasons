@@ -1,0 +1,43 @@
+User-agent: *
+Allow: /
+
+# Important pages for indexing
+Allow: /explore
+Allow: /residential
+Allow: /villas
+Allow: /wellness
+Allow: /content
+Allow: /stages
+Allow: /join
+
+# Allow access to assets
+Allow: /assets/
+Allow: /assets/images/
+
+# Sitemap location
+Sitemap: https://2seasonsabk.store/sitemap.xml
+
+# Crawl delay to be respectful to server resources
+Crawl-delay: 1
+
+# Specific instructions for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# Block access to sensitive files
+Disallow: /private/
+Disallow: /*.log
+Disallow: /temp/
+Disallow: /cache/
+
+# Additional sitemap for images
+Sitemap: https://2seasonsabk.store/sitemap.xml
