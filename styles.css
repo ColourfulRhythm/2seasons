@@ -1077,3 +1077,12 @@ footer {
         gap: 0.8rem;
     }
 } 
+
+/* Offset fixed header on desktop for page heroes */
+@media (min-width: 769px) {
+    .residential-hero,
+    .villas-hero,
+    .content-hero {
+        margin-top: 90px;
+    }
+}
