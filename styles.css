@@ -1086,3 +1086,119 @@ footer {
         margin-top: 110px;
     }
 }
+
+/* Landmarks Section */
+.landmarks-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 4rem 0;
+    margin: 2rem 0;
+}
+
+.landmarks-intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 3rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landmarks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.landmark-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.landmark-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.landmark-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--secondary-color), #d67a3a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(230, 137, 70, 0.3);
+}
+
+.landmark-icon i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.landmark-card h3 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.landmark-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.landmark-distance {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-block;
+    border: 2px solid var(--secondary-color);
+}
+
+/* Mobile Responsive for Landmarks */
+@media (max-width: 768px) {
+    .landmarks-section {
+        padding: 2rem 0;
+        margin: 1rem 0;
+    }
+    
+    .landmarks-intro {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .landmarks-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .landmark-card {
+        padding: 1.5rem;
+    }
+    
+    .landmark-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .landmark-icon i {
+        font-size: 1.2rem;
+    }
+    
+    .landmark-card h3 {
+        font-size: 1.2rem;
+    }
+}
