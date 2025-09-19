@@ -148,12 +148,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 y: 87.3,
                 title: 'Hygge Town',
                 description: 'A vibrant commercial and creative hub featuring luxury retail, cafes, co-working spaces, and partnerships with global tech and creative giants. The cultural heartbeat of 2 Seasons.'
+            },
+            // Nearby Landmarks
+            {
+                x: 15.0,
+                y: 15.0,
+                title: 'Daywaterman College',
+                description: 'A prestigious educational institution in Abeokuta, known for academic excellence and character development. Located near 2 Seasons for easy access to quality education.',
+                isLandmark: true
+            },
+            {
+                x: 25.0,
+                y: 5.0,
+                title: 'Wole Soyinka Train Station',
+                description: 'The main railway station in Abeokuta, named after Nobel laureate Wole Soyinka. Provides convenient rail connectivity to Lagos and other major cities in Nigeria.',
+                isLandmark: true
+            },
+            {
+                x: 5.0,
+                y: 25.0,
+                title: 'Abeokuta Interchange',
+                description: 'Major transportation hub connecting Abeokuta to Lagos and other parts of Ogun State. Easy access point for visitors traveling to 2 Seasons from various locations.',
+                isLandmark: true
             }
         ];
 
         features.forEach((feature, index) => {
             const point = document.createElement('div');
-            point.className = 'map-point';
+            point.className = feature.isLandmark ? 'map-point landmark' : 'map-point';
             
             // Function to set position based on screen size
             function setPosition() {
@@ -168,7 +190,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         'True Vine Villas': { x: 85.5, y: 59.4 },
                         'Lake': { x: 85.0, y: 62.5 },
                         'Sports Academy': { x: 98.5, y: 80.0 },
-                        'Hygge Town': { x: 83.0, y: 90.0 }
+                        'Hygge Town': { x: 83.0, y: 90.0 },
+                        // Landmarks mobile coordinates
+                        'Daywaterman College': { x: 12.0, y: 12.0 },
+                        'Wole Soyinka Train Station': { x: 20.0, y: 3.0 },
+                        'Abeokuta Interchange': { x: 3.0, y: 20.0 }
                     };
                     
                     const mobilePos = mobileCoordinates[feature.title] || { x: feature.x, y: feature.y };
