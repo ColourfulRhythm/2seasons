@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Plots Available - Own Your Piece of 2 Seasons | Starting from ₦10,000/sqm</title>
+    <meta name="description" content="Own a piece of 2 Seasons Nigeria! 100 plots available starting from ₦10,000 per sqm. Early buyers enjoy capital gains as the city develops. Join the future of regenerative living in Abeokuta.">
+    <meta name="keywords" content="2 Seasons Nigeria plots, land investment Abeokuta, property investment Nigeria, regenerative living, 100 plots available, land ownership Nigeria, Abeokuta real estate">
+    <meta name="author" content="2 Seasons Nigeria">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://2seasonsabk.store/100plots">
+    <meta property="og:title" content="100 Plots Available - Own Your Piece of 2 Seasons">
+    <meta property="og:description" content="Own a piece of 2 Seasons Nigeria! 100 plots available starting from ₦10,000 per sqm. Early buyers enjoy capital gains as the city develops.">
+    <meta property="og:image" content="https://2seasonsabk.store/assets/images/site-map.jpg">
+    <meta property="og:site_name" content="2 Seasons Nigeria">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://2seasonsabk.store/100plots">
+    <meta property="twitter:title" content="100 Plots Available - Own Your Piece of 2 Seasons">
+    <meta property="twitter:description" content="Own a piece of 2 Seasons Nigeria! 100 plots available starting from ₦10,000 per sqm. Early buyers enjoy capital gains as the city develops.">
+    <meta property="twitter:image" content="https://2seasonsabk.store/assets/images/site-map.jpg">
+    
+    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <style>
+        .plots-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/site-map.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .plots-hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.2;
+        }
+
+        .plots-hero .sub-headline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            font-weight: 300;
+        }
+
+        .cta-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            margin-top: 2rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .cta-section .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin: 0;
+        }
+
+        .story-section {
+            background: var(--light-bg);
+            padding: 5rem 2rem;
+        }
+
+        .story-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story-content h2 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .story-content p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 3rem;
+        }
+
+        .phase-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .phase-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .phase-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .phase-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .phase-card p {
+            color: var(--text-color);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .investment-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .investment-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .investment-content h2 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .investment-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .highlight-card {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .highlight-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .highlight-card p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .price-projection {
+            background: linear-gradient(135deg, var(--secondary-color), #d67a3d);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+
+        .price-projection h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-projection .projected-price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .timeline-section {
+            background: var(--light-bg);
+            padding: 5rem 2rem;
+        }
+
+        .timeline-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .timeline-content h2 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .timeline-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-card .date {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .timeline-card p {
+            color: var(--text-color);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .social-proof-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .social-proof-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-proof-content h2 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(230, 137, 70, 0.3);
+            background: linear-gradient(135deg, var(--secondary-color), #d67a3d);
+        }
+
+        .cta-button.telegram {
+            background: #0088cc;
+        }
+
+        .cta-button.telegram:hover {
+            background: linear-gradient(135deg, #0088cc, #006699);
+        }
+
+        .gallery-section {
+            background: var(--light-bg);
+            padding: 5rem 2rem;
+        }
+
+        .gallery-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .gallery-content h2 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .gallery-item h3 {
+            padding: 1.5rem;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .final-cta-section {
+            background: linear-gradient(135deg, var(--primary-color), #4a1f0a);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .final-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .final-cta-content h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .final-cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .final-cta-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(230, 137, 70, 0.3);
+        }
+
+        .final-cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(230, 137, 70, 0.4);
+            background: linear-gradient(135deg, var(--secondary-color), #d67a3d);
+        }
+
+        @media (max-width: 768px) {
+            .plots-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .plots-hero .sub-headline {
+                font-size: 1.2rem;
+            }
+            
+            .cta-section .price {
+                font-size: 2rem;
+            }
+            
+            .story-content h2,
+            .investment-content h2,
+            .timeline-content h2,
+            .social-proof-content h2,
+            .gallery-content h2,
+            .final-cta-content h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-animation">
+        <div class="sun"></div>
+        <div class="storm">
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="cloud"></div>
+            <div class="lightning"></div>
+            <div class="lightning"></div>
+            <div class="lightning"></div>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <a href="/" class="logo">2 Seasons</a>
+            <button type="button" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="/residential">Residential</a></li>
+                <li><a href="/villas">True Vine Villas</a></li>
+                <li><a href="/wellness">Wellness Hub</a></li>
+                <li><a href="/content">Hygge Town</a></li>
+                <li><a href="/stages">Investment Stages</a></li>
+                <li><a href="/100plots">100 Plots</a></li>
+                <li><a href="/join" class="join-button">Join Now</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="menu-overlay"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="plots-hero">
+            <h1>Welcome to 2 Seasons</h1>
+            <p class="sub-headline">A City Built by Young Nigerians for the Future</p>
+            <div class="cta-section">
+                <h2>👉 Own a Piece Today for as Low as</h2>
+                <p class="price">₦10,000 per sqm</p>
+            </div>
+        </section>
+
+        <!-- The Story Section -->
+        <section class="story-section">
+            <div class="story-content">
+                <h2>The Story</h2>
+                <p>A couple of young Nigerians have come together with one vision – to build a new kind of city. A city of beauty, wellness, creativity, and opportunity. We call it 2 Seasons.</p>
+                
+                <p>We're building one of the most beautiful cities in Nigeria, a 200-acre regenerative lifestyle destination. Phase 1 is here – 74 acres, divided into 4 vibrant communities.</p>
+
+                <div class="phase-breakdown">
+                    <div class="phase-card">
+                        <i class="fas fa-home"></i>
+                        <h3>🌳 2 Seasons Residential</h3>
+                        <p>Modern homes & streetscapes</p>
+                    </div>
+                    <div class="phase-card">
+                        <i class="fas fa-spa"></i>
+                        <h3>💆 The Wellness Hub</h3>
+                        <p>Spa, sports, fruit forest</p>
+                    </div>
+                    <div class="phase-card">
+                        <i class="fas fa-water"></i>
+                        <h3>🌊 True Vine Lakefront Villas</h3>
+                        <p>Waterfront living & Airbnb retreats</p>
+                    </div>
+                    <div class="phase-card">
+                        <i class="fas fa-city"></i>
+                        <h3>🏙 Hygge Commercial Town</h3>
+                        <p>Retail, tech & creative ecosystem</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment Opportunity Section -->
+        <section class="investment-section">
+            <div class="investment-content">
+                <h2>The Investment Opportunity</h2>
+                <p>For the first time, you can own part of this development without stressing your pocket.</p>
+
+                <div class="investment-highlights">
+                    <div class="highlight-card">
+                        <h3>100 Plots Available</h3>
+                        <p>We've opened 100 plots = 50,000 sqm for ownership</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h3>Flexible Ownership</h3>
+                        <p>You can buy from as little as 1 sqm for just ₦10,000 per sqm</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h3>Early Bird Benefits</h3>
+                        <p>Early buyers enjoy capital gains in 2 years as the city develops</p>
+                    </div>
+                </div>
+
+                <div class="price-projection">
+                    <h3>💡 By 2027, each sqm is projected to rise to</h3>
+                    <p class="projected-price">₦25,000 – ₦30,000</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="timeline-section">
+            <div class="timeline-content">
+                <h2>Timeline / Milestones</h2>
+                <p>"We are not just dreaming. We are building."</p>
+
+                <div class="timeline-grid">
+                    <div class="timeline-card">
+                        <div class="date">Feb 2025</div>
+                        <h3>Bareland Acquired</h3>
+                        <p>Land acquisition completed and secured</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="date">Mar 2025</div>
+                        <h3>Registered Survey + Designs</h3>
+                        <p>Professional survey and architectural designs completed</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="date">Apr 2025</div>
+                        <h3>Deed of Assignment</h3>
+                        <p>Legal documentation and registration completed</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="date">Nov 2025</div>
+                        <h3>Internal Drainage & Roads</h3>
+                        <p>Infrastructure development begins</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="date">Jan 2026</div>
+                        <h3>Fencing Starts</h3>
+                        <p>Security and boundary establishment</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="date">Feb 2026</div>
+                        <h3>Experience Center</h3>
+                        <p>Construction of visitor and sales center</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="date">Mar 2026</div>
+                        <h3>Provisional Layout Permit</h3>
+                        <p>Government approval for development</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="date">Jun 2026</div>
+                        <h3>Full Layout Approval + C of O</h3>
+                        <p>Complete legal clearance and Certificate of Occupancy process</p>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="date">2027</div>
+                        <h3>Value Appreciation</h3>
+                        <p>sqm valued at ₦25k–₦30k</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof Section -->
+        <section class="social-proof-section">
+            <div class="social-proof-content">
+                <h2>Join the Community</h2>
+                <p>💬 Join the conversation, meet other owners, and see real-time ownership updates.</p>
+
+                <div class="cta-buttons">
+                    <a href="https://t.me/2seasonsabk" class="cta-button telegram" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-telegram"></i> Join Our Telegram Group
+                    </a>
+                    <a href="https://www.subxhq.com" class="cta-button" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt"></i> Start Owning on www.subxhq.com
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <div class="gallery-content">
+                <h2>Gallery</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="assets/images/site-map.jpg" alt="2 Seasons Masterplan">
+                        <h3>Masterplan Overview</h3>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/luxury-villas.jpg" alt="Luxury Villas Concept">
+                        <h3>Luxury Villas Concept</h3>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/artificial-lake.jpg" alt="Lakefront Living">
+                        <h3>Lakefront Living</h3>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/wellness-hub.jpg" alt="Wellness Hub">
+                        <h3>Wellness Hub Design</h3>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/modern-homes.jpg" alt="Modern Residential">
+                        <h3>Modern Residential</h3>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/images/farming-nature.jpg" alt="Natural Environment">
+                        <h3>Natural Environment</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="final-cta-section">
+            <div class="final-cta-content">
+                <h2>🔥 Only 100 Plots Available</h2>
+                <p>Don't wait until the price jumps. Start owning today.</p>
+                <a href="https://www.subxhq.com" class="final-cta-button" target="_blank" rel="noopener noreferrer">
+                    👉 Own Your SQM Now
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>2 Seasons</h3>
+                <p>Africa's First Regenerative Innovation & Lifestyle Village</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Kobape, Abeokuta, Ogun State, Nigeria</p>
+                <p>Email: info@2seasons.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/2seasonsabk" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/2seasonsabk?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 2 Seasons. All rights reserved.</p>
+            <a href="/privacy" class="privacy-policy-btn">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
