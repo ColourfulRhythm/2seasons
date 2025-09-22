@@ -31,52 +31,58 @@
     
     <style>
         .plots-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('assets/images/site-map.jpg');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, rgba(247, 225, 184, 0.9), rgba(230, 137, 70, 0.7));
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
-            padding: 2rem;
+            padding: 0 1rem;
         }
 
         .plots-hero h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 4.5rem;
             margin-bottom: 1rem;
-            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            letter-spacing: 2px;
             line-height: 1.2;
         }
 
         .plots-hero .sub-headline {
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            max-width: 800px;
+            color: var(--text-color);
             font-weight: 300;
+            letter-spacing: 1px;
+            max-width: 800px;
         }
 
         .cta-section {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
             padding: 2rem;
             border-radius: 20px;
             backdrop-filter: blur(10px);
             margin-top: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .cta-section h2 {
             font-size: 2rem;
             margin-bottom: 0.5rem;
-            color: #fff;
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
         }
 
         .cta-section .price {
             font-size: 2.5rem;
             font-weight: bold;
-            color: #fff;
+            color: var(--primary-color);
             margin: 0;
+            font-family: 'Playfair Display', serif;
         }
 
         .story-section {
@@ -532,10 +538,10 @@
             </div>
         </section>
 
-        <!-- Investment Opportunity Section -->
+        <!-- Ownership Opportunity Section -->
         <section class="investment-section">
             <div class="investment-content">
-                <h2>The Investment Opportunity</h2>
+                <h2>The Ownership Opportunity</h2>
                 <p>For the first time, you can own part of this development without stressing your pocket.</p>
 
                 <div class="investment-highlights">
@@ -554,8 +560,13 @@
                 </div>
 
                 <div class="price-projection">
-                    <h3>💡 By 2027, each sqm is projected to rise to</h3>
+                    <h3>💡 Why do we think a Sqm will be valued at N25,000 - N30,000 by 2027?</h3>
                     <p class="projected-price">₦25,000 – ₦30,000</p>
+                    <p style="font-size: 1.1rem; margin-top: 1rem; line-height: 1.6;">
+                        Based on current market trends, infrastructure development in Abeokuta, proximity to Lagos, 
+                        and the unique regenerative lifestyle offering of 2 Seasons, we project significant appreciation 
+                        as the development progresses and surrounding infrastructure improves.
+                    </p>
                 </div>
             </div>
         </section>
@@ -623,7 +634,7 @@
                 <p>💬 Join the conversation, meet other owners, and see real-time ownership updates.</p>
 
                 <div class="cta-buttons">
-                    <a href="https://t.me/2seasonsabk" class="cta-button telegram" target="_blank" rel="noopener noreferrer">
+                    <a href="https://t.me/+8iXgr7I_3R9jMzJk" class="cta-button telegram" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-telegram"></i> Join Our Telegram Group
                     </a>
                     <a href="https://www.subxhq.com" class="cta-button" target="_blank" rel="noopener noreferrer">
@@ -639,28 +650,36 @@
                 <h2>Gallery</h2>
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="assets/images/site-map.jpg" alt="2 Seasons Masterplan">
+                        <img src="100plots/2seasons-map.jpg" alt="2 Seasons Masterplan">
                         <h3>Masterplan Overview</h3>
                     </div>
                     <div class="gallery-item">
-                        <img src="assets/images/luxury-villas.jpg" alt="Luxury Villas Concept">
-                        <h3>Luxury Villas Concept</h3>
+                        <img src="100plots/drone-image.jpg" alt="Aerial View">
+                        <h3>Aerial View of Site</h3>
                     </div>
                     <div class="gallery-item">
-                        <img src="assets/images/artificial-lake.jpg" alt="Lakefront Living">
-                        <h3>Lakefront Living</h3>
+                        <img src="100plots/site-plans.jpg" alt="Site Plans">
+                        <h3>Detailed Site Plans</h3>
                     </div>
                     <div class="gallery-item">
-                        <img src="assets/images/wellness-hub.jpg" alt="Wellness Hub">
+                        <img src="100plots/welness-hub.jpg" alt="Wellness Hub">
                         <h3>Wellness Hub Design</h3>
                     </div>
                     <div class="gallery-item">
-                        <img src="assets/images/modern-homes.jpg" alt="Modern Residential">
-                        <h3>Modern Residential</h3>
+                        <img src="100plots/sportsacademy.jpg" alt="Sports Academy">
+                        <h3>Sports Academy</h3>
                     </div>
                     <div class="gallery-item">
-                        <img src="assets/images/farming-nature.jpg" alt="Natural Environment">
+                        <img src="100plots/plantsin2seasons.jpg" alt="Natural Environment">
                         <h3>Natural Environment</h3>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="100plots/survey-registered.jpg" alt="Registered Survey">
+                        <h3>Registered Survey</h3>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="100plots/plot-cornerpiece.jpg" alt="Plot Corner">
+                        <h3>Plot Corner Marker</h3>
                     </div>
                 </div>
             </div>
@@ -687,7 +706,7 @@
             <div class="footer-section">
                 <h3>Contact</h3>
                 <p>Kobape, Abeokuta, Ogun State, Nigeria</p>
-                <p>Email: info@2seasons.com</p>
+                <p>Email: contact@focalpointprop.com</p>
             </div>
             <div class="footer-section">
                 <h3>Follow Us</h3>
