@@ -25,9 +25,17 @@
     <meta property="twitter:image" content="https://2seasonsabk.store/assets/images/site-map.jpg">
     
     <link rel="stylesheet" href="styles.css?v=2">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="icon" type="image/png" href="favicon.png">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    </noscript>
+    
+    <!-- Resource Hints for Performance -->
+    <link rel="preconnect" href="https://connect.facebook.net">
+    <link rel="dns-prefetch" href="https://chat.whatsapp.com">
     
     <!-- Meta Pixel Code -->
     <script>
@@ -48,187 +56,299 @@
     <!-- End Meta Pixel Code -->
     
     <style>
+        /* Apple-inspired Design System */
+        :root {
+            --apple-bg: #f5f5f7;
+            --apple-text: #1d1d1f;
+            --apple-text-secondary: #86868b;
+            --apple-accent: #0071e3;
+            --apple-border: #d2d2d7;
+            --apple-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --apple-radius: 18px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--apple-bg);
+            color: var(--apple-text);
+            line-height: 1.47;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Hero Section - Apple Style */
         .plots-hero {
-            background: linear-gradient(135deg, rgba(247, 225, 184, 0.9), rgba(230, 137, 70, 0.7));
-            height: 100vh;
+            background: linear-gradient(135deg, rgba(247, 225, 184, 0.95), rgba(230, 137, 70, 0.85));
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 1rem;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plots-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .plots-hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-            letter-spacing: 2px;
-            line-height: 1.2;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--apple-text);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            position: relative;
+            z-index: 1;
         }
 
         .plots-hero .sub-headline {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--text-color);
-            font-weight: 300;
-            letter-spacing: 1px;
-            max-width: 800px;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: var(--apple-text-secondary);
+            max-width: 600px;
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-section {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 2rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 3rem 2.5rem;
+            border-radius: var(--apple-radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--apple-shadow);
             margin-top: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
         }
 
         .cta-section h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
             font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--apple-text);
+            letter-spacing: -0.01em;
         }
 
         .cta-section .price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--apple-text);
             margin: 0;
-            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.02em;
         }
 
+        /* Apple-style Sections */
         .story-section {
-            background: var(--light-bg);
-            padding: 5rem 2rem;
+            background: white;
+            padding: 8rem 2rem;
         }
 
         .story-content {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             text-align: center;
         }
 
         .story-content h2 {
-            font-size: 3rem;
-            color: var(--primary-color);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 600;
+            color: var(--apple-text);
             margin-bottom: 2rem;
-            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.02em;
         }
 
         .story-content p {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: var(--text-color);
-            margin-bottom: 3rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            line-height: 1.6;
+            color: var(--apple-text-secondary);
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .phase-breakdown {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin: 3rem 0;
+            margin: 4rem 0;
         }
 
         .phase-card {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 3rem 2rem;
+            border-radius: var(--apple-radius);
+            border: 1px solid var(--apple-border);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phase-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), #d67a3d);
         }
 
         .phase-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: var(--apple-shadow);
+            border-color: var(--secondary-color);
         }
 
         .phase-card i {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--secondary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .phase-card:hover i {
+            transform: scale(1.1);
         }
 
         .phase-card h3 {
-            font-size: 1.5rem;
-            color: var(--primary-color);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--apple-text);
             margin-bottom: 1rem;
-            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.01em;
         }
 
         .phase-card p {
-            color: var(--text-color);
+            color: var(--apple-text-secondary);
             font-size: 1rem;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .investment-section {
-            background: white;
-            padding: 5rem 2rem;
+            background: var(--apple-bg);
+            padding: 8rem 2rem;
         }
 
         .investment-content {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             text-align: center;
         }
 
         .investment-content h2 {
-            font-size: 3rem;
-            color: var(--primary-color);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 600;
+            color: var(--apple-text);
             margin-bottom: 2rem;
-            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.02em;
         }
 
         .investment-highlights {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin: 3rem 0;
+            margin: 4rem 0;
         }
 
         .highlight-card {
-            background: var(--light-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            border-left: 5px solid var(--secondary-color);
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: var(--apple-radius);
+            border: 1px solid var(--apple-border);
+            text-align: left;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--secondary-color), #d67a3d);
+            border-radius: 2px 0 0 2px;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--apple-shadow);
         }
 
         .highlight-card h3 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--apple-text);
             margin-bottom: 1rem;
-            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.01em;
         }
 
         .highlight-card p {
-            color: var(--text-color);
+            color: var(--apple-text-secondary);
             font-size: 1.1rem;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .price-projection {
             background: linear-gradient(135deg, var(--secondary-color), #d67a3d);
             color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            margin: 2rem 0;
+            padding: 4rem 3rem;
+            border-radius: var(--apple-radius);
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-projection::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .price-projection h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .price-projection .projected-price {
-            font-size: 3rem;
-            font-weight: bold;
-            margin: 1rem 0;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin: 1.5rem 0;
+            position: relative;
+            z-index: 1;
         }
 
         .timeline-section {
@@ -318,27 +438,42 @@
             flex-wrap: wrap;
         }
 
+        /* Apple-style Buttons */
         .cta-button {
             display: inline-block;
-            padding: 1.2rem 2.5rem;
-            background: var(--secondary-color);
-            color: var(--white);
+            padding: 1rem 2rem;
+            background: var(--apple-text);
+            color: white;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 12px;
             font-weight: 500;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(5px);
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(230, 137, 70, 0.3);
-            background: linear-gradient(135deg, var(--secondary-color), #d67a3d);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            background: #000;
         }
 
         .cta-button.telegram {
@@ -346,7 +481,44 @@
         }
 
         .cta-button.telegram:hover {
-            background: linear-gradient(135deg, #25D366, #128C7E);
+            background: #128C7E;
+        }
+
+        .final-cta-button {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: var(--apple-text);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .final-cta-button:hover::before {
+            left: 100%;
+        }
+
+        .final-cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            background: #000;
         }
 
         .gallery-section {
@@ -653,11 +825,11 @@
                 <h2>Gallery</h2>
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <img src="100plots/2seasons-map.jpg" alt="2 Seasons Masterplan">
+                        <img src="100plots/2seasons-map.jpg" alt="2 Seasons Masterplan" loading="lazy">
                         <h3>Masterplan Overview</h3>
                     </div>
                     <div class="gallery-item">
-                        <video controls muted>
+                        <video controls muted preload="metadata">
                             <source src="100plots/droneview.mov" type="video/mp4">
                             <source src="100plots/droneview.mov" type="video/quicktime">
                             Your browser does not support the video tag.
@@ -665,11 +837,11 @@
                         <h3>Drone Aerial View</h3>
                     </div>
                     <div class="gallery-item">
-                        <img src="100plots/site-plans.jpg" alt="Site Plans">
+                        <img src="100plots/site-plans.jpg" alt="Site Plans" loading="lazy">
                         <h3>Detailed Site Plans</h3>
                     </div>
                     <div class="gallery-item">
-                        <video controls muted>
+                        <video controls muted preload="metadata">
                             <source src="100plots/img-bulldozer.Mov" type="video/mp4">
                             <source src="100plots/img-bulldozer.Mov" type="video/quicktime">
                             Your browser does not support the video tag.
@@ -677,19 +849,19 @@
                         <h3>Construction Progress</h3>
                     </div>
                     <div class="gallery-item">
-                        <img src="100plots/sportsacademy.jpg" alt="Sports Academy">
+                        <img src="100plots/sportsacademy.jpg" alt="Sports Academy" loading="lazy">
                         <h3>Sports Academy</h3>
                     </div>
                     <div class="gallery-item">
-                        <img src="100plots/plantsin2seasons.jpg" alt="Natural Environment">
+                        <img src="100plots/plantsin2seasons.jpg" alt="Natural Environment" loading="lazy">
                         <h3>Natural Environment</h3>
                     </div>
                     <div class="gallery-item">
-                        <img src="100plots/survey-registered.jpg" alt="Registered Survey">
+                        <img src="100plots/survey-registered.jpg" alt="Registered Survey" loading="lazy">
                         <h3>Registered Survey</h3>
                     </div>
                     <div class="gallery-item">
-                        <img src="100plots/plot-cornerpiece.jpg" alt="Plot Corner">
+                        <img src="100plots/plot-cornerpiece.jpg" alt="Plot Corner" loading="lazy">
                         <h3>Plot Corner Marker</h3>
                     </div>
                 </div>
@@ -735,5 +907,41 @@
     </footer>
 
     <script src="script.js"></script>
+    
+    <!-- Performance Optimization Script -->
+    <script>
+        // Lazy load non-critical resources
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load Font Awesome after page load
+            if (!document.querySelector('link[href*="font-awesome"]')) {
+                const fa = document.createElement('link');
+                fa.rel = 'stylesheet';
+                fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
+                document.head.appendChild(fa);
+            }
+            
+            // Optimize weather animation for mobile
+            if (window.innerWidth < 768) {
+                const weatherAnim = document.querySelector('.weather-animation');
+                if (weatherAnim) {
+                    weatherAnim.style.display = 'none';
+                }
+            }
+        });
+        
+        // Preload critical images
+        const criticalImages = [
+            '100plots/2seasons-map.jpg',
+            '100plots/drone-image.jpg'
+        ];
+        
+        criticalImages.forEach(src => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'image';
+            link.href = src;
+            document.head.appendChild(link);
+        });
+    </script>
 </body>
 </html>
