@@ -114,15 +114,61 @@
         }
 
         .explore-hero h1 {
-            font-size: 3.5rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
             font-family: 'Playfair Display', serif;
+            line-height: 1.3;
         }
 
         .explore-hero p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto;
+        }
+
+        .own-now-cta {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .own-now-cta a {
+            display: inline-block;
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            padding: 0.8rem 2rem;
+            border: 2px solid var(--accent-color);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .own-now-cta a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: var(--accent-color);
+            transition: width 0.4s ease, height 0.4s ease;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .own-now-cta a:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.3);
+        }
+
+        .own-now-cta a:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .map-section {
@@ -331,6 +377,23 @@
 
         /* Responsive design for map section */
         @media (max-width: 768px) {
+            .explore-hero h1 {
+                font-size: 1.4rem;
+            }
+            
+            .explore-hero p {
+                font-size: 1rem;
+            }
+
+            .own-now-cta {
+                padding: 1.5rem 1rem;
+            }
+
+            .own-now-cta a {
+                font-size: 0.95rem;
+                padding: 0.7rem 1.5rem;
+            }
+            
             .map-section {
                 padding: 3rem 1rem;
             }
@@ -391,6 +454,10 @@
         <section class="explore-hero">
             <h1>Explore 2 Seasons Nigeria - Eco-Friendly Off-Grid Development in Kobape, Abeokuta</h1>
             <p>Discover Africa's first regenerative innovation village featuring youth sports academy, wellness hub, sustainable living, and luxury eco-friendly villas in Kobape, Abeokuta, Ogun State, Nigeria</p>
+        </section>
+
+        <section class="own-now-cta">
+            <a href="https://www.subxhq.com/" target="_blank" rel="noopener noreferrer">Own Now in 1 hour</a>
         </section>
 
         <section class="map-section">
