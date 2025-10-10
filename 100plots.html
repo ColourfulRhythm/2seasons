@@ -392,6 +392,12 @@
             bottom: 0;
             z-index: 100;
             box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        /* Hide sticky bar when form is in view on mobile */
+        .scarcity-section.hidden {
+            transform: translateY(100%);
         }
 
         .scarcity-content {
@@ -428,7 +434,7 @@
             .pitch-headline {
                 font-size: 2.5rem;
             }
-
+            
             .benefits-grid,
             .testimonial-grid,
             .visual-grid {
@@ -439,7 +445,7 @@
                 flex-direction: column;
                 text-align: center;
             }
-
+            
             .scarcity-cta {
                 width: 100%;
                 max-width: 300px;
@@ -586,7 +592,7 @@
                 <div class="visual-header">
                     <h2>See Your Future Home</h2>
                     <p style="font-size: 1.1rem; color: #666;">Real photos from 2 Seasons development</p>
-                </div>
+                    </div>
                 <div class="visual-grid">
                     <div class="visual-item">
                         <img src="100plots/2seasons-map.jpg" alt="2 Seasons Master Plan">
@@ -714,6 +720,28 @@
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('success') === 'true') {
             alert('Thank you! We\'ve received your request and will contact you within 1 hour.');
+        }
+
+        // Hide sticky bar when form is visible on mobile
+        if (window.innerWidth <= 768) {
+            const scarcityBar = document.querySelector('.scarcity-section');
+            const formSection = document.querySelector('.conversion-section');
+            
+            if (scarcityBar && formSection) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            scarcityBar.classList.add('hidden');
+                        } else {
+                            scarcityBar.classList.remove('hidden');
+                        }
+                    });
+                }, {
+                    threshold: 0.1
+                });
+                
+                observer.observe(formSection);
+            }
         }
     </script>
 </body>
