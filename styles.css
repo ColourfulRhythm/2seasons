@@ -1207,7 +1207,7 @@ footer {
    LUXURY DESIGN ENHANCEMENTS
    ============================================ */
 
-/* Enhanced Hero Section with Video Background */
+/* Enhanced Hero Section with Image Background */
 .hero {
     position: relative;
     height: 100vh;
@@ -1217,36 +1217,19 @@ footer {
     overflow: hidden;
 }
 
-.hero-video-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 1;
-    background: url('100plots/drone-image.jpg') center/cover no-repeat;
-}
-
-.hero-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .hero-video-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(97, 48, 13, 0.7), rgba(230, 137, 70, 0.6));
-    z-index: 2;
+    background: transparent;
+    z-index: 1;
 }
 
 .hero-content {
     position: relative;
-    z-index: 3;
+    z-index: 2;
     text-align: center;
     color: white;
     max-width: 1200px;
@@ -1339,34 +1322,9 @@ footer {
     left: 0;
 }
 
-/* Video Sound Toggle */
+/* Video Sound Toggle - Hidden (no video) */
 .video-sound-toggle {
-    position: absolute;
-    bottom: 3rem;
-    right: 3rem;
-    z-index: 10;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    padding: 1rem;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.video-sound-toggle:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
-}
-
-.video-sound-toggle i {
-    font-size: 1.2rem;
+    display: none;
 }
 
 /* Exclusivity Section */
@@ -1595,13 +1553,6 @@ footer {
     
     .hero-subtitle {
         font-size: 1.1rem;
-    }
-    
-    .video-sound-toggle {
-        bottom: 1.5rem;
-        right: 1.5rem;
-        width: 45px;
-        height: 45px;
     }
     
     .exclusivity-title {
