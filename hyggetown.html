@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hygge Town - Creative Innovation Hub in Kobape, Abeokuta | 2 Seasons Nigeria</title>
+    <meta name="description" content="Nigeria's first integrated creative and innovation hub. Featuring content studios, startup spaces, and high-speed connectivity in Kobape, Abeokuta, Ogun State.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        .hygge-luxury-hero {
+            height: 85vh;
+            background: linear-gradient(135deg, rgba(97, 48, 13, 0.8), rgba(230, 137, 70, 0.7)), 
+                        url('assets/images/content-and-creator-zone.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .hygge-hero-content {
+            max-width: 1100px;
+            text-align: center;
+        }
+
+        .hygge-hero-badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hygge-hero-title {
+            font-size: 5.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hygge-hero-title em {
+            font-style: italic;
+            color: var(--accent-color);
+        }
+
+        .hygge-hero-subtitle {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            opacity: 0.95;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .hygge-intro {
+            max-width: 1200px;
+            margin: 8rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .hygge-intro h2 {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .hygge-intro em {
+            font-style: italic;
+            color: var(--secondary-color);
+        }
+
+        .hygge-intro p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: #666;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        .facilities-luxury-section {
+            background: linear-gradient(135deg, #fafaf8 0%, #ffffff 100%);
+            padding: 8rem 2rem;
+        }
+
+        .facilities-luxury-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+        }
+
+        .facility-luxury-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .facility-luxury-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .facility-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--accent-color), #fff9ed);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .facility-luxury-card:hover .facility-icon {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .facility-icon i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            transition: all 0.4s ease;
+        }
+
+        .facility-luxury-card:hover .facility-icon i {
+            color: white;
+        }
+
+        .facility-luxury-card h3 {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .facility-luxury-card p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        .ecosystem-section {
+            max-width: 1400px;
+            margin: 8rem auto;
+            padding: 0 2rem;
+        }
+
+        .ecosystem-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .ecosystem-header h2 {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .ecosystem-header em {
+            font-style: italic;
+            color: var(--secondary-color);
+        }
+
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .ecosystem-item {
+            background: linear-gradient(135deg, #fafaf8, #ffffff);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .ecosystem-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .ecosystem-item i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .ecosystem-item h3 {
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .ecosystem-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .connectivity-banner {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            margin: 6rem 0;
+        }
+
+        .connectivity-banner h2 {
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+        }
+
+        .connectivity-banner p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        .cta-hygge {
+            background: linear-gradient(135deg, var(--primary-color), #4a1f0a);
+            color: white;
+            padding: 7rem 2rem;
+            text-align: center;
+        }
+
+        .cta-hygge h2 {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-hygge p {
+            font-size: 1.3rem;
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            opacity: 0.95;
+        }
+
+        .cta-hygge-btn {
+            display: inline-block;
+            padding: 1.3rem 3.5rem;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.15rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-hygge-btn:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hygge-hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hygge-intro h2,
+            .ecosystem-header h2,
+            .connectivity-banner h2,
+            .cta-hygge h2 {
+                font-size: 2.2rem;
+            }
+
+            .facilities-luxury-grid,
+            .ecosystem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="luxury-header">
+        <nav class="luxury-nav">
+            <a href="/" class="logo-luxury">2 Seasons</a>
+            <button type="button" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="menu-text">Menu</span>
+            </button>
+            <ul class="nav-links-luxury">
+                <li><a href="/#residential">Residential</a></li>
+                <li><a href="/#villas">Villas</a></li>
+                <li><a href="/#wellness">Wellness</a></li>
+                <li><a href="/hyggetown">Hygge</a></li>
+                <li><a href="/stages">Stages</a></li>
+                <li><a href="/100plots">100 Plots</a></li>
+                <li><a href="/join" class="cta-nav">Book Preview</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="menu-overlay"></div>
+
+    <main>
+        <section class="hygge-luxury-hero">
+            <div class="hygge-hero-content">
+                <div class="hygge-hero-badge">Creative Innovation Hub</div>
+                <h1 class="hygge-hero-title">
+                    Hygge <em>Town</em>
+                </h1>
+                <p class="hygge-hero-subtitle">
+                    Nigeria's first fully integrated creative resort hub where content creators, startups, and innovators thrive together
+                </p>
+            </div>
+        </section>
+
+        <section class="hygge-intro">
+            <h2>Where <em>Creativity</em> Meets Innovation</h2>
+            <p>
+                Hygge Town is more than just a workspace—it's a vibrant ecosystem designed for Nigeria's next generation of creators and entrepreneurs. With world-class facilities, high-speed connectivity, and a supportive community, this is where ideas come to life and businesses flourish.
+            </p>
+        </section>
+
+        <section class="facilities-luxury-section">
+            <div class="facilities-luxury-grid">
+                <div class="facility-luxury-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Content Studios</h3>
+                    <p>Professional studios with outdoor sets, masterclass spaces, and post-production hubs for content creators and filmmakers.</p>
+                </div>
+
+                <div class="facility-luxury-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Startup Hub</h3>
+                    <p>Co-working pods, residency housing, demo day arena, and modular offices designed for growing startups and scale-ups.</p>
+                </div>
+
+                <div class="facility-luxury-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Co-Working Spaces</h3>
+                    <p>Flexible workspaces with modern amenities, meeting rooms, and collaborative zones for remote workers and teams.</p>
+                </div>
+
+                <div class="facility-luxury-card">
+                    <div class="facility-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Starlink Connectivity</h3>
+                    <p>Unlimited high-speed internet powered by Starlink, ensuring seamless collaboration and content creation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="connectivity-banner">
+            <h2>Powered by Starlink</h2>
+            <p>Experience blazing-fast internet connectivity that keeps you connected to the world. Perfect for content streaming, video calls, and cloud collaboration.</p>
+        </section>
+
+        <section class="ecosystem-section">
+            <div class="ecosystem-header">
+                <h2>Support <em>Ecosystem</em></h2>
+                <p>Comprehensive resources to help your business grow and succeed</p>
+            </div>
+
+            <div class="ecosystem-grid">
+                <div class="ecosystem-item">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud Services</h3>
+                    <p>Integrated cloud infrastructure and tech support for seamless operations.</p>
+                </div>
+
+                <div class="ecosystem-item">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Micro-Loans</h3>
+                    <p>Access to startup funding and micro-loan programs to fuel your growth.</p>
+                </div>
+
+                <div class="ecosystem-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>VC Events</h3>
+                    <p>Regular networking events connecting startups with venture capitalists and investors.</p>
+                </div>
+
+                <div class="ecosystem-item">
+                    <i class="fas fa-landmark"></i>
+                    <h3>Innovation Grants</h3>
+                    <p>Government and private innovation grants to support promising ventures.</p>
+                </div>
+
+                <div class="ecosystem-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Mentorship Programs</h3>
+                    <p>Learn from industry experts and successful entrepreneurs.</p>
+                </div>
+
+                <div class="ecosystem-item">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Partnership Network</h3>
+                    <p>Connect with global tech giants and creative industry leaders.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-hygge">
+            <h2>Join Hygge Town</h2>
+            <p>Be part of Nigeria's premier creative and innovation community. Limited spaces available.</p>
+            <a href="/join" class="cta-hygge-btn">Reserve Your Space</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>2 Seasons</h3>
+                <p>Africa's First Regenerative Innovation & Lifestyle Village</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Kobape, Abeokuta, Ogun State, Nigeria</p>
+                <p>Email: info@2seasons.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/2seasonsabk" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/2seasonsabk?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 2 Seasons. All rights reserved.</p>
+            <a href="/privacy" class="privacy-policy-btn">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

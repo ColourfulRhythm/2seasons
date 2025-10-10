@@ -3,209 +3,367 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2 Seasons Residential - Luxury Living Community</title>
-    <link rel="stylesheet" href="styles.css?v=3">
+    <title>2 Seasons Residential - Sustainable Living in Kobape, Abeokuta | Nigeria</title>
+    <meta name="description" content="Discover modern sustainable living at 2 Seasons Residential. Eco-friendly homes, landscaped streets, and active lifestyle amenities in Kobape, Abeokuta, Ogun State, Nigeria.">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        .residential-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg');
-            background-size: cover;
-            background-position: center;
-            height: 60vh;
+        .residential-luxury-hero {
+            height: 80vh;
+            background: linear-gradient(135deg, rgba(97, 48, 13, 0.8), rgba(230, 137, 70, 0.7)), 
+                        url('assets/images/modern-homes.jpg') center/cover no-repeat;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
+            justify-content: center;
             color: white;
             padding: 2rem;
         }
 
-        .residential-hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .residential-hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .features-container {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-card i {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .purpose-section {
-            background: #f8f9fa;
-            padding: 4rem 2rem;
+        .residential-hero-content {
+            max-width: 1000px;
             text-align: center;
-            margin-top: 4rem;
         }
 
-        .purpose-section h2 {
-            font-size: 2.5rem;
-            color: #2c3e50;
+        .residential-hero-badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
             margin-bottom: 2rem;
         }
 
-        .purpose-section p {
+        .residential-hero-title {
+            font-size: 5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .residential-hero-title em {
+            font-style: italic;
+            color: var(--accent-color);
+        }
+
+        .residential-hero-subtitle {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            opacity: 0.95;
             max-width: 800px;
             margin: 0 auto;
-            font-size: 1.2rem;
-            color: #666;
-            line-height: 1.8;
         }
 
-        .cta-section {
+        .residential-intro {
+            max-width: 1200px;
+            margin: 8rem auto;
+            padding: 0 2rem;
             text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: white;
         }
 
-        .cta-section h2 {
-            font-size: 2.5rem;
+        .residential-intro h2 {
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .residential-intro em {
+            font-style: italic;
+            color: var(--secondary-color);
+        }
+
+        .residential-intro p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #666;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .features-luxury-grid {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-luxury-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .feature-luxury-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-luxury-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
             margin-bottom: 1.5rem;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: white;
-            color: #2c3e50;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: transform 0.3s ease;
+        .feature-luxury-card h3 {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
         }
 
-        .cta-button:hover {
-            transform: scale(1.05);
+        .feature-luxury-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .amenities-section {
+            background: linear-gradient(135deg, #fafaf8 0%, #ffffff 100%);
+            padding: 8rem 2rem;
+        }
+
+        .amenities-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .amenities-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .amenities-header h2 {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .amenities-header em {
+            font-style: italic;
+            color: var(--secondary-color);
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .amenity-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .amenity-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .amenity-item i {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .amenity-item h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-residential {
+            background: linear-gradient(135deg, var(--primary-color), #4a1f0a);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .cta-residential h2 {
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
+        }
+
+        .cta-residential p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0.95;
+        }
+
+        .cta-residential-btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-residential-btn:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .residential-hero-title {
+                font-size: 2.5rem;
+            }
+
+            .residential-intro h2,
+            .amenities-header h2,
+            .cta-residential h2 {
+                font-size: 2.2rem;
+            }
+
+            .features-luxury-grid,
+            .amenities-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="/" class="logo">2 Seasons</a>
+    <header class="luxury-header">
+        <nav class="luxury-nav">
+            <a href="/" class="logo-luxury">2 Seasons</a>
             <button type="button" class="mobile-menu-btn" aria-label="Toggle Menu">
-                <i class="fas fa-bars"></i>
-                <span>Menu</span>
+                <span class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="menu-text">Menu</span>
             </button>
-            <ul class="nav-links">
-                <li><a href="/residential">Residential</a></li>
-                <li><a href="/villas">True Vine Villas</a></li>
-                <li><a href="/wellness">Wellness Hub</a></li>
-                <li><a href="/content">Hygge Town</a></li>
-                <li><a href="/stages">Investment Stages</a></li>
+            <ul class="nav-links-luxury">
+                <li><a href="/#residential">Residential</a></li>
+                <li><a href="/#villas">Villas</a></li>
+                <li><a href="/#wellness">Wellness</a></li>
+                <li><a href="/#content">Hygge</a></li>
+                <li><a href="/stages">Stages</a></li>
                 <li><a href="/100plots">100 Plots</a></li>
-                <li><a href="/join" class="join-button">Join Now</a></li>
+                <li><a href="/join" class="cta-nav">Book Preview</a></li>
             </ul>
         </nav>
     </header>
     <div class="menu-overlay"></div>
 
     <main>
-        <section class="residential-hero">
-            <h1>2 Seasons Residential</h1>
-            <p>A prestigious gated community designed for modern living, offering the perfect blend of luxury, comfort, and convenience.</p>
-            <div style="margin-top: 2rem; padding: 1rem 2rem; background: rgba(255, 255, 255, 0.1); border-radius: 15px; backdrop-filter: blur(10px);">
-                <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: #fff;">Starting Price</h2>
-                <p style="font-size: 2.5rem; font-weight: bold; color: #fff; margin: 0;">From ₦10,000 / Sq.m</p>
+        <section class="residential-luxury-hero">
+            <div class="residential-hero-content">
+                <div class="residential-hero-badge">Sustainable Living</div>
+                <h1 class="residential-hero-title">
+                    Residential <em>Living</em>
+                </h1>
+                <p class="residential-hero-subtitle">
+                    A serene gated community where modern design meets sustainable living in the heart of Kobape, Abeokuta
+                </p>
             </div>
         </section>
 
-        <section class="features-container">
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Gated Community</h3>
-                    <p>24/7 security and controlled access ensuring the safety and privacy of all residents.</p>
+        <section class="residential-intro">
+            <h2>Modern Homes for <em>Contemporary Living</em></h2>
+            <p>
+                2 Seasons Residential offers a unique blend of modern architecture and eco-friendly design. Our community features contemporary apartments, cottages, and duplexes designed for comfort and sustainability, perfect for families and young professionals seeking a balanced lifestyle in Nigeria.
+            </p>
+        </section>
+
+        <div class="features-luxury-grid">
+            <div class="feature-luxury-card">
+                <i class="fas fa-home"></i>
+                <h3>Modern Homes</h3>
+                <p>Contemporary apartments, cottages, and duplexes designed with sustainable materials and energy-efficient features.</p>
+            </div>
+
+            <div class="feature-luxury-card">
+                <i class="fas fa-tree"></i>
+                <h3>Landscaped Streets</h3>
+                <p>Beautifully designed pathways with lush greenery, creating a serene environment for daily living.</p>
+            </div>
+
+            <div class="feature-luxury-card">
+                <i class="fas fa-running"></i>
+                <h3>Active Lifestyle</h3>
+                <p>Dedicated lanes for driving, cycling, and jogging, promoting health and wellness for all residents.</p>
+            </div>
+
+            <div class="feature-luxury-card">
+                <i class="fas fa-shopping-bag"></i>
+                <h3>Shopping Mall</h3>
+                <p>Convenient retail spaces within the community for your daily needs and lifestyle requirements.</p>
+            </div>
+
+            <div class="feature-luxury-card">
+                <i class="fas fa-child"></i>
+                <h3>Playgrounds</h3>
+                <p>Safe and modern play areas designed for children to explore, learn, and have fun.</p>
+            </div>
+
+            <div class="feature-luxury-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>24/7 Security</h3>
+                <p>Comprehensive security system with trained personnel ensuring your family's safety around the clock.</p>
+            </div>
+        </div>
+
+        <section class="amenities-section">
+            <div class="amenities-container">
+                <div class="amenities-header">
+                    <h2>Essential <em>Amenities</em></h2>
+                    <p>Everything you need for comfortable living, thoughtfully integrated into our community</p>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-road"></i>
-                    <h3>Dedicated Lanes</h3>
-                    <p>Separate lanes for driving, cycling, and jogging, promoting an active lifestyle while ensuring safety.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-tree"></i>
-                    <h3>Landscaped Streets</h3>
-                    <p>Beautifully designed pathways and green spaces creating a serene and picturesque environment.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-child"></i>
-                    <h3>Play Area</h3>
-                    <p>Safe and well-equipped play areas for children to enjoy outdoor activities.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-shopping-bag"></i>
-                    <h3>Mini Shopping Mall</h3>
-                    <p>Convenient retail spaces offering daily necessities and lifestyle amenities.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-home"></i>
-                    <h3>Modern Homes</h3>
-                    <p>Contemporary living spaces designed with comfort, style, and functionality in mind.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-school"></i>
-                    <h3>Daycare/School</h3>
-                    <p>Quality educational facilities for children of all ages, ensuring convenience for families.</p>
+
+                <div class="amenities-grid">
+                    <div class="amenity-item">
+                        <i class="fas fa-bolt"></i>
+                        <h3>24/7 Power Supply</h3>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-water"></i>
+                        <h3>Clean Water System</h3>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-wifi"></i>
+                        <h3>High-Speed Internet</h3>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-recycle"></i>
+                        <h3>Waste Management</h3>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-car"></i>
+                        <h3>Ample Parking</h3>
+                    </div>
+                    <div class="amenity-item">
+                        <i class="fas fa-street-view"></i>
+                        <h3>Street Lighting</h3>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="purpose-section">
-            <h2>Investment Purpose</h2>
-            <p>2 Seasons Residential is designed to provide a stable land value base and generate long-term residency income. Our community offers a perfect balance of luxury living and investment potential, making it an ideal choice for both homeowners and investors.</p>
-        </section>
-
-        <section class="cta-section">
-            <h2>Experience Luxury Living</h2>
-            <p>Join our prestigious community and be part of something extraordinary.</p>
-            <a href="tel:07071670649" class="cta-button">Call 07071670649</a>
+        <section class="cta-residential">
+            <h2>Make 2 Seasons Your Home</h2>
+            <p>Experience sustainable living at its finest. Secure your plot in our residential community today.</p>
+            <a href="/join" class="cta-residential-btn">Book Your Preview</a>
         </section>
     </main>
 
@@ -217,7 +375,7 @@
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p>Abeokuta, Nigeria</p>
+                <p>Kobape, Abeokuta, Ogun State, Nigeria</p>
                 <p>Email: info@2seasons.com</p>
             </div>
             <div class="footer-section">
@@ -237,4 +395,4 @@
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
