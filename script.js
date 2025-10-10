@@ -323,6 +323,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (videoSoundToggle && heroVideo) {
         let isMuted = true;
         
+        // Attempt to play video
+        const playVideo = () => {
+            heroVideo.play().catch(error => {
+                console.log('Video autoplay prevented:', error);
+                // Fallback: show poster or background image
+            });
+        };
+        
+        // Try to play on load
+        heroVideo.addEventListener('loadeddata', playVideo);
+        
+        // Fallback: try to play on user interaction
+        document.addEventListener('click', function initPlay() {
+            playVideo();
+            document.removeEventListener('click', initPlay);
+        }, { once: true });
+        
         videoSoundToggle.addEventListener('click', function() {
             isMuted = !isMuted;
             heroVideo.muted = isMuted;
@@ -334,6 +351,12 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 icon.className = 'fas fa-volume-up';
             }
+        });
+        
+        // Handle video errors
+        heroVideo.addEventListener('error', function(e) {
+            console.error('Video loading error:', e);
+            // Container already has background image as fallback
         });
     }
 

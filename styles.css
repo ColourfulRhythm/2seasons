@@ -1225,6 +1225,7 @@ footer {
     height: 100%;
     overflow: hidden;
     z-index: 1;
+    background: url('100plots/drone-image.jpg') center/cover no-repeat;
 }
 
 .hero-video {
