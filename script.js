@@ -315,4 +315,42 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+
+    // Video Sound Toggle Functionality
+    const videoSoundToggle = document.querySelector('.video-sound-toggle');
+    const heroVideo = document.querySelector('.hero-video');
+    
+    if (videoSoundToggle && heroVideo) {
+        let isMuted = true;
+        
+        videoSoundToggle.addEventListener('click', function() {
+            isMuted = !isMuted;
+            heroVideo.muted = isMuted;
+            
+            // Update icon
+            const icon = this.querySelector('i');
+            if (isMuted) {
+                icon.className = 'fas fa-volume-mute';
+            } else {
+                icon.className = 'fas fa-volume-up';
+            }
+        });
+    }
+
+    // Scroll-triggered animations for new luxury sections
+    const luxuryObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    // Observe luxury sections
+    const luxurySections = document.querySelectorAll('.exclusivity-section, .vision-quote-section, .booking-preview-section');
+    luxurySections.forEach(section => {
+        luxuryObserver.observe(section);
+    });
 }); 
