@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile Menu Functionality
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
+    const navLinks = document.querySelector('.nav-links, .nav-links-luxury');
     const menuOverlay = document.querySelector('.menu-overlay');
     const body = document.body;
     if (mobileMenuBtn && navLinks && menuOverlay) {
@@ -99,6 +99,18 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
                 toggleMenu();
+            }
+        });
+    }
+
+    // Luxury Header Scroll Effect
+    const luxuryHeader = document.querySelector('.luxury-header');
+    if (luxuryHeader) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                luxuryHeader.classList.add('scrolled');
+            } else {
+                luxuryHeader.classList.remove('scrolled');
             }
         });
     }
