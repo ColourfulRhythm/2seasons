@@ -1036,115 +1036,159 @@
             if (!slider || !track) return;
             
             const cards = document.querySelectorAll('.partner-card');
-            const cardWidth = 300 + 32; // card width + gap
-            let currentIndex = 0;
-            let isDown = false;
-            let startX;
-            let scrollLeft;
-            let autoSlideInterval;
+            if (!cards.length) return;
             
-            // Auto-slide every 4 seconds
+            let currentIndex = 0;
+            let autoSlideInterval = null;
+            let isAutoSliding = true;
+            let isDragging = false;
+            let startPos = 0;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+            
+            function getCardWidth() {
+                return cards[0].offsetWidth + 32; // card width + gap
+            }
+            
+            function updateSliderPosition(smooth = true) {
+                if (smooth) {
+                    track.style.transition = 'transform 0.5s ease';
+                } else {
+                    track.style.transition = 'none';
+                }
+                const offset = currentIndex * getCardWidth();
+                track.style.transform = `translateX(-${offset}px)`;
+                currentTranslate = -offset;
+                prevTranslate = -offset;
+            }
+            
             function startAutoSlide() {
+                if (autoSlideInterval) return; // Prevent multiple intervals
+                isAutoSliding = true;
                 autoSlideInterval = setInterval(() => {
-                    currentIndex = (currentIndex + 1) % cards.length;
-                    updateSliderPosition();
+                    if (!isDragging && isAutoSliding) {
+                        currentIndex = (currentIndex + 1) % cards.length;
+                        updateSliderPosition();
+                    }
                 }, 4000);
             }
             
             function stopAutoSlide() {
-                clearInterval(autoSlideInterval);
+                if (autoSlideInterval) {
+                    clearInterval(autoSlideInterval);
+                    autoSlideInterval = null;
+                }
+                isAutoSliding = false;
             }
             
-            function updateSliderPosition() {
-                const offset = currentIndex * cardWidth;
-                track.style.transform = `translateX(-${offset}px)`;
+            function goToSlide(index) {
+                currentIndex = Math.max(0, Math.min(index, cards.length - 1));
+                updateSliderPosition();
             }
             
             // Arrow controls
             if (leftArrow) {
-                leftArrow.addEventListener('click', () => {
+                leftArrow.addEventListener('click', (e) => {
+                    e.preventDefault();
                     stopAutoSlide();
                     currentIndex = currentIndex > 0 ? currentIndex - 1 : cards.length - 1;
                     updateSliderPosition();
-                    startAutoSlide();
+                    setTimeout(startAutoSlide, 100);
                 });
             }
             
             if (rightArrow) {
-                rightArrow.addEventListener('click', () => {
+                rightArrow.addEventListener('click', (e) => {
+                    e.preventDefault();
                     stopAutoSlide();
                     currentIndex = (currentIndex + 1) % cards.length;
                     updateSliderPosition();
-                    startAutoSlide();
+                    setTimeout(startAutoSlide, 100);
                 });
             }
             
-            // Mouse drag to scroll
-            slider.addEventListener('mousedown', (e) => {
-                isDown = true;
+            // Touch/Mouse drag functionality
+            function getPositionX(event) {
+                return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+            }
+            
+            function dragStart(event) {
+                if (event.type === 'mousedown') {
+                    slider.style.cursor = 'grabbing';
+                }
+                isDragging = true;
+                startPos = getPositionX(event);
                 stopAutoSlide();
-                startX = e.pageX - slider.offsetLeft;
-                scrollLeft = currentIndex * cardWidth;
+                track.style.transition = 'none';
+            }
+            
+            function drag(event) {
+                if (!isDragging) return;
+                event.preventDefault();
+                const currentPosition = getPositionX(event);
+                currentTranslate = prevTranslate + currentPosition - startPos;
+                track.style.transform = `translateX(${currentTranslate}px)`;
+            }
+            
+            function dragEnd() {
+                if (!isDragging) return;
+                isDragging = false;
+                slider.style.cursor = 'grab';
+                
+                const movedBy = currentTranslate - prevTranslate;
+                const cardWidth = getCardWidth();
+                
+                // Determine if we should move to next/prev slide
+                if (movedBy < -50 && currentIndex < cards.length - 1) {
+                    currentIndex += 1;
+                } else if (movedBy > 50 && currentIndex > 0) {
+                    currentIndex -= 1;
+                }
+                
+                updateSliderPosition();
+                setTimeout(startAutoSlide, 100);
+            }
+            
+            // Mouse events
+            slider.addEventListener('mousedown', dragStart);
+            slider.addEventListener('mousemove', drag);
+            slider.addEventListener('mouseup', dragEnd);
+            slider.addEventListener('mouseleave', () => {
+                if (isDragging) {
+                    dragEnd();
+                }
+            });
+            
+            // Touch events
+            slider.addEventListener('touchstart', dragStart, { passive: false });
+            slider.addEventListener('touchmove', drag, { passive: false });
+            slider.addEventListener('touchend', dragEnd);
+            
+            // Pause auto-slide on hover (desktop only)
+            slider.addEventListener('mouseenter', () => {
+                if (!isDragging) {
+                    stopAutoSlide();
+                }
             });
             
             slider.addEventListener('mouseleave', () => {
-                isDown = false;
-                startAutoSlide();
-            });
-            
-            slider.addEventListener('mouseup', () => {
-                isDown = false;
-                startAutoSlide();
-            });
-            
-            slider.addEventListener('mousemove', (e) => {
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - slider.offsetLeft;
-                const walk = (x - startX) * 2;
-                const newOffset = scrollLeft - walk;
-                const newIndex = Math.round(newOffset / cardWidth);
-                currentIndex = Math.max(0, Math.min(newIndex, cards.length - 1));
-                updateSliderPosition();
-            });
-            
-            // Touch support for mobile
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            slider.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-                stopAutoSlide();
-            }, { passive: true });
-            
-            slider.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-                startAutoSlide();
-            }, { passive: true });
-            
-            function handleSwipe() {
-                const swipeThreshold = 50;
-                const diff = touchStartX - touchEndX;
-                
-                if (Math.abs(diff) > swipeThreshold) {
-                    if (diff > 0) {
-                        // Swipe left
-                        currentIndex = (currentIndex + 1) % cards.length;
-                    } else {
-                        // Swipe right
-                        currentIndex = currentIndex > 0 ? currentIndex - 1 : cards.length - 1;
-                    }
-                    updateSliderPosition();
+                if (!isDragging) {
+                    setTimeout(startAutoSlide, 100);
                 }
-            }
+            });
             
-            // Start auto-slide on load
+            // Initialize
+            updateSliderPosition(false);
             startAutoSlide();
             
-            // Pause auto-slide when hovering over the slider
-            slider.addEventListener('mouseenter', stopAutoSlide);
-            slider.addEventListener('mouseleave', startAutoSlide);
+            // Handle window resize
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    updateSliderPosition(false);
+                }, 250);
+            });
         })();
     </script>
 </body>
