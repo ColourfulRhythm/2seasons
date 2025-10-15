@@ -414,7 +414,7 @@
                             <div class="custom-input-wrapper">
                                 <input type="number" id="customPlotSize" placeholder="Or enter custom size (e.g., 1000, 2000)" min="100" step="50">
                             </div>
-                            <p class="info-text">Current price: ₦10,000 per square meter</p>
+                            <p class="info-text">Current price: ₦10,000 per square meter (5% interest applies for payment plans over 5 months)</p>
                         </div>
 
                         <div class="form-group">
@@ -505,7 +505,7 @@
                             <i class="fas fa-hand-holding-usd"></i>
                         </div>
                         <h3>Fair Pricing</h3>
-                        <p>Competitive rates at ₦10,000 per square meter with no interest on payment plans.</p>
+                        <p>Competitive rates at ₦10,000 per square meter. Interest-free for plans up to 5 months, only 5% interest for longer terms.</p>
                     </div>
                 </div>
             </div>
@@ -542,6 +542,8 @@
     <script>
         // Payment Plan Calculator Logic
         const PRICE_PER_SQM = 10000;
+        const INTEREST_RATE = 0.05; // 5% interest
+        const INTEREST_THRESHOLD = 5; // Interest applies after 5 months
         
         // Duration limits based on plot size
         const DURATION_LIMITS = {
@@ -558,6 +560,13 @@
             if (plotSize <= 500) return 5;
             if (plotSize <= 1000) return 6;
             return 8;
+        }
+
+        function calculateTotalWithInterest(basePrice, duration) {
+            if (duration > INTEREST_THRESHOLD) {
+                return basePrice * (1 + INTEREST_RATE);
+            }
+            return basePrice;
         }
 
         const plotSizeBtns = document.querySelectorAll('.plot-size-btn');
@@ -598,7 +607,7 @@
             // Update duration info and validation
             if (currentPlotSize > 0) {
                 const maxDuration = getMaxDuration(currentPlotSize);
-                durationInfo.textContent = `Maximum ${maxDuration} months for this plot size`;
+                durationInfo.textContent = `Maximum ${maxDuration} months for this plot size. 5% interest applies after ${INTEREST_THRESHOLD} months`;
                 
                 // Check if selected duration exceeds limit
                 if (currentDuration > maxDuration) {
@@ -607,12 +616,15 @@
                     durationWarning.classList.remove('show');
                 }
             } else {
-                durationInfo.textContent = 'Duration limits apply based on plot size';
+                durationInfo.textContent = 'Duration limits apply based on plot size. 5% interest applies after 5 months';
                 durationWarning.classList.remove('show');
             }
 
-            // Calculate totals
-            const totalPrice = currentPlotSize * PRICE_PER_SQM;
+            // Calculate totals with interest
+            const basePrice = currentPlotSize * PRICE_PER_SQM;
+            const totalPrice = calculateTotalWithInterest(basePrice, currentDuration);
+            const hasInterest = currentDuration > INTEREST_THRESHOLD;
+            const interestAmount = hasInterest ? basePrice * INTEREST_RATE : 0;
             const monthlyPayment = currentDuration > 0 ? totalPrice / currentDuration : 0;
 
             // Update results
@@ -636,7 +648,14 @@
                     summaryElement.innerHTML = `<strong>⚠️ Invalid Configuration:</strong> For a ${currentPlotSize.toLocaleString()} SQM plot, the maximum payment duration is ${maxDuration} months. Please select a shorter duration.`;
                     downloadBtn.disabled = true;
                 } else {
-                    summaryElement.innerHTML = `For a <strong>${currentPlotSize.toLocaleString()} SQM</strong> plot over <strong>${currentDuration} months</strong>, you'll pay <strong>₦${Math.ceil(monthlyPayment).toLocaleString()}</strong> per month, with a total price of <strong>₦${totalPrice.toLocaleString()}</strong>.`;
+                    let summaryText = `For a <strong>${currentPlotSize.toLocaleString()} SQM</strong> plot over <strong>${currentDuration} months</strong>, you'll pay <strong>₦${Math.ceil(monthlyPayment).toLocaleString()}</strong> per month, with a total price of <strong>₦${totalPrice.toLocaleString()}</strong>`;
+                    
+                    if (hasInterest) {
+                        summaryText += ` (includes <strong>₦${interestAmount.toLocaleString()}</strong> - 5% interest for payments beyond 5 months)`;
+                    }
+                    summaryText += '.';
+                    
+                    summaryElement.innerHTML = summaryText;
                     downloadBtn.disabled = false;
                 }
             } else {
@@ -678,7 +697,10 @@
 
             // Details
             doc.setFontSize(12);
-            const totalPrice = currentPlotSize * PRICE_PER_SQM;
+            const basePrice = currentPlotSize * PRICE_PER_SQM;
+            const hasInterest = currentDuration > INTEREST_THRESHOLD;
+            const interestAmount = hasInterest ? basePrice * INTEREST_RATE : 0;
+            const totalPrice = basePrice + interestAmount;
             const monthlyPayment = Math.ceil(totalPrice / currentDuration);
 
             let yPos = 90;
@@ -693,7 +715,17 @@
             yPos += lineHeight;
             doc.text(`Price per SQM: ₦${PRICE_PER_SQM.toLocaleString()}`, 30, yPos);
             yPos += lineHeight;
+            doc.text(`Base Price: ₦${basePrice.toLocaleString()}`, 30, yPos);
+            yPos += lineHeight;
+            
+            if (hasInterest) {
+                doc.text(`Interest (5% for payment > 5 months): ₦${interestAmount.toLocaleString()}`, 30, yPos);
+                yPos += lineHeight;
+            }
+            
+            doc.setFont(undefined, 'bold');
             doc.text(`Total Price: ₦${totalPrice.toLocaleString()}`, 30, yPos);
+            doc.setFont(undefined, 'normal');
             yPos += lineHeight * 2;
 
             doc.setFont(undefined, 'bold');
