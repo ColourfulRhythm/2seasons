@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Plan Calculator - 2 Seasons | Flexible Payment Options</title>
+    <meta name="description" content="Calculate your personalized payment plan for 2 Seasons plots. Flexible payment options from 3-8 months. Start owning your dream property today.">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <!-- jsPDF for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <style>
+        /* Payment Plan Hero */
+        .payment-hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, rgba(97, 48, 13, 0.95), rgba(230, 137, 70, 0.9)), 
+                        url('100plots/2seasons-map.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .payment-hero-content h1 {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-hero-content p {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Calculator Section */
+        .calculator-section {
+            background: linear-gradient(135deg, #fafaf8, #ffffff);
+            padding: 6rem 2rem;
+        }
+
+        .calculator-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .calculator-input-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator-input-section h2 {
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        .plot-size-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .plot-size-btn {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .plot-size-btn:hover {
+            border-color: var(--secondary-color);
+            background: #fafaf8;
+        }
+
+        .plot-size-btn.active {
+            border-color: var(--secondary-color);
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .custom-input-wrapper {
+            margin-top: 1rem;
+        }
+
+        .form-group input[type="number"],
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input[type="number"]:focus,
+        .form-group select:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+
+        .info-text {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .warning-text {
+            font-size: 0.9rem;
+            color: #ff4444;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .warning-text.show {
+            display: block;
+        }
+
+        /* Results Section */
+        .calculator-results {
+            background: linear-gradient(135deg, var(--primary-color), #4a1f0a);
+            padding: 3rem;
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 120px;
+        }
+
+        .calculator-results h2 {
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
+        }
+
+        .result-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .result-summary {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .download-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(247, 225, 184, 0.4);
+        }
+
+        .download-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Price Info Section */
+        .price-info-section {
+            background: white;
+            padding: 6rem 2rem;
+        }
+
+        .price-info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .price-info-container h2 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+
+        .price-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .price-info-card {
+            background: linear-gradient(135deg, #fafaf8, #ffffff);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .price-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .price-info-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .price-info-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .price-info-card h3 {
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .price-info-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .calculator-grid {
+                gap: 3rem;
+            }
+            
+            .calculator-results {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .payment-hero {
+                padding: 6rem 1.5rem 3rem;
+                min-height: 50vh;
+            }
+
+            .payment-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .payment-hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .calculator-section {
+                padding: 3rem 1rem;
+            }
+
+            .calculator-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .calculator-input-section,
+            .calculator-results {
+                padding: 2rem;
+            }
+
+            .calculator-input-section h2,
+            .calculator-results h2 {
+                font-size: 2rem;
+            }
+
+            .plot-size-options {
+                grid-template-columns: 1fr;
+            }
+
+            .result-value {
+                font-size: 1.8rem;
+            }
+
+            .price-info-section {
+                padding: 3rem 1rem;
+            }
+
+            .price-info-container h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="luxury-header">
+        <nav class="luxury-nav">
+            <a href="/" class="logo-luxury">2 Seasons</a>
+            <button type="button" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="menu-text">Menu</span>
+            </button>
+            <ul class="nav-links-luxury">
+                <li><a href="/#residential">Residential</a></li>
+                <li><a href="/#villas">Villas</a></li>
+                <li><a href="/#wellness">Wellness</a></li>
+                <li><a href="/hyggetown">Hygge</a></li>
+                <li><a href="/stages">Stages</a></li>
+                <li><a href="/100plots">100 Plots</a></li>
+                <li><a href="/partners">Partners</a></li>
+                <li><a href="/join" class="cta-nav">Book Preview</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="menu-overlay"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="payment-hero">
+            <div class="payment-hero-content">
+                <h1>Flexible Payment Plans</h1>
+                <p>Calculate your personalized payment plan and start your journey to owning a piece of 2 Seasons today</p>
+            </div>
+        </section>
+
+        <!-- Calculator Section -->
+        <section class="calculator-section">
+            <div class="calculator-container">
+                <div class="calculator-grid">
+                    <!-- Input Section -->
+                    <div class="calculator-input-section">
+                        <h2>Configure Your Plan</h2>
+                        
+                        <div class="form-group">
+                            <label>Select Plot Size (SQM)</label>
+                            <div class="plot-size-options">
+                                <button type="button" class="plot-size-btn" data-size="150">150 SQM</button>
+                                <button type="button" class="plot-size-btn" data-size="300">300 SQM</button>
+                                <button type="button" class="plot-size-btn" data-size="400">400 SQM</button>
+                                <button type="button" class="plot-size-btn" data-size="600">600 SQM</button>
+                            </div>
+                            <div class="custom-input-wrapper">
+                                <input type="number" id="customPlotSize" placeholder="Or enter custom size (e.g., 1000, 2000)" min="100" step="50">
+                            </div>
+                            <p class="info-text">Current price: ₦10,000 per square meter</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="paymentDuration">Payment Duration (Months)</label>
+                            <select id="paymentDuration">
+                                <option value="">Select duration...</option>
+                                <option value="3">3 Months</option>
+                                <option value="4">4 Months</option>
+                                <option value="5">5 Months</option>
+                                <option value="6">6 Months</option>
+                                <option value="7">7 Months</option>
+                                <option value="8">8 Months</option>
+                            </select>
+                            <p class="info-text" id="durationInfo">Duration limits apply based on plot size</p>
+                            <p class="warning-text" id="durationWarning">Payment duration exceeds the allowed limit for this plot size.</p>
+                        </div>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div class="calculator-results">
+                        <h2>Your Payment Plan</h2>
+                        
+                        <div class="result-item">
+                            <div class="result-label">Plot Size</div>
+                            <div class="result-value" id="resultPlotSize">— SQM</div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-label">Total Price</div>
+                            <div class="result-value" id="resultTotalPrice">₦—</div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-label">Payment Duration</div>
+                            <div class="result-value" id="resultDuration">— Months</div>
+                        </div>
+
+                        <div class="result-item">
+                            <div class="result-label">Monthly Payment</div>
+                            <div class="result-value" id="resultMonthlyPayment">₦—</div>
+                        </div>
+
+                        <div class="result-summary" id="resultSummary">
+                            Configure your plot size and payment duration to see your personalized payment plan.
+                        </div>
+
+                        <button class="download-btn" id="downloadPdfBtn" disabled>
+                            <i class="fas fa-download"></i>
+                            Download Payment Plan (PDF)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Price Info Section -->
+        <section class="price-info-section">
+            <div class="price-info-container">
+                <h2>Why Choose Our Payment Plans?</h2>
+                
+                <div class="price-info-grid">
+                    <div class="price-info-card">
+                        <div class="price-info-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Flexible Duration</h3>
+                        <p>Choose payment plans from 3 to 8 months based on your plot size and financial comfort.</p>
+                    </div>
+
+                    <div class="price-info-card">
+                        <div class="price-info-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>No Hidden Fees</h3>
+                        <p>Transparent pricing with no surprise charges. What you see is what you pay.</p>
+                    </div>
+
+                    <div class="price-info-card">
+                        <div class="price-info-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3>Easy Process</h3>
+                        <p>Simple documentation and quick approval process to get you started immediately.</p>
+                    </div>
+
+                    <div class="price-info-card">
+                        <div class="price-info-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h3>Fair Pricing</h3>
+                        <p>Competitive rates at ₦10,000 per square meter with no interest on payment plans.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>2 Seasons</h3>
+                <p>Africa's First Regenerative Innovation & Lifestyle Village</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Kobape, Abeokuta, Ogun State, Nigeria</p>
+                <p>Email: sales@focalpointdev.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/2seasonsabk" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/2seasonsabk?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 2 Seasons. All rights reserved.</p>
+            <a href="/privacy" class="privacy-policy-btn">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Payment Plan Calculator Logic
+        const PRICE_PER_SQM = 10000;
+        
+        // Duration limits based on plot size
+        const DURATION_LIMITS = {
+            150: 3,
+            300: 4,
+            500: 5,
+            1000: 6,
+            Infinity: 8
+        };
+
+        function getMaxDuration(plotSize) {
+            if (plotSize <= 150) return 3;
+            if (plotSize <= 300) return 4;
+            if (plotSize <= 500) return 5;
+            if (plotSize <= 1000) return 6;
+            return 8;
+        }
+
+        const plotSizeBtns = document.querySelectorAll('.plot-size-btn');
+        const customPlotInput = document.getElementById('customPlotSize');
+        const durationSelect = document.getElementById('paymentDuration');
+        const durationInfo = document.getElementById('durationInfo');
+        const durationWarning = document.getElementById('durationWarning');
+        const downloadBtn = document.getElementById('downloadPdfBtn');
+
+        let currentPlotSize = 0;
+        let currentDuration = 0;
+
+        // Plot size button selection
+        plotSizeBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                plotSizeBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                customPlotInput.value = '';
+                currentPlotSize = parseInt(this.dataset.size);
+                updateCalculation();
+            });
+        });
+
+        // Custom plot size input
+        customPlotInput.addEventListener('input', function() {
+            plotSizeBtns.forEach(b => b.classList.remove('active'));
+            currentPlotSize = parseInt(this.value) || 0;
+            updateCalculation();
+        });
+
+        // Duration selection
+        durationSelect.addEventListener('change', function() {
+            currentDuration = parseInt(this.value) || 0;
+            updateCalculation();
+        });
+
+        function updateCalculation() {
+            // Update duration info and validation
+            if (currentPlotSize > 0) {
+                const maxDuration = getMaxDuration(currentPlotSize);
+                durationInfo.textContent = `Maximum ${maxDuration} months for this plot size`;
+                
+                // Check if selected duration exceeds limit
+                if (currentDuration > maxDuration) {
+                    durationWarning.classList.add('show');
+                } else {
+                    durationWarning.classList.remove('show');
+                }
+            } else {
+                durationInfo.textContent = 'Duration limits apply based on plot size';
+                durationWarning.classList.remove('show');
+            }
+
+            // Calculate totals
+            const totalPrice = currentPlotSize * PRICE_PER_SQM;
+            const monthlyPayment = currentDuration > 0 ? totalPrice / currentDuration : 0;
+
+            // Update results
+            document.getElementById('resultPlotSize').textContent = 
+                currentPlotSize > 0 ? `${currentPlotSize.toLocaleString()} SQM` : '— SQM';
+            
+            document.getElementById('resultTotalPrice').textContent = 
+                totalPrice > 0 ? `₦${totalPrice.toLocaleString()}` : '₦—';
+            
+            document.getElementById('resultDuration').textContent = 
+                currentDuration > 0 ? `${currentDuration} Months` : '— Months';
+            
+            document.getElementById('resultMonthlyPayment').textContent = 
+                monthlyPayment > 0 ? `₦${Math.ceil(monthlyPayment).toLocaleString()}` : '₦—';
+
+            // Update summary
+            const summaryElement = document.getElementById('resultSummary');
+            if (currentPlotSize > 0 && currentDuration > 0) {
+                const maxDuration = getMaxDuration(currentPlotSize);
+                if (currentDuration > maxDuration) {
+                    summaryElement.innerHTML = `<strong>⚠️ Invalid Configuration:</strong> For a ${currentPlotSize.toLocaleString()} SQM plot, the maximum payment duration is ${maxDuration} months. Please select a shorter duration.`;
+                    downloadBtn.disabled = true;
+                } else {
+                    summaryElement.innerHTML = `For a <strong>${currentPlotSize.toLocaleString()} SQM</strong> plot over <strong>${currentDuration} months</strong>, you'll pay <strong>₦${Math.ceil(monthlyPayment).toLocaleString()}</strong> per month, with a total price of <strong>₦${totalPrice.toLocaleString()}</strong>.`;
+                    downloadBtn.disabled = false;
+                }
+            } else {
+                summaryElement.textContent = 'Configure your plot size and payment duration to see your personalized payment plan.';
+                downloadBtn.disabled = true;
+            }
+        }
+
+        // PDF Download Function
+        downloadBtn.addEventListener('click', function() {
+            if (currentPlotSize <= 0 || currentDuration <= 0) return;
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Add logo text (you can replace with actual logo image if available)
+            doc.setFontSize(24);
+            doc.setFont(undefined, 'bold');
+            doc.text('2 SEASONS', 105, 30, { align: 'center' });
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            doc.text('Africa\'s First Regenerative Innovation & Lifestyle Village', 105, 38, { align: 'center' });
+
+            // Draw line
+            doc.setLineWidth(0.5);
+            doc.line(20, 45, 190, 45);
+
+            // Title
+            doc.setFontSize(18);
+            doc.setFont(undefined, 'bold');
+            doc.text('Payment Plan Breakdown', 105, 60, { align: 'center' });
+
+            // Date
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            doc.text(`Generated: ${today}`, 105, 70, { align: 'center' });
+
+            // Details
+            doc.setFontSize(12);
+            const totalPrice = currentPlotSize * PRICE_PER_SQM;
+            const monthlyPayment = Math.ceil(totalPrice / currentDuration);
+
+            let yPos = 90;
+            const lineHeight = 12;
+
+            doc.setFont(undefined, 'bold');
+            doc.text('Plot Details:', 20, yPos);
+            yPos += lineHeight;
+
+            doc.setFont(undefined, 'normal');
+            doc.text(`Plot Size: ${currentPlotSize.toLocaleString()} Square Meters`, 30, yPos);
+            yPos += lineHeight;
+            doc.text(`Price per SQM: ₦${PRICE_PER_SQM.toLocaleString()}`, 30, yPos);
+            yPos += lineHeight;
+            doc.text(`Total Price: ₦${totalPrice.toLocaleString()}`, 30, yPos);
+            yPos += lineHeight * 2;
+
+            doc.setFont(undefined, 'bold');
+            doc.text('Payment Plan:', 20, yPos);
+            yPos += lineHeight;
+
+            doc.setFont(undefined, 'normal');
+            doc.text(`Payment Duration: ${currentDuration} Months`, 30, yPos);
+            yPos += lineHeight;
+            doc.text(`Monthly Payment: ₦${monthlyPayment.toLocaleString()}`, 30, yPos);
+            yPos += lineHeight * 2;
+
+            // Monthly Breakdown
+            doc.setFont(undefined, 'bold');
+            doc.text('Monthly Breakdown:', 20, yPos);
+            yPos += lineHeight;
+
+            doc.setFont(undefined, 'normal');
+            for (let i = 1; i <= currentDuration; i++) {
+                const isLastMonth = i === currentDuration;
+                const payment = isLastMonth ? totalPrice - (monthlyPayment * (currentDuration - 1)) : monthlyPayment;
+                doc.text(`Month ${i}: ₦${payment.toLocaleString()}`, 30, yPos);
+                yPos += lineHeight;
+            }
+
+            // Payment Information
+            yPos += lineHeight;
+            doc.setFont(undefined, 'bold');
+            doc.text('Payment Information:', 20, yPos);
+            yPos += lineHeight;
+            doc.setFont(undefined, 'normal');
+            doc.text('Bank Name: Providus Bank', 30, yPos);
+            yPos += lineHeight;
+            doc.text('Account Number: 1308300050', 30, yPos);
+            yPos += lineHeight;
+            doc.text('Account Name: Focal Point Property dev.', 30, yPos);
+            yPos += lineHeight * 2;
+
+            // Footer
+            doc.setLineWidth(0.5);
+            doc.line(20, yPos, 190, yPos);
+            yPos += 8;
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            doc.text('Contact Information:', 20, yPos);
+            yPos += 8;
+            doc.setFont(undefined, 'normal');
+            doc.text('Email: sales@focalpointdev.com', 20, yPos);
+            yPos += 6;
+            doc.text('Location: Kobape, Abeokuta, Ogun State, Nigeria', 20, yPos);
+
+            // Save PDF
+            doc.save(`2-Seasons-Payment-Plan-${currentPlotSize}sqm-${currentDuration}months.pdf`);
+        });
+
+        // Initialize
+        updateCalculation();
+    </script>
+</body>
+</html>
+
