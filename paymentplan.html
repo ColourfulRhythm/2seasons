@@ -414,7 +414,7 @@
                             <div class="custom-input-wrapper">
                                 <input type="number" id="customPlotSize" placeholder="Or enter custom size (e.g., 1000, 2000)" min="100" step="50">
                             </div>
-                            <p class="info-text">Current price: ₦10,000 per square meter (5% interest applies for payment plans over 5 months)</p>
+                            <p class="info-text">Current price: ₦10,000 per square meter (5% interest for 6-8 months, 10% interest after 8 months)</p>
                         </div>
 
                         <div class="form-group">
@@ -425,8 +425,9 @@
                                 <option value="4">4 Months</option>
                                 <option value="5">5 Months</option>
                                 <option value="6">6 Months</option>
-                                <option value="7">7 Months</option>
-                                <option value="8">8 Months</option>
+                                <option value="7" data-min-size="700">7 Months</option>
+                                <option value="8" data-min-size="700">8 Months</option>
+                                <option value="12" data-min-size="1000">12 Months</option>
                             </select>
                             <p class="info-text" id="durationInfo">Duration limits apply based on plot size</p>
                             <p class="warning-text" id="durationWarning">Payment duration exceeds the allowed limit for this plot size.</p>
@@ -481,7 +482,7 @@
                             <i class="fas fa-calendar-check"></i>
                         </div>
                         <h3>Flexible Duration</h3>
-                        <p>Choose payment plans from 3 to 8 months based on your plot size and financial comfort.</p>
+                        <p>Choose payment plans from 3 to 12 months based on your plot size and financial comfort.</p>
                     </div>
 
                     <div class="price-info-card">
@@ -505,7 +506,7 @@
                             <i class="fas fa-hand-holding-usd"></i>
                         </div>
                         <h3>Fair Pricing</h3>
-                        <p>Competitive rates at ₦10,000 per square meter. Interest-free for plans up to 5 months, only 5% interest for longer terms.</p>
+                        <p>Competitive rates at ₦10,000 per square meter. Interest-free for plans up to 5 months, 5% interest for 6-8 months, and 10% interest for longer terms.</p>
                     </div>
                 </div>
             </div>
@@ -542,31 +543,76 @@
     <script>
         // Payment Plan Calculator Logic
         const PRICE_PER_SQM = 10000;
-        const INTEREST_RATE = 0.05; // 5% interest
+        const INTEREST_RATE_SHORT = 0.05; // 5% interest for 6-8 months
+        const INTEREST_RATE_LONG = 0.10; // 10% interest for 9+ months
         const INTEREST_THRESHOLD = 5; // Interest applies after 5 months
+        const LONG_TERM_THRESHOLD = 8; // Higher interest applies after 8 months
         
         // Duration limits based on plot size
         const DURATION_LIMITS = {
             150: 3,
             300: 4,
             500: 5,
-            1000: 6,
-            Infinity: 8
+            700: 8,  // From 700 sqm, allow up to 8 months
+            1000: 12 // From 1000 sqm, allow up to 12 months
         };
 
         function getMaxDuration(plotSize) {
             if (plotSize <= 150) return 3;
             if (plotSize <= 300) return 4;
             if (plotSize <= 500) return 5;
-            if (plotSize <= 1000) return 6;
-            return 8;
+            if (plotSize < 700) return 6;
+            if (plotSize < 1000) return 8;
+            return 12; // 1000 sqm and above
         }
 
         function calculateTotalWithInterest(basePrice, duration) {
-            if (duration > INTEREST_THRESHOLD) {
-                return basePrice * (1 + INTEREST_RATE);
+            if (duration > LONG_TERM_THRESHOLD) {
+                // 10% interest for durations longer than 8 months
+                return basePrice * (1 + INTEREST_RATE_LONG);
+            } else if (duration > INTEREST_THRESHOLD) {
+                // 5% interest for 6-8 months
+                return basePrice * (1 + INTEREST_RATE_SHORT);
             }
+            // No interest for 5 months or less
             return basePrice;
+        }
+
+        function getInterestRate(duration) {
+            if (duration > LONG_TERM_THRESHOLD) {
+                return INTEREST_RATE_LONG;
+            } else if (duration > INTEREST_THRESHOLD) {
+                return INTEREST_RATE_SHORT;
+            }
+            return 0;
+        }
+
+        function updateDurationOptions(plotSize) {
+            const durationSelect = document.getElementById('paymentDuration');
+            const options = durationSelect.querySelectorAll('option');
+            
+            options.forEach(option => {
+                if (option.value === '') return; // Skip the placeholder option
+                
+                const minSize = parseInt(option.getAttribute('data-min-size')) || 0;
+                
+                if (minSize > 0) {
+                    // Show/hide based on plot size
+                    if (plotSize >= minSize) {
+                        option.style.display = '';
+                    } else {
+                        option.style.display = 'none';
+                        // If this option was selected but is now hidden, clear selection
+                        if (option.selected) {
+                            durationSelect.value = '';
+                            currentDuration = 0;
+                        }
+                    }
+                } else {
+                    // Always show options without min-size requirement (3-6 months)
+                    option.style.display = '';
+                }
+            });
         }
 
         const plotSizeBtns = document.querySelectorAll('.plot-size-btn');
@@ -586,6 +632,7 @@
                 this.classList.add('active');
                 customPlotInput.value = '';
                 currentPlotSize = parseInt(this.dataset.size);
+                updateDurationOptions(currentPlotSize);
                 updateCalculation();
             });
         });
@@ -594,6 +641,7 @@
         customPlotInput.addEventListener('input', function() {
             plotSizeBtns.forEach(b => b.classList.remove('active'));
             currentPlotSize = parseInt(this.value) || 0;
+            updateDurationOptions(currentPlotSize);
             updateCalculation();
         });
 
@@ -607,7 +655,15 @@
             // Update duration info and validation
             if (currentPlotSize > 0) {
                 const maxDuration = getMaxDuration(currentPlotSize);
-                durationInfo.textContent = `Maximum ${maxDuration} months for this plot size. 5% interest applies after ${INTEREST_THRESHOLD} months`;
+                let interestInfo = '';
+                if (maxDuration > LONG_TERM_THRESHOLD) {
+                    interestInfo = `5% interest applies for 6-8 months, 10% interest applies after 8 months`;
+                } else if (maxDuration > INTEREST_THRESHOLD) {
+                    interestInfo = `5% interest applies after ${INTEREST_THRESHOLD} months`;
+                } else {
+                    interestInfo = `No interest for plans up to ${maxDuration} months`;
+                }
+                durationInfo.textContent = `Maximum ${maxDuration} months for this plot size. ${interestInfo}`;
                 
                 // Check if selected duration exceeds limit
                 if (currentDuration > maxDuration) {
@@ -616,15 +672,16 @@
                     durationWarning.classList.remove('show');
                 }
             } else {
-                durationInfo.textContent = 'Duration limits apply based on plot size. 5% interest applies after 5 months';
+                durationInfo.textContent = 'Duration limits apply based on plot size. 5% interest applies for 6-8 months, 10% interest applies after 8 months';
                 durationWarning.classList.remove('show');
             }
 
             // Calculate totals with interest
             const basePrice = currentPlotSize * PRICE_PER_SQM;
             const totalPrice = calculateTotalWithInterest(basePrice, currentDuration);
+            const interestRate = getInterestRate(currentDuration);
             const hasInterest = currentDuration > INTEREST_THRESHOLD;
-            const interestAmount = hasInterest ? basePrice * INTEREST_RATE : 0;
+            const interestAmount = hasInterest ? basePrice * interestRate : 0;
             const monthlyPayment = currentDuration > 0 ? totalPrice / currentDuration : 0;
 
             // Update results
@@ -651,7 +708,11 @@
                     let summaryText = `For a <strong>${currentPlotSize.toLocaleString()} SQM</strong> plot over <strong>${currentDuration} months</strong>, you'll pay <strong>₦${Math.ceil(monthlyPayment).toLocaleString()}</strong> per month, with a total price of <strong>₦${totalPrice.toLocaleString()}</strong>`;
                     
                     if (hasInterest) {
-                        summaryText += ` (includes <strong>₦${interestAmount.toLocaleString()}</strong> - 5% interest for payments beyond 5 months)`;
+                        const interestPercent = (interestRate * 100).toFixed(0);
+                        const interestNote = currentDuration > LONG_TERM_THRESHOLD 
+                            ? `${interestPercent}% interest for payments beyond 8 months`
+                            : `${interestPercent}% interest for payments beyond 5 months`;
+                        summaryText += ` (includes <strong>₦${interestAmount.toLocaleString()}</strong> - ${interestNote})`;
                     }
                     summaryText += '.';
                     
@@ -698,8 +759,9 @@
             // Details
             doc.setFontSize(12);
             const basePrice = currentPlotSize * PRICE_PER_SQM;
+            const interestRate = getInterestRate(currentDuration);
             const hasInterest = currentDuration > INTEREST_THRESHOLD;
-            const interestAmount = hasInterest ? basePrice * INTEREST_RATE : 0;
+            const interestAmount = hasInterest ? basePrice * interestRate : 0;
             const totalPrice = basePrice + interestAmount;
             const monthlyPayment = Math.ceil(totalPrice / currentDuration);
 
@@ -719,7 +781,11 @@
             yPos += lineHeight;
             
             if (hasInterest) {
-                doc.text(`Interest (5% for payment > 5 months): ₦${interestAmount.toLocaleString()}`, 30, yPos);
+                const interestPercent = (interestRate * 100).toFixed(0);
+                const interestNote = currentDuration > LONG_TERM_THRESHOLD 
+                    ? `${interestPercent}% for payment > 8 months`
+                    : `${interestPercent}% for payment > 5 months`;
+                doc.text(`Interest (${interestNote}): ₦${interestAmount.toLocaleString()}`, 30, yPos);
                 yPos += lineHeight;
             }
             
@@ -783,6 +849,7 @@
         });
 
         // Initialize
+        updateDurationOptions(0);
         updateCalculation();
     </script>
 </body>
