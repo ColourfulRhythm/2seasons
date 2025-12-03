@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Hub Membership - 2 Seasons</title>
+    <meta name="description" content="Join the Wellness Hub at 2 Seasons. Choose from Individual, Team, or Corporate membership plans.">
+    <link rel="stylesheet" href="../styles.css?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f7;
+            color: #000000;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: transparent !important;
+            background-image: none !important;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section video {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            z-index: 1 !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-title {
+            font-size: 5.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            letter-spacing: -0.01em;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Modules Container */
+        .modules-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .module {
+            background: #ffffff;
+            border-radius: 18px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .module:not(.expanded) {
+            max-height: 120px;
+        }
+        
+        .module.expanded {
+            max-height: 3000px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transform: scale(1.02);
+            z-index: 10;
+        }
+        
+        .module-header {
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+        
+        .module.expanded .module-header {
+            border-bottom: 1px solid #f5f5f7;
+            padding-bottom: 2rem;
+        }
+        
+        .module-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #ff662a;
+        }
+        
+        .module-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ff662a;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .module.expanded .module-icon {
+            transform: rotate(180deg);
+        }
+        
+        .module-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .module-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .module.expanded .module-content {
+            max-height: 3000px;
+            padding: 2.5rem;
+        }
+        
+        /* Wellness Images Gallery */
+        .wellness-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .wellness-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .wellness-image:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Membership Plans */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .plan-card {
+            background: #f5f5f7;
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .plan-card:hover {
+            background: #ffffff;
+            border-color: #ff662a;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 102, 42, 0.15);
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #61310d;
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #ff662a;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .plan-features {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .plan-features li {
+            padding: 0.8rem 0;
+            color: #86868b;
+            font-size: 1rem;
+            border-bottom: 1px solid #f5f5f7;
+        }
+        
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .plan-features li i {
+            color: #ff662a;
+            margin-right: 0.8rem;
+        }
+        
+        .plan-card-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e5e7;
+        }
+        
+        .plan-register-btn {
+            padding: 0.75rem 2rem;
+            background: #ff662a;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .plan-register-btn:hover {
+            background: #61310d;
+            transform: translateY(-2px);
+        }
+        
+        /* Form Modal */
+        .form-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem;
+        }
+        
+        .form-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .form-modal {
+            background: #ffffff;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .form-modal-overlay.active .form-modal {
+            transform: scale(1) translateY(0);
+        }
+        
+        .form-modal-header {
+            padding: 2.5rem 2.5rem 1.5rem;
+            border-bottom: 1px solid #f5f5f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .form-modal-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+        
+        .form-modal-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f5f5f7;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-modal-close:hover {
+            background: #e5e5e7;
+            transform: rotate(90deg);
+        }
+        
+        .form-modal-body {
+            padding: 2.5rem;
+        }
+        
+        .apple-form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .apple-form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #86868b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .apple-form-input,
+        .apple-form-select,
+        .apple-form-textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .apple-form-input:focus,
+        .apple-form-select:focus,
+        .apple-form-textarea:focus {
+            outline: none;
+            border-color: #ff662a;
+            box-shadow: 0 0 0 4px rgba(255, 102, 42, 0.1);
+        }
+        
+        .apple-form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .apple-form-submit {
+            width: 100%;
+            padding: 1.25rem;
+            background: #ff662a;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .apple-form-submit:hover {
+            background: #61310d;
+            transform: translateY(-2px);
+        }
+        
+        /* Navigation */
+        .nav-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ff662a;
+            text-decoration: none;
+        }
+        
+        .nav-link {
+            color: #000000;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #ff662a;
+        }
+        
+        /* Success Overlay */
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 20000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .success-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .success-checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #34c759;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            transform: scale(0);
+            animation: checkmarkPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s forwards;
+        }
+        
+        .success-checkmark i {
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        @keyframes checkmarkPop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .success-message {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .success-subtitle {
+            font-size: 1rem;
+            color: #86868b;
+            text-align: center;
+        }
+        
+        .welcome-screen {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            background: #ffffff;
+        }
+        
+        .welcome-title {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+        
+        .welcome-subtitle {
+            font-size: 1.25rem;
+            color: #86868b;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .module-header {
+                padding: 1.5rem;
+            }
+            
+            .module-title {
+                font-size: 1.4rem;
+            }
+            
+            .plans-grid,
+            .wellness-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="nav-header">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">2 Seasons</a>
+            <a href="/join" class="nav-link">Join Now</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <video id="hero-video" autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="allow" preload="auto" style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; z-index: 1 !important; display: block !important; visibility: visible !important; opacity: 1 !important;">
+            <source src="../100plots/droneview.mov" type="video/quicktime">
+            <source src="../100plots/droneview.mov" type="video/mp4">
+        </video>
+        <div class="hero-content" style="position: relative; z-index: 10;">
+            <h1 class="hero-title">Wellness Hub Membership</h1>
+            <p class="hero-subtitle">Experience holistic wellness. Choose your plan.</p>
+        </div>
+    </section>
+
+    <!-- Wellness Hub Membership Module -->
+    <div class="modules-container">
+        <div class="module expanded" data-module="wellness">
+            <div class="module-header">
+                <h2 class="module-title">Wellness Hub Membership</h2>
+                <div class="module-icon">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="module-content">
+                <!-- Wellness Hub Images Gallery -->
+                <div class="wellness-gallery">
+                    <img src="../wellnesshub/IMG_aeriel.JPG" alt="Wellness Hub Aerial View" class="wellness-image">
+                    <img src="../wellnesshub/IMG_1408 4.JPG" alt="Wellness Hub" class="wellness-image">
+                    <img src="../wellnesshub/Premium Pod/premium.jpg" alt="Premium Pod" class="wellness-image">
+                    <img src="../wellnesshub/Deluxe Pod/deluxecabinmain.jpg" alt="Deluxe Cabin" class="wellness-image">
+                    <img src="../wellnesshub/Premium Pod/prem1.jpg" alt="Premium Pod Interior" class="wellness-image">
+                    <img src="../wellnesshub/Deluxe Pod/livingroom.JPG" alt="Deluxe Living Room" class="wellness-image">
+                </div>
+                
+                <!-- Membership Plans -->
+                <div class="plans-grid">
+                    <div class="plan-card" data-plan="individual">
+                        <div class="plan-name">Individual</div>
+                        <div class="plan-price">₦500,000<span style="font-size: 1rem; color: #86868b;">/month</span></div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Full access to spa & wellness facilities</li>
+                            <li><i class="fas fa-check"></i> Gym & fitness classes</li>
+                            <li><i class="fas fa-check"></i> Yoga & meditation sessions</li>
+                            <li><i class="fas fa-check"></i> Plant-based dining discounts</li>
+                        </ul>
+                        <div class="plan-card-actions">
+                            <button class="plan-register-btn" onclick="event.stopPropagation(); openRegistrationForm('individual')">Register</button>
+                        </div>
+                    </div>
+                    <div class="plan-card" data-plan="team">
+                        <div class="plan-name">Team</div>
+                        <div class="plan-price">₦1,000,000<span style="font-size: 1rem; color: #86868b;">/month</span></div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Everything in Individual</li>
+                            <li><i class="fas fa-check"></i> For 2 people</li>
+                            <li><i class="fas fa-check"></i> Priority booking</li>
+                            <li><i class="fas fa-check"></i> Exclusive team events</li>
+                        </ul>
+                        <div class="plan-card-actions">
+                            <button class="plan-register-btn" onclick="event.stopPropagation(); openRegistrationForm('team')">Register</button>
+                        </div>
+                    </div>
+                    <div class="plan-card" data-plan="corporate">
+                        <div class="plan-name">Corporate</div>
+                        <div class="plan-price">₦10,000,000<span style="font-size: 1rem; color: #86868b;">/month</span></div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Everything in Team</li>
+                            <li><i class="fas fa-check"></i> For up to 5 people</li>
+                            <li><i class="fas fa-check"></i> Corporate wellness programs</li>
+                            <li><i class="fas fa-check"></i> Dedicated support</li>
+                        </ul>
+                        <div class="plan-card-actions">
+                            <button class="plan-register-btn" onclick="event.stopPropagation(); openRegistrationForm('corporate')">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="form-modal-overlay">
+        <div class="form-modal">
+            <div class="form-modal-header">
+                <h2 class="form-modal-title" id="modalTitle">Register</h2>
+                <button class="form-modal-close" onclick="closeRegistrationForm()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="form-modal-body" id="formContainer">
+                <!-- Form will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Overlay -->
+    <div id="successOverlay" class="success-overlay">
+        <div class="success-checkmark">
+            <i class="fas fa-check"></i>
+        </div>
+        <div class="success-message">Registration Successful!</div>
+        <div class="success-subtitle">Thank you for joining the Wellness Hub</div>
+    </div>
+
+    <script>
+        // Video Autoplay
+        const heroVideo = document.getElementById('hero-video');
+        if (heroVideo) {
+            heroVideo.muted = true;
+            heroVideo.playsInline = true;
+            const playVideo = () => {
+                heroVideo.play().catch(() => {});
+            };
+            heroVideo.addEventListener('loadeddata', playVideo);
+            heroVideo.addEventListener('canplay', playVideo);
+            ['click', 'touchstart', 'scroll'].forEach(event => {
+                document.addEventListener(event, playVideo, { once: true, passive: true });
+            });
+        }
+        
+        // Module Expansion
+        document.querySelectorAll('.module').forEach(module => {
+            module.addEventListener('click', function(e) {
+                if (this.classList.contains('expanded') && !e.target.closest('.module-header')) {
+                    return;
+                }
+                const wasExpanded = this.classList.contains('expanded');
+                document.querySelectorAll('.module').forEach(m => m.classList.remove('expanded'));
+                if (!wasExpanded) {
+                    this.classList.add('expanded');
+                }
+            });
+        });
+        
+        // Registration Forms
+        let currentPlanType = null;
+        
+        function openRegistrationForm(planType) {
+            currentPlanType = planType;
+            const modal = document.getElementById('registrationModal');
+            const formContainer = document.getElementById('formContainer');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            const planNames = {
+                individual: 'Individual Membership',
+                team: 'Team Membership',
+                corporate: 'Corporate Membership'
+            };
+            modalTitle.textContent = planNames[planType] || 'Register';
+            
+            formContainer.innerHTML = generateFormHTML(planType);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeRegistrationForm() {
+            const modal = document.getElementById('registrationModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function generateFormHTML(planType) {
+            if (planType === 'individual') {
+                return `
+                    <form id="membershipForm" onsubmit="handleFormSubmit(event, 'individual')">
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Full Name</label>
+                            <input type="text" name="fullName" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Email</label>
+                            <input type="email" name="email" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Phone Number</label>
+                            <input type="tel" name="phone" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Membership Period</label>
+                            <select name="membershipPeriod" class="apple-form-select" required>
+                                <option value="">Select Period</option>
+                                <option value="first-half">First Half of the Year</option>
+                                <option value="second-half">Second Half of the Year</option>
+                            </select>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Name</label>
+                            <input type="text" name="affiliateId" class="apple-form-input" placeholder="Enter name">
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Additional Notes (Optional)</label>
+                            <textarea name="notes" class="apple-form-textarea" placeholder="Any additional information..."></textarea>
+                        </div>
+                        <button type="submit" class="apple-form-submit">Submit Registration</button>
+                    </form>
+                `;
+            } else if (planType === 'team') {
+                return `
+                    <form id="membershipForm" onsubmit="handleFormSubmit(event, 'team')">
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Team Leader Full Name</label>
+                            <input type="text" name="teamLeaderName" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Team Leader Email</label>
+                            <input type="email" name="teamLeaderEmail" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Team Leader Phone</label>
+                            <input type="tel" name="teamLeaderPhone" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Team Member 1 Name</label>
+                            <input type="text" name="member1Name" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Team Member 2 Name</label>
+                            <input type="text" name="member2Name" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Membership Period</label>
+                            <select name="membershipPeriod" class="apple-form-select" required>
+                                <option value="">Select Period</option>
+                                <option value="first-half">First Half of the Year</option>
+                                <option value="second-half">Second Half of the Year</option>
+                            </select>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Name</label>
+                            <input type="text" name="affiliateId" class="apple-form-input" placeholder="Enter name">
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Additional Notes (Optional)</label>
+                            <textarea name="notes" class="apple-form-textarea" placeholder="Any additional information..."></textarea>
+                        </div>
+                        <button type="submit" class="apple-form-submit">Submit Registration</button>
+                    </form>
+                `;
+            } else if (planType === 'corporate') {
+                return `
+                    <form id="membershipForm" onsubmit="handleFormSubmit(event, 'corporate')">
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Company Name</label>
+                            <input type="text" name="companyName" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Contact Person Full Name</label>
+                            <input type="text" name="contactName" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Contact Person Email</label>
+                            <input type="email" name="contactEmail" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Contact Person Phone</label>
+                            <input type="tel" name="contactPhone" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Number of Staff (Optional)</label>
+                            <input type="number" name="numberOfStaff" class="apple-form-input" min="1">
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Membership Period</label>
+                            <select name="membershipPeriod" class="apple-form-select" required>
+                                <option value="">Select Period</option>
+                                <option value="first-half">First Half of the Year</option>
+                                <option value="second-half">Second Half of the Year</option>
+                            </select>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Name</label>
+                            <input type="text" name="affiliateId" class="apple-form-input" placeholder="Enter name">
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Additional Notes (Optional)</label>
+                            <textarea name="notes" class="apple-form-textarea" placeholder="Any additional information..."></textarea>
+                        </div>
+                        <button type="submit" class="apple-form-submit">Submit Registration</button>
+                    </form>
+                `;
+            }
+        }
+        
+        function handleFormSubmit(e, planType) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            data.membershipType = planType;
+            
+            // Show success animation
+            showSuccessAnimation();
+            
+            // Send to Formspree
+            const emailData = new FormData();
+            emailData.append('_to', 'info@2seasons.com');
+            emailData.append('_subject', `New ${planType.charAt(0).toUpperCase() + planType.slice(1)} Membership Registration`);
+            emailData.append('membershipType', planType);
+            
+            for (const [key, value] of formData.entries()) {
+                emailData.append(key, value);
+            }
+            
+            fetch('https://formspree.io/f/xvgrzrnp', {
+                method: 'POST',
+                body: emailData,
+                headers: { 'Accept': 'application/json' }
+            }).catch(() => {});
+            
+            setTimeout(() => {
+                closeRegistrationForm();
+                showWelcomeScreen();
+            }, 2000);
+        }
+        
+        function showSuccessAnimation() {
+            document.getElementById('successOverlay').classList.add('active');
+        }
+        
+        function showWelcomeScreen() {
+            document.body.innerHTML = `
+                <div class="welcome-screen">
+                    <h1 class="welcome-title">Welcome to the Wellness Hub</h1>
+                    <p class="welcome-subtitle">Your registration has been received. We'll be in touch soon!</p>
+                </div>
+            `;
+        }
+        
+        // Close modal on overlay click
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('registrationModal');
+            if (e.target === modal) {
+                closeRegistrationForm();
+            }
+        });
+        
+        // Make plan cards clickable
+        document.querySelectorAll('.plan-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.plan-register-btn')) return;
+                const planType = this.getAttribute('data-plan');
+                if (planType) {
+                    openRegistrationForm(planType);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
