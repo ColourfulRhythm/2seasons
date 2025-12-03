@@ -63,19 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile Menu Functionality
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links, .nav-links-luxury');
+    const navLinks = document.querySelector('.nav-links-luxury') || document.querySelector('.nav-links');
     const menuOverlay = document.querySelector('.menu-overlay');
     const body = document.body;
+    
     if (mobileMenuBtn && navLinks && menuOverlay) {
         // Toggle menu function
         function toggleMenu() {
             navLinks.classList.toggle('active');
             menuOverlay.classList.toggle('active');
             body.classList.toggle('menu-open');
+            mobileMenuBtn.classList.toggle('active');
         }
 
         // Toggle menu on button click
-        mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             toggleMenu();
         });
 
@@ -328,20 +332,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Hero Video Handling - FORCE VIDEO TO SHOW
+    // Hero Video Handling - FORCE VIDEO TO SHOW (ESPECIALLY MOBILE)
     const heroVideo = document.getElementById('hero-video');
     const heroSection = document.querySelector('.hero');
     
     if (heroVideo && heroSection) {
-        // Remove any background images
+        // Remove any background images - FORCE on mobile
         heroSection.style.backgroundImage = 'none';
         heroSection.style.background = 'transparent';
+        heroSection.style.backgroundColor = 'transparent';
         
-        // Force video to be visible
+        // Force video to be visible - ESPECIALLY FOR MOBILE
+        heroVideo.style.position = 'absolute';
+        heroVideo.style.top = '0';
+        heroVideo.style.left = '0';
+        heroVideo.style.width = '100%';
+        heroVideo.style.height = '100%';
+        heroVideo.style.objectFit = 'cover';
         heroVideo.style.display = 'block';
         heroVideo.style.visibility = 'visible';
         heroVideo.style.opacity = '1';
         heroVideo.style.zIndex = '1';
+        heroVideo.style.background = 'transparent';
+        
+        // Mobile-specific fixes
+        if (window.innerWidth <= 768) {
+            heroVideo.style.position = 'absolute';
+            heroVideo.style.top = '0';
+            heroVideo.style.left = '0';
+            heroVideo.style.width = '100vw';
+            heroVideo.style.height = '100vh';
+            heroVideo.style.objectFit = 'cover';
+            heroVideo.style.display = 'block';
+        }
         
         // Force video to play - especially for mobile
         heroVideo.muted = true;
@@ -380,13 +403,36 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Video can play, attempting to play');
             playVideo();
         });
-        
-        // Play on any user interaction
-        ['click', 'touchstart', 'scroll', 'mousemove'].forEach(event => {
-            document.addEventListener(event, function initVideo() {
-                playVideo();
-            }, { once: true });
+        heroVideo.addEventListener('loadedmetadata', function() {
+            playVideo();
         });
+        
+        // Mobile autoplay - trigger on first interaction
+        let videoPlayed = false;
+        const initVideoPlay = () => {
+            if (!videoPlayed) {
+                playVideo();
+                videoPlayed = true;
+            }
+        };
+        
+        // Play on any user interaction - especially for mobile
+        ['click', 'touchstart', 'touchend', 'scroll', 'mousemove', 'touchmove'].forEach(event => {
+            document.addEventListener(event, initVideoPlay, { once: true, passive: true });
+        });
+        
+        // Also try on page load for mobile
+        if (window.innerWidth <= 768) {
+            // Try immediately on mobile
+            setTimeout(playVideo, 100);
+            setTimeout(playVideo, 500);
+            setTimeout(playVideo, 1000);
+            
+            // Try on any touch
+            document.addEventListener('touchstart', function() {
+                playVideo();
+            }, { once: true, passive: true });
+        }
 
         // Handle video errors - DO NOT add background image
         heroVideo.addEventListener('error', function(e) {

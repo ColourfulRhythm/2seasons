@@ -321,6 +321,19 @@ nav {
     cursor: pointer;
     padding: 0.5rem;
     z-index: 1001;
+    align-items: center;
+}
+
+.mobile-menu-btn.active .menu-icon span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active .menu-icon span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active .menu-icon span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 .mobile-menu-btn span {
@@ -1538,16 +1551,18 @@ footer {
     transform: translateY(0);
 }
 
-/* Responsive Design for Luxury Elements */
+/* Responsive Design for Luxury Elements - MOBILE FIX */
 @media (max-width: 768px) {
-    .hero {
+    section.hero {
         position: relative !important;
         height: 100vh !important;
         background: transparent !important;
         background-image: none !important;
+        background-color: transparent !important;
     }
     
-    .hero video {
+    section.hero video,
+    #hero-video {
         position: absolute !important;
         top: 0 !important;
         left: 0 !important;
@@ -1558,11 +1573,17 @@ footer {
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
+        background: transparent !important;
     }
     
-    .hero-content {
+    section.hero .hero-content {
         position: relative !important;
         z-index: 10 !important;
+    }
+    
+    /* Hide badge on mobile if it exists */
+    .hero-badge {
+        display: none !important;
     }
     
     .hero-title-main {
@@ -1661,6 +1682,8 @@ footer {
     align-items: center;
     margin: 0;
     padding: 0;
+    z-index: 999;
+    position: relative;
 }
 
 .nav-links-luxury li a {
@@ -1723,12 +1746,34 @@ footer {
     height: 2px;
     background: var(--primary-color);
     transition: all 0.3s ease;
+    display: block;
 }
 
 .menu-text {
     margin-left: 0.5rem;
     font-size: 0.9rem;
     color: var(--primary-color);
+}
+
+/* Ensure menu is visible on desktop */
+@media (min-width: 769px) {
+    .nav-links-luxury {
+        display: flex !important;
+        position: static !important;
+        height: auto !important;
+        width: auto !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+    
+    .mobile-menu-btn {
+        display: none !important;
+    }
+    
+    .menu-overlay {
+        display: none !important;
+    }
 }
 
 /* Luxury Sections */
@@ -1859,11 +1904,12 @@ footer {
         background: white;
         flex-direction: column;
         justify-content: flex-start;
-        padding: 6rem 2rem 2rem;
-        gap: 2rem;
+        padding: 5rem 1.5rem 1.5rem;
+        gap: 0.8rem;
         transition: right 0.4s ease;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         overflow-y: auto;
+        z-index: 999;
     }
     
     .nav-links-luxury.active {
