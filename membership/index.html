@@ -166,25 +166,106 @@
             padding: 2.5rem;
         }
         
-        /* Wellness Images Gallery */
-        .wellness-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+        /* Wellness Images Carousel */
+        .wellness-carousel-container {
+            margin-top: 4rem;
+            padding: 2rem 0;
+        }
+        
+        .wellness-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        
+        .wellness-carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .wellness-carousel-slide {
+            min-width: 100%;
+            position: relative;
         }
         
         .wellness-image {
             width: 100%;
-            height: 300px;
+            height: 500px;
             object-fit: cover;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            display: block;
         }
         
-        .wellness-image:hover {
-            transform: scale(1.05);
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .carousel-nav:hover {
+            background: #ff662a;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-nav:hover i {
+            color: white;
+        }
+        
+        .carousel-nav i {
+            font-size: 1.2rem;
+            color: #1d1d1f;
+            transition: color 0.3s ease;
+        }
+        
+        .carousel-nav.prev {
+            left: 2rem;
+        }
+        
+        .carousel-nav.next {
+            right: 2rem;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d2d2d7;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+        
+        .carousel-dot.active {
+            background: #ff662a;
+            width: 32px;
+            border-radius: 6px;
+        }
+        
+        .carousel-dot:hover {
+            background: #ff662a;
+            transform: scale(1.2);
         }
         
         /* Membership Plans */
@@ -549,9 +630,25 @@
                 font-size: 1.4rem;
             }
             
-            .plans-grid,
-            .wellness-gallery {
+            .plans-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .wellness-image {
+                height: 350px;
+            }
+            
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .carousel-nav.prev {
+                left: 1rem;
+            }
+            
+            .carousel-nav.next {
+                right: 1rem;
             }
         }
     </style>
@@ -587,16 +684,6 @@
                 </div>
             </div>
             <div class="module-content">
-                <!-- Wellness Hub Images Gallery -->
-                <div class="wellness-gallery">
-                    <img src="../wellnesshub/IMG_aeriel.JPG" alt="Wellness Hub Aerial View" class="wellness-image" onerror="this.style.display='none'">
-                    <img src="../wellnesshub/IMG_1408%204.JPG" alt="Wellness Hub" class="wellness-image" onerror="this.style.display='none'">
-                    <img src="../wellnesshub/Premium%20Pod/premium.jpg" alt="Premium Pod" class="wellness-image" onerror="this.style.display='none'">
-                    <img src="../wellnesshub/Deluxe%20Pod/deluxecabinmain.jpg" alt="Deluxe Cabin" class="wellness-image" onerror="this.style.display='none'">
-                    <img src="../wellnesshub/Premium%20Pod/prem1.jpg" alt="Premium Pod Interior" class="wellness-image" onerror="this.style.display='none'">
-                    <img src="../wellnesshub/Deluxe%20Pod/livingroom.JPG" alt="Deluxe Living Room" class="wellness-image" onerror="this.style.display='none'">
-                </div>
-                
                 <!-- Membership Plans -->
                 <div class="plans-grid">
                     <div class="plan-card" data-plan="individual">
@@ -637,6 +724,39 @@
                         <div class="plan-card-actions">
                             <button class="plan-register-btn" onclick="event.stopPropagation(); openRegistrationForm('corporate')">Register</button>
                         </div>
+                    </div>
+                </div>
+                
+                <!-- Wellness Hub Images Carousel -->
+                <div class="wellness-carousel-container">
+                    <div class="wellness-carousel">
+                        <button class="carousel-nav prev" onclick="moveCarousel(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-nav next" onclick="moveCarousel(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="wellness-carousel-track" id="carouselTrack">
+                            <div class="wellness-carousel-slide">
+                                <img src="../wellnesshub/IMG_aeriel.JPG" alt="Wellness Hub Aerial View" class="wellness-image" onerror="this.style.display='none'">
+                            </div>
+                            <div class="wellness-carousel-slide">
+                                <img src="../wellnesshub/IMG_1408%204.JPG" alt="Wellness Hub" class="wellness-image" onerror="this.style.display='none'">
+                            </div>
+                            <div class="wellness-carousel-slide">
+                                <img src="../wellnesshub/Premium%20Pod/premium.jpg" alt="Premium Pod" class="wellness-image" onerror="this.style.display='none'">
+                            </div>
+                            <div class="wellness-carousel-slide">
+                                <img src="../wellnesshub/Deluxe%20Pod/deluxecabinmain.jpg" alt="Deluxe Cabin" class="wellness-image" onerror="this.style.display='none'">
+                            </div>
+                            <div class="wellness-carousel-slide">
+                                <img src="../wellnesshub/Premium%20Pod/prem1.jpg" alt="Premium Pod Interior" class="wellness-image" onerror="this.style.display='none'">
+                            </div>
+                            <div class="wellness-carousel-slide">
+                                <img src="../wellnesshub/Deluxe%20Pod/livingroom.JPG" alt="Deluxe Living Room" class="wellness-image" onerror="this.style.display='none'">
+                            </div>
+                        </div>
+                        <div class="carousel-dots" id="carouselDots"></div>
                     </div>
                 </div>
             </div>
@@ -909,6 +1029,71 @@
                 }
             });
         });
+        
+        // Carousel Functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.wellness-carousel-slide');
+        const totalSlides = slides.length;
+        const track = document.getElementById('carouselTrack');
+        const dotsContainer = document.getElementById('carouselDots');
+        
+        // Create dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.setAttribute('onclick', `goToSlide(${i})`);
+            dotsContainer.appendChild(dot);
+        }
+        
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update dots
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            } else if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            }
+            updateCarousel();
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+        
+        // Auto-play carousel
+        let autoPlayInterval = setInterval(() => {
+            moveCarousel(1);
+        }, 5000);
+        
+        // Pause on hover
+        const carousel = document.querySelector('.wellness-carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoPlayInterval);
+            });
+            carousel.addEventListener('mouseleave', () => {
+                autoPlayInterval = setInterval(() => {
+                    moveCarousel(1);
+                }, 5000);
+            });
+        }
+        
+        // Initialize carousel
+        updateCarousel();
     </script>
 </body>
 </html>
