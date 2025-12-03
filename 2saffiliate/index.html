@@ -64,13 +64,13 @@
             font-weight: 600;
             letter-spacing: -0.02em;
             margin-bottom: 1rem;
-            color: #ff662a;
+            color: #ffffff;
         }
         
         .hero-subtitle {
             font-size: 1.5rem;
             font-weight: 400;
-            color: #86868b;
+            color: #ffffff;
             margin-bottom: 3rem;
             letter-spacing: -0.01em;
         }
@@ -565,8 +565,8 @@
         <div class="hero-content" style="position: relative; z-index: 10;">
             <h1 class="hero-title">2 Seasons Affiliates</h1>
             <p class="hero-subtitle">Earn rewards. Share opportunities. Grow with the community.</p>
-        </div>
-    </section>
+            </div>
+        </section>
 
     <!-- Interactive Product Modules -->
     <div class="modules-container">
@@ -758,6 +758,63 @@
     </section>
 
     <script>
+        // Video Autoplay Handling
+        const heroVideo = document.getElementById('hero-video');
+        const heroSection = document.querySelector('.hero-section');
+        
+        if (heroVideo && heroSection) {
+            // Force video to play - especially for mobile
+            heroVideo.muted = true;
+            heroVideo.playsInline = true;
+            heroVideo.setAttribute('autoplay', '');
+            heroVideo.setAttribute('muted', '');
+            heroVideo.setAttribute('loop', '');
+            heroVideo.setAttribute('playsinline', '');
+            heroVideo.setAttribute('webkit-playsinline', '');
+            
+            // Try to play immediately
+            const playVideo = () => {
+                heroVideo.play().catch(error => {
+                    console.log('Video autoplay prevented:', error);
+                });
+            };
+            
+            // Play on load
+            heroVideo.addEventListener('loadeddata', function() {
+                console.log('Video loaded, attempting to play');
+                playVideo();
+            });
+            heroVideo.addEventListener('canplay', function() {
+                console.log('Video can play, attempting to play');
+                playVideo();
+            });
+            heroVideo.addEventListener('loadedmetadata', function() {
+                playVideo();
+            });
+            
+            // Mobile autoplay - trigger on first interaction
+            let videoPlayed = false;
+            const initVideoPlay = () => {
+                if (!videoPlayed) {
+                    playVideo();
+                    videoPlayed = true;
+                }
+            };
+            
+            // Play on any user interaction - especially for mobile
+            ['click', 'touchstart', 'touchend', 'scroll', 'mousemove', 'touchmove'].forEach(event => {
+                document.addEventListener(event, initVideoPlay, { once: true, passive: true });
+            });
+            
+            // Also try on page load for mobile
+            if (window.innerWidth <= 768) {
+                // Try immediately on mobile
+                setTimeout(playVideo, 100);
+                setTimeout(playVideo, 500);
+                setTimeout(playVideo, 1000);
+            }
+        }
+        
         // Module Expansion/Collapse
         document.querySelectorAll('.module').forEach(module => {
             module.addEventListener('click', function(e) {
