@@ -1205,7 +1205,15 @@
         document.getElementById('affiliateForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Generate affiliate ID BEFORE submitting so it's included in the email
+            const affiliateID = '2S' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            
             const formData = new FormData(this);
+            // Add affiliate ID to form data so it's included in the email
+            formData.append('affiliateID', affiliateID);
+            // Update subject to include affiliate ID
+            formData.set('_subject', 'New Affiliate Registration - 2 Seasons (Affiliate ID: ' + affiliateID + ')');
+            
             const submitButton = this.querySelector('.submit-button');
             const originalText = submitButton.textContent;
             
@@ -1223,9 +1231,6 @@
                 if (response.ok) {
                     submitButton.textContent = '✓ Joined Successfully!';
                     submitButton.style.background = '#ff662a';
-                    
-                    // Generate affiliate ID (in real app, this would come from server)
-                    const affiliateID = '2S' + Math.random().toString(36).substr(2, 9).toUpperCase();
                     
                     // Show success message
                     setTimeout(() => {
