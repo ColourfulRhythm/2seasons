@@ -33,18 +33,50 @@
         /* High-Converting Landing Page Styles */
         .pitch-hero {
             min-height: 95vh;
-            background: linear-gradient(135deg, rgba(97, 48, 13, 0.95), rgba(230, 137, 70, 0.9)), 
-                        url('100plots/2seasons-map.jpg') center/cover no-repeat;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-align: center;
             padding: 6rem 2rem 4rem;
+            overflow: hidden;
+        }
+
+        .pitch-hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            object-fit: cover;
+            filter: brightness(0.9);
+        }
+
+        /* Video loading state */
+        .pitch-hero video[poster] {
+            background: url('100plots/drone-image.jpg') center/cover no-repeat;
+        }
+
+        .pitch-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(97, 48, 13, 0.85), rgba(230, 137, 70, 0.75));
+            z-index: 1;
         }
 
         .pitch-hero-content {
             max-width: 1000px;
+            position: relative;
+            z-index: 2;
         }
 
         .pitch-urgent-badge {
@@ -430,7 +462,140 @@
             box-shadow: 0 5px 20px rgba(255, 255, 255, 0.5);
         }
 
+        /* Enhanced Menu Styles */
+        .luxury-header {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.98) !important;
+            border-bottom: 1px solid rgba(97, 48, 13, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .luxury-header.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.99) !important;
+        }
+
+        .luxury-nav {
+            padding: 1.2rem 2rem;
+        }
+
+        .nav-links-luxury {
+            gap: 2rem;
+        }
+
+        .nav-links-luxury li a {
+            font-size: 0.92rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            padding: 0.5rem 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links-luxury li a::after {
+            height: 2.5px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .nav-links-luxury li a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-1px);
+        }
+
+        .cta-nav {
+            background: linear-gradient(135deg, var(--primary-color), #4a1f0a);
+            padding: 0.75rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(97, 48, 13, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta-nav:hover {
+            background: linear-gradient(135deg, var(--secondary-color), #d67a3d);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 137, 70, 0.35);
+        }
+
+        /* Improved Media Layout */
+        .visual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            padding: 2rem 0;
+        }
+
+        .visual-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 380px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .visual-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(97, 48, 13, 0.1) 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .visual-item:hover::before {
+            opacity: 1;
+        }
+
+        .visual-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .visual-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .visual-item:hover img {
+            transform: scale(1.15);
+        }
+
+        /* Better Benefits Grid Layout */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            padding: 2rem 0;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #ffffff, #fafaf8);
+            border-radius: 25px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(97, 48, 13, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+
         @media (max-width: 768px) {
+            .pitch-hero video {
+                min-height: 100vh;
+            }
+
             .pitch-headline {
                 font-size: 2.5rem;
             }
@@ -439,6 +604,11 @@
             .testimonial-grid,
             .visual-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .visual-item {
+                height: 300px;
             }
 
             .scarcity-content {
@@ -449,6 +619,24 @@
             .scarcity-cta {
                 width: 100%;
                 max-width: 300px;
+            }
+
+            .luxury-nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links-luxury {
+                gap: 1.5rem;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: flex;
             }
         }
 
@@ -699,6 +887,12 @@
     <main>
         <!-- Hero Section - Clear Benefit-Focused Headline -->
         <section class="pitch-hero">
+            <video autoplay muted loop playsinline poster="100plots/drone-image.jpg">
+                <source src="100plots/droneview.mov" type="video/mp4">
+                <source src="100plots/droneview.mov" type="video/quicktime">
+                <!-- Fallback image if video fails to load -->
+                <img src="100plots/drone-image.jpg" alt="2 Seasons Aerial View" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+            </video>
             <div class="pitch-hero-content">
                 <h1 class="pitch-headline">
                     Your Future Starts With <em>₦5 Million</em>
@@ -977,6 +1171,39 @@
 
     <script src="script.js"></script>
     <script>
+        // Enhanced Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links-luxury');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        
+        if (mobileMenuBtn && navLinks && menuOverlay) {
+            mobileMenuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+
+            // Close menu when clicking overlay or links
+            menuOverlay.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        mobileMenuBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
+                        menuOverlay.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    }
+                });
+            });
+        }
+
         // Smooth scroll for CTA links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1015,6 +1242,49 @@
                 observer.observe(formSection);
             }
         }
+
+        // Hero Video Handling
+        (function() {
+            const heroVideo = document.querySelector('.pitch-hero video');
+            if (heroVideo) {
+                // Ensure video plays smoothly
+                heroVideo.addEventListener('loadeddata', function() {
+                    this.play().catch(error => {
+                        console.log('Video autoplay prevented, will play on interaction');
+                    });
+                });
+
+                // Handle video errors gracefully
+                heroVideo.addEventListener('error', function() {
+                    console.log('Video failed to load, using fallback image');
+                    const hero = document.querySelector('.pitch-hero');
+                    if (hero) {
+                        hero.style.backgroundImage = 'linear-gradient(135deg, rgba(97, 48, 13, 0.95), rgba(230, 137, 70, 0.9)), url("100plots/drone-image.jpg")';
+                        hero.style.backgroundSize = 'cover';
+                        hero.style.backgroundPosition = 'center';
+                    }
+                });
+
+                // Try to play on user interaction (for browsers that block autoplay)
+                document.addEventListener('click', function initVideo() {
+                    heroVideo.play().catch(() => {});
+                    document.removeEventListener('click', initVideo);
+                }, { once: true });
+
+                // Pause video when not visible (performance optimization)
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            heroVideo.play().catch(() => {});
+                        } else {
+                            heroVideo.pause();
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                videoObserver.observe(heroVideo);
+            }
+        })();
 
         // Partners Slider Functionality
         (function() {
