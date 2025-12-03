@@ -109,10 +109,11 @@
         }
         
         .module.expanded {
-            max-height: 3000px;
+            max-height: none;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
             transform: scale(1.02);
             z-index: 10;
+            overflow: visible;
         }
         
         .module-header {
@@ -162,14 +163,17 @@
         }
         
         .module.expanded .module-content {
-            max-height: 3000px;
+            max-height: none;
             padding: 2.5rem;
+            overflow: visible;
         }
         
         /* Wellness Images Carousel */
         .wellness-carousel-container {
             margin-top: 4rem;
             padding: 2rem 0;
+            width: 100%;
+            overflow: visible;
         }
         
         .wellness-carousel {
@@ -660,6 +664,23 @@
             
             .module-content {
                 padding: 1.5rem !important;
+                overflow: visible !important;
+            }
+            
+            .module.expanded {
+                overflow: visible !important;
+            }
+            
+            .wellness-carousel-container {
+                margin-top: 2rem;
+                padding: 1rem 0;
+                margin-left: -1.5rem;
+                margin-right: -1.5rem;
+                width: calc(100% + 3rem);
+            }
+            
+            .wellness-carousel {
+                border-radius: 0;
             }
             
             .plans-grid {
