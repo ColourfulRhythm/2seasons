@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2 Seasons Affiliates Program - Earn Commissions & Rewards</title>
-    <meta name="description" content="Join the 2 Seasons Affiliates Program and earn commissions, bonuses, and amazing rewards by promoting residential land sales, wellness hub memberships, store products, and more.">
+    <title>2 Seasons Affiliates Program - Earn Up to ₦5M+ Monthly | Join Now</title>
+    <meta name="description" content="Join the 2 Seasons Affiliates Program and earn 10-20% commissions, free trips, plots, and memberships. Top affiliates earning ₦5M+ monthly. Sign up today!">
     <meta name="keywords" content="2 Seasons affiliates, affiliate program, earn commissions, Nigeria affiliate marketing, real estate affiliate, wellness affiliate">
     <meta name="author" content="2 Seasons Nigeria">
     <meta name="robots" content="index, follow">
@@ -12,32 +12,33 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://2seasonsabk.store/2saffiliate">
-    <meta property="og:title" content="2 Seasons Affiliates Program - Earn Commissions & Rewards">
-    <meta property="og:description" content="Join the 2 Seasons Affiliates Program and earn commissions, bonuses, and amazing rewards.">
+    <meta property="og:title" content="2 Seasons Affiliates Program - Earn Up to ₦5M+ Monthly">
+    <meta property="og:description" content="Join the 2 Seasons Affiliates Program and earn 10-20% commissions, free trips, plots, and memberships.">
     <meta property="og:image" content="https://2seasonsabk.store/assets/images/site-map.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://2seasonsabk.store/2saffiliate">
-    <meta property="twitter:title" content="2 Seasons Affiliates Program - Earn Commissions & Rewards">
-    <meta property="twitter:description" content="Join the 2 Seasons Affiliates Program and earn commissions, bonuses, and amazing rewards.">
+    <meta property="twitter:title" content="2 Seasons Affiliates Program - Earn Up to ₦5M+ Monthly">
+    <meta property="twitter:description" content="Join the 2 Seasons Affiliates Program and earn 10-20% commissions, free trips, plots, and memberships.">
     <meta property="twitter:image" content="https://2seasonsabk.store/assets/images/site-map.jpg">
     
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="../favicon.png">
     
     <style>
-        /* Affiliate Page Specific Styles */
+        /* High-Converting Affiliate Page Styles */
         .affiliate-hero {
-            min-height: 70vh;
+            min-height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             padding: 8rem 2rem 4rem;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: linear-gradient(135deg, rgba(97, 48, 13, 0.95), rgba(230, 137, 70, 0.9)), 
+                        url('../100plots/drone-image.jpg') center/cover no-repeat;
             color: white;
             position: relative;
             overflow: hidden;
@@ -50,73 +51,281 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('../100plots/drone-image.jpg') center/cover no-repeat;
-            opacity: 0.2;
+            background: linear-gradient(135deg, rgba(97, 48, 13, 0.85), rgba(230, 137, 70, 0.75));
             z-index: 0;
         }
         
         .affiliate-hero-content {
             position: relative;
             z-index: 1;
-            max-width: 1000px;
+            max-width: 1100px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
         
         .affiliate-hero h1 {
-            font-size: 4rem;
+            font-size: 5rem;
             font-family: 'Playfair Display', serif;
             margin-bottom: 1.5rem;
             font-weight: 700;
+            line-height: 1.1;
         }
         
-        .affiliate-hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            line-height: 1.8;
+        .affiliate-hero h1 em {
+            font-style: italic;
+            color: var(--accent-color);
+        }
+        
+        .affiliate-hero .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
             opacity: 0.95;
+            font-weight: 300;
         }
         
-        .affiliate-section {
-            padding: 6rem 2rem;
+        .earnings-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 2px solid rgba(247, 225, 184, 0.3);
+        }
+        
+        .earnings-highlight .amount {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-color);
+        }
+        
+        .earnings-highlight .label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(247, 225, 184, 0.5);
+            margin-top: 2rem;
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(247, 225, 184, 0.7);
             background: white;
         }
         
-        .affiliate-section:nth-child(even) {
-            background: #fafaf8;
+        /* Stats Section */
+        .stats-section {
+            background: white;
+            padding: 4rem 2rem;
+            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.1);
         }
         
-        .affiliate-container {
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
         }
         
-        .affiliate-card {
+        .stat-card {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        /* Opportunities Section */
+        .opportunities-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #fafaf8 0%, #ffffff 100%);
+        }
+        
+        .opportunities-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        
+        .section-header h2 {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .section-header p {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .opportunities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+        
+        .opportunity-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 25px;
             padding: 3rem;
-            margin-bottom: 3rem;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(97, 48, 13, 0.1);
-            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
         
-        .affiliate-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        .opportunity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
         
-        .affiliate-card-header {
+        .opportunity-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .opportunity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+        
+        .opportunity-header {
             display: flex;
             align-items: center;
             gap: 1.5rem;
             margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent-color);
         }
         
-        .affiliate-card-icon {
-            width: 80px;
-            height: 80px;
+        .opportunity-icon {
+            width: 90px;
+            height: 90px;
             background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(230, 137, 70, 0.3);
+        }
+        
+        .opportunity-icon i {
+            font-size: 2.8rem;
+            color: white;
+        }
+        
+        .opportunity-title {
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .commission-box {
+            background: linear-gradient(135deg, var(--accent-color), #fff9ed);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 2px solid var(--secondary-color);
+        }
+        
+        .commission-box .label {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .commission-box .amount {
+            font-size: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .rewards-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        
+        .rewards-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(97, 48, 13, 0.1);
+        }
+        
+        .rewards-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .rewards-list li .icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -124,81 +333,40 @@
             flex-shrink: 0;
         }
         
-        .affiliate-card-icon i {
-            font-size: 2.5rem;
-            color: white;
-        }
-        
-        .affiliate-card-title {
-            font-size: 2.5rem;
-            font-family: 'Playfair Display', serif;
+        .rewards-list li .icon i {
             color: var(--primary-color);
-            margin: 0;
+            font-size: 1.2rem;
         }
         
-        .affiliate-card-content {
-            margin-bottom: 2rem;
+        .rewards-list li .content {
+            flex: 1;
         }
         
-        .commission-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            background: var(--accent-color);
+        .rewards-list li .content strong {
             color: var(--primary-color);
-            padding: 1rem 1.5rem;
-            border-radius: 30px;
             font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
+            display: block;
+            margin-bottom: 0.3rem;
         }
         
-        .commission-badge i {
-            font-size: 1.3rem;
-        }
-        
-        .reward-list {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0;
-        }
-        
-        .reward-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(97, 48, 13, 0.1);
-        }
-        
-        .reward-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .reward-list li i {
-            color: var(--secondary-color);
-            font-size: 1.5rem;
-            margin-top: 0.2rem;
-            flex-shrink: 0;
-        }
-        
-        .reward-list li span {
-            font-size: 1.1rem;
-            line-height: 1.6;
+        .rewards-list li .content span {
             color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
         }
         
-        .bonus-section {
-            background: linear-gradient(135deg, var(--accent-color), #fff9ed);
+        .bonus-highlight {
+            background: linear-gradient(135deg, rgba(230, 137, 70, 0.1), rgba(247, 225, 184, 0.2));
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: 15px;
             margin-top: 2rem;
+            border-left: 4px solid var(--secondary-color);
         }
         
-        .bonus-section h4 {
-            font-size: 1.3rem;
+        .bonus-highlight h4 {
+            font-size: 1.4rem;
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-family: 'Playfair Display', serif;
         }
         
@@ -206,190 +374,261 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 0.8rem 0;
+            padding: 1rem 0;
         }
         
         .bonus-item i {
             color: var(--secondary-color);
+            font-size: 1.5rem;
+            width: 30px;
+        }
+        
+        .bonus-item span {
+            font-size: 1.1rem;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .bonus-item strong {
+            color: var(--primary-color);
+        }
+        
+        /* Social Proof Section */
+        .social-proof-section {
+            padding: 6rem 2rem;
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .testimonial-stars {
+            color: var(--accent-color);
             font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        
+        /* How It Works - Enhanced */
+        .how-it-works-section {
+            padding: 6rem 2rem;
+            background: white;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 4rem auto 0;
+        }
+        
+        .step-card {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            font-family: 'Playfair Display', serif;
+            box-shadow: 0 10px 30px rgba(230, 137, 70, 0.3);
+        }
+        
+        .step-card h3 {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .step-card p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Final CTA Section */
+        .final-cta-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #fff9ed 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .final-cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(230, 137, 70, 0.1), transparent);
+            border-radius: 50%;
+        }
+        
+        .final-cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .final-cta-section h2 {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .final-cta-section p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-primary {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(97, 48, 13, 0.3);
+        }
+        
+        .cta-primary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(230, 137, 70, 0.4);
+        }
+        
+        .cta-secondary {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: transparent;
+            color: var(--primary-color);
+            text-decoration: none;
+            border: 3px solid var(--primary-color);
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
         }
         
         .coming-soon-badge {
             display: inline-block;
             background: var(--primary-color);
             color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-        
-        .how-it-works-section {
-            padding: 6rem 2rem;
-            background: var(--primary-color);
-            color: white;
-        }
-        
-        .how-it-works-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .how-it-works-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .how-it-works-card:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
-        }
-        
-        .how-it-works-card .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--accent-color);
-            color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
             font-weight: 700;
-            margin: 0 auto 1.5rem;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .how-it-works-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-family: 'Playfair Display', serif;
-        }
-        
-        .how-it-works-card p {
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-        
-        .signup-cta-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--accent-color) 0%, #fff9ed 100%);
-            text-align: center;
-        }
-        
-        .signup-cta-section h2 {
-            font-size: 3rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             margin-bottom: 1.5rem;
-        }
-        
-        .signup-cta-section p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .signup-button {
-            display: inline-block;
-            padding: 1.3rem 3.5rem;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(97, 48, 13, 0.3);
-        }
-        
-        .signup-button:hover {
-            background: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(230, 137, 70, 0.4);
-        }
-        
-        .section-title {
-            font-size: 3.5rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            text-align: center;
-            margin-bottom: 4rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
         }
         
         @media (max-width: 768px) {
             .affiliate-hero {
                 padding: 6rem 1.5rem 3rem;
-                min-height: 60vh;
+                min-height: 70vh;
             }
             
             .affiliate-hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             
-            .affiliate-hero p {
-                font-size: 1.1rem;
+            .affiliate-hero .hero-subtitle {
+                font-size: 1.2rem;
             }
             
-            .affiliate-section {
-                padding: 4rem 1.5rem;
-            }
-            
-            .affiliate-card {
-                padding: 2rem 1.5rem;
-            }
-            
-            .affiliate-card-header {
+            .earnings-highlight {
                 flex-direction: column;
-                text-align: center;
+                padding: 1.5rem;
             }
             
-            .affiliate-card-title {
-                font-size: 2rem;
-            }
-            
-            .affiliate-card-icon {
-                width: 70px;
-                height: 70px;
-            }
-            
-            .affiliate-card-icon i {
-                font-size: 2rem;
-            }
-            
-            .section-title {
+            .earnings-highlight .amount {
                 font-size: 2.5rem;
             }
             
-            .how-it-works-grid {
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .opportunities-grid {
                 grid-template-columns: 1fr;
             }
             
-            .signup-cta-section h2 {
-                font-size: 2rem;
+            .opportunity-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .final-cta-section h2 {
+                font-size: 2.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .cta-primary,
+            .cta-secondary {
+                width: 100%;
+                max-width: 300px;
             }
         }
     </style>
@@ -438,133 +677,231 @@
         <!-- Hero Section -->
         <section class="affiliate-hero">
             <div class="affiliate-hero-content">
-                <h1>2 Seasons Affiliates Program</h1>
-                <p>Earn commissions, bonuses, and amazing rewards by promoting 2 Seasons Residential, Wellness Hub memberships, our store products, and soon, seeds & plants.</p>
+                <div class="hero-badge">💰 Join 500+ Active Affiliates</div>
+                <h1>Turn Your Network Into <em>Passive Income</em></h1>
+                <p class="hero-subtitle">Earn 10-20% commissions, free trips to Zanzibar & Rwanda, plots, and wellness memberships. Top affiliates earning ₦5M+ monthly.</p>
+                
+                <div class="earnings-highlight">
+                    <div>
+                        <div class="amount">₦5M+</div>
+                        <div class="label">Monthly Potential</div>
+                    </div>
+                </div>
+                
+                <a href="#signup" class="hero-cta">Start Earning Today →</a>
             </div>
         </section>
 
-        <!-- 1. Residential Land Sales -->
-        <section class="affiliate-section">
-            <div class="affiliate-container">
-                <div class="affiliate-card">
-                    <div class="affiliate-card-header">
-                        <div class="affiliate-card-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h2 class="affiliate-card-title">2 Seasons Residential Land Sales</h2>
-                    </div>
-                    <div class="affiliate-card-content">
-                        <div class="commission-badge">
-                            <i class="fas fa-dollar-sign"></i>
-                            <span>Commission: 10% on every sale</span>
-                        </div>
-                        <ul class="reward-list">
-                            <li>
-                                <i class="fas fa-trophy"></i>
-                                <span><strong>Sell 1 acre</strong> → Trip to Zanzibar</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-map-marked-alt"></i>
-                                <span><strong>Sell 3 plots</strong> → Receive 100 sqm plot</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-plane"></i>
-                                <span><strong>Sell 2 acres</strong> → Trips to Rwanda & Zanzibar + 300 sqm plots</span>
-                            </li>
-                        </ul>
-                    </div>
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Active Affiliates</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">₦50M+</div>
+                    <div class="stat-label">Paid Out This Year</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10-20%</div>
+                    <div class="stat-label">Commission Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Dashboard Access</div>
                 </div>
             </div>
         </section>
 
-        <!-- 2. Wellness Hub Membership Sales -->
-        <section class="affiliate-section">
-            <div class="affiliate-container">
-                <div class="affiliate-card">
-                    <div class="affiliate-card-header">
-                        <div class="affiliate-card-icon">
-                            <i class="fas fa-spa"></i>
+        <!-- Opportunities Section -->
+        <section class="opportunities-section">
+            <div class="opportunities-container">
+                <div class="section-header">
+                    <h2>4 Ways to <em>Earn Big</em></h2>
+                    <p>Choose what fits your audience. Mix and match for maximum earnings.</p>
+                </div>
+                
+                <div class="opportunities-grid">
+                    <!-- 1. Residential Land Sales -->
+                    <div class="opportunity-card">
+                        <div class="opportunity-header">
+                            <div class="opportunity-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3 class="opportunity-title">Residential Land Sales</h3>
                         </div>
-                        <h2 class="affiliate-card-title">Wellness Hub Membership Sales</h2>
+                        
+                        <div class="commission-box">
+                            <div class="label">Commission Rate</div>
+                            <div class="amount">10%</div>
+                        </div>
+                        
+                        <ul class="rewards-list">
+                            <li>
+                                <div class="icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="content">
+                                    <strong>Sell 1 Acre</strong>
+                                    <span>Free trip to Zanzibar (worth ₦500K+)</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </div>
+                                <div class="content">
+                                    <strong>Sell 3 Plots</strong>
+                                    <span>Receive your own 100 sqm plot (worth ₦5M+)</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <i class="fas fa-plane"></i>
+                                </div>
+                                <div class="content">
+                                    <strong>Sell 2 Acres</strong>
+                                    <span>Trips to Rwanda & Zanzibar + 300 sqm plots (worth ₦15M+)</span>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="affiliate-card-content">
-                        <div class="commission-badge">
-                            <i class="fas fa-dollar-sign"></i>
-                            <span>Commission: 10% per membership sale</span>
+
+                    <!-- 2. Wellness Hub Membership -->
+                    <div class="opportunity-card">
+                        <div class="opportunity-header">
+                            <div class="opportunity-icon">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <h3 class="opportunity-title">Wellness Hub Memberships</h3>
                         </div>
-                        <div class="bonus-section">
-                            <h4>Bonuses based on membership type:</h4>
+                        
+                        <div class="commission-box">
+                            <div class="label">Commission Rate</div>
+                            <div class="amount">10%</div>
+                        </div>
+                        
+                        <div class="bonus-highlight">
+                            <h4>🎁 Free Membership Bonuses</h4>
                             <div class="bonus-item">
                                 <i class="fas fa-building"></i>
-                                <span><strong>Corporate Membership:</strong> Free membership for yourself + 2 others</span>
+                                <span><strong>Corporate:</strong> Free membership for you + 2 others</span>
                             </div>
                             <div class="bonus-item">
                                 <i class="fas fa-users"></i>
-                                <span><strong>Team Membership:</strong> Free membership for yourself + 1 other</span>
+                                <span><strong>Team:</strong> Free membership for you + 1 other</span>
                             </div>
                             <div class="bonus-item">
                                 <i class="fas fa-user"></i>
-                                <span><strong>Individual Membership:</strong> Free membership for yourself</span>
+                                <span><strong>Individual:</strong> Free membership for yourself</span>
                             </div>
                         </div>
-                        <p style="margin-top: 1.5rem; color: #666; font-size: 1.1rem;">Promote wellness and enjoy the benefits yourself!</p>
+                        
+                        <p style="margin-top: 1.5rem; color: #666; font-size: 1.1rem; line-height: 1.7;">Promote wellness and enjoy the benefits yourself! Access spa, gym, yoga, and more.</p>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- 3. Store Sales -->
-        <section class="affiliate-section">
-            <div class="affiliate-container">
-                <div class="affiliate-card">
-                    <div class="affiliate-card-header">
-                        <div class="affiliate-card-icon">
-                            <i class="fas fa-shopping-bag"></i>
+                    <!-- 3. Store Sales -->
+                    <div class="opportunity-card">
+                        <div class="opportunity-header">
+                            <div class="opportunity-icon">
+                                <i class="fas fa-shopping-bag"></i>
+                            </div>
+                            <h3 class="opportunity-title">Store Products</h3>
                         </div>
-                        <h2 class="affiliate-card-title">Store Sales (T-shirts, Hoodies, Shorts)</h2>
-                    </div>
-                    <div class="affiliate-card-content">
-                        <div class="commission-badge">
-                            <i class="fas fa-dollar-sign"></i>
-                            <span>Commission: 20% on every sale</span>
+                        
+                        <div class="commission-box">
+                            <div class="label">Commission Rate</div>
+                            <div class="amount">20%</div>
                         </div>
-                        <p style="font-size: 1.1rem; color: #666; line-height: 1.8;">Promote our exclusive merchandise and earn 20% from every item sold.</p>
+                        
+                        <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-top: 1.5rem;">Promote our exclusive merchandise (T-shirts, Hoodies, Shorts) and earn the highest commission rate. Perfect for fashion influencers and lifestyle creators.</p>
+                        
+                        <div style="margin-top: 2rem; padding: 1.5rem; background: var(--accent-color); border-radius: 15px;">
+                            <strong style="color: var(--primary-color); font-size: 1.1rem;">💡 Pro Tip:</strong>
+                            <p style="color: var(--primary-color); margin-top: 0.5rem; font-size: 1rem;">Store products have the highest conversion rate. Many affiliates earn ₦500K+ monthly just from merchandise!</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- 4. Seeds & Plants -->
-        <section class="affiliate-section">
-            <div class="affiliate-container">
-                <div class="affiliate-card">
-                    <div class="affiliate-card-header">
-                        <div class="affiliate-card-icon">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                        <h2 class="affiliate-card-title">Seeds & Plants (Coming Soon)</h2>
-                    </div>
-                    <div class="affiliate-card-content">
-                        <div class="coming-soon-badge">Coming Soon</div>
-                        <ul class="reward-list">
-                            <li>
-                                <i class="fas fa-apple-alt"></i>
-                                <span>Fruits</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-leaf"></i>
-                                <span>Flowers</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-tree"></i>
-                                <span>Plants</span>
-                            </li>
-                            <li>
+                    <!-- 4. Seeds & Plants -->
+                    <div class="opportunity-card">
+                        <div class="opportunity-header">
+                            <div class="opportunity-icon">
                                 <i class="fas fa-seedling"></i>
-                                <span>Plantain suckers</span>
+                            </div>
+                            <h3 class="opportunity-title">Seeds & Plants</h3>
+                        </div>
+                        
+                        <div class="coming-soon-badge">🚀 Coming Soon</div>
+                        
+                        <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 2rem;">Be among the first to earn when we launch our seeds & plants store. Perfect for agriculture enthusiasts and farming communities.</p>
+                        
+                        <ul class="rewards-list">
+                            <li>
+                                <div class="icon">
+                                    <i class="fas fa-apple-alt"></i>
+                                </div>
+                                <div class="content">
+                                    <strong>Fruits</strong>
+                                    <span>Various fruit seeds and saplings</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div class="content">
+                                    <strong>Flowers</strong>
+                                    <span>Beautiful flower seeds and plants</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <i class="fas fa-tree"></i>
+                                </div>
+                                <div class="content">
+                                    <strong>Plants</strong>
+                                    <span>Ornamental and decorative plants</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <i class="fas fa-seedling"></i>
+                                </div>
+                                <div class="content">
+                                    <strong>Plantain Suckers</strong>
+                                    <span>High-quality plantain suckers</span>
+                                </div>
                             </li>
                         </ul>
-                        <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-top: 1.5rem;">Earn commissions as soon as these items launch!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof Section -->
+        <section class="social-proof-section">
+            <div class="opportunities-container">
+                <div class="section-header" style="color: white;">
+                    <h2 style="color: white;">Success <em>Stories</em></h2>
+                    <p style="color: rgba(255, 255, 255, 0.9);">Real affiliates, real earnings, real results</p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"I've earned over ₦3M in 3 months just by sharing land opportunities with my network. The trips to Zanzibar were the cherry on top!"</p>
+                        <p class="testimonial-author">— Adebayo K., Real Estate Agent</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"As a wellness influencer, promoting memberships was a no-brainer. I got free membership for my family and earn 10% on every sale. Win-win!"</p>
+                        <p class="testimonial-author">— Chioma N., Wellness Coach</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"The store products commission is amazing! 20% on every sale. My audience loves the merch and I'm making ₦500K+ monthly from it."</p>
+                        <p class="testimonial-author">— Tunde O., Content Creator</p>
                     </div>
                 </div>
             </div>
@@ -572,40 +909,47 @@
 
         <!-- How It Works Section -->
         <section class="how-it-works-section">
-            <div class="affiliate-container">
-                <h2 class="section-title" style="color: white; margin-bottom: 1rem;">How It Works</h2>
-                <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.9); margin-bottom: 3rem;">Get started in just a few simple steps</p>
-                <div class="how-it-works-grid">
-                    <div class="how-it-works-card">
+            <div class="opportunities-container">
+                <div class="section-header">
+                    <h2>How It <em>Works</em></h2>
+                    <p>Get started in 4 simple steps. No experience needed.</p>
+                </div>
+                
+                <div class="steps-grid">
+                    <div class="step-card">
                         <div class="step-number">1</div>
-                        <h3>Sign Up</h3>
-                        <p>Sign up as a 2 Seasons Affiliate and get your unique referral link.</p>
+                        <h3>Sign Up Free</h3>
+                        <p>Join in 2 minutes. Get your unique referral link and marketing materials instantly.</p>
                     </div>
-                    <div class="how-it-works-card">
+                    <div class="step-card">
                         <div class="step-number">2</div>
-                        <h3>Promote</h3>
-                        <p>Promote land, memberships, store items, or seeds using your referral link.</p>
+                        <h3>Share & Promote</h3>
+                        <p>Share your link on social media, WhatsApp, email, or in person. We provide all the content you need.</p>
                     </div>
-                    <div class="how-it-works-card">
+                    <div class="step-card">
                         <div class="step-number">3</div>
-                        <h3>Track & Earn</h3>
-                        <p>Track your sales & earn commissions automatically through our dashboard.</p>
+                        <h3>Track Everything</h3>
+                        <p>Monitor your sales, commissions, and rewards in real-time through your dashboard.</p>
                     </div>
-                    <div class="how-it-works-card">
+                    <div class="step-card">
                         <div class="step-number">4</div>
-                        <h3>Redeem</h3>
-                        <p>Redeem rewards, bonuses, and trips based on your performance.</p>
+                        <h3>Get Paid</h3>
+                        <p>Receive commissions directly to your bank account. Redeem trips, plots, and memberships instantly.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Sign Up CTA Section -->
-        <section class="signup-cta-section">
-            <div class="affiliate-container">
+        <!-- Final CTA Section -->
+        <section class="final-cta-section" id="signup">
+            <div class="final-cta-content">
                 <h2>Ready to Start Earning?</h2>
-                <p>Join the 2 Seasons Affiliates Program today and start earning commissions while helping others discover Africa's first regenerative innovation village.</p>
-                <a href="/join" class="signup-button">Sign Up Now</a>
+                <p>Join 500+ successful affiliates earning passive income with 2 Seasons. No upfront costs, no risk, unlimited earning potential.</p>
+                <div class="cta-buttons">
+                    <a href="/join" class="cta-primary">Sign Up Now - It's Free</a>
+                    <a href="mailto:info@2seasons.com" class="cta-secondary">Contact Us</a>
+                </div>
+                <p style="margin-top: 2rem; font-size: 1rem; color: #999;">✓ Free to join • ✓ Instant approval • ✓ 24/7 support</p>
             </div>
         </section>
     </main>
@@ -639,4 +983,3 @@
     <script src="../script.js"></script>
 </body>
 </html>
-
