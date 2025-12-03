@@ -622,33 +622,154 @@
                 font-size: 1.2rem;
             }
             
+            .modules-container {
+                padding: 2rem 1rem;
+            }
+            
+            .module {
+                border-radius: 12px;
+                margin-bottom: 1.5rem;
+            }
+            
             .module-header {
                 padding: 1.5rem;
+                flex-wrap: wrap;
+                gap: 1rem;
             }
             
             .module-title {
                 font-size: 1.4rem;
+                line-height: 1.3;
+                flex: 1;
+                min-width: 0;
+            }
+            
+            .module-icon {
+                width: 40px;
+                height: 40px;
+                flex-shrink: 0;
+            }
+            
+            .module-icon i {
+                font-size: 1.2rem;
+            }
+            
+            .module.expanded .module-header {
+                padding-bottom: 1.5rem;
+            }
+            
+            .module-content {
+                padding: 1.5rem !important;
             }
             
             .plans-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-top: 1.5rem;
+            }
+            
+            .plan-card {
+                padding: 1.5rem;
+                border-radius: 12px;
+            }
+            
+            .plan-name {
+                font-size: 1.3rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .plan-price {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .plan-features {
+                margin: 1rem 0;
+            }
+            
+            .plan-features li {
+                padding: 0.6rem 0;
+                font-size: 0.9rem;
+            }
+            
+            .plan-card-actions {
+                margin-top: 1.5rem;
+                padding-top: 1.5rem;
+            }
+            
+            .plan-register-btn {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+                width: 100%;
+            }
+            
+            .wellness-carousel-container {
+                margin-top: 2rem;
+                padding: 1rem 0;
             }
             
             .wellness-image {
-                height: 350px;
+                height: 300px;
             }
             
             .carousel-nav {
-                width: 40px;
-                height: 40px;
+                width: 36px;
+                height: 36px;
+            }
+            
+            .carousel-nav i {
+                font-size: 1rem;
             }
             
             .carousel-nav.prev {
-                left: 1rem;
+                left: 0.75rem;
             }
             
             .carousel-nav.next {
-                right: 1rem;
+                right: 0.75rem;
+            }
+            
+            .carousel-dots {
+                gap: 0.5rem;
+                margin-top: 1.5rem;
+            }
+            
+            .carousel-dot {
+                width: 8px;
+                height: 8px;
+            }
+            
+            .carousel-dot.active {
+                width: 24px;
+            }
+            
+            .form-modal {
+                max-width: 100%;
+                margin: 1rem;
+                border-radius: 16px;
+            }
+            
+            .form-modal-header {
+                padding: 1.5rem;
+            }
+            
+            .form-modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .form-modal-body {
+                padding: 1.5rem;
+            }
+            
+            .apple-form-group {
+                margin-bottom: 1.5rem;
+            }
+            
+            .apple-form-input,
+            .apple-form-select,
+            .apple-form-textarea {
+                padding: 0.875rem 1rem;
+                font-size: 0.95rem;
             }
         }
     </style>
