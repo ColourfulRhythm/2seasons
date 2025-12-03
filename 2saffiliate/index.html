@@ -1455,18 +1455,51 @@
         function handleFormSubmit(e, planType) {
             e.preventDefault();
             const form = e.target;
+            
+            // Generate affiliate ID for the member
+            const memberAffiliateID = '2S' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            
             const formData = new FormData(form);
             const data = Object.fromEntries(formData);
             data.membershipType = planType;
             data.timestamp = new Date().toISOString();
+            data.affiliateID = memberAffiliateID;
+            
+            // Prepare data for email submission
+            const emailData = new FormData();
+            emailData.append('_to', 'info@2seasons.com'); // Update with your email
+            emailData.append('_subject', `New ${planType.charAt(0).toUpperCase() + planType.slice(1)} Membership Registration - Affiliate ID: ${memberAffiliateID}`);
+            emailData.append('membershipType', planType);
+            emailData.append('affiliateID', memberAffiliateID);
+            
+            // Add all form fields to email
+            for (const [key, value] of formData.entries()) {
+                emailData.append(key, value);
+            }
             
             // Show success animation
             showSuccessAnimation();
             
-            // In production, send to server
-            console.log('Form submitted:', data);
+            // Send to Formspree or your email service
+            fetch('https://formspree.io/f/xvgrzrnp', {
+                method: 'POST',
+                body: emailData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Membership form submitted:', data);
+                } else {
+                    console.error('Form submission error');
+                }
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+            });
             
-            // Simulate API call
+            // Show welcome screen after delay
             setTimeout(() => {
                 closeRegistrationForm();
                 showWelcomeScreen();
