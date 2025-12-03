@@ -328,11 +328,95 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Hero Video Handling - FORCE VIDEO TO SHOW
+    const heroVideo = document.getElementById('hero-video');
+    const heroSection = document.querySelector('.hero');
+    
+    if (heroVideo && heroSection) {
+        // Remove any background images
+        heroSection.style.backgroundImage = 'none';
+        heroSection.style.background = 'transparent';
+        
+        // Force video to be visible
+        heroVideo.style.display = 'block';
+        heroVideo.style.visibility = 'visible';
+        heroVideo.style.opacity = '1';
+        heroVideo.style.zIndex = '1';
+        
+        // Force video to play - especially for mobile
+        heroVideo.muted = true;
+        heroVideo.playsInline = true;
+        heroVideo.setAttribute('autoplay', '');
+        heroVideo.setAttribute('muted', '');
+        heroVideo.setAttribute('loop', '');
+        heroVideo.setAttribute('playsinline', '');
+        heroVideo.setAttribute('webkit-playsinline', '');
+        
+        // Force video visibility on mobile
+        heroVideo.style.position = 'absolute';
+        heroVideo.style.top = '0';
+        heroVideo.style.left = '0';
+        heroVideo.style.width = '100%';
+        heroVideo.style.height = '100%';
+        heroVideo.style.objectFit = 'cover';
+        heroVideo.style.zIndex = '1';
+        heroVideo.style.display = 'block';
+        heroVideo.style.visibility = 'visible';
+        heroVideo.style.opacity = '1';
+        
+        // Try to play immediately
+        const playVideo = () => {
+            heroVideo.play().catch(error => {
+                console.log('Video autoplay prevented:', error);
+            });
+        };
+        
+        // Play on load
+        heroVideo.addEventListener('loadeddata', function() {
+            console.log('Video loaded, attempting to play');
+            playVideo();
+        });
+        heroVideo.addEventListener('canplay', function() {
+            console.log('Video can play, attempting to play');
+            playVideo();
+        });
+        
+        // Play on any user interaction
+        ['click', 'touchstart', 'scroll', 'mousemove'].forEach(event => {
+            document.addEventListener(event, function initVideo() {
+                playVideo();
+            }, { once: true });
+        });
+
+        // Handle video errors - DO NOT add background image
+        heroVideo.addEventListener('error', function(e) {
+            console.error('Video failed to load:', e);
+            // DO NOT add background image - keep it transparent
+        });
+
+        // Pause video when not visible (performance optimization)
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    playVideo();
+                } else {
+                    heroVideo.pause();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        videoObserver.observe(heroVideo);
+        
+        // Initial play attempt
+        setTimeout(playVideo, 100);
+        playVideo();
+    }
+
     // Video Sound Toggle Functionality
     const videoSoundToggle = document.querySelector('.video-sound-toggle');
-    const heroVideo = document.querySelector('.hero-video');
+    const heroVideoOld = document.querySelector('.hero-video');
     
-    if (videoSoundToggle && heroVideo) {
+    if (videoSoundToggle && heroVideoOld) {
         let isMuted = true;
         
         // Attempt to play video

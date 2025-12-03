@@ -117,7 +117,7 @@
         "keywords": "regenerative innovation village, eco-friendly Nigeria, off-grid living, luxury villas, wellness retreat, youth sports academy, sustainable development, Kobape Abeokuta, Ogun State tourism"
     }
     </script>
-    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png">
@@ -162,10 +162,12 @@
     <div class="menu-overlay"></div>
 
     <main>
-        <section class="hero" style="background: linear-gradient(135deg, rgba(97, 48, 13, 0.7), rgba(230, 137, 70, 0.6)), url('100plots/drone-image.jpg') center/cover no-repeat;">
-            <div class="hero-video-overlay"></div>
-            <div class="hero-content">
-                <div class="hero-badge">Now Available</div>
+        <section class="hero" style="background: transparent !important; background-image: none !important;">
+            <video id="hero-video" autoplay muted loop playsinline webkit-playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: block;">
+                <source src="100plots/droneview.mov" type="video/quicktime">
+                <source src="100plots/droneview.mov" type="video/mp4">
+            </video>
+            <div class="hero-content" style="position: relative; z-index: 10;">
                 <h1 class="hero-title">
                     <span class="hero-title-main">Welcome to</span>
                     <span class="hero-title-highlight">2 Seasons</span>

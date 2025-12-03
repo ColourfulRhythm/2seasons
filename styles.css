@@ -346,17 +346,8 @@ nav {
     opacity: 1;
 }
 
-/* Hero Section */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 1rem;
-    background: linear-gradient(135deg, rgba(247, 225, 184, 0.9), rgba(230, 137, 70, 0.7));
-}
+/* Hero Section - Base styles removed, using enhanced hero below */
+/* OLD HERO STYLES REMOVED - Using video hero below */
 
 .hero h1 {
     font-family: 'Playfair Display', serif;
@@ -1207,29 +1198,35 @@ footer {
    LUXURY DESIGN ENHANCEMENTS
    ============================================ */
 
-/* Enhanced Hero Section with Image Background */
+/* Enhanced Hero Section with Video Background - NO OVERLAY */
 .hero {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    position: relative !important;
+    height: 100vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    background-image: none !important;
 }
 
-.hero-video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    z-index: 1;
+.hero video {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    z-index: 1 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 10;
     text-align: center;
     color: white;
     max-width: 1200px;
@@ -1543,6 +1540,31 @@ footer {
 
 /* Responsive Design for Luxury Elements */
 @media (max-width: 768px) {
+    .hero {
+        position: relative !important;
+        height: 100vh !important;
+        background: transparent !important;
+        background-image: none !important;
+    }
+    
+    .hero video {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        z-index: 1 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    .hero-content {
+        position: relative !important;
+        z-index: 10 !important;
+    }
+    
     .hero-title-main {
         font-size: 1.5rem;
     }
