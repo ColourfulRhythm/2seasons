@@ -9,9 +9,9 @@
     <meta property="og:description" content="Secure your piece of Africa's first regenerative innovation village. Limited plots available.">
     <meta property="og:image" content="https://2seasonsabk.store/100plots/site-plans.jpg">
     
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png">
     
     <!-- Meta Pixel Code -->
@@ -30,6 +30,20 @@
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=579728473798550&ev=PageView&noscript=1"/></noscript>
     
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f7;
+            color: #000000;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
         /* High-Converting Landing Page Styles */
         .pitch-hero {
             min-height: 95vh;
@@ -69,7 +83,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(97, 48, 13, 0.85), rgba(230, 137, 70, 0.75));
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4));
             z-index: 1;
         }
 
@@ -99,43 +113,46 @@
         }
 
         .pitch-headline {
-            font-size: 5rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
+            font-size: 5.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
             line-height: 1.1;
             margin-bottom: 1.5rem;
+            color: #ffffff;
         }
 
         .pitch-headline em {
             font-style: italic;
-            color: var(--accent-color);
+            color: #ff662a;
         }
 
         .pitch-subheadline {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
+            font-weight: 400;
             line-height: 1.6;
             margin-bottom: 3rem;
-            opacity: 0.95;
+            color: #ffffff;
+            letter-spacing: -0.01em;
         }
 
         .pitch-cta-primary {
             display: inline-block;
-            background: var(--accent-color);
-            color: var(--primary-color);
-            padding: 1.5rem 4rem;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            font-weight: 700;
+            background: #ff662a;
+            color: white;
+            padding: 1.25rem 3rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(247, 225, 184, 0.5);
+            box-shadow: 0 10px 30px rgba(255, 102, 42, 0.3);
             margin-bottom: 1rem;
         }
 
         .pitch-cta-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 50px rgba(247, 225, 184, 0.7);
-            background: white;
+            background: #61310d;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 102, 42, 0.4);
         }
 
         .pitch-cta-secondary {
@@ -148,7 +165,7 @@
 
         /* Benefits Section */
         .benefits-section {
-            background: white;
+            background: #f5f5f7;
             padding: 6rem 2rem;
         }
 
@@ -164,8 +181,9 @@
 
         .benefits-header h2 {
             font-size: 3.5rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
             margin-bottom: 1rem;
         }
 
@@ -178,22 +196,23 @@
         .benefit-card {
             text-align: center;
             padding: 2.5rem;
-            background: linear-gradient(135deg, #fafaf8, #ffffff);
-            border-radius: 20px;
+            background: #ffffff;
+            border-radius: 18px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
         .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
         }
 
         .benefit-icon {
             width: 80px;
             height: 80px;
             margin: 0 auto 2rem;
-            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
-            border-radius: 50%;
+            background: #ff662a;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -206,19 +225,21 @@
 
         .benefit-card h3 {
             font-size: 1.8rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #61310d;
             margin-bottom: 1rem;
         }
 
         .benefit-card p {
-            color: #666;
+            color: #86868b;
             line-height: 1.7;
+            font-size: 1rem;
         }
 
         /* Social Proof */
         .social-proof-section {
-            background: linear-gradient(135deg, #fafaf8, #ffffff);
+            background: #ffffff;
             padding: 6rem 2rem;
         }
 
@@ -230,8 +251,9 @@
 
         .social-proof-container h2 {
             font-size: 3rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
             margin-bottom: 3rem;
         }
 
@@ -243,10 +265,17 @@
         }
 
         .testimonial-card {
-            background: white;
+            background: #f5f5f7;
             padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            background: #ffffff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
         }
 
         .testimonial-stars {
@@ -265,7 +294,7 @@
 
         .testimonial-author {
             font-weight: 600;
-            color: var(--primary-color);
+            color: #61310d;
         }
 
         .trust-badges {
@@ -285,14 +314,14 @@
 
         .trust-badge i {
             font-size: 2rem;
-            color: var(--secondary-color);
+            color: #ff662a;
             margin-right: 0.5rem;
         }
 
         /* Visual Gallery */
         .visual-section {
             padding: 6rem 2rem;
-            background: white;
+            background: #f5f5f7;
         }
 
         .visual-container {
@@ -307,8 +336,9 @@
 
         .visual-header h2 {
             font-size: 3.5rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
         }
 
         .visual-grid {
@@ -319,9 +349,16 @@
 
         .visual-item {
             position: relative;
-            border-radius: 15px;
+            border-radius: 18px;
             overflow: hidden;
             height: 350px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .visual-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         .visual-item img {
@@ -337,8 +374,8 @@
 
         /* Conversion Form */
         .conversion-section {
-            background: linear-gradient(135deg, var(--primary-color), #4a1f0a);
-            color: white;
+            background: #f5f5f7;
+            color: #1d1d1f;
             padding: 7rem 2rem;
         }
 
@@ -350,73 +387,82 @@
 
         .conversion-container h2 {
             font-size: 3.5rem;
-            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
             margin-bottom: 1rem;
         }
 
         .conversion-container p {
             font-size: 1.2rem;
+            color: #86868b;
             margin-bottom: 3rem;
-            opacity: 0.95;
         }
 
         .conversion-form {
             background: white;
             padding: 3rem;
             border-radius: 20px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             text-align: left;
         }
 
         .form-group label {
             display: block;
-            color: var(--primary-color);
-            font-weight: 600;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #86868b;
             margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 1rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            color: #1d1d1f;
         }
 
         .form-group input:focus,
         .form-group select:focus {
-            border-color: var(--secondary-color);
             outline: none;
+            border-color: #ff662a;
+            box-shadow: 0 0 0 4px rgba(255, 102, 42, 0.1);
         }
 
         .form-submit {
             width: 100%;
-            padding: 1.3rem;
-            background: var(--secondary-color);
+            padding: 1.25rem;
+            background: #ff662a;
             color: white;
             border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            letter-spacing: -0.01em;
         }
 
         .form-submit:hover {
-            background: var(--primary-color);
+            background: #61310d;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(97, 48, 13, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 102, 42, 0.3);
         }
 
         /* Scarcity Section */
         .scarcity-section {
-            background: #ff4444;
+            background: #ff662a;
             color: white;
             padding: 2rem;
             text-align: center;
@@ -449,30 +495,32 @@
 
         .scarcity-cta {
             background: white;
-            color: #ff4444;
+            color: #ff662a;
             padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 700;
+            border-radius: 12px;
+            font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
         }
 
         .scarcity-cta:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.5);
+            background: #61310d;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
         /* Enhanced Menu Styles */
         .luxury-header {
             backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.98) !important;
-            border-bottom: 1px solid rgba(97, 48, 13, 0.08);
+            background: rgba(255, 255, 255, 0.8) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
         }
 
         .luxury-header.scrolled {
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-            background: rgba(255, 255, 255, 0.99) !important;
+            background: rgba(255, 255, 255, 0.95) !important;
         }
 
         .luxury-nav {
@@ -484,37 +532,31 @@
         }
 
         .nav-links-luxury li a {
-            font-size: 0.92rem;
-            font-weight: 500;
-            letter-spacing: 0.3px;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #000000;
             padding: 0.5rem 0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-links-luxury li a::after {
-            height: 2.5px;
-            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-            border-radius: 2px;
+            transition: color 0.3s ease;
         }
 
         .nav-links-luxury li a:hover {
-            color: var(--secondary-color);
-            transform: translateY(-1px);
+            color: #ff662a;
         }
 
         .cta-nav {
-            background: linear-gradient(135deg, var(--primary-color), #4a1f0a);
+            background: #ff662a;
+            color: white;
             padding: 0.75rem 1.8rem;
-            border-radius: 30px;
+            border-radius: 12px;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(97, 48, 13, 0.2);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(255, 102, 42, 0.2);
+            transition: all 0.3s ease;
         }
 
         .cta-nav:hover {
-            background: linear-gradient(135deg, var(--secondary-color), #d67a3d);
+            background: #61310d;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(230, 137, 70, 0.35);
+            box-shadow: 0 6px 20px rgba(255, 102, 42, 0.3);
         }
 
         /* Improved Media Layout */
@@ -642,7 +684,7 @@
 
         /* Partners Section - Horizontal Sliding Bento Cards */
         .partners-section {
-            background: linear-gradient(135deg, #fafaf8, #ffffff);
+            background: #ffffff;
             padding: 5rem 2rem;
             overflow: hidden;
         }
@@ -659,8 +701,9 @@
 
         .partners-header h2 {
             font-size: 3rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
             margin-bottom: 0.5rem;
         }
 
@@ -730,10 +773,10 @@
 
         .partner-badge {
             display: inline-block;
-            background: var(--accent-color);
-            color: var(--primary-color);
+            background: #ff662a;
+            color: white;
             padding: 0.3rem 0.8rem;
-            border-radius: 15px;
+            border-radius: 12px;
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -743,8 +786,9 @@
 
         .partner-card-content h3 {
             font-size: 1.3rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #61310d;
             margin-bottom: 0.7rem;
             line-height: 1.3;
         }
@@ -760,7 +804,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--secondary-color);
+            color: #ff662a;
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 600;
@@ -769,7 +813,7 @@
 
         .partner-learn-more:hover {
             gap: 0.8rem;
-            color: var(--primary-color);
+            color: #61310d;
         }
 
         .partner-learn-more i {
@@ -786,8 +830,8 @@
             top: 50%;
             transform: translateY(-50%);
             background: white;
-            border: 2px solid var(--accent-color);
-            color: var(--primary-color);
+            border: 2px solid #ff662a;
+            color: #ff662a;
             width: 45px;
             height: 45px;
             border-radius: 50%;
@@ -801,9 +845,9 @@
         }
 
         .slider-arrow:hover {
-            background: var(--secondary-color);
+            background: #ff662a;
             color: white;
-            border-color: var(--secondary-color);
+            border-color: #ff662a;
             transform: translateY(-50%) scale(1.1);
         }
 
@@ -874,7 +918,6 @@
                 <li><a href="/#villas">Villas</a></li>
                 <li><a href="/#wellness">Wellness</a></li>
                 <li><a href="/hyggetown">Hygge</a></li>
-                <li><a href="/stages">Stages</a></li>
                 <li><a href="/100plots">100 Plots</a></li>
                 <li><a href="/paymentplan">Payment Plan</a></li>
                 <li><a href="/partners">Partners</a></li>
@@ -1153,7 +1196,7 @@
             <div class="footer-section">
                 <h3>Contact</h3>
                 <p>Kobape, Abeokuta, Ogun State, Nigeria</p>
-                <p>Email: info@2seasons.com</p>
+                <p>Email: 2seasonsabk@2seasonsabk.store</p>
             </div>
             <div class="footer-section">
                 <h3>Follow Us</h3>

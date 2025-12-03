@@ -1369,7 +1369,7 @@
             .catch(error => {
                 submitButton.textContent = 'Try Again';
                 submitButton.disabled = false;
-                alert('Something went wrong. Please try again or contact us at info@2seasons.com');
+                alert('Something went wrong. Please try again or contact us at 2seasonsabk@2seasonsabk.store');
             });
         });
         
@@ -1594,7 +1594,7 @@
             
             // Prepare data for email submission
             const emailData = new FormData();
-            emailData.append('_to', 'info@2seasons.com'); // Update with your email
+            emailData.append('_to', '2seasonsabk@2seasonsabk.store');
             emailData.append('_subject', `New ${planType.charAt(0).toUpperCase() + planType.slice(1)} Membership Registration - Affiliate ID: ${memberAffiliateID}`);
             emailData.append('membershipType', planType);
             emailData.append('affiliateID', memberAffiliateID);
