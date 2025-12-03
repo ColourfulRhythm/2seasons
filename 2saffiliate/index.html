@@ -1279,6 +1279,15 @@
             currentPlanType = planType;
             const modal = document.getElementById('registrationModal');
             const formContainer = document.getElementById('formContainer');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            // Set modal title
+            const planNames = {
+                individual: 'Individual Membership',
+                team: 'Team Membership',
+                corporate: 'Corporate Membership'
+            };
+            modalTitle.textContent = planNames[planType] || 'Register';
             
             // Generate form based on plan type
             formContainer.innerHTML = generateFormHTML(planType);
@@ -1294,6 +1303,20 @@
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
+        
+        // Make plan cards clickable
+        document.querySelectorAll('.plan-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Don't trigger if clicking buttons
+                if (e.target.closest('.plan-share-btn') || e.target.closest('.plan-register-btn')) {
+                    return;
+                }
+                const planType = this.getAttribute('data-plan');
+                if (planType) {
+                    openRegistrationForm(planType);
+                }
+            });
+        });
         
         function closeRegistrationForm() {
             const modal = document.getElementById('registrationModal');
@@ -1374,8 +1397,8 @@
                             </select>
                         </div>
                         <div class="apple-form-group">
-                            <label class="apple-form-label">Affiliate That Invited You</label>
-                            <input type="text" name="affiliateId" class="apple-form-input" placeholder="Enter affiliate ID" ${currentAffiliateId ? `value="${currentAffiliateId}" readonly` : ''}>
+                            <label class="apple-form-label">Name</label>
+                            <input type="text" name="affiliateId" class="apple-form-input" placeholder="Enter name" ${currentAffiliateId ? `value="${currentAffiliateId}" readonly` : ''}>
                         </div>
                         <div class="apple-form-group">
                             <label class="apple-form-label">Additional Notes (Optional)</label>
@@ -1416,8 +1439,8 @@
                             </select>
                         </div>
                         <div class="apple-form-group">
-                            <label class="apple-form-label">Affiliate That Invited You</label>
-                            <input type="text" name="affiliateId" class="apple-form-input" placeholder="Enter affiliate ID" ${currentAffiliateId ? `value="${currentAffiliateId}" readonly` : ''}>
+                            <label class="apple-form-label">Name</label>
+                            <input type="text" name="affiliateId" class="apple-form-input" placeholder="Enter name" ${currentAffiliateId ? `value="${currentAffiliateId}" readonly` : ''}>
                         </div>
                         <div class="apple-form-group">
                             <label class="apple-form-label">Additional Notes (Optional)</label>
