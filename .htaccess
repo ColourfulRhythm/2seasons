@@ -1,0 +1,8 @@
+# Ensure files without extensions are served as HTML
+<FilesMatch "^2Saffiliate$">
+    ForceType text/html
+</FilesMatch>
+
+# Default MIME type for files without extensions
+DefaultType text/html
+
