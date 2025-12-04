@@ -319,6 +319,89 @@
             transform: scale(1.2);
         }
         
+        /* Video Section */
+        .video-section {
+            background: #ffffff;
+            padding: 6rem 2rem;
+        }
+        
+        .video-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .video-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .video-header h2 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+        
+        .video-header p {
+            font-size: 1.1rem;
+            color: #86868b;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .video-card {
+            background: #f5f5f7;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: #ff662a;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            background: #000;
+            overflow: hidden;
+        }
+        
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+        }
+        
+        .video-info h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #61310d;
+            margin-bottom: 0.5rem;
+        }
+        
+        .video-info p {
+            font-size: 0.95rem;
+            color: #86868b;
+        }
+        
         /* Membership CTA Section */
         .membership-cta-section {
             background: linear-gradient(135deg, #ff662a, #61310d);
@@ -395,8 +478,14 @@
             
             .features-intro h2,
             .carousel-header h2,
+            .video-header h2,
             .membership-cta-container h2 {
                 font-size: 2.5rem;
+            }
+            
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
             
             .features-grid {
@@ -554,6 +643,9 @@
                             <img src="wellnesshub/IMG_1408%204.JPG" alt="Wellness Hub" class="wellness-image">
                         </div>
                         <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/welness-hub.JPG" alt="Wellness Hub" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
                             <img src="wellnesshub/Premium%20Pod/premium.jpg" alt="Premium Pod" class="wellness-image">
                         </div>
                         <div class="wellness-carousel-slide">
@@ -563,16 +655,140 @@
                             <img src="wellnesshub/Premium%20Pod/prem1.jpg" alt="Premium Pod Interior" class="wellness-image">
                         </div>
                         <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/Premium%20Pod/prem12.jpg" alt="Premium Pod" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/Premium%20Pod/prem13.jpg" alt="Premium Pod" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/Premium%20Pod/prem14.jpg" alt="Premium Pod" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/Premium%20Pod/prem15.jpg" alt="Premium Pod" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
                             <img src="wellnesshub/Deluxe%20Pod/livingroom.JPG" alt="Deluxe Living Room" class="wellness-image">
                         </div>
                         <div class="wellness-carousel-slide">
                             <img src="wellnesshub/Deluxe%20Pod/deluxe%20Kitchen.JPG" alt="Deluxe Kitchen" class="wellness-image">
                         </div>
                         <div class="wellness-carousel-slide">
-                            <img src="wellnesshub/Premium%20Pod/prem12.jpg" alt="Premium Pod" class="wellness-image">
+                            <img src="wellnesshub/Deluxe%20Pod/deluxe%20Living%20room.JPG" alt="Deluxe Living Room" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/Deluxe%20Pod/deluxe%20Toilet.JPG" alt="Deluxe Toilet" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/scene4(1)_upscale01.jpg" alt="Wellness Hub Scene" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/scene7.jpg" alt="Wellness Hub Scene" class="wellness-image">
                         </div>
                     </div>
                     <div class="carousel-dots" id="carouselDots"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-section">
+            <div class="video-container">
+                <div class="video-header">
+                    <h2>Watch Our Wellness Hub</h2>
+                    <p>Experience the luxury and tranquility through our video tours</p>
+                </div>
+                
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video controls poster="wellnesshub/Premium%20Pod/premium.jpg">
+                                <source src="wellnesshub/Premium%20Pod/premium.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="video-info">
+                            <h3>Premium Pod Tour</h3>
+                            <p>Experience luxury in our premium accommodation pods</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video controls poster="wellnesshub/Premium%20Pod/prem1.jpg">
+                                <source src="wellnesshub/Premium%20Pod/premium2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="video-info">
+                            <h3>Premium Pod Interior</h3>
+                            <p>Take a closer look at our premium pod interiors</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video controls poster="wellnesshub/Premium%20Pod/prem12.jpg">
+                                <source src="wellnesshub/Premium%20Pod/premium3.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="video-info">
+                            <h3>Premium Pod Experience</h3>
+                            <p>Discover the comfort of our premium pods</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video controls poster="wellnesshub/Deluxe%20Pod/deluxecabinmain.jpg">
+                                <source src="wellnesshub/Deluxe%20Pod/deluxe.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="video-info">
+                            <h3>Deluxe Pod Tour</h3>
+                            <p>Explore our spacious deluxe accommodation pods</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video controls poster="wellnesshub/Deluxe%20Pod/livingroom.JPG">
+                                <source src="wellnesshub/Deluxe%20Pod/deluxe2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="video-info">
+                            <h3>Deluxe Pod Living Space</h3>
+                            <p>See the elegant living areas in our deluxe pods</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video controls poster="wellnesshub/Deluxe%20Pod/deluxecabinmain.jpg">
+                                <source src="wellnesshub/Deluxe%20Pod/deluxe3.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="video-info">
+                            <h3>Deluxe Pod Features</h3>
+                            <p>Discover all the features of our deluxe pods</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <video controls poster="wellnesshub/IMG_aeriel.JPG">
+                                <source src="wellnesshub/video-2025-03-12-00-27-02.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="video-info">
+                            <h3>Wellness Hub Overview</h3>
+                            <p>Get a comprehensive view of the entire Wellness Hub</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
