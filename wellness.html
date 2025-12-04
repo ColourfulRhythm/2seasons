@@ -4,196 +4,426 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2 Seasons Wellness Hub - Health & Nature Retreat</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Experience Africa's premier wellness destination. Premium pods, luxury spa, sports facilities, and nature experiences. Join now for exclusive early-bird membership discounts.">
+    <link rel="stylesheet" href="styles.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png">
+    
     <style>
-        .wellness-hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.pexels.com/photos/2255935/pexels-photo-2255935.jpeg');
-            background-size: cover;
-            background-position: center;
-            height: 70vh;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f7;
+            color: #000000;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            color: white;
-            padding: 2rem;
-        }
-
-        .wellness-hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .wellness-hero p {
-            font-size: 1.4rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .facilities-section {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .facility-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .facility-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .facility-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .facility-image {
-            height: 250px;
+            padding: 8rem 2rem 4rem;
+            background: transparent !important;
+            background-image: none !important;
+            position: relative;
             overflow: hidden;
         }
-
-        .facility-image img {
+        
+        .hero-section video,
+        .hero-section img {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            z-index: 1 !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4));
+            z-index: 2;
         }
-
-        .facility-card:hover .facility-image img {
-            transform: scale(1.1);
+        
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease;
+            position: relative;
+            z-index: 10;
         }
-
-        .facility-content {
-            padding: 2rem;
-        }
-
-        .facility-content h3 {
-            font-size: 1.8rem;
-            color: #2c3e50;
+        
+        .hero-title {
+            font-size: 5.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
             margin-bottom: 1rem;
-            font-family: 'Playfair Display', serif;
+            color: #ffffff;
         }
-
-        .facility-content p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            letter-spacing: -0.01em;
         }
-
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Features Section */
         .features-section {
-            background: #f8f9fa;
-            padding: 4rem 2rem;
-            margin-top: 4rem;
+            background: #ffffff;
+            padding: 6rem 2rem;
         }
-
+        
         .features-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        
+        .features-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .features-intro h2 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+        
+        .features-intro p {
+            font-size: 1.2rem;
+            color: #86868b;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        
+        .feature-category {
+            background: #f5f5f7;
+            border-radius: 18px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
-
-        .feature-card i {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            margin-bottom: 1rem;
+        
+        .feature-category:hover {
+            background: #ffffff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: #ff662a;
         }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            color: #2c3e50;
-            margin-bottom: 1rem;
+        
+        .feature-category-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #61310d;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
-
-        .feature-card ul {
+        
+        .feature-category-title i {
+            color: #ff662a;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 102, 42, 0.1);
+            border-radius: 12px;
+        }
+        
+        .feature-list {
             list-style: none;
-            padding: 0;
-            margin: 0;
         }
-
-        .feature-card ul li {
-            color: #666;
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
+        
+        .feature-list li {
+            padding: 1rem 0;
+            color: #1d1d1f;
+            font-size: 1rem;
+            border-bottom: 1px solid #e5e5e7;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list li i {
+            color: #ff662a;
+            font-size: 0.875rem;
+            width: 20px;
+        }
+        
+        /* Image Carousel */
+        .carousel-section {
+            background: #f5f5f7;
+            padding: 6rem 2rem;
+        }
+        
+        .carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .carousel-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .carousel-header h2 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+        
+        .wellness-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .wellness-carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .wellness-carousel-slide {
+            min-width: 100%;
             position: relative;
         }
-
-        .feature-card ul li:before {
-            content: "•";
-            color: #3498db;
-            position: absolute;
-            left: 0;
+        
+        .wellness-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+            background: #f5f5f7;
         }
-
-        .purpose-section {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .carousel-nav:hover {
+            background: #ff662a;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-nav:hover i {
             color: white;
-            padding: 4rem 2rem;
+        }
+        
+        .carousel-nav i {
+            font-size: 1.2rem;
+            color: #1d1d1f;
+            transition: color 0.3s ease;
+        }
+        
+        .carousel-nav.prev {
+            left: 2rem;
+        }
+        
+        .carousel-nav.next {
+            right: 2rem;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #d2d2d7;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+        
+        .carousel-dot.active {
+            background: #ff662a;
+            width: 32px;
+            border-radius: 6px;
+        }
+        
+        .carousel-dot:hover {
+            background: #ff662a;
+            transform: scale(1.2);
+        }
+        
+        /* Membership CTA Section */
+        .membership-cta-section {
+            background: linear-gradient(135deg, #ff662a, #61310d);
+            color: white;
+            padding: 6rem 2rem;
             text-align: center;
         }
-
-        .purpose-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .purpose-section p {
+        
+        .membership-cta-container {
             max-width: 800px;
             margin: 0 auto;
-            font-size: 1.2rem;
-            line-height: 1.8;
         }
-
-        .cta-section {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: white;
-        }
-
-        .cta-section h2 {
-            font-size: 2.5rem;
-            color: #2c3e50;
+        
+        .membership-cta-container h2 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
             margin-bottom: 1.5rem;
         }
-
+        
+        .membership-cta-container p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .discount-badge {
+            display: inline-block;
+            background: white;
+            color: #ff662a;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
         .cta-button {
             display: inline-block;
-            padding: 1rem 2rem;
-            background: #2c3e50;
-            color: white;
+            padding: 1.25rem 3rem;
+            background: white;
+            color: #ff662a;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 12px;
+            font-size: 1.2rem;
             font-weight: 600;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
-
+        
         .cta-button:hover {
-            transform: scale(1.05);
+            background: #f5f5f7;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .opening-date {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .features-intro h2,
+            .carousel-header h2,
+            .membership-cta-container h2 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .feature-category {
+                padding: 2rem;
+            }
+            
+            .wellness-image {
+                height: 400px;
+            }
+            
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .carousel-nav.prev {
+                left: 1rem;
+            }
+            
+            .carousel-nav.next {
+                right: 1rem;
+            }
         }
     </style>
 </head>
@@ -221,101 +451,141 @@
     <div class="menu-overlay"></div>
 
     <main>
-        <section class="wellness-hero">
-            <h1>2 Seasons Wellness Hub</h1>
-            <p>Where nature meets wellness in perfect harmony</p>
-        </section>
-
-        <section class="facilities-section">
-            <div class="facility-grid">
-                <div class="facility-card">
-                    <div class="facility-image">
-                        <img src="assets/images/natural-therapy-and-spa.jpg" alt="Natural Therapy & Spa">
-                    </div>
-                    <div class="facility-content">
-                        <h3>Natural Therapy & Spa</h3>
-                        <p>Holistic wellness center featuring massage rooms, yoga pavilions, spa services, and outdoor fitness areas for complete mind-body rejuvenation.</p>
-                    </div>
-                </div>
-                <div class="facility-card">
-                    <div class="facility-image">
-                        <img src="assets/images/plant-based-dining.jpg" alt="Plant-Based Dining">
-                    </div>
-                    <div class="facility-content">
-                        <h3>Plant-Based Restaurants</h3>
-                        <p>Healthy dining options including plant-based restaurants, juice bars, tea houses, and organic cafes for nourishing meals.</p>
-                    </div>
-                </div>
-                <div class="facility-card">
-                    <div class="facility-image">
-                        <img src="assets/images/farming-nature.jpg" alt="Farming & Nature">
-                    </div>
-                    <div class="facility-content">
-                        <h3>Farming & Nature</h3>
-                        <p>On-site food forests and agro spaces for sustainability, providing fresh organic produce and a connection to nature.</p>
-                    </div>
-                </div>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <img src="wellnesshub/IMG_aeriel.JPG" alt="2 Seasons Wellness Hub Aerial View">
+            <div class="hero-content">
+                <h1 class="hero-title">2 Seasons Wellness Hub</h1>
+                <p class="hero-subtitle">Where nature meets wellness in perfect harmony</p>
             </div>
         </section>
 
+        <!-- Features Section -->
         <section class="features-section">
             <div class="features-container">
+                <div class="features-intro">
+                    <h2>Wellness Hub Features</h2>
+                    <p>The Wellness Hub features a curated collection of nature-driven, wellness-focused, and recreation-ready experiences, including:</p>
+                </div>
+                
                 <div class="features-grid">
-                    <div class="feature-card">
-                        <i class="fas fa-spa"></i>
-                        <h3>Natural Therapy & Wellness</h3>
-                        <ul>
-                            <li>Massage rooms</li>
-                            <li>Yoga pavilions</li>
-                            <li>Spa services</li>
-                            <li>Outdoor fitness areas</li>
+                    <div class="feature-category">
+                        <h3 class="feature-category-title">
+                            <i class="fas fa-spa"></i>
+                            Wellness & Relaxation
+                        </h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Luxury Spa</li>
+                            <li><i class="fas fa-check"></i> Sauna</li>
+                            <li><i class="fas fa-check"></i> Natural Swimming Pool</li>
+                            <li><i class="fas fa-check"></i> Premium Pods</li>
+                            <li><i class="fas fa-check"></i> Deluxe Pods</li>
+                            <li><i class="fas fa-check"></i> Yoga Pavilion</li>
+                            <li><i class="fas fa-check"></i> Pilates Deck</li>
+                            <li><i class="fas fa-check"></i> Outdoor Cinema</li>
+                            <li><i class="fas fa-check"></i> Book Shop</li>
+                            <li><i class="fas fa-check"></i> Coffee Shop</li>
+                            <li><i class="fas fa-check"></i> Smoothie Bar</li>
                         </ul>
                     </div>
-                    <div class="feature-card">
-                        <i class="fas fa-futbol"></i>
-                        <h3>Sports Facilities</h3>
-                        <ul>
-                            <li>Football fields</li>
-                            <li>Lawn tennis courts</li>
-                            <li>Basketball courts</li>
-                            <li>Table tennis</li>
-                            <li>Swimming pool</li>
-                            <li>Gym facilities</li>
+                    
+                    <div class="feature-category">
+                        <h3 class="feature-category-title">
+                            <i class="fas fa-leaf"></i>
+                            Nature & Lifestyle
+                        </h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> 4-Acre Fruit Forest</li>
+                            <li><i class="fas fa-check"></i> Scenic Hiking Trail</li>
+                            <li><i class="fas fa-check"></i> Swings & Relaxation Zones</li>
                         </ul>
                     </div>
-                    <div class="feature-card">
-                        <i class="fas fa-leaf"></i>
-                        <h3>Farming & Nature</h3>
-                        <ul>
-                            <li>On-site food forests</li>
-                            <li>Agro spaces</li>
-                            <li>Sustainability programs</li>
-                            <li>Organic produce</li>
+                    
+                    <div class="feature-category">
+                        <h3 class="feature-category-title">
+                            <i class="fas fa-dumbbell"></i>
+                            Sports & Fitness
+                        </h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Fully Equipped Gym</li>
+                            <li><i class="fas fa-check"></i> Two Lawn Tennis Courts</li>
+                            <li><i class="fas fa-check"></i> Two Basketball Courts</li>
+                            <li><i class="fas fa-check"></i> Two 7-Aside Football Pitches</li>
+                            <li><i class="fas fa-check"></i> Multiple Table Tennis Stations</li>
+                            <li><i class="fas fa-check"></i> 100m Sprint Track</li>
                         </ul>
                     </div>
-                    <div class="feature-card">
-                        <i class="fas fa-utensils"></i>
-                        <h3>Plant-Based Dining</h3>
-                        <ul>
-                            <li>Plant-based restaurants</li>
-                            <li>Juice bars</li>
-                            <li>Tea houses</li>
-                            <li>Organic cafes</li>
+                    
+                    <div class="feature-category">
+                        <h3 class="feature-category-title">
+                            <i class="fas fa-utensils"></i>
+                            Food & Social
+                        </h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Pizza Hut</li>
+                            <li><i class="fas fa-check"></i> Smoothie & Juice Stations</li>
+                            <li><i class="fas fa-check"></i> Social Pods & Chill Zones</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="purpose-section">
-            <h2>Health-Focused Lifestyle</h2>
-            <p>2 Seasons Wellness Hub is designed to promote a health-focused lifestyle while adding eco-luxury brand value. Our comprehensive wellness facilities and natural surroundings create the perfect environment for both residents and tourists seeking a balanced, healthy lifestyle.</p>
+        <!-- Image Carousel Section -->
+        <section class="carousel-section">
+            <div class="carousel-container">
+                <div class="carousel-header">
+                    <h2>Experience the Wellness Hub</h2>
+                    <p style="font-size: 1.1rem; color: #86868b;">Take a visual journey through our premium facilities</p>
+                </div>
+                
+                <div class="wellness-carousel">
+                    <button class="carousel-nav prev" onclick="moveCarousel(-1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-nav next" onclick="moveCarousel(1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="wellness-carousel-track" id="carouselTrack">
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/IMG_aeriel.JPG" alt="Wellness Hub Aerial View" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/IMG_1408%204.JPG" alt="Wellness Hub" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/Premium%20Pod/premium.jpg" alt="Premium Pod" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/Deluxe%20Pod/deluxecabinmain.jpg" alt="Deluxe Cabin" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/Premium%20Pod/prem1.jpg" alt="Premium Pod Interior" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/Deluxe%20Pod/livingroom.JPG" alt="Deluxe Living Room" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/Deluxe%20Pod/deluxe%20Kitchen.JPG" alt="Deluxe Kitchen" class="wellness-image">
+                        </div>
+                        <div class="wellness-carousel-slide">
+                            <img src="wellnesshub/Premium%20Pod/prem12.jpg" alt="Premium Pod" class="wellness-image">
+                        </div>
+                    </div>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                </div>
+            </div>
         </section>
 
-        <section class="cta-section">
-            <h2>Begin Your Wellness Journey</h2>
-            <p>Experience the perfect blend of nature and wellness</p>
-            <a href="#contact" class="cta-button">Contact Us</a>
+        <!-- Membership CTA Section -->
+        <section class="membership-cta-section">
+            <div class="membership-cta-container">
+                <h2>Join the Wellness Hub</h2>
+                <p>Secure your membership today and enjoy exclusive early-bird pricing</p>
+                <div class="discount-badge">🎉 Special Discount: 1 Year Membership at Reduced Rate</div>
+                <a href="/membership" class="cta-button">Join Membership Now</a>
+                <p class="opening-date">Opening December 2026 • Limited Early-Bird Spots Available</p>
+            </div>
         </section>
     </main>
 
@@ -327,7 +597,7 @@
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p>Abeokuta, Nigeria</p>
+                <p>Kobape, Abeokuta, Ogun State, Nigeria</p>
                 <p>Email: 2seasonsabk@2seasonsabk.store</p>
             </div>
             <div class="footer-section">
@@ -346,5 +616,71 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Carousel Functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.wellness-carousel-slide');
+        const totalSlides = slides.length;
+        const track = document.getElementById('carouselTrack');
+        const dotsContainer = document.getElementById('carouselDots');
+        
+        // Create dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'carousel-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.setAttribute('onclick', `goToSlide(${i})`);
+            dotsContainer.appendChild(dot);
+        }
+        
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update dots
+            document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function moveCarousel(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            } else if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            }
+            updateCarousel();
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+        
+        // Auto-play carousel
+        let autoPlayInterval = setInterval(() => {
+            moveCarousel(1);
+        }, 5000);
+        
+        // Pause on hover
+        const carousel = document.querySelector('.wellness-carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoPlayInterval);
+            });
+            carousel.addEventListener('mouseleave', () => {
+                autoPlayInterval = setInterval(() => {
+                    moveCarousel(1);
+                }, 5000);
+            });
+        }
+        
+        // Initialize carousel
+        updateCarousel();
+    </script>
 </body>
-</html> 
+</html>
