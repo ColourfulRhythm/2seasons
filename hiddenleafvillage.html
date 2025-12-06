@@ -33,13 +33,17 @@
             justify-content: center;
             text-align: center;
             padding: 4rem 2rem 2rem;
-            background: linear-gradient(135deg, rgba(255, 102, 42, 0.1), rgba(97, 48, 13, 0.1));
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url('wellnesshub/Deluxe%20Pod/deluxecabinmain.jpg');
+            background-size: cover;
+            background-position: center;
             position: relative;
         }
         
         .hero-content {
             max-width: 900px;
             animation: fadeInUp 1s ease;
+            position: relative;
+            z-index: 2;
         }
         
         .hero-title {
@@ -47,15 +51,16 @@
             font-weight: 600;
             letter-spacing: -0.02em;
             margin-bottom: 0.75rem;
-            color: #1d1d1f;
+            color: #ffffff;
         }
         
         .hero-subtitle {
             font-size: 1.2rem;
             font-weight: 400;
-            color: #86868b;
+            color: #ffffff;
             margin-bottom: 0;
             letter-spacing: -0.01em;
+            opacity: 0.95;
         }
         
         @keyframes fadeInUp {
@@ -132,6 +137,21 @@
         .category-subtitle {
             font-size: 1rem;
             color: #86868b;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ff662a;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        .category-card:hover .category-cta {
+            gap: 0.75rem;
         }
         
         /* Product Detail Section */
@@ -603,6 +623,10 @@
                     </div>
                     <h2 class="category-title">Premium Pods</h2>
                     <p class="category-subtitle">2 Bedrooms • Luxury Amenities</p>
+                    <div class="category-cta">
+                        <span>Book Now</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
                 </div>
                 
                 <div class="category-card" onclick="showProductDetail('deluxe')">
@@ -611,6 +635,10 @@
                     </div>
                     <h2 class="category-title">Deluxe Pods</h2>
                     <p class="category-subtitle">1 Bedroom • Cozy Comfort</p>
+                    <div class="category-cta">
+                        <span>Book Now</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
                 </div>
                 
                 <div class="category-card" onclick="showProductDetail('amenities')">
@@ -619,6 +647,10 @@
                     </div>
                     <h2 class="category-title">Village Amenities</h2>
                     <p class="category-subtitle">Everything you need for the perfect stay</p>
+                    <div class="category-cta">
+                        <span>View Details</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
                 </div>
             </div>
         </section>
@@ -632,6 +664,17 @@
             <div class="product-header">
                 <h1>Premium Pod</h1>
                 <p>Luxury accommodation with 2 bedrooms and premium amenities</p>
+            </div>
+            
+            <div class="date-input-alternative" style="max-width: 600px; margin: 2rem auto 3rem;">
+                <div class="date-input-group">
+                    <label for="checkInPremium">Check-in Date</label>
+                    <input type="date" id="checkInPremium" name="checkIn" min="2026-12-01" onchange="updateDatesFromInput('premium')">
+                </div>
+                <div class="date-input-group">
+                    <label for="checkOutPremium">Check-out Date</label>
+                    <input type="date" id="checkOutPremium" name="checkOut" min="2026-12-02" onchange="updateDatesFromInput('premium')">
+                </div>
             </div>
             
             <div class="product-media">
@@ -731,37 +774,6 @@
             </div>
             
             <div class="booking-section">
-                <h2>Availability</h2>
-                <p class="booking-info">You can book stays from December 2026 onward. Choose your dates below.</p>
-                
-                <div class="calendar-container">
-                    <div class="calendar-wrapper">
-                        <div class="calendar-month" id="calendarMonth">December 2026</div>
-                        <div class="calendar-grid">
-                            <div class="calendar-day-header">Sun</div>
-                            <div class="calendar-day-header">Mon</div>
-                            <div class="calendar-day-header">Tue</div>
-                            <div class="calendar-day-header">Wed</div>
-                            <div class="calendar-day-header">Thu</div>
-                            <div class="calendar-day-header">Fri</div>
-                            <div class="calendar-day-header">Sat</div>
-                            <div id="calendarDays"></div>
-                        </div>
-                        <p class="calendar-note">Select any available date from December 2026.</p>
-                    </div>
-                    
-                    <div class="date-input-alternative">
-                        <div class="date-input-group">
-                            <label for="checkInPremium">Check-in Date</label>
-                            <input type="date" id="checkInPremium" name="checkIn" min="2026-12-01" onchange="updateDatesFromInput('premium')">
-                        </div>
-                        <div class="date-input-group">
-                            <label for="checkOutPremium">Check-out Date</label>
-                            <input type="date" id="checkOutPremium" name="checkOut" min="2026-12-02" onchange="updateDatesFromInput('premium')">
-                        </div>
-                    </div>
-                </div>
-                
                 <div class="booking-summary" id="bookingSummary">
                     <h3 class="summary-title">Your Booking</h3>
                     <div class="summary-item">
@@ -801,6 +813,17 @@
             <div class="product-header">
                 <h1>Deluxe Pod</h1>
                 <p>Cozy accommodation with 1 bedroom and all essential amenities</p>
+            </div>
+            
+            <div class="date-input-alternative" style="max-width: 600px; margin: 2rem auto 3rem;">
+                <div class="date-input-group">
+                    <label for="checkInDeluxe">Check-in Date</label>
+                    <input type="date" id="checkInDeluxe" name="checkIn" min="2026-12-01" onchange="updateDatesFromInput('deluxe')">
+                </div>
+                <div class="date-input-group">
+                    <label for="checkOutDeluxe">Check-out Date</label>
+                    <input type="date" id="checkOutDeluxe" name="checkOut" min="2026-12-02" onchange="updateDatesFromInput('deluxe')">
+                </div>
             </div>
             
             <div class="product-media">
@@ -900,37 +923,6 @@
             </div>
             
             <div class="booking-section">
-                <h2>Availability</h2>
-                <p class="booking-info">You can book stays from December 2026 onward. Choose your dates below.</p>
-                
-                <div class="calendar-container">
-                    <div class="calendar-wrapper">
-                        <div class="calendar-month" id="calendarMonthDeluxe">December 2026</div>
-                        <div class="calendar-grid">
-                            <div class="calendar-day-header">Sun</div>
-                            <div class="calendar-day-header">Mon</div>
-                            <div class="calendar-day-header">Tue</div>
-                            <div class="calendar-day-header">Wed</div>
-                            <div class="calendar-day-header">Thu</div>
-                            <div class="calendar-day-header">Fri</div>
-                            <div class="calendar-day-header">Sat</div>
-                            <div id="calendarDaysDeluxe"></div>
-                        </div>
-                        <p class="calendar-note">Select any available date from December 2026.</p>
-                    </div>
-                    
-                    <div class="date-input-alternative">
-                        <div class="date-input-group">
-                            <label for="checkInDeluxe">Check-in Date</label>
-                            <input type="date" id="checkInDeluxe" name="checkIn" min="2026-12-01" onchange="updateDatesFromInput('deluxe')">
-                        </div>
-                        <div class="date-input-group">
-                            <label for="checkOutDeluxe">Check-out Date</label>
-                            <input type="date" id="checkOutDeluxe" name="checkOut" min="2026-12-02" onchange="updateDatesFromInput('deluxe')">
-                        </div>
-                    </div>
-                </div>
-                
                 <div class="booking-summary" id="bookingSummaryDeluxe">
                     <h3 class="summary-title">Your Booking</h3>
                     <div class="summary-item">
@@ -1110,78 +1102,13 @@
             
             if (type === 'premium') {
                 document.getElementById('premiumDetail').classList.add('active');
-                initCalendar('calendarDays', 'premium');
             } else if (type === 'deluxe') {
                 document.getElementById('deluxeDetail').classList.add('active');
-                initCalendar('calendarDaysDeluxe', 'deluxe');
             } else if (type === 'amenities') {
                 document.getElementById('amenitiesDetail').classList.add('active');
             }
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        // Calendar functionality
-        function initCalendar(containerId, podType) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = '';
-            
-            // December 2026 starts on Tuesday (0 = Sunday, 2 = Tuesday)
-            const startDate = new Date(2026, 11, 1); // December 2026
-            const firstDay = startDate.getDay();
-            const daysInMonth = 31;
-            
-            // Add empty cells for days before December 1
-            for (let i = 0; i < firstDay; i++) {
-                const emptyDay = document.createElement('div');
-                emptyDay.className = 'calendar-day disabled';
-                container.appendChild(emptyDay);
-            }
-            
-            // Add days of December 2026
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dayElement = document.createElement('div');
-                dayElement.className = 'calendar-day available';
-                dayElement.textContent = day;
-                dayElement.onclick = () => selectDate(day, podType, containerId);
-                container.appendChild(dayElement);
-            }
-        }
-        
-        let selectedStartDate = null;
-        let selectedEndDate = null;
-        
-        function selectDate(day, podType, containerId) {
-            const container = document.getElementById(containerId);
-            const days = container.querySelectorAll('.calendar-day.available');
-            
-            if (!selectedStartDate || (selectedStartDate && selectedEndDate)) {
-                // Start new selection
-                selectedStartDate = day;
-                selectedEndDate = null;
-                days.forEach(d => {
-                    d.classList.remove('selected', 'range');
-                });
-                days[day - 1].classList.add('selected');
-            } else {
-                // Select end date
-                selectedEndDate = day;
-                const start = Math.min(selectedStartDate, selectedEndDate);
-                const end = Math.max(selectedStartDate, selectedEndDate);
-                
-                days.forEach((d, index) => {
-                    d.classList.remove('selected', 'range');
-                    const dayNum = index + 1;
-                    if (dayNum === start || dayNum === end) {
-                        d.classList.add('selected');
-                    } else if (dayNum > start && dayNum < end) {
-                        d.classList.add('range');
-                    }
-                });
-                
-                // Show booking summary
-                showBookingSummary(podType, start, end);
-            }
         }
         
         function updateDatesFromInput(podType) {
@@ -1198,21 +1125,6 @@
                 if (endDate > startDate) {
                     const startDay = startDate.getDate();
                     const endDay = endDate.getDate();
-                    
-                    // Update calendar selection
-                    const containerId = podType === 'premium' ? 'calendarDays' : 'calendarDaysDeluxe';
-                    const container = document.getElementById(containerId);
-                    const days = container.querySelectorAll('.calendar-day.available');
-                    
-                    days.forEach((d, index) => {
-                        d.classList.remove('selected', 'range');
-                        const dayNum = index + 1;
-                        if (dayNum === startDay || dayNum === endDay) {
-                            d.classList.add('selected');
-                        } else if (dayNum > startDay && dayNum < endDay) {
-                            d.classList.add('range');
-                        }
-                    });
                     
                     // Show booking summary
                     showBookingSummary(podType, startDay, endDay);
@@ -1285,17 +1197,11 @@
             }).then(() => {
                 alert('Booking request submitted! We\'ll contact you shortly to confirm your reservation.');
                 form.reset();
-                selectedStartDate = null;
-                selectedEndDate = null;
             }).catch(() => {
                 alert('Thank you for your booking request! We\'ll contact you shortly.');
             });
         }
         
-        // Initialize calendars on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Calendars will be initialized when sections are shown
-        });
     </script>
 </body>
 </html>
