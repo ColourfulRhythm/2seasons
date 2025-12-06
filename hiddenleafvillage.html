@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Leaf Village - 2 Seasons Wellness Hub</title>
+    <meta name="description" content="Book your stay at Hidden Leaf Village. Premium and Deluxe pods with luxury amenities. Available from December 2026.">
+    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f7;
+            color: #000000;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, rgba(255, 102, 42, 0.1), rgba(97, 48, 13, 0.1));
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-title {
+            font-size: 5.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            color: #1d1d1f;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #86868b;
+            margin-bottom: 3rem;
+            letter-spacing: -0.01em;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Main Categories Container */
+        .categories-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .category-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            border-color: #ff662a;
+        }
+        
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: #ff662a;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover .category-icon {
+            transform: scale(1.1);
+        }
+        
+        .category-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .category-title {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+        
+        .category-subtitle {
+            font-size: 1rem;
+            color: #86868b;
+        }
+        
+        /* Product Detail Section */
+        .product-detail-section {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .product-detail-section.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ff662a;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            gap: 0.75rem;
+        }
+        
+        .product-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .product-header h1 {
+            font-size: 4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+        
+        .product-header p {
+            font-size: 1.2rem;
+            color: #86868b;
+        }
+        
+        .product-media {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .media-item {
+            border-radius: 18px;
+            overflow: hidden;
+            background: #f5f5f7;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .media-item img,
+        .media-item video {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .media-item video {
+            background: #000;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+        
+        .feature-item {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .feature-item i {
+            color: #ff662a;
+            font-size: 1.5rem;
+            width: 40px;
+        }
+        
+        .feature-item span {
+            font-size: 1rem;
+            color: #1d1d1f;
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 3rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-top: 3rem;
+        }
+        
+        .booking-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+        
+        .booking-info {
+            color: #86868b;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .calendar-container {
+            margin-bottom: 2rem;
+        }
+        
+        .calendar-note {
+            color: #86868b;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        
+        /* Simple Calendar Styling */
+        .calendar-wrapper {
+            background: #f5f5f7;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        
+        .calendar-month {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1.5rem;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+        
+        .calendar-day-header {
+            text-align: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #86868b;
+            padding: 0.5rem;
+        }
+        
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            color: #1d1d1f;
+            background: #ffffff;
+        }
+        
+        .calendar-day.disabled {
+            background: #e5e5e7;
+            color: #d2d2d7;
+            cursor: not-allowed;
+        }
+        
+        .calendar-day.available:hover {
+            background: #ff662a;
+            color: white;
+        }
+        
+        .calendar-day.selected {
+            background: #ff662a;
+            color: white;
+        }
+        
+        .calendar-day.range {
+            background: rgba(255, 102, 42, 0.2);
+        }
+        
+        /* Booking Summary */
+        .booking-summary {
+            background: #f5f5f7;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .booking-summary.active {
+            display: block;
+        }
+        
+        .summary-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1.5rem;
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e5e5e7;
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-label {
+            color: #86868b;
+        }
+        
+        .summary-value {
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+        
+        .booking-form {
+            margin-top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #86868b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #ff662a;
+            box-shadow: 0 0 0 4px rgba(255, 102, 42, 0.1);
+        }
+        
+        .reserve-button {
+            width: 100%;
+            padding: 1.25rem;
+            background: #ff662a;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .reserve-button:hover {
+            background: #61310d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 102, 42, 0.3);
+        }
+        
+        /* Amenities Section */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .amenity-category {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .amenity-category-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #61310d;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .amenity-category-title i {
+            color: #ff662a;
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 102, 42, 0.1);
+            border-radius: 12px;
+        }
+        
+        .amenity-list {
+            list-style: none;
+        }
+        
+        .amenity-list li {
+            padding: 0.75rem 0;
+            color: #1d1d1f;
+            font-size: 1rem;
+            border-bottom: 1px solid #e5e5e7;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .amenity-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .amenity-list li i {
+            color: #ff662a;
+            font-size: 0.875rem;
+            width: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid,
+            .amenities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">2 Seasons</a>
+            <button type="button" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+                <span>Menu</span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="/residential">Residential</a></li>
+                <li><a href="/villas">True Vine Villas</a></li>
+                <li><a href="/wellness">Wellness Hub</a></li>
+                <li><a href="/hyggetown">Hygge Town</a></li>
+                <li><a href="/100plots">100 Plots</a></li>
+                <li><a href="/paymentplan">Payment Plan</a></li>
+                <li><a href="/partners">Partners</a></li>
+                <li><a href="/2saffiliate">Affiliates</a></li>
+                <li><a href="/join" class="join-button">Join Now</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="menu-overlay"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Hidden Leaf Village</h1>
+                <p class="hero-subtitle">Luxury pods in nature's embrace. Book your wellness retreat.</p>
+            </div>
+        </section>
+
+        <!-- Main Categories -->
+        <section class="categories-container" id="mainCategories">
+            <div class="categories-grid">
+                <div class="category-card" onclick="showProductDetail('premium')">
+                    <div class="category-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h2 class="category-title">Premium Pods</h2>
+                    <p class="category-subtitle">2 Bedrooms • Luxury Amenities</p>
+                </div>
+                
+                <div class="category-card" onclick="showProductDetail('deluxe')">
+                    <div class="category-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h2 class="category-title">Deluxe Pods</h2>
+                    <p class="category-subtitle">1 Bedroom • Cozy Comfort</p>
+                </div>
+                
+                <div class="category-card" onclick="showProductDetail('amenities')">
+                    <div class="category-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h2 class="category-title">Village Amenities</h2>
+                    <p class="category-subtitle">Everything you need for the perfect stay</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Premium Pod Detail -->
+        <section class="product-detail-section" id="premiumDetail">
+            <a href="#" class="back-button" onclick="showMainCategories(event)">
+                <i class="fas fa-chevron-left"></i> Back to Categories
+            </a>
+            
+            <div class="product-header">
+                <h1>Premium Pod</h1>
+                <p>Luxury accommodation with 2 bedrooms and premium amenities</p>
+            </div>
+            
+            <div class="product-media">
+                <div class="media-item">
+                    <img src="wellnesshub/Premium%20Pod/premium.jpg" alt="Premium Pod">
+                </div>
+                <div class="media-item">
+                    <img src="wellnesshub/Premium%20Pod/prem1.jpg" alt="Premium Pod Interior">
+                </div>
+                <div class="media-item">
+                    <img src="wellnesshub/Premium%20Pod/prem12.jpg" alt="Premium Pod">
+                </div>
+                <div class="media-item">
+                    <img src="wellnesshub/Premium%20Pod/prem13.jpg" alt="Premium Pod">
+                </div>
+                <div class="media-item">
+                    <video controls poster="wellnesshub/Premium%20Pod/premium.jpg">
+                        <source src="wellnesshub/Premium%20Pod/premium.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="media-item">
+                    <video controls poster="wellnesshub/Premium%20Pod/prem1.jpg">
+                        <source src="wellnesshub/Premium%20Pod/premium2.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-bed"></i>
+                    <span>2 Bedrooms</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-couch"></i>
+                    <span>Living Area</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Kitchen</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shower"></i>
+                    <span>Toilet + Bathroom</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-snowflake"></i>
+                    <span>Air Conditioning</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-hot-tub"></i>
+                    <span>Hot Tub</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-tv"></i>
+                    <span>TV</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-gamepad"></i>
+                    <span>PS5</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-thermometer-half"></i>
+                    <span>Fridge</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-microwave"></i>
+                    <span>Microwave</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-utensil-spoon"></i>
+                    <span>Kitchen Utensils</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-plate"></i>
+                    <span>Plates & Cups</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chair"></i>
+                    <span>Chairs</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-dice"></i>
+                    <span>Games</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-water"></i>
+                    <span>Water Supply</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <span>Outdoor Sit-Out</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-mountain"></i>
+                    <span>Beautiful Nature View</span>
+                </div>
+            </div>
+            
+            <div class="booking-section">
+                <h2>Availability</h2>
+                <p class="booking-info">You can book stays from December 2026 onward. Choose your dates below.</p>
+                
+                <div class="calendar-container">
+                    <div class="calendar-wrapper">
+                        <div class="calendar-month" id="calendarMonth">December 2026</div>
+                        <div class="calendar-grid">
+                            <div class="calendar-day-header">Sun</div>
+                            <div class="calendar-day-header">Mon</div>
+                            <div class="calendar-day-header">Tue</div>
+                            <div class="calendar-day-header">Wed</div>
+                            <div class="calendar-day-header">Thu</div>
+                            <div class="calendar-day-header">Fri</div>
+                            <div class="calendar-day-header">Sat</div>
+                            <div id="calendarDays"></div>
+                        </div>
+                        <p class="calendar-note">Select any available date from December 2026.</p>
+                    </div>
+                </div>
+                
+                <div class="booking-summary" id="bookingSummary">
+                    <h3 class="summary-title">Your Booking</h3>
+                    <div class="summary-item">
+                        <span class="summary-label">Pod Type:</span>
+                        <span class="summary-value" id="summaryPod">Premium Pod</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Dates:</span>
+                        <span class="summary-value" id="summaryDates">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Total Price:</span>
+                        <span class="summary-value" id="summaryPrice">₦-</span>
+                    </div>
+                    
+                    <form class="booking-form" id="bookingForm" onsubmit="handleBooking(event, 'premium')">
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" required>
+                        </div>
+                        <button type="submit" class="reserve-button">Reserve Your Stay</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deluxe Pod Detail -->
+        <section class="product-detail-section" id="deluxeDetail">
+            <a href="#" class="back-button" onclick="showMainCategories(event)">
+                <i class="fas fa-chevron-left"></i> Back to Categories
+            </a>
+            
+            <div class="product-header">
+                <h1>Deluxe Pod</h1>
+                <p>Cozy accommodation with 1 bedroom and all essential amenities</p>
+            </div>
+            
+            <div class="product-media">
+                <div class="media-item">
+                    <img src="wellnesshub/Deluxe%20Pod/deluxecabinmain.jpg" alt="Deluxe Pod">
+                </div>
+                <div class="media-item">
+                    <img src="wellnesshub/Deluxe%20Pod/livingroom.JPG" alt="Deluxe Living Room">
+                </div>
+                <div class="media-item">
+                    <img src="wellnesshub/Deluxe%20Pod/deluxe%20Kitchen.JPG" alt="Deluxe Kitchen">
+                </div>
+                <div class="media-item">
+                    <img src="wellnesshub/Deluxe%20Pod/deluxe%20Living%20room.JPG" alt="Deluxe Living Room">
+                </div>
+                <div class="media-item">
+                    <video controls poster="wellnesshub/Deluxe%20Pod/deluxecabinmain.jpg">
+                        <source src="wellnesshub/Deluxe%20Pod/deluxe.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="media-item">
+                    <video controls poster="wellnesshub/Deluxe%20Pod/livingroom.JPG">
+                        <source src="wellnesshub/Deluxe%20Pod/deluxe2.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-bed"></i>
+                    <span>1 Bedroom</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-couch"></i>
+                    <span>Living Area</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Kitchen</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shower"></i>
+                    <span>Toilet + Bathroom</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-snowflake"></i>
+                    <span>Air Conditioning</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-hot-tub"></i>
+                    <span>Hot Tub</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-tv"></i>
+                    <span>TV</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-gamepad"></i>
+                    <span>PS5</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-thermometer-half"></i>
+                    <span>Fridge</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-microwave"></i>
+                    <span>Microwave</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-utensil-spoon"></i>
+                    <span>Kitchen Utensils</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-plate"></i>
+                    <span>Plates & Cups</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chair"></i>
+                    <span>Chairs</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-dice"></i>
+                    <span>Games</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-water"></i>
+                    <span>Water Supply</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <span>Outdoor Sit-Out</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-palette"></i>
+                    <span>Cozy Interior Finish</span>
+                </div>
+            </div>
+            
+            <div class="booking-section">
+                <h2>Availability</h2>
+                <p class="booking-info">You can book stays from December 2026 onward. Choose your dates below.</p>
+                
+                <div class="calendar-container">
+                    <div class="calendar-wrapper">
+                        <div class="calendar-month" id="calendarMonthDeluxe">December 2026</div>
+                        <div class="calendar-grid">
+                            <div class="calendar-day-header">Sun</div>
+                            <div class="calendar-day-header">Mon</div>
+                            <div class="calendar-day-header">Tue</div>
+                            <div class="calendar-day-header">Wed</div>
+                            <div class="calendar-day-header">Thu</div>
+                            <div class="calendar-day-header">Fri</div>
+                            <div class="calendar-day-header">Sat</div>
+                            <div id="calendarDaysDeluxe"></div>
+                        </div>
+                        <p class="calendar-note">Select any available date from December 2026.</p>
+                    </div>
+                </div>
+                
+                <div class="booking-summary" id="bookingSummaryDeluxe">
+                    <h3 class="summary-title">Your Booking</h3>
+                    <div class="summary-item">
+                        <span class="summary-label">Pod Type:</span>
+                        <span class="summary-value" id="summaryPodDeluxe">Deluxe Pod</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Dates:</span>
+                        <span class="summary-value" id="summaryDatesDeluxe">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Total Price:</span>
+                        <span class="summary-value" id="summaryPriceDeluxe">₦-</span>
+                    </div>
+                    
+                    <form class="booking-form" id="bookingFormDeluxe" onsubmit="handleBooking(event, 'deluxe')">
+                        <div class="form-group">
+                            <label class="form-label" for="emailDeluxe">Email Address</label>
+                            <input type="email" id="emailDeluxe" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phoneDeluxe">Phone Number</label>
+                            <input type="tel" id="phoneDeluxe" name="phone" class="form-input" required>
+                        </div>
+                        <button type="submit" class="reserve-button">Reserve Your Stay</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Village Amenities Detail -->
+        <section class="product-detail-section" id="amenitiesDetail">
+            <a href="#" class="back-button" onclick="showMainCategories(event)">
+                <i class="fas fa-chevron-left"></i> Back to Categories
+            </a>
+            
+            <div class="product-header">
+                <h1>Village Amenities</h1>
+                <p>Everything you need for the perfect wellness retreat</p>
+            </div>
+            
+            <div class="amenities-grid">
+                <div class="amenity-category">
+                    <h3 class="amenity-category-title">
+                        <i class="fas fa-utensils"></i>
+                        Food & Drinks
+                    </h3>
+                    <ul class="amenity-list">
+                        <li><i class="fas fa-check"></i> Restaurant</li>
+                        <li><i class="fas fa-check"></i> Smoothie Bar</li>
+                        <li><i class="fas fa-check"></i> Pizza Hut</li>
+                    </ul>
+                </div>
+                
+                <div class="amenity-category">
+                    <h3 class="amenity-category-title">
+                        <i class="fas fa-mountain"></i>
+                        Adventure
+                    </h3>
+                    <ul class="amenity-list">
+                        <li><i class="fas fa-check"></i> Skate Park</li>
+                        <li><i class="fas fa-check"></i> Jungle Paintball</li>
+                        <li><i class="fas fa-check"></i> Dirt-Road Cycling</li>
+                        <li><i class="fas fa-check"></i> Dirt-Road Quad Bikes</li>
+                    </ul>
+                </div>
+                
+                <div class="amenity-category">
+                    <h3 class="amenity-category-title">
+                        <i class="fas fa-spa"></i>
+                        Wellness
+                    </h3>
+                    <ul class="amenity-list">
+                        <li><i class="fas fa-check"></i> Gym</li>
+                        <li><i class="fas fa-check"></i> Spa</li>
+                        <li><i class="fas fa-check"></i> Sauna</li>
+                        <li><i class="fas fa-check"></i> Pilates Hall</li>
+                        <li><i class="fas fa-check"></i> Pedicure & Manicure</li>
+                        <li><i class="fas fa-check"></i> Massage Rooms</li>
+                    </ul>
+                </div>
+                
+                <div class="amenity-category">
+                    <h3 class="amenity-category-title">
+                        <i class="fas fa-futbol"></i>
+                        Sports
+                    </h3>
+                    <ul class="amenity-list">
+                        <li><i class="fas fa-check"></i> Lawn Tennis</li>
+                        <li><i class="fas fa-check"></i> Table Tennis</li>
+                        <li><i class="fas fa-check"></i> Basketball</li>
+                        <li><i class="fas fa-check"></i> Football</li>
+                    </ul>
+                </div>
+                
+                <div class="amenity-category">
+                    <h3 class="amenity-category-title">
+                        <i class="fas fa-leaf"></i>
+                        Nature
+                    </h3>
+                    <ul class="amenity-list">
+                        <li><i class="fas fa-check"></i> 4-Acre Fruit Forest</li>
+                        <li><i class="fas fa-check"></i> Forest Walking Trails</li>
+                        <li><i class="fas fa-check"></i> Tree Climbing</li>
+                    </ul>
+                </div>
+                
+                <div class="amenity-category">
+                    <h3 class="amenity-category-title">
+                        <i class="fas fa-swimming-pool"></i>
+                        Water Activities
+                    </h3>
+                    <ul class="amenity-list">
+                        <li><i class="fas fa-check"></i> 2 Swimming Pools</li>
+                        <li><i class="fas fa-check"></i> Medium-Sized Pond (Fishing + Water Fun)</li>
+                    </ul>
+                </div>
+                
+                <div class="amenity-category">
+                    <h3 class="amenity-category-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Security
+                    </h3>
+                    <ul class="amenity-list">
+                        <li><i class="fas fa-check"></i> CCTV</li>
+                        <li><i class="fas fa-check"></i> Private Security Team</li>
+                        <li><i class="fas fa-check"></i> Police Presence</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>2 Seasons</h3>
+                <p>Africa's First Regenerative Innovation & Lifestyle Village</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Kobape, Abeokuta, Ogun State, Nigeria</p>
+                <p>Email: 2seasonsabk@2seasonsabk.store</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/2seasonsabk" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/2seasonsabk?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 2 Seasons. All rights reserved.</p>
+            <a href="/privacy" class="privacy-policy-btn">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Navigation between sections
+        function showMainCategories(e) {
+            e.preventDefault();
+            document.getElementById('mainCategories').style.display = 'block';
+            document.querySelectorAll('.product-detail-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function showProductDetail(type) {
+            document.getElementById('mainCategories').style.display = 'none';
+            document.querySelectorAll('.product-detail-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            if (type === 'premium') {
+                document.getElementById('premiumDetail').classList.add('active');
+                initCalendar('calendarDays', 'premium');
+            } else if (type === 'deluxe') {
+                document.getElementById('deluxeDetail').classList.add('active');
+                initCalendar('calendarDaysDeluxe', 'deluxe');
+            } else if (type === 'amenities') {
+                document.getElementById('amenitiesDetail').classList.add('active');
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Calendar functionality
+        function initCalendar(containerId, podType) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            // December 2026 starts on Tuesday (0 = Sunday, 2 = Tuesday)
+            const startDate = new Date(2026, 11, 1); // December 2026
+            const firstDay = startDate.getDay();
+            const daysInMonth = 31;
+            
+            // Add empty cells for days before December 1
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day disabled';
+                container.appendChild(emptyDay);
+            }
+            
+            // Add days of December 2026
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day available';
+                dayElement.textContent = day;
+                dayElement.onclick = () => selectDate(day, podType, containerId);
+                container.appendChild(dayElement);
+            }
+        }
+        
+        let selectedStartDate = null;
+        let selectedEndDate = null;
+        
+        function selectDate(day, podType, containerId) {
+            const container = document.getElementById(containerId);
+            const days = container.querySelectorAll('.calendar-day.available');
+            
+            if (!selectedStartDate || (selectedStartDate && selectedEndDate)) {
+                // Start new selection
+                selectedStartDate = day;
+                selectedEndDate = null;
+                days.forEach(d => {
+                    d.classList.remove('selected', 'range');
+                });
+                days[day - 1].classList.add('selected');
+            } else {
+                // Select end date
+                selectedEndDate = day;
+                const start = Math.min(selectedStartDate, selectedEndDate);
+                const end = Math.max(selectedStartDate, selectedEndDate);
+                
+                days.forEach((d, index) => {
+                    d.classList.remove('selected', 'range');
+                    const dayNum = index + 1;
+                    if (dayNum === start || dayNum === end) {
+                        d.classList.add('selected');
+                    } else if (dayNum > start && dayNum < end) {
+                        d.classList.add('range');
+                    }
+                });
+                
+                // Show booking summary
+                showBookingSummary(podType, start, end);
+            }
+        }
+        
+        function showBookingSummary(podType, start, end) {
+            const nights = end - start;
+            const pricePerNight = podType === 'premium' ? 50000 : 35000; // ₦50,000 for premium, ₦35,000 for deluxe
+            const totalPrice = nights * pricePerNight;
+            
+            const startDate = new Date(2026, 11, start);
+            const endDate = new Date(2026, 11, end);
+            const dateStr = `${startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} — ${endDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+            
+            if (podType === 'premium') {
+                document.getElementById('summaryDates').textContent = dateStr;
+                document.getElementById('summaryPrice').textContent = `₦${totalPrice.toLocaleString()}`;
+                document.getElementById('bookingSummary').classList.add('active');
+            } else {
+                document.getElementById('summaryDatesDeluxe').textContent = dateStr;
+                document.getElementById('summaryPriceDeluxe').textContent = `₦${totalPrice.toLocaleString()}`;
+                document.getElementById('bookingSummaryDeluxe').classList.add('active');
+            }
+            
+            // Scroll to summary
+            setTimeout(() => {
+                const summary = podType === 'premium' 
+                    ? document.getElementById('bookingSummary')
+                    : document.getElementById('bookingSummaryDeluxe');
+                summary.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 300);
+        }
+        
+        function handleBooking(e, podType) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            
+            // Prepare booking data
+            const bookingData = {
+                podType: podType === 'premium' ? 'Premium Pod' : 'Deluxe Pod',
+                dates: podType === 'premium' 
+                    ? document.getElementById('summaryDates').textContent
+                    : document.getElementById('summaryDatesDeluxe').textContent,
+                price: podType === 'premium'
+                    ? document.getElementById('summaryPrice').textContent
+                    : document.getElementById('summaryPriceDeluxe').textContent,
+                email: email,
+                phone: phone
+            };
+            
+            // Send to Formspree
+            const emailData = new FormData();
+            emailData.append('_to', '2seasonsabk@2seasonsabk.store');
+            emailData.append('_subject', `New Hidden Leaf Village Booking - ${bookingData.podType}`);
+            emailData.append('podType', bookingData.podType);
+            emailData.append('dates', bookingData.dates);
+            emailData.append('price', bookingData.price);
+            emailData.append('email', bookingData.email);
+            emailData.append('phone', bookingData.phone);
+            
+            fetch('https://formspree.io/f/xvgrzrnp', {
+                method: 'POST',
+                body: emailData,
+                headers: { 'Accept': 'application/json' }
+            }).then(() => {
+                alert('Booking request submitted! We\'ll contact you shortly to confirm your reservation.');
+                form.reset();
+                selectedStartDate = null;
+                selectedEndDate = null;
+            }).catch(() => {
+                alert('Thank you for your booking request! We\'ll contact you shortly.');
+            });
+        }
+        
+        // Initialize calendars on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Calendars will be initialized when sections are shown
+        });
+    </script>
+</body>
+</html>
+
