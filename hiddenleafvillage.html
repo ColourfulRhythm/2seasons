@@ -27,12 +27,12 @@
         
         /* Hero Section */
         .hero-section {
-            min-height: 100vh;
+            min-height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 8rem 2rem 4rem;
+            padding: 4rem 2rem 2rem;
             background: linear-gradient(135deg, rgba(255, 102, 42, 0.1), rgba(97, 48, 13, 0.1));
             position: relative;
         }
@@ -43,18 +43,18 @@
         }
         
         .hero-title {
-            font-size: 5.5rem;
+            font-size: 3.5rem;
             font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             color: #1d1d1f;
         }
         
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 400;
             color: #86868b;
-            margin-bottom: 3rem;
+            margin-bottom: 0;
             letter-spacing: -0.01em;
         }
         
@@ -263,38 +263,81 @@
         
         .calendar-note {
             color: #86868b;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-top: 1rem;
             font-style: italic;
+            text-align: center;
+        }
+        
+        /* Alternative Date Input */
+        .date-input-alternative {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .date-input-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .date-input-group label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #86868b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .date-input-group input {
+            padding: 0.875rem 1rem;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .date-input-group input:focus {
+            outline: none;
+            border-color: #ff662a;
+            box-shadow: 0 0 0 4px rgba(255, 102, 42, 0.1);
+        }
+        
+        .date-input-group input[type="date"] {
+            min-width: 0;
         }
         
         /* Simple Calendar Styling */
         .calendar-wrapper {
             background: #f5f5f7;
             border-radius: 12px;
-            padding: 2rem;
+            padding: 1.5rem;
+            max-width: 500px;
+            margin: 0 auto;
         }
         
         .calendar-month {
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: #1d1d1f;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
         
         .calendar-day-header {
             text-align: center;
-            font-size: 0.875rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: #86868b;
-            padding: 0.5rem;
+            padding: 0.4rem 0.2rem;
         }
         
         .calendar-day {
@@ -302,12 +345,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #1d1d1f;
             background: #ffffff;
+            min-height: 36px;
         }
         
         .calendar-day.disabled {
@@ -487,7 +531,20 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 3rem;
+                font-size: 2.5rem;
+            }
+            
+            .hero-section {
+                min-height: 40vh;
+                padding: 3rem 2rem 1.5rem;
+            }
+            
+            .calendar-wrapper {
+                padding: 1rem;
+            }
+            
+            .date-input-alternative {
+                grid-template-columns: 1fr;
             }
             
             .categories-grid {
@@ -692,6 +749,17 @@
                         </div>
                         <p class="calendar-note">Select any available date from December 2026.</p>
                     </div>
+                    
+                    <div class="date-input-alternative">
+                        <div class="date-input-group">
+                            <label for="checkInPremium">Check-in Date</label>
+                            <input type="date" id="checkInPremium" name="checkIn" min="2026-12-01" onchange="updateDatesFromInput('premium')">
+                        </div>
+                        <div class="date-input-group">
+                            <label for="checkOutPremium">Check-out Date</label>
+                            <input type="date" id="checkOutPremium" name="checkOut" min="2026-12-02" onchange="updateDatesFromInput('premium')">
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="booking-summary" id="bookingSummary">
@@ -849,6 +917,17 @@
                             <div id="calendarDaysDeluxe"></div>
                         </div>
                         <p class="calendar-note">Select any available date from December 2026.</p>
+                    </div>
+                    
+                    <div class="date-input-alternative">
+                        <div class="date-input-group">
+                            <label for="checkInDeluxe">Check-in Date</label>
+                            <input type="date" id="checkInDeluxe" name="checkIn" min="2026-12-01" onchange="updateDatesFromInput('deluxe')">
+                        </div>
+                        <div class="date-input-group">
+                            <label for="checkOutDeluxe">Check-out Date</label>
+                            <input type="date" id="checkOutDeluxe" name="checkOut" min="2026-12-02" onchange="updateDatesFromInput('deluxe')">
+                        </div>
                     </div>
                 </div>
                 
@@ -1102,6 +1181,42 @@
                 
                 // Show booking summary
                 showBookingSummary(podType, start, end);
+            }
+        }
+        
+        function updateDatesFromInput(podType) {
+            const checkInId = podType === 'premium' ? 'checkInPremium' : 'checkInDeluxe';
+            const checkOutId = podType === 'premium' ? 'checkOutPremium' : 'checkOutDeluxe';
+            
+            const checkIn = document.getElementById(checkInId).value;
+            const checkOut = document.getElementById(checkOutId).value;
+            
+            if (checkIn && checkOut) {
+                const startDate = new Date(checkIn);
+                const endDate = new Date(checkOut);
+                
+                if (endDate > startDate) {
+                    const startDay = startDate.getDate();
+                    const endDay = endDate.getDate();
+                    
+                    // Update calendar selection
+                    const containerId = podType === 'premium' ? 'calendarDays' : 'calendarDaysDeluxe';
+                    const container = document.getElementById(containerId);
+                    const days = container.querySelectorAll('.calendar-day.available');
+                    
+                    days.forEach((d, index) => {
+                        d.classList.remove('selected', 'range');
+                        const dayNum = index + 1;
+                        if (dayNum === startDay || dayNum === endDay) {
+                            d.classList.add('selected');
+                        } else if (dayNum > startDay && dayNum < endDay) {
+                            d.classList.add('range');
+                        }
+                    });
+                    
+                    // Show booking summary
+                    showBookingSummary(podType, startDay, endDay);
+                }
             }
         }
         
