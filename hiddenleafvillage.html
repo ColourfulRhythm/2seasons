@@ -666,14 +666,17 @@
                 <p>Luxury accommodation with 2 bedrooms and premium amenities</p>
             </div>
             
-            <div class="date-input-alternative" style="max-width: 600px; margin: 2rem auto 3rem;">
-                <div class="date-input-group">
-                    <label for="checkInPremium">Check-in Date</label>
-                    <input type="date" id="checkInPremium" name="checkIn" min="2026-12-01" onchange="updateDatesFromInput('premium')">
-                </div>
-                <div class="date-input-group">
-                    <label for="checkOutPremium">Check-out Date</label>
-                    <input type="date" id="checkOutPremium" name="checkOut" min="2026-12-02" onchange="updateDatesFromInput('premium')">
+            <div style="max-width: 600px; margin: 2rem auto 3rem;">
+                <p style="text-align: center; color: #86868b; font-size: 0.9rem; margin-bottom: 1.5rem;">Bookings available from December 2026</p>
+                <div class="date-input-alternative">
+                    <div class="date-input-group">
+                        <label for="checkInPremium">Check-in Date</label>
+                        <input type="date" id="checkInPremium" name="checkIn" min="2026-12-01" max="2027-12-31" onchange="updateDatesFromInput('premium'); updateCheckOutMin('premium')">
+                    </div>
+                    <div class="date-input-group">
+                        <label for="checkOutPremium">Check-out Date</label>
+                        <input type="date" id="checkOutPremium" name="checkOut" min="2026-12-02" max="2027-12-31" onchange="updateDatesFromInput('premium')">
+                    </div>
                 </div>
             </div>
             
@@ -815,14 +818,17 @@
                 <p>Cozy accommodation with 1 bedroom and all essential amenities</p>
             </div>
             
-            <div class="date-input-alternative" style="max-width: 600px; margin: 2rem auto 3rem;">
-                <div class="date-input-group">
-                    <label for="checkInDeluxe">Check-in Date</label>
-                    <input type="date" id="checkInDeluxe" name="checkIn" min="2026-12-01" onchange="updateDatesFromInput('deluxe')">
-                </div>
-                <div class="date-input-group">
-                    <label for="checkOutDeluxe">Check-out Date</label>
-                    <input type="date" id="checkOutDeluxe" name="checkOut" min="2026-12-02" onchange="updateDatesFromInput('deluxe')">
+            <div style="max-width: 600px; margin: 2rem auto 3rem;">
+                <p style="text-align: center; color: #86868b; font-size: 0.9rem; margin-bottom: 1.5rem;">Bookings available from December 2026</p>
+                <div class="date-input-alternative">
+                    <div class="date-input-group">
+                        <label for="checkInDeluxe">Check-in Date</label>
+                        <input type="date" id="checkInDeluxe" name="checkIn" min="2026-12-01" max="2027-12-31" onchange="updateDatesFromInput('deluxe'); updateCheckOutMin('deluxe')">
+                    </div>
+                    <div class="date-input-group">
+                        <label for="checkOutDeluxe">Check-out Date</label>
+                        <input type="date" id="checkOutDeluxe" name="checkOut" min="2026-12-02" max="2027-12-31" onchange="updateDatesFromInput('deluxe')">
+                    </div>
                 </div>
             </div>
             
@@ -1111,6 +1117,26 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
+        function updateCheckOutMin(podType) {
+            const checkInId = podType === 'premium' ? 'checkInPremium' : 'checkInDeluxe';
+            const checkOutId = podType === 'premium' ? 'checkOutPremium' : 'checkOutDeluxe';
+            
+            const checkIn = document.getElementById(checkInId).value;
+            const checkOutInput = document.getElementById(checkOutId);
+            
+            if (checkIn) {
+                const checkInDate = new Date(checkIn);
+                checkInDate.setDate(checkInDate.getDate() + 1); // Minimum check-out is next day
+                const minCheckOut = checkInDate.toISOString().split('T')[0];
+                checkOutInput.min = minCheckOut;
+                
+                // If current check-out is before new minimum, clear it
+                if (checkOutInput.value && checkOutInput.value < minCheckOut) {
+                    checkOutInput.value = '';
+                }
+            }
+        }
+        
         function updateDatesFromInput(podType) {
             const checkInId = podType === 'premium' ? 'checkInPremium' : 'checkInDeluxe';
             const checkOutId = podType === 'premium' ? 'checkOutPremium' : 'checkOutDeluxe';
@@ -1122,14 +1148,59 @@
                 const startDate = new Date(checkIn);
                 const endDate = new Date(checkOut);
                 
+                // Validate dates are in December 2026 or later
+                const minDate = new Date(2026, 11, 1); // December 1, 2026
+                if (startDate < minDate) {
+                    alert('Bookings are available from December 1, 2026 onwards.');
+                    document.getElementById(checkInId).value = '';
+                    return;
+                }
+                
                 if (endDate > startDate) {
                     const startDay = startDate.getDate();
                     const endDay = endDate.getDate();
+                    const startMonth = startDate.getMonth();
+                    const endMonth = endDate.getMonth();
                     
-                    // Show booking summary
-                    showBookingSummary(podType, startDay, endDay);
+                    // Handle same month or different months
+                    if (startMonth === endMonth && startMonth === 11) {
+                        // Both in December 2026
+                        showBookingSummary(podType, startDay, endDay);
+                    } else {
+                        // Different months - calculate nights properly
+                        const nights = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+                        showBookingSummaryWithNights(podType, startDate, endDate, nights);
+                    }
+                } else {
+                    alert('Check-out date must be after check-in date.');
+                    document.getElementById(checkOutId).value = '';
                 }
             }
+        }
+        
+        function showBookingSummaryWithNights(podType, startDate, endDate, nights) {
+            const pricePerNight = podType === 'premium' ? 50000 : 35000;
+            const totalPrice = nights * pricePerNight;
+            
+            const dateStr = `${startDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} — ${endDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+            
+            if (podType === 'premium') {
+                document.getElementById('summaryDates').textContent = dateStr;
+                document.getElementById('summaryPrice').textContent = `₦${totalPrice.toLocaleString()}`;
+                document.getElementById('bookingSummary').classList.add('active');
+            } else {
+                document.getElementById('summaryDatesDeluxe').textContent = dateStr;
+                document.getElementById('summaryPriceDeluxe').textContent = `₦${totalPrice.toLocaleString()}`;
+                document.getElementById('bookingSummaryDeluxe').classList.add('active');
+            }
+            
+            // Scroll to summary
+            setTimeout(() => {
+                const summary = podType === 'premium' 
+                    ? document.getElementById('bookingSummary')
+                    : document.getElementById('bookingSummaryDeluxe');
+                summary.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 300);
         }
         
         function showBookingSummary(podType, start, end) {
