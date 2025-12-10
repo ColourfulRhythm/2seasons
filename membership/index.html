@@ -614,12 +614,6 @@
             text-decoration: none;
         }
         
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-        
         .nav-link {
             color: #000000;
             text-decoration: none;
@@ -629,150 +623,6 @@
         
         .nav-link:hover {
             color: #ff662a;
-        }
-        
-        .notification-btn {
-            position: relative;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            color: #000000;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .notification-btn:hover {
-            color: #ff662a;
-        }
-        
-        .notification-badge {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: #ff662a;
-            color: white;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 0.7rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-        }
-        
-        .notification-dropdown {
-            position: absolute;
-            top: calc(100% + 0.5rem);
-            right: 0;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            min-width: 320px;
-            max-width: 400px;
-            max-height: 500px;
-            overflow-y: auto;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1001;
-            border: 1px solid #e5e5e7;
-        }
-        
-        .notification-dropdown.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .notification-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid #f5f5f7;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .notification-header h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #1d1d1f;
-            margin: 0;
-        }
-        
-        .notification-clear {
-            background: none;
-            border: none;
-            color: #ff662a;
-            font-size: 0.9rem;
-            cursor: pointer;
-            padding: 0.25rem 0.5rem;
-            border-radius: 6px;
-            transition: background 0.3s ease;
-        }
-        
-        .notification-clear:hover {
-            background: #f5f5f7;
-        }
-        
-        .notification-list {
-            max-height: 400px;
-            overflow-y: auto;
-        }
-        
-        .notification-item {
-            padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid #f5f5f7;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-        
-        .notification-item:hover {
-            background: #f5f5f7;
-        }
-        
-        .notification-item:last-child {
-            border-bottom: none;
-        }
-        
-        .notification-item.unread {
-            background: #f9f9f9;
-        }
-        
-        .notification-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #1d1d1f;
-            margin-bottom: 0.25rem;
-        }
-        
-        .notification-text {
-            font-size: 0.85rem;
-            color: #86868b;
-            line-height: 1.4;
-        }
-        
-        .notification-time {
-            font-size: 0.75rem;
-            color: #86868b;
-            margin-top: 0.5rem;
-        }
-        
-        .notification-empty {
-            padding: 3rem 2rem;
-            text-align: center;
-            color: #86868b;
-        }
-        
-        .notification-empty i {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
         }
         
         /* Success Overlay */
@@ -835,104 +685,6 @@
             font-size: 1rem;
             color: #86868b;
             text-align: center;
-        }
-        
-        .success-content {
-            background: #ffffff;
-            border-radius: 18px;
-            padding: 3rem;
-            max-width: 500px;
-            width: 90%;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-        }
-        
-        .success-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
-        }
-        
-        .success-content.expanded {
-            max-width: 600px;
-        }
-        
-        .success-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, margin-top 0.4s ease;
-            margin-top: 0;
-        }
-        
-        .success-content.expanded .success-details {
-            max-height: 500px;
-            margin-top: 2rem;
-            border-top: 1px solid #e5e5e7;
-            padding-top: 2rem;
-        }
-        
-        .success-details-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1d1d1f;
-            margin-bottom: 1rem;
-        }
-        
-        .success-details-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .success-details-list li {
-            padding: 0.75rem 0;
-            color: #86868b;
-            font-size: 0.95rem;
-            border-bottom: 1px solid #f5f5f7;
-        }
-        
-        .success-details-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .success-details-list li strong {
-            color: #1d1d1f;
-            font-weight: 600;
-        }
-        
-        .success-arrow {
-            display: inline-block;
-            margin-left: 0.5rem;
-            transition: transform 0.3s ease;
-            color: #86868b;
-        }
-        
-        .success-content.expanded .success-arrow {
-            transform: rotate(180deg);
-        }
-        
-        .success-close-btn {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #86868b;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-        
-        .success-close-btn:hover {
-            background: #f5f5f7;
-            color: #1d1d1f;
         }
         
         .welcome-screen {
@@ -1172,38 +924,7 @@
     <header class="nav-header">
         <div class="nav-content">
             <a href="/" class="nav-logo">2 Seasons</a>
-            <div class="nav-right">
-                <div style="position: relative;">
-                    <button class="notification-btn" id="notificationBtn" onclick="toggleNotificationDropdown()">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge" id="notificationBadge" style="display: none;">3</span>
-                    </button>
-                    <div class="notification-dropdown" id="notificationDropdown">
-                        <div class="notification-header">
-                            <h3>Notifications</h3>
-                            <button class="notification-clear" onclick="clearNotifications()">Clear all</button>
-                        </div>
-                        <div class="notification-list" id="notificationList">
-                            <div class="notification-item unread">
-                                <div class="notification-title">Welcome to Wellness Hub!</div>
-                                <div class="notification-text">Your membership registration has been received. We'll contact you soon.</div>
-                                <div class="notification-time">Just now</div>
-                            </div>
-                            <div class="notification-item unread">
-                                <div class="notification-title">Membership Benefits</div>
-                                <div class="notification-text">Explore all the amenities and benefits available with your membership plan.</div>
-                                <div class="notification-time">2 hours ago</div>
-                            </div>
-                            <div class="notification-item">
-                                <div class="notification-title">Wellness Hub Opening</div>
-                                <div class="notification-text">The Wellness Hub opens in December 2026. Stay tuned for updates!</div>
-                                <div class="notification-time">1 day ago</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a href="/join" class="nav-link">Join Now</a>
-            </div>
+            <a href="/join" class="nav-link">Join Now</a>
         </div>
     </header>
 
@@ -1400,28 +1121,11 @@
 
     <!-- Success Overlay -->
     <div id="successOverlay" class="success-overlay">
-        <button class="success-close-btn" onclick="closeSuccessOverlay()">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="success-content" id="successContent" onclick="toggleSuccessDetails()">
-            <div class="success-checkmark">
-                <i class="fas fa-check"></i>
-            </div>
-            <div class="success-message">
-                Registration Successful!
-                <span class="success-arrow"><i class="fas fa-chevron-down"></i></span>
-            </div>
-            <div class="success-subtitle">Thank you for joining the Wellness Hub</div>
-            <div class="success-details" id="successDetails">
-                <div class="success-details-title">What's Next?</div>
-                <ul class="success-details-list">
-                    <li><strong>Confirmation Email:</strong> You'll receive a confirmation email within 24 hours with your membership details.</li>
-                    <li><strong>Welcome Package:</strong> Our team will contact you to schedule your welcome orientation.</li>
-                    <li><strong>Access Details:</strong> Your membership access credentials will be sent via email.</li>
-                    <li><strong>Questions?</strong> Contact us at <strong>2seasonsabk@2seasonsabk.store</strong></li>
-                </ul>
-            </div>
+        <div class="success-checkmark">
+            <i class="fas fa-check"></i>
         </div>
+        <div class="success-message">Registration Successful!</div>
+        <div class="success-subtitle">Thank you for joining the Wellness Hub</div>
     </div>
 
     <script>
@@ -1638,69 +1342,6 @@
         function showSuccessAnimation() {
             document.getElementById('successOverlay').classList.add('active');
         }
-        
-        function toggleSuccessDetails() {
-            const content = document.getElementById('successContent');
-            content.classList.toggle('expanded');
-        }
-        
-        function closeSuccessOverlay() {
-            document.getElementById('successOverlay').classList.remove('active');
-            const content = document.getElementById('successContent');
-            content.classList.remove('expanded');
-        }
-        
-        // Close overlay when clicking outside the content
-        document.getElementById('successOverlay').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeSuccessOverlay();
-            }
-        });
-        
-        // Notification Dropdown
-        function toggleNotificationDropdown() {
-            const dropdown = document.getElementById('notificationDropdown');
-            dropdown.classList.toggle('active');
-        }
-        
-        function clearNotifications() {
-            const list = document.getElementById('notificationList');
-            list.innerHTML = '<div class="notification-empty"><i class="fas fa-bell-slash"></i><p>No notifications</p></div>';
-            const badge = document.getElementById('notificationBadge');
-            badge.style.display = 'none';
-        }
-        
-        // Close notification dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-            const dropdown = document.getElementById('notificationDropdown');
-            const btn = document.getElementById('notificationBtn');
-            if (dropdown && btn && !dropdown.contains(e.target) && !btn.contains(e.target)) {
-                dropdown.classList.remove('active');
-            }
-        });
-        
-        // Update notification badge count
-        function updateNotificationBadge() {
-            const unreadCount = document.querySelectorAll('.notification-item.unread').length;
-            const badge = document.getElementById('notificationBadge');
-            if (unreadCount > 0 && badge) {
-                badge.textContent = unreadCount > 9 ? '9+' : unreadCount;
-                badge.style.display = 'flex';
-            } else if (badge) {
-                badge.style.display = 'none';
-            }
-        }
-        
-        // Mark notification as read
-        document.addEventListener('DOMContentLoaded', function() {
-            updateNotificationBadge();
-            document.querySelectorAll('.notification-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    this.classList.remove('unread');
-                    updateNotificationBadge();
-                });
-            });
-        });
         
         function showWelcomeScreen() {
             document.body.innerHTML = `
