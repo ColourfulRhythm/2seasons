@@ -408,6 +408,43 @@
             cursor: not-allowed;
         }
         
+        .discount-message {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            min-height: 1.25rem;
+        }
+        
+        .discount-message.valid {
+            color: #34c759;
+            font-weight: 500;
+        }
+        
+        .discount-message.invalid {
+            color: #ff3b30;
+        }
+        
+        .discount-badge {
+            display: inline-block;
+            background: #34c759;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        .plot-price-original {
+            text-decoration: line-through;
+            color: #86868b;
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+        
+        .plot-price-discounted {
+            color: #34c759;
+        }
+        
         /* Benefits Section */
         .benefits-section {
             padding: 4rem 2rem;
@@ -709,6 +746,14 @@
                         <input type="email" id="email" name="email" class="form-input" required>
                     </div>
                     
+                    <div class="form-group">
+                        <label class="form-label" for="discountCode">Discount Code (Optional)</label>
+                        <div style="position: relative;">
+                            <input type="text" id="discountCode" name="discountCode" class="form-input" placeholder="Enter discount code">
+                            <div id="discountMessage" style="margin-top: 0.5rem; font-size: 0.875rem; min-height: 1.25rem;"></div>
+                        </div>
+                    </div>
+                    
                     <div class="payment-option-group">
                         <label class="form-label">Payment Option</label>
                         <div class="payment-options">
@@ -867,14 +912,54 @@
         const submitBtn = document.getElementById('submitBtn');
         let selectedPlot = null;
         let selectedPaymentOption = 'full';
+        let discountApplied = false;
+        const DISCOUNT_CODE = 'sirdavid';
+        const DISCOUNT_PERCENTAGE = 0.20; // 20%
+
+        // Function to update plot prices with discount
+        function updatePlotPrices(applyDiscount) {
+            plotCards.forEach(card => {
+                const originalPrice = parseInt(card.dataset.price);
+                const priceElement = card.querySelector('.plot-price');
+                
+                if (applyDiscount) {
+                    const discountedPrice = Math.round(originalPrice * (1 - DISCOUNT_PERCENTAGE));
+                    priceElement.innerHTML = `
+                        <span class="plot-price-original">₦${originalPrice.toLocaleString()}</span>
+                        <span class="plot-price-discounted">₦${discountedPrice.toLocaleString()}</span>
+                        <span class="discount-badge">20% OFF</span>
+                    `;
+                } else {
+                    priceElement.innerHTML = `₦${originalPrice.toLocaleString()}`;
+                }
+            });
+            
+            // Update selected plot if one is selected
+            if (selectedPlot) {
+                const originalPrice = selectedPlot.size * 10000;
+                if (applyDiscount) {
+                    selectedPlot.originalPrice = originalPrice;
+                    selectedPlot.price = Math.round(originalPrice * (1 - DISCOUNT_PERCENTAGE));
+                    selectedPlot.discount = originalPrice - selectedPlot.price;
+                } else {
+                    selectedPlot.price = originalPrice;
+                    selectedPlot.originalPrice = originalPrice;
+                    selectedPlot.discount = 0;
+                }
+            }
+        }
 
         plotCards.forEach(card => {
             card.addEventListener('click', function() {
                 plotCards.forEach(c => c.classList.remove('selected'));
                 this.classList.add('selected');
+                const originalPrice = parseInt(this.dataset.price);
+                const discountedPrice = discountApplied ? Math.round(originalPrice * (1 - DISCOUNT_PERCENTAGE)) : originalPrice;
                 selectedPlot = {
                     size: parseInt(this.dataset.size),
-                    price: parseInt(this.dataset.price)
+                    price: discountedPrice,
+                    originalPrice: originalPrice,
+                    discount: discountApplied ? Math.round(originalPrice * DISCOUNT_PERCENTAGE) : 0
                 };
                 submitBtn.disabled = false;
                 
@@ -884,6 +969,47 @@
                     block: 'start' 
                 });
             });
+        });
+        
+        // Discount Code Validation
+        const discountCodeInput = document.getElementById('discountCode');
+        const discountMessage = document.getElementById('discountMessage');
+        
+        discountCodeInput.addEventListener('input', function() {
+            const code = this.value.trim().toLowerCase();
+            
+            if (code === '') {
+                discountMessage.textContent = '';
+                discountMessage.className = 'discount-message';
+                discountApplied = false;
+                updatePlotPrices(false);
+                // Reset selected plot price if one is selected
+                if (selectedPlot) {
+                    selectedPlot.price = selectedPlot.originalPrice || parseInt(selectedPlot.size * 10000);
+                    selectedPlot.discount = 0;
+                }
+            } else if (code === DISCOUNT_CODE.toLowerCase()) {
+                discountMessage.textContent = '✓ Valid discount code! 20% discount applied.';
+                discountMessage.className = 'discount-message valid';
+                discountApplied = true;
+                updatePlotPrices(true);
+                // Update selected plot price if one is selected
+                if (selectedPlot) {
+                    const originalPrice = selectedPlot.originalPrice || parseInt(selectedPlot.size * 10000);
+                    selectedPlot.price = Math.round(originalPrice * (1 - DISCOUNT_PERCENTAGE));
+                    selectedPlot.discount = originalPrice - selectedPlot.price;
+                }
+            } else {
+                discountMessage.textContent = 'Invalid discount code';
+                discountMessage.className = 'discount-message invalid';
+                discountApplied = false;
+                updatePlotPrices(false);
+                // Reset selected plot price if one is selected
+                if (selectedPlot) {
+                    selectedPlot.price = selectedPlot.originalPrice || parseInt(selectedPlot.size * 10000);
+                    selectedPlot.discount = 0;
+                }
+            }
         });
 
         // Payment Option Selection
@@ -912,9 +1038,11 @@
             const fullName = formData.get('fullName');
             const phone = formData.get('phone');
             const email = formData.get('email');
+            const discountCode = formData.get('discountCode') || '';
+            const hasDiscount = discountCode.trim().toLowerCase() === DISCOUNT_CODE.toLowerCase();
 
             // Generate and download PDF
-            generateAndDownloadPDF(selectedPlot, fullName, phone, email, selectedPaymentOption);
+            generateAndDownloadPDF(selectedPlot, fullName, phone, email, selectedPaymentOption, hasDiscount);
 
             // Show success animation
             successOverlay.classList.add('active');
@@ -928,6 +1056,9 @@
             emailData.append('email', email);
             emailData.append('plotSize', selectedPlot.size);
             emailData.append('plotPrice', selectedPlot.price);
+            emailData.append('originalPrice', selectedPlot.originalPrice || selectedPlot.price);
+            emailData.append('discount', selectedPlot.discount || 0);
+            emailData.append('discountCode', discountCode);
             emailData.append('paymentOption', selectedPaymentOption);
 
             // Submit to Formspree
@@ -954,23 +1085,25 @@
         });
 
         // PDF Generation Function
-        function generateAndDownloadPDF(plot, fullName, phone, email, paymentOption) {
+        function generateAndDownloadPDF(plot, fullName, phone, email, paymentOption, hasDiscount = false) {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
             
             const PRICE_PER_SQM = 10000;
-            const basePrice = plot.price;
+            const originalBasePrice = plot.originalPrice || (plot.size * PRICE_PER_SQM);
+            const codeDiscount = hasDiscount ? Math.round(originalBasePrice * DISCOUNT_PERCENTAGE) : 0;
+            const basePrice = hasDiscount ? (originalBasePrice - codeDiscount) : originalBasePrice;
             const isFullPayment = paymentOption === 'full';
             
             // Calculate payment plan
             let totalPrice = basePrice;
             let monthlyPayment = 0;
             let duration = 0;
-            let discount = 0;
+            let paymentDiscount = 0;
             
             if (isFullPayment) {
-                discount = basePrice * 0.05; // 5% discount for full payment
-                totalPrice = basePrice - discount;
+                paymentDiscount = basePrice * 0.05; // 5% discount for full payment
+                totalPrice = basePrice - paymentDiscount;
             } else {
                 // Installment plan: 6 months with 5% interest
                 duration = 6;
@@ -1028,6 +1161,14 @@
             yPos += 8;
             doc.text(`Price per SQM: ₦${PRICE_PER_SQM.toLocaleString()}`, 20, yPos);
             yPos += 8;
+            if (hasDiscount) {
+                doc.text(`Original Price: ₦${originalBasePrice.toLocaleString()}`, 20, yPos);
+                yPos += 8;
+                doc.setFont(undefined, 'bold');
+                doc.text(`Discount Code (20%): -₦${codeDiscount.toLocaleString()}`, 20, yPos);
+                yPos += 8;
+                doc.setFont(undefined, 'normal');
+            }
             doc.text(`Base Price: ₦${basePrice.toLocaleString()}`, 20, yPos);
             yPos += 15;
             
@@ -1040,7 +1181,7 @@
             if (isFullPayment) {
                 doc.text(`Payment Option: Full Payment`, 20, yPos);
                 yPos += 8;
-                doc.text(`Discount (5%): -₦${discount.toLocaleString()}`, 20, yPos);
+                doc.text(`Additional Discount (5%): -₦${paymentDiscount.toLocaleString()}`, 20, yPos);
                 yPos += 8;
                 doc.setFont(undefined, 'bold');
                 doc.text(`Total Amount: ₦${totalPrice.toLocaleString()}`, 20, yPos);
