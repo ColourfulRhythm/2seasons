@@ -876,7 +876,7 @@
                         Get Payment Plan
                     </button>
                 </form>
-                        </div>
+            </div>
         </section>
 
         <!-- Benefits Section -->
@@ -910,7 +910,7 @@
             <h2 class="success-title">Payment Plan Generated!</h2>
             <p class="success-message">Your payment plan PDF has been downloaded. We'll contact you shortly.</p>
                     </div>
-                </div>
+                        </div>
 
     <footer>
         <div class="footer-content">
@@ -1217,21 +1217,25 @@
         let selectedPlot = null;
         let selectedPaymentOption = 'full';
         let discountApplied = false;
-        const DISCOUNT_CODE = 'sirdavid';
-        const DISCOUNT_PERCENTAGE = 0.15; // 15%
+        let currentDiscountPercentage = 0;
+        const DISCOUNT_CODES = {
+            'sirdavid': 0.15, // 15%
+            'dec25': 0.20     // 20%
+        };
 
         // Function to update plot prices with discount
-        function updatePlotPrices(applyDiscount) {
+        function updatePlotPrices(applyDiscount, discountPercent = 0.15) {
             plotCards.forEach(card => {
                 const originalPrice = parseInt(card.dataset.price);
                 const priceElement = card.querySelector('.plot-price');
                 
                 if (applyDiscount) {
-                    const discountedPrice = Math.round(originalPrice * (1 - DISCOUNT_PERCENTAGE));
+                    const discountedPrice = Math.round(originalPrice * (1 - discountPercent));
+                    const discountPercentDisplay = Math.round(discountPercent * 100);
                     priceElement.innerHTML = `
                         <span class="plot-price-original">₦${originalPrice.toLocaleString()}</span>
                         <span class="plot-price-discounted">₦${discountedPrice.toLocaleString()}</span>
-                        <span class="discount-badge">15% OFF</span>
+                        <span class="discount-badge">${discountPercentDisplay}% OFF</span>
                     `;
                 } else {
                     priceElement.innerHTML = `₦${originalPrice.toLocaleString()}`;
@@ -1245,7 +1249,7 @@
                     : (selectedPlot.originalPrice || selectedPlot.size * 10000);
                 if (applyDiscount) {
                     selectedPlot.originalPrice = originalPrice;
-                    selectedPlot.price = Math.round(originalPrice * (1 - DISCOUNT_PERCENTAGE));
+                    selectedPlot.price = Math.round(originalPrice * (1 - discountPercent));
                     selectedPlot.discount = originalPrice - selectedPlot.price;
                 } else {
                     selectedPlot.price = originalPrice;
@@ -1269,27 +1273,31 @@
                 discountMessage.textContent = '';
                 discountMessage.className = 'discount-message';
                 discountApplied = false;
+                currentDiscountPercentage = 0;
                 updatePlotPrices(false);
                 // Reset selected plot price if one is selected
                 if (selectedPlot) {
                     selectedPlot.price = selectedPlot.originalPrice || parseInt(selectedPlot.size * 10000);
                     selectedPlot.discount = 0;
                 }
-            } else if (code === DISCOUNT_CODE.toLowerCase()) {
-                discountMessage.textContent = '✓ Valid discount code! 15% discount applied.';
+            } else if (DISCOUNT_CODES.hasOwnProperty(code)) {
+                currentDiscountPercentage = DISCOUNT_CODES[code];
+                const discountPercentDisplay = Math.round(currentDiscountPercentage * 100);
+                discountMessage.textContent = `✓ Valid discount code! ${discountPercentDisplay}% discount applied.`;
                 discountMessage.className = 'discount-message valid';
                 discountApplied = true;
-                updatePlotPrices(true);
+                updatePlotPrices(true, currentDiscountPercentage);
                 // Update selected plot price if one is selected
                 if (selectedPlot) {
                     const originalPrice = selectedPlot.originalPrice || parseInt(selectedPlot.size * 10000);
-                    selectedPlot.price = Math.round(originalPrice * (1 - DISCOUNT_PERCENTAGE));
+                    selectedPlot.price = Math.round(originalPrice * (1 - currentDiscountPercentage));
                     selectedPlot.discount = originalPrice - selectedPlot.price;
                 }
             } else {
                 discountMessage.textContent = 'Invalid discount code';
                 discountMessage.className = 'discount-message invalid';
                 discountApplied = false;
+                currentDiscountPercentage = 0;
                 updatePlotPrices(false);
                 // Reset selected plot price if one is selected
                 if (selectedPlot) {
@@ -1326,11 +1334,13 @@
             const phone = formData.get('phone');
             const email = formData.get('email');
             const discountCode = formData.get('discountCode') || '';
-            const hasDiscount = discountCode.trim().toLowerCase() === DISCOUNT_CODE.toLowerCase();
+            const codeLower = discountCode.trim().toLowerCase();
+            const hasDiscount = DISCOUNT_CODES.hasOwnProperty(codeLower);
+            const discountPercent = hasDiscount ? DISCOUNT_CODES[codeLower] : 0;
             const fruitTrees = formData.get('fruitTrees') || '';
 
             // Generate and download PDF
-            generateAndDownloadPDF(selectedPlot, fullName, phone, email, selectedPaymentOption, hasDiscount, plotType, fruitTrees);
+            generateAndDownloadPDF(selectedPlot, fullName, phone, email, selectedPaymentOption, hasDiscount, plotType, fruitTrees, discountPercent);
 
             // Show success animation
             successOverlay.classList.add('active');
@@ -1377,34 +1387,51 @@
         });
 
         // PDF Generation Function
-        function generateAndDownloadPDF(plot, fullName, phone, email, paymentOption, hasDiscount = false, plotTypeParam = 'residential', fruitTrees = '') {
+        function generateAndDownloadPDF(plot, fullName, phone, email, paymentOption, hasDiscount = false, plotTypeParam = 'residential', fruitTrees = '', discountPercent = 0.15) {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
             const isAgro = plotTypeParam === 'agro';
             const PRICE_PER_SQM = 10000;
             const originalBasePrice = plot.originalPrice || (isAgro ? AGRO_PRICING[plot.size] : (plot.size * PRICE_PER_SQM));
-            const codeDiscount = hasDiscount ? Math.round(originalBasePrice * DISCOUNT_PERCENTAGE) : 0;
+            const codeDiscount = hasDiscount ? Math.round(originalBasePrice * discountPercent) : 0;
             const basePrice = hasDiscount ? (originalBasePrice - codeDiscount) : originalBasePrice;
+            
+            // Page dimensions
+            const pageHeight = doc.internal.pageSize.height;
+            const pageWidth = doc.internal.pageSize.width;
+            const margin = 20;
+            const maxY = pageHeight - margin;
+            
+            // Helper function to check if we need a new page
+            function checkPageBreak(yPos, spaceNeeded = 10) {
+                if (yPos + spaceNeeded > maxY) {
+                    doc.addPage();
+                    return margin + 20; // Return new starting Y position
+                }
+                return yPos;
+            }
             const isFullPayment = paymentOption === 'full';
             
             // For Agro Tucks: 10% for deed of assignment and survey plan
             const agroDocumentFee = isAgro ? Math.round(basePrice * 0.10) : 0;
             
             // Calculate payment plan
-            let totalPrice = basePrice;
+            // For Agro Tucks, add documentation fee to base price before calculating payment plan
+            const priceBeforePaymentPlan = isAgro ? (basePrice + agroDocumentFee) : basePrice;
+            let totalPrice = priceBeforePaymentPlan;
             let monthlyPayment = 0;
             let duration = 0;
             let paymentDiscount = 0;
             
             if (isFullPayment) {
-                paymentDiscount = basePrice * 0.05; // 5% discount for full payment
-                totalPrice = basePrice - paymentDiscount;
+                paymentDiscount = priceBeforePaymentPlan * 0.05; // 5% discount for full payment
+                totalPrice = priceBeforePaymentPlan - paymentDiscount;
             } else {
                 // Installment plan: 6 months with 5% interest
                 duration = 6;
-                const interest = basePrice * 0.05;
-                totalPrice = basePrice + interest;
+                const interest = priceBeforePaymentPlan * 0.05;
+                totalPrice = priceBeforePaymentPlan + interest;
                 monthlyPayment = Math.ceil(totalPrice / duration);
             }
 
@@ -1440,74 +1467,97 @@
             yPos += 10;
             
             doc.setFont(undefined, 'normal');
+            yPos = checkPageBreak(yPos, 8);
             doc.text(`Name: ${fullName}`, 20, yPos);
             yPos += 8;
+            yPos = checkPageBreak(yPos, 8);
             doc.text(`Phone: ${phone}`, 20, yPos);
             yPos += 8;
+            yPos = checkPageBreak(yPos, 8);
             doc.text(`Email: ${email}`, 20, yPos);
             yPos += 15;
             
             // Plot Details
+            yPos = checkPageBreak(yPos, 10);
             doc.setFont(undefined, 'bold');
             doc.text('Plot Details:', 20, yPos);
             yPos += 10;
 
             doc.setFont(undefined, 'normal');
+            yPos = checkPageBreak(yPos, 8);
             doc.text(`Plot Type: ${isAgro ? 'Agro Tucks (Farming & Farmstead)' : 'Residential'}`, 20, yPos);
             yPos += 8;
+            yPos = checkPageBreak(yPos, 8);
             doc.text(`Plot Size: ${plot.size.toLocaleString()} Square Meters${isAgro && plot.size === 4000 ? ' (1 Acre)' : isAgro && plot.size === 1500 ? ' (~0.37 Acres)' : ''}`, 20, yPos);
             yPos += 8;
             if (!isAgro) {
+                yPos = checkPageBreak(yPos, 8);
                 doc.text(`Price per SQM: ₦${PRICE_PER_SQM.toLocaleString()}`, 20, yPos);
                 yPos += 8;
             }
             if (hasDiscount) {
+                yPos = checkPageBreak(yPos, 8);
                 doc.text(`Original Price: ₦${originalBasePrice.toLocaleString()}`, 20, yPos);
                 yPos += 8;
+                yPos = checkPageBreak(yPos, 8);
             doc.setFont(undefined, 'bold');
-                doc.text(`Discount Code (15%): -₦${codeDiscount.toLocaleString()}`, 20, yPos);
+                const discountPercentDisplay = Math.round(discountPercent * 100);
+                doc.text(`Discount Code (${discountPercentDisplay}%): -₦${codeDiscount.toLocaleString()}`, 20, yPos);
                 yPos += 8;
             doc.setFont(undefined, 'normal');
             }
+            yPos = checkPageBreak(yPos, 8);
             doc.text(`Base Price: ₦${basePrice.toLocaleString()}`, 20, yPos);
             if (isAgro && agroDocumentFee > 0) {
                 yPos += 8;
+                yPos = checkPageBreak(yPos, 14);
                 doc.text(`Documentation Fee (10%): ₦${agroDocumentFee.toLocaleString()}`, 20, yPos);
                 doc.text(`(Deed of Assignment & Survey Plan)`, 30, yPos + 6);
+                yPos += 6;
             }
             yPos += 15;
             
             // Payment Plan
+            yPos = checkPageBreak(yPos, 10);
             doc.setFont(undefined, 'bold');
             doc.text('Payment Plan:', 20, yPos);
             yPos += 10;
 
             doc.setFont(undefined, 'normal');
             if (isFullPayment) {
+                yPos = checkPageBreak(yPos, 8);
                 doc.text(`Payment Option: Full Payment`, 20, yPos);
                 yPos += 8;
+                yPos = checkPageBreak(yPos, 8);
                 doc.text(`Additional Discount (5%): -₦${paymentDiscount.toLocaleString()}`, 20, yPos);
                 yPos += 8;
+                yPos = checkPageBreak(yPos, 8);
             doc.setFont(undefined, 'bold');
                 doc.text(`Total Amount: ₦${totalPrice.toLocaleString()}`, 20, yPos);
                 doc.setFont(undefined, 'normal');
             } else {
+                yPos = checkPageBreak(yPos, 8);
                 doc.text(`Payment Option: Installment Plan (6 months)`, 20, yPos);
                 yPos += 8;
-                doc.text(`Interest (5%): ₦${(totalPrice - basePrice).toLocaleString()}`, 20, yPos);
+                yPos = checkPageBreak(yPos, 8);
+                doc.text(`Interest (5%): ₦${(totalPrice - priceBeforePaymentPlan).toLocaleString()}`, 20, yPos);
                 yPos += 8;
+                yPos = checkPageBreak(yPos, 8);
                 doc.setFont(undefined, 'bold');
                 doc.text(`Total Amount: ₦${totalPrice.toLocaleString()}`, 20, yPos);
                 doc.setFont(undefined, 'normal');
                 yPos += 8;
+                yPos = checkPageBreak(yPos, 8);
                 doc.text(`Monthly Payment: ₦${monthlyPayment.toLocaleString()}`, 20, yPos);
                 yPos += 10;
                 
+                yPos = checkPageBreak(yPos, 8);
                 doc.setFont(undefined, 'bold');
                 doc.text('Payment Schedule:', 20, yPos);
                 yPos += 8;
             doc.setFont(undefined, 'normal');
                 for (let i = 1; i <= duration; i++) {
+                    yPos = checkPageBreak(yPos, 6);
                     const isLastMonth = i === duration;
                     const payment = isLastMonth ? totalPrice - (monthlyPayment * (duration - 1)) : monthlyPayment;
                     doc.text(`Month ${i}: ₦${payment.toLocaleString()}`, 20, yPos);
@@ -1517,13 +1567,16 @@
             
             yPos += 10;
 
-            // Payment Information
+            // Payment Information - CRITICAL: Always ensure this section is visible
+            yPos = checkPageBreak(yPos, 40);
             doc.setFont(undefined, 'bold');
             doc.text('Payment Information:', 20, yPos);
             yPos += 8;
             doc.setFont(undefined, 'normal');
+            yPos = checkPageBreak(yPos, 8);
             doc.text('Bank Name: Providus Bank', 20, yPos);
             yPos += 8;
+            yPos = checkPageBreak(yPos, 14);
             doc.text('Account Number:', 20, yPos);
             yPos += 6;
             doc.setFont(undefined, 'bold');
@@ -1532,10 +1585,12 @@
             doc.setFontSize(12);
             doc.setFont(undefined, 'normal');
             yPos += 8;
+            yPos = checkPageBreak(yPos, 8);
             doc.text('Account Name: Focal Point Property dev.', 20, yPos);
             yPos += 15;
             
             // Benefits
+            yPos = checkPageBreak(yPos, 50);
             doc.setFont(undefined, 'bold');
             if (isAgro) {
                 doc.text('As an Agro Tucks Owner, You\'re Entitled To:', 20, yPos);
@@ -1552,6 +1607,7 @@
                 ].filter(b => b);
                 
                 agroBenefits.forEach(benefit => {
+                    yPos = checkPageBreak(yPos, 6);
                     doc.text(benefit, 20, yPos);
                     yPos += 6;
                 });
@@ -1568,6 +1624,7 @@
                 ].filter(b => b);
                 
                 benefits.forEach(benefit => {
+                    yPos = checkPageBreak(yPos, 6);
                     doc.text(benefit, 20, yPos);
                     yPos += 6;
                 });
@@ -1575,6 +1632,7 @@
 
             // Footer
             yPos += 10;
+            yPos = checkPageBreak(yPos, 30);
             doc.setLineWidth(0.5);
             doc.line(20, yPos, 190, yPos);
             yPos += 8;
@@ -1584,8 +1642,10 @@
             doc.text('Contact Information:', 20, yPos);
             yPos += 8;
             doc.setFont(undefined, 'normal');
+            yPos = checkPageBreak(yPos, 6);
             doc.text('Email: 2seasonsabk@2seasonsabk.store', 20, yPos);
             yPos += 6;
+            yPos = checkPageBreak(yPos, 6);
             doc.text('Location: Kobape, Abeokuta, Ogun State, Nigeria', 20, yPos);
 
             // Save PDF
