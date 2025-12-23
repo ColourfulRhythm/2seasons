@@ -7,7 +7,8 @@
     <meta name="description" content="Secure your piece of Africa's first regenerative innovation village. 100 prime plots starting at ₦5M. Early investors see 200%+ returns. Act now - limited availability.">
     <meta property="og:title" content="Own Your Future at 2 Seasons - 100 Prime Plots Available">
     <meta property="og:description" content="Secure your piece of Africa's first regenerative innovation village. Limited plots available.">
-    <meta property="og:image" content="https://2seasonsabk.store/100plots/site-plans.jpg">
+    <meta property="og:image" content="" id="og-image-100plots">
+    <link rel="canonical" href="https://www.2seasonsabk.com/100plots">
     
     <link rel="stylesheet" href="styles.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -1493,6 +1494,17 @@
                     updateSliderPosition(false);
                 }, 250);
             });
+        })();
+        
+        // Support both .store and .com domains - set meta tags dynamically
+        (function() {
+            const currentDomain = window.location.hostname;
+            const isStore = currentDomain.includes('.store');
+            const baseDomain = isStore ? '2seasonsabk.store' : 'www.2seasonsabk.com';
+            const ogImage = document.getElementById('og-image-100plots');
+            if (ogImage) {
+                ogImage.setAttribute('content', `https://${baseDomain}/100plots/site-plans.jpg`);
+            }
         })();
     </script>
 </body>

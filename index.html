@@ -16,19 +16,19 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://2seasonsabk.store/">
+    <meta property="og:url" content="" id="og-url">
     <meta property="og:title" content="2 Seasons Nigeria - Africa's First Regenerative Innovation Village">
     <meta property="og:description" content="Welcome to 2 Seasons Nigeria in Kobape, Abeokuta, Ogun State. Experience Africa's first regenerative innovation and lifestyle village featuring eco-friendly living, luxury villas, wellness hub, and youth sports academy.">
-    <meta property="og:image" content="https://2seasonsabk.store/assets/images/site-map.JPG">
+    <meta property="og:image" content="" id="og-image">
     <meta property="og:site_name" content="2 Seasons Nigeria">
     <meta property="og:locale" content="en_NG">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://2seasonsabk.store/">
+    <meta property="twitter:url" content="" id="twitter-url">
     <meta property="twitter:title" content="2 Seasons Nigeria - Africa's First Regenerative Innovation Village">
     <meta property="twitter:description" content="Welcome to 2 Seasons Nigeria in Kobape, Abeokuta, Ogun State. Experience Africa's first regenerative innovation and lifestyle village featuring eco-friendly living, luxury villas, wellness hub, and youth sports academy.">
-    <meta property="twitter:image" content="https://2seasonsabk.store/assets/images/site-map.JPG">
+    <meta property="twitter:image" content="" id="twitter-image">
     
     <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#2c3e50">
@@ -39,8 +39,8 @@
     <!-- Google Search Console Verification (Replace with your actual verification code) -->
     <meta name="google-site-verification" content="your-google-search-console-verification-code">
     
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://2seasonsabk.store/">
+    <!-- Canonical URL - Always use .com as primary domain for SEO -->
+    <link rel="canonical" href="https://www.2seasonsabk.com/">
     
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,11 +55,11 @@
         "name": "2 Seasons Nigeria",
         "alternateName": "2 Seasons Regenerative Innovation Village",
         "description": "Africa's first regenerative innovation and lifestyle village featuring eco-friendly off-grid development, youth sports academy, wellness hub, luxury villas, and sustainable living in Kobape, Abeokuta, Ogun State, Nigeria.",
-        "url": "https://2seasonsabk.store/",
+        "url": "https://www.2seasonsabk.com/",
         "image": [
-            "https://2seasonsabk.store/assets/images/site-map.JPG",
-            "https://2seasonsabk.store/assets/images/luxury-villas.jpg",
-            "https://2seasonsabk.store/assets/images/artificial-lake.jpg"
+            "https://www.2seasonsabk.com/assets/images/site-map.JPG",
+            "https://www.2seasonsabk.com/assets/images/luxury-villas.jpg",
+            "https://www.2seasonsabk.com/assets/images/artificial-lake.jpg"
         ],
         "address": {
             "@type": "PostalAddress",
@@ -375,5 +375,27 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Support both .store and .com domains - set meta tags dynamically
+        (function() {
+            const currentDomain = window.location.hostname;
+            const currentUrl = window.location.href;
+            const isStore = currentDomain.includes('.store');
+            const baseDomain = isStore ? '2seasonsabk.store' : 'www.2seasonsabk.com';
+            
+            // Set OG and Twitter URLs to current domain
+            const ogUrl = document.getElementById('og-url');
+            const twitterUrl = document.getElementById('twitter-url');
+            if (ogUrl) ogUrl.setAttribute('content', currentUrl);
+            if (twitterUrl) twitterUrl.setAttribute('content', currentUrl);
+            
+            // Set OG and Twitter images
+            const ogImage = document.getElementById('og-image');
+            const twitterImage = document.getElementById('twitter-image');
+            const imageUrl = `https://${baseDomain}/assets/images/site-map.JPG`;
+            if (ogImage) ogImage.setAttribute('content', imageUrl);
+            if (twitterImage) twitterImage.setAttribute('content', imageUrl);
+        })();
+    </script>
 </body>
 </html> 

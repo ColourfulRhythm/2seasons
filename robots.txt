@@ -15,7 +15,7 @@ Allow: /assets/
 Allow: /assets/images/
 
 # Sitemap location
-Sitemap: https://2seasonsabk.store/sitemap.xml
+Sitemap: https://www.2seasonsabk.com/sitemap.xml
 
 # Crawl delay to be respectful to server resources
 Crawl-delay: 1
@@ -40,4 +40,4 @@ Disallow: /temp/
 Disallow: /cache/
 
 # Additional sitemap for images
-Sitemap: https://2seasonsabk.store/sitemap.xml
+Sitemap: https://www.2seasonsabk.com/sitemap.xml
