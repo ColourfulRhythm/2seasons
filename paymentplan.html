@@ -921,7 +921,7 @@
             <div class="footer-section">
                 <h3>Contact</h3>
                 <p>Kobape, Abeokuta, Ogun State, Nigeria</p>
-                <p>Email: 2seasonsabk@2seasonsabk.store</p>
+                <p>Email: 2seasonsabk@2seasonsabk.com</p>
             </div>
             <div class="footer-section">
                 <h3>Follow Us</h3>
@@ -1281,7 +1281,12 @@
                     selectedPlot.discount = 0;
                 }
             } else if (DISCOUNT_CODES.hasOwnProperty(code)) {
-                currentDiscountPercentage = DISCOUNT_CODES[code];
+                // Apply discount based on plot type: Agro gets 15%, Residential gets 20% (for dec25 code)
+                if (plotType === 'agro') {
+                    currentDiscountPercentage = 0.15; // 15% for Agro trucks
+                } else {
+                    currentDiscountPercentage = DISCOUNT_CODES[code]; // Use code discount for residential
+                }
                 const discountPercentDisplay = Math.round(currentDiscountPercentage * 100);
                 discountMessage.textContent = `✓ Valid discount code! ${discountPercentDisplay}% discount applied.`;
                 discountMessage.className = 'discount-message valid';
@@ -1336,7 +1341,8 @@
             const discountCode = formData.get('discountCode') || '';
             const codeLower = discountCode.trim().toLowerCase();
             const hasDiscount = DISCOUNT_CODES.hasOwnProperty(codeLower);
-            const discountPercent = hasDiscount ? DISCOUNT_CODES[codeLower] : 0;
+            // Apply discount based on plot type: Agro gets 15%, Residential gets code discount
+            const discountPercent = hasDiscount ? (plotType === 'agro' ? 0.15 : DISCOUNT_CODES[codeLower]) : 0;
             const fruitTrees = formData.get('fruitTrees') || '';
 
             // Generate and download PDF
@@ -1347,7 +1353,7 @@
 
             // Prepare email data
             const emailData = new FormData();
-            emailData.append('_to', '2seasonsabk@2seasonsabk.store');
+            emailData.append('_to', '2seasonsabk@2seasonsabk.com');
             emailData.append('_subject', `New Payment Plan Request - ${fullName}`);
             emailData.append('fullName', fullName);
             emailData.append('phone', phone);
@@ -1643,7 +1649,7 @@
             yPos += 8;
             doc.setFont(undefined, 'normal');
             yPos = checkPageBreak(yPos, 6);
-            doc.text('Email: 2seasonsabk@2seasonsabk.store', 20, yPos);
+            doc.text('Email: 2seasonsabk@2seasonsabk.com', 20, yPos);
             yPos += 6;
             yPos = checkPageBreak(yPos, 6);
             doc.text('Location: Kobape, Abeokuta, Ogun State, Nigeria', 20, yPos);
