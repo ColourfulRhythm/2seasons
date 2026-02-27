@@ -189,8 +189,14 @@
             width: 100%;
         }
 
-        .submit-button:hover {
+        .submit-button:hover:not(:disabled) {
             transform: scale(1.02);
+        }
+
+        .submit-button:disabled {
+            background: #b0b0b0;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .success-message {
@@ -312,12 +318,34 @@
                     <p style="font-size: 0.85rem; line-height: 1.6; color: #666;">By submitting this form, you agree to receive communications from 2 Seasons about exclusive opportunities, updates, and events. You also agree to allow 2 Seasons to store and process your personal data in accordance with our <a href="/privacy" target="_blank" style="color: var(--primary-color); text-decoration: underline;">Privacy Policy</a>.</p>
                 </div>
 
-                <button type="submit" class="submit-button">Submit Inquiry</button>
+                <button type="submit" class="submit-button" id="submitBtn" disabled>Submit Inquiry</button>
             </form>
             <script>
-            document.querySelector('.form-section form').addEventListener('submit', function() {
-                if (typeof fbq !== 'undefined') fbq('track', 'Lead');
-            });
+            (function() {
+                var form = document.querySelector('.form-section form');
+                var btn = document.getElementById('submitBtn');
+                var fields = form.querySelectorAll('input[required], select[required]');
+
+                function checkForm() {
+                    var allFilled = true;
+                    fields.forEach(function(f) {
+                        if (!f.value || f.value.trim() === '') allFilled = false;
+                    });
+                    btn.disabled = !allFilled;
+                }
+
+                fields.forEach(function(f) {
+                    f.addEventListener('input', checkForm);
+                    f.addEventListener('change', checkForm);
+                });
+
+                var hidden = document.getElementById('propertyType');
+                if (hidden) hidden.addEventListener('change', checkForm);
+
+                form.addEventListener('submit', function() {
+                    if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+                });
+            })();
             </script>
 
             <div class="success-message" id="successMessage">

@@ -313,6 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update hidden input with comma-separated values
             propertyTypeInput.value = selectedValues.join(', ');
+            propertyTypeInput.dispatchEvent(new Event('change'));
 
             // Show/hide plots form
             const hasResidential = selectedValues.includes('residential');
