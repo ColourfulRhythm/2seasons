@@ -114,7 +114,12 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    let text = data.content?.[0]?.text || '';
+    let text = (data.content || [])
+      .filter(block => block.type === 'text')
+      .map(block => block.text || '')
+      .join('')
+      .trim();
+    text = text.replace(/\s*model:\s*claude[\w-]+/gi, '').replace(/\s*claude-3-5-sonnet-20241022/gi, '').trim();
     const leadMatch = text.match(/\[LEAD_CAPTURE:(\{[^}]+\})\]/);
     let leadData = null;
     if (leadMatch) {
