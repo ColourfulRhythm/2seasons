@@ -1086,9 +1086,8 @@ function closeDoc() { document.getElementById('doc-ov').classList.remove('open')
 
 // ── CHAT (Claude / Amara via serverless proxy) ──
 var chatOpened = false, chatHistory = [], chatBusy = false;
-var API_BASE = 'https://2seasons.vercel.app';
-var CHAT_API = API_BASE + '/api/amara-chat';
-var SEND_LEAD_API = API_BASE + '/api/send-lead';
+var CHAT_API = '/api/amara-chat';
+var SEND_LEAD_API = '/api/send-lead';
 
 function addMsg(role, text) {
   var w = document.getElementById('chat-msgs');
