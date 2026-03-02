@@ -89,11 +89,15 @@ body {
 /* ─── HERO ─── */
 .hero {
   position: relative;
-  padding: 4.5rem 1.5rem 4rem;
+  padding: 4.5rem 1.5rem 5rem;
   text-align: center;
-  background:
+  background-color: #1a0e06;
+  background-image:
     linear-gradient(160deg, rgba(20,8,2,0.82) 0%, rgba(35,15,3,0.7) 50%, rgba(20,8,2,0.88) 100%),
-    url('join%20background%20image.jpg') center/cover no-repeat;
+    url('/join%20background%20image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   overflow: hidden;
 }
 
@@ -115,10 +119,11 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  background: rgba(200,146,42,0.18);
-  border: 1px solid rgba(200,146,42,0.45);
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(200,146,42,0.5);
   color: var(--gold-light);
   font-size: 0.67rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -142,15 +147,17 @@ body {
   line-height: 1.08;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 .hero-h1 em { font-style: italic; color: var(--gold-light); }
 
 .hero-sub {
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.62);
+  color: rgba(255,255,255,0.85);
   line-height: 1.75;
   font-weight: 300;
   margin-bottom: 2rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .hero-pills {
@@ -161,14 +168,38 @@ body {
 }
 .pill {
   display: flex; align-items: center; gap: 0.35rem;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.82);
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(200,146,42,0.5);
+  color: #fff;
   font-size: 0.72rem;
   padding: 0.38rem 0.8rem;
   border-radius: 100px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 .pill svg { color: var(--gold-light); }
+
+.hero-scroll-hint {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 2rem;
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  animation: bounceHint 2s ease-in-out infinite;
+}
+.hero-scroll-hint:hover { color: var(--gold-light); }
+.hero-scroll-hint svg {
+  width: 28px;
+  height: 28px;
+  opacity: 0.9;
+}
+@keyframes bounceHint {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
 
 /* ─── TRUST BAR ─── */
 .trust-bar {
@@ -680,6 +711,10 @@ body {
         ₦10,000 / sqm Fixed
       </div>
     </div>
+    <a href="#claim" class="hero-scroll-hint" aria-label="Scroll to form">
+      <span>Claim your plot below</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </a>
   </div>
 </section>
 
