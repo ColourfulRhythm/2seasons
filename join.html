@@ -1044,41 +1044,156 @@ function openDoc(type) {
 }
 function closeDoc() { document.getElementById('doc-ov').classList.remove('open'); }
 
-// ── CHAT (simplified — no API) ──
-var chatOpened = false;
+// ── CHAT (Claude / Amara via serverless proxy) ──
+var chatOpened = false, chatHistory = [], chatBusy = false;
+var CHAT_API = '/api/amara-chat';
+var SEND_LEAD_API = '/api/send-lead';
+
+function addMsg(role, text) {
+  var w = document.getElementById('chat-msgs');
+  var d = document.createElement('div');
+  d.className = 'cmsg ' + role;
+  d.innerHTML = role === 'agent'
+    ? '<div class="cmsg-av">A</div><div class="cmsg-b">' + text + '</div>'
+    : '<div class="cmsg-b">' + text + '</div>';
+  w.appendChild(d);
+  w.scrollTop = w.scrollHeight;
+}
+function showTyping() {
+  var w = document.getElementById('chat-msgs');
+  var d = document.createElement('div');
+  d.className = 'cmsg agent';
+  d.id = 'typing';
+  d.innerHTML = '<div class="cmsg-av">A</div><div class="typing"><span></span><span></span><span></span></div>';
+  w.appendChild(d);
+  w.scrollTop = w.scrollHeight;
+}
+function removeTyping() {
+  var e = document.getElementById('typing');
+  if (e) e.remove();
+}
+function setQR(items) {
+  var w = document.getElementById('qr-row');
+  w.innerHTML = '';
+  items.forEach(function(t) {
+    if (t === '___REQUEST_CALLBACK___') {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'qr';
+      b.style.background = 'var(--brown)';
+      b.style.color = '#fff';
+      b.textContent = 'Have someone call me';
+      b.onclick = showLeadForm;
+      w.appendChild(b);
+    } else {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'qr';
+      b.textContent = t;
+      b.onclick = function() { w.innerHTML = ''; sendMsgText(t); };
+      w.appendChild(b);
+    }
+  });
+}
+
+function showLeadForm() {
+  document.getElementById('qr-row').innerHTML = '';
+  var w = document.getElementById('chat-msgs');
+  var f = document.createElement('div');
+  f.className = 'cmsg agent';
+  f.id = 'lead-form-wrap';
+  f.innerHTML = '<div class="cmsg-av">A</div><div class="cmsg-b" style="padding:0"><div style="padding:0.6rem 0.8rem"><p style="margin-bottom:0.6rem;font-size:0.78rem">Share your details and a consultant will call within 2 hours:</p><input type="text" id="lead-name" placeholder="Full name" class="form-input" style="margin-bottom:0.4rem;padding:0.5rem"><input type="email" id="lead-email" placeholder="Email" class="form-input" style="margin-bottom:0.4rem;padding:0.5rem"><input type="tel" id="lead-phone" placeholder="Phone" class="form-input" style="margin-bottom:0.5rem;padding:0.5rem"><button type="button" onclick="submitLeadForm()" style="background:var(--brown);color:#fff;border:none;padding:0.5rem 1rem;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:Outfit,sans-serif">Send my details</button></div></div>';
+  w.appendChild(f);
+  w.scrollTop = w.scrollHeight;
+}
+
+function submitLeadForm() {
+  var name = (document.getElementById('lead-name') || {}).value || '';
+  var email = (document.getElementById('lead-email') || {}).value || '';
+  var phone = (document.getElementById('lead-phone') || {}).value || '';
+  if (!name.trim() || !email.trim() || !phone.trim()) {
+    alert('Please fill in your name, email, and phone.');
+    return;
+  }
+  var wrap = document.getElementById('lead-form-wrap');
+  if (wrap) wrap.remove();
+  addMsg('user', 'My details: ' + name + ', ' + email + ', ' + phone);
+  sendLeadToEmail(name.trim(), email.trim(), phone.trim());
+  addMsg('agent', "Perfect! I've passed your details to our team. A consultant will call you within 2 hours. Is there anything specific you'd like them to prepare?");
+  setQR(["What documents do I get?", "Is payment flexible?", "I'm ready to claim"]);
+}
+
+function sendLeadToEmail(name, email, phone) {
+  fetch(SEND_LEAD_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: name, email: email, phone: phone, source: 'Amara Chat' })
+  }).catch(function() {});
+}
+
 function openChat() {
   document.getElementById('chat-win').classList.add('open');
   document.getElementById('chat-nudge').style.display = 'none';
   if (!chatOpened) {
     chatOpened = true;
     setTimeout(function() {
-      var w = document.getElementById('chat-msgs');
-      var d = document.createElement('div');
-      d.className = 'cmsg agent';
-      d.innerHTML = '<div class="cmsg-av">A</div><div class="cmsg-b">Hi! 👋 I\'m Amara. Have questions about plots, documents, or payment? You can also reach us on WhatsApp or fill the form above — we\'ll call you within 2 hours.</div>';
-      w.appendChild(d);
+      addMsg('agent', "Hi there! 👋 I'm Amara, your 2 Seasons consultant — I'm here live right now. What questions do you have about the plots or the process?");
+      setQR(["Is this land legit?", "What documents do I get?", "Can I pay in instalments?", "___REQUEST_CALLBACK___"]);
     }, 350);
   }
 }
 function closeChat() { document.getElementById('chat-win').classList.remove('open'); }
+
 function sendMsg() {
   var inp = document.getElementById('chat-inp');
   var t = inp.value.trim();
-  if (!t) return;
-  var w = document.getElementById('chat-msgs');
-  var d = document.createElement('div');
-  d.className = 'cmsg user';
-  d.innerHTML = '<div class="cmsg-b">' + t + '</div>';
-  w.appendChild(d);
+  if (!t || chatBusy) return;
   inp.value = '';
-  w.scrollTop = w.scrollHeight;
-  setTimeout(function() {
-    var r = document.createElement('div');
-    r.className = 'cmsg agent';
-    r.innerHTML = '<div class="cmsg-av">A</div><div class="cmsg-b">Thanks for your message! A consultant will reach out soon. In the meantime, submit the form above to claim your plot — we\'ll call you within 2 hours. Need urgent help? Email 2seasonsabk@2seasonsabk.store</div>';
-    w.appendChild(r);
-    w.scrollTop = w.scrollHeight;
-  }, 500);
+  sendMsgText(t);
+}
+
+function sendMsgText(text) {
+  if (chatBusy) return;
+  document.getElementById('qr-row').innerHTML = '';
+  addMsg('user', text);
+  chatHistory.push({ role: 'user', content: text });
+  chatBusy = true;
+  document.getElementById('send-btn').disabled = true;
+  showTyping();
+
+  fetch(CHAT_API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messages: chatHistory })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    removeTyping();
+    chatBusy = false;
+    document.getElementById('send-btn').disabled = false;
+    var reply = (data.reply || data.error || "Quick connection issue — please try again!").trim();
+    addMsg('agent', reply);
+    chatHistory.push({ role: 'assistant', content: reply });
+    if (data.lead && data.lead.name && data.lead.email && data.lead.phone) {
+      sendLeadToEmail(data.lead.name, data.lead.email, data.lead.phone);
+    }
+    var l = text.toLowerCase();
+    if (l.indexOf('doc') >= 0 || l.indexOf('title') >= 0 || l.indexOf('legit') >= 0 || l.indexOf('real') >= 0 || l.indexOf('trust') >= 0)
+      setQR(["View the Deed of Assignment", "View the Survey Plan", "Can I verify independently?", "___REQUEST_CALLBACK___"]);
+    else if (l.indexOf('pay') >= 0 || l.indexOf('instal') >= 0 || l.indexOf('afford') >= 0 || l.indexOf('expensive') >= 0)
+      setQR(["I want to pay in full", "Tell me about instalment options", "___REQUEST_CALLBACK___"]);
+    else if (l.indexOf('think') >= 0 || l.indexOf('later') >= 0 || l.indexOf('back') >= 0 || l.indexOf('sure') >= 0)
+      setQR(["Does submitting commit me to payment?", "How many plots are left?", "___REQUEST_CALLBACK___"]);
+    else
+      setQR(["How do I claim?", "What documents do I get?", "Is payment flexible?", "___REQUEST_CALLBACK___"]);
+  })
+  .catch(function() {
+    removeTyping();
+    chatBusy = false;
+    document.getElementById('send-btn').disabled = false;
+    addMsg('agent', "Brief connection issue — try again in a moment, or scroll up and fill the form. We'll call you within 2 hours!");
+    setQR(["How do I claim?", "What documents do I get?", "___REQUEST_CALLBACK___"]);
+  });
 }
 
 // Proactive chat nudge
