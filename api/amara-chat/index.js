@@ -119,7 +119,13 @@ module.exports = async function handler(req, res) {
       .map(block => block.text || '')
       .join('')
       .trim();
-    text = text.replace(/\s*model:\s*claude[\w-]+/gi, '').replace(/\s*claude-3-5-sonnet-20241022/gi, '').trim();
+    // Strip model name/echo (Claude sometimes outputs it in replies)
+    text = text
+      .replace(/model\s*:\s*claude[\w.-]+/gi, '')
+      .replace(/claude-3-5-sonnet-20241022/gi, '')
+      .replace(/^\s*model\s*:\s*claude[\w.-]+\s*$/gim, '')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
     const leadMatch = text.match(/\[LEAD_CAPTURE:(\{[^}]+\})\]/);
     let leadData = null;
     if (leadMatch) {
