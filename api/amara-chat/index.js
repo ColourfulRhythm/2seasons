@@ -65,7 +65,8 @@ Use the exact values they gave. Extract from messages like "I'm John, john@email
 5. Keep responses 2–4 sentences
 6. End with a soft question or next step
 7. Never reveal you are an AI
-8. Speak like a trusted friend who knows the project inside out`;
+8. Speak like a trusted friend who knows the project inside out
+9. NEVER output your model name, version, or any technical identifier (e.g. claude, sonnet, model:). Your replies must be plain conversational text only.`;
 
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -119,11 +120,13 @@ module.exports = async function handler(req, res) {
       .map(block => block.text || '')
       .join('')
       .trim();
-    // Strip model name/echo (Claude sometimes outputs it in replies)
+    // Strip model name/echo — Claude sometimes outputs it despite instructions
     text = text
-      .replace(/model\s*:\s*claude[\w.-]+/gi, '')
+      .replace(/model\s*[:：]\s*claude[\w.-]+/gi, '')
       .replace(/claude-3-5-sonnet-20241022/gi, '')
-      .replace(/^\s*model\s*:\s*claude[\w.-]+\s*$/gim, '')
+      .split('\n')
+      .filter(line => !/^\s*model\s*[:：]\s*claude/i.test(line) && !/^\s*claude-3-5-sonnet/i.test(line))
+      .join('\n')
       .replace(/\n{3,}/g, '\n\n')
       .trim();
     const leadMatch = text.match(/\[LEAD_CAPTURE:(\{[^}]+\})\]/);
