@@ -4,39 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claim Your Plot — 2 Seasons</title>
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1729613101341755');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1729613101341755&ev=PageView&noscript=1"/></noscript>
-
-<!-- TikTok Pixel Code Start -->
-<script>
-!function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-  var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-  ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-  ttq.load('D55QDRBC77U5DJL51OS0');
-  ttq.page();
-}(window, document, 'ttq');
-</script>
-<!-- TikTok Pixel Code End -->
-
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -67,18 +36,15 @@ body {
 /* ─── URGENCY TICKER ─── */
 .ticker {
   background: var(--brown);
-  padding: 0.4rem 0.75rem;
+  padding: 0.55rem 1rem;
   text-align: center;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   color: rgba(255,255,255,0.85);
   letter-spacing: 0.05em;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-}
-@media (min-width: 769px) {
-  .ticker { padding: 0.55rem 1rem; font-size: 0.72rem; }
 }
 .ticker strong { color: var(--gold-light); }
 .ticker-dot {
@@ -92,20 +58,12 @@ body {
 /* ─── HERO ─── */
 .hero {
   position: relative;
-  padding: 2rem 1rem 2rem;
+  padding: 4.5rem 1.5rem 4rem;
   text-align: center;
-  min-height: auto;
-  background-color: #1a0e06;
-  background-image:
-    linear-gradient(160deg, rgba(20,8,2,0.75) 0%, rgba(35,15,3,0.65) 50%, rgba(20,8,2,0.8) 100%),
-    url('/join-background-image.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background:
+    linear-gradient(160deg, rgba(20,8,2,0.82) 0%, rgba(35,15,3,0.7) 50%, rgba(20,8,2,0.88) 100%),
+    url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80') center/cover no-repeat;
   overflow: hidden;
-}
-@media (min-width: 769px) {
-  .hero { padding: 4rem 1.5rem 4rem; }
 }
 
 .hero::before {
@@ -135,10 +93,7 @@ body {
   text-transform: uppercase;
   padding: 0.35rem 0.9rem;
   border-radius: 100px;
-  margin-bottom: 0.75rem;
-}
-@media (min-width: 769px) {
-  .hero-tag { margin-bottom: 1.4rem; }
+  margin-bottom: 1.4rem;
 }
 .hero-tag::before {
   content: '';
@@ -150,74 +105,39 @@ body {
 
 .hero-h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 5vw, 3.75rem);
+  font-size: clamp(2.3rem, 6vw, 3.75rem);
   font-weight: 700;
   color: #fff;
   line-height: 1.08;
   letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
-}
-@media (min-width: 769px) {
-  .hero-h1 { font-size: clamp(2.3rem, 6vw, 3.75rem); margin-bottom: 1rem; }
+  margin-bottom: 1rem;
 }
 .hero-h1 em { font-style: italic; color: var(--gold-light); }
 
 .hero-sub {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: rgba(255,255,255,0.62);
-  line-height: 1.6;
+  line-height: 1.75;
   font-weight: 300;
-  margin-bottom: 0.75rem;
-}
-@media (min-width: 769px) {
-  .hero-sub { font-size: 0.95rem; line-height: 1.75; margin-bottom: 2rem; }
+  margin-bottom: 2rem;
 }
 
 .hero-pills {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.4rem;
-  margin-bottom: 0.5rem;
-}
-@media (min-width: 769px) {
-  .hero-pills { gap: 0.5rem; margin-bottom: 0; }
+  gap: 0.5rem;
 }
 .pill {
   display: flex; align-items: center; gap: 0.35rem;
-  background: rgba(0,0,0,0.4);
-  border: 1px solid rgba(255,255,255,0.25);
-  color: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.82);
   font-size: 0.72rem;
   padding: 0.38rem 0.8rem;
   border-radius: 100px;
 }
 .pill svg { color: var(--gold-light); }
-
-.hero-scroll-hint {
-  display: none;
-  margin-top: 0.75rem;
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.9);
-  text-decoration: none;
-  animation: bounce 2s infinite;
-}
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
-}
-@media (max-width: 768px) {
-  .hero-scroll-hint { display: block; }
-}
-
-/* Compact trust bar & proof on mobile */
-@media (max-width: 768px) {
-  .trust-bar { padding: 0.75rem 1rem; gap: 1rem; }
-  .proof-strip { padding: 0.6rem 1rem; }
-  .next-steps { padding: 1.5rem 1rem; }
-  .next-title { margin-bottom: 1rem; font-size: 1.2rem; }
-  .form-section { padding: 1.5rem 1rem 3rem; padding-bottom: 5rem; }
-}
 
 /* ─── TRUST BAR ─── */
 .trust-bar {
@@ -249,7 +169,9 @@ body {
   flex-wrap: wrap;
   text-align: center;
 }
-.proof-faces { display: flex; }
+.proof-faces {
+  display: flex;
+}
 .proof-face {
   width: 28px; height: 28px; border-radius: 50%;
   border: 2px solid #fff;
@@ -269,7 +191,9 @@ body {
   padding: 2.5rem 1.5rem;
   border-bottom: 1px solid var(--border);
 }
-.next-inner { max-width: 640px; margin: 0 auto; }
+.next-inner {
+  max-width: 640px; margin: 0 auto;
+}
 .next-label {
   font-size: 0.62rem; font-weight: 600;
   letter-spacing: 0.25em; text-transform: uppercase;
@@ -310,10 +234,17 @@ body {
   margin-bottom: 0.75rem;
   position: relative; z-index: 1;
 }
-.step-title { font-size: 0.82rem; font-weight: 600; color: var(--brown); margin-bottom: 0.3rem; }
+.step-title {
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--brown); margin-bottom: 0.3rem;
+}
 .step-desc { font-size: 0.74rem; color: var(--muted); line-height: 1.55; }
 
-.plots-wrap { background: var(--cream); padding: 0.5rem 1.5rem 0; }
+/* ─── PLOTS ─── */
+.plots-wrap {
+  background: var(--cream);
+  padding: 0.5rem 1.5rem 0;
+}
 
 /* ─── FORM SECTION ─── */
 .form-section {
@@ -322,6 +253,7 @@ body {
   margin: 0 auto;
 }
 
+/* Scarcity bar */
 .scarcity {
   background: var(--red-soft);
   border: 1px solid #fecaca;
@@ -425,10 +357,16 @@ body {
   position: absolute; top: 4px; right: 7px;
   font-size: 0.58rem; color: var(--brown); font-weight: 800;
 }
-.po-size { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--brown); line-height: 1; }
+.po-size {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem; font-weight: 700; color: var(--brown); line-height: 1;
+}
 .po-unit { font-size: 0.58rem; color: var(--muted); font-family: 'Outfit', sans-serif; }
 .po-price { font-size: 0.7rem; font-weight: 600; color: var(--text); margin-top: 0.25rem; }
-.po-tag { font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-top: 0.2rem; }
+.po-tag {
+  font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); font-weight: 700; margin-top: 0.2rem;
+}
 
 .qty-row {
   display: inline-flex; align-items: center;
@@ -451,6 +389,7 @@ body {
   padding: 0.35rem 0;
 }
 
+/* Risk reversal */
 .risk-reversal {
   background: #f0fdf4;
   border: 1px solid #bbf7d0;
@@ -472,14 +411,12 @@ body {
   display: flex; align-items: center; justify-content: center; gap: 0.5rem;
   margin-top: 0.5rem;
 }
-.form-submit:hover:not(:disabled) { background: var(--gold); color: var(--brown); transform: translateY(-1px); }
-.form-submit:disabled {
-  background: #b0b0b0;
-  cursor: not-allowed;
-  transform: none;
-}
+.form-submit:hover { background: var(--gold); color: var(--brown); transform: translateY(-1px); }
 
-.form-note { font-size: 0.68rem; color: var(--muted); line-height: 1.6; margin-top: 0.9rem; text-align: center; }
+.form-note {
+  font-size: 0.68rem; color: var(--muted);
+  line-height: 1.6; margin-top: 0.9rem; text-align: center;
+}
 .form-note a { color: var(--gold); text-decoration: none; }
 
 .doc-links {
@@ -519,13 +456,21 @@ body {
   font-size: 1.4rem; cursor: pointer;
   color: var(--muted); line-height: 1;
 }
-.modal-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; color: var(--brown); margin-bottom: 0.25rem; }
+.modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 600;
+  color: var(--brown); margin-bottom: 0.25rem;
+}
 .modal-sub { font-size: 0.72rem; color: var(--muted); margin-bottom: 1.5rem; }
 .doc-body {
   background: #fff; border: 1px solid var(--border);
   padding: 1.5rem; font-size: 0.81rem; line-height: 1.9; color: var(--text);
 }
-.doc-body h3 { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--brown); margin: 1.2rem 0 0.35rem; font-weight: 600; }
+.doc-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; color: var(--brown);
+  margin: 1.2rem 0 0.35rem; font-weight: 600;
+}
 .doc-body h3:first-child { margin-top: 0; }
 .doc-stamp {
   text-align: center; font-size: 0.58rem;
@@ -538,7 +483,10 @@ body {
   background: var(--gold); opacity: 0.35;
 }
 
-.success-modal { text-align: center; max-width: 480px; }
+/* ─── SUCCESS MODAL ─── */
+.success-modal {
+  text-align: center; max-width: 480px;
+}
 .success-icon {
   width: 64px; height: 64px; border-radius: 50%;
   background: var(--brown);
@@ -562,44 +510,56 @@ body {
   font-size: 0.65rem; font-weight: 800; flex-shrink: 0;
 }
 
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+@keyframes bdot {
+  0%,60%,100%{transform:translateY(0);opacity:0.4}
+  30%{transform:translateY(-4px);opacity:1}
+}
+
 @media (max-width: 540px) {
   .steps-row { grid-template-columns: 1fr; gap: 1.25rem; }
   .steps-row::before { display: none; }
   .form-card { padding: 1.5rem; }
   .trust-bar { gap: 1.1rem; }
-  .plot-options { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
-
-<header>
-    <nav>
-        <a href="/" class="logo">2 Seasons</a>
-        <button type="button" class="mobile-menu-btn" aria-label="Toggle Menu">
-            <i class="fas fa-bars"></i>
-            <span>Menu</span>
-        </button>
-        <ul class="nav-links">
-            <li><a href="/#residential">Residential</a></li>
-            <li><a href="/#villas">True Vine Villas</a></li>
-            <li><a href="/#wellness">Wellness Hub</a></li>
-            <li><a href="/hyggetown">Hygge Town</a></li>
-            <li><a href="/100plots">100 Plots</a></li>
-            <li><a href="/paymentplan">Payment Plan</a></li>
-            <li><a href="/partners">Partners</a></li>
-            <li><a href="/2saffiliate">Affiliates</a></li>
-            <li><a href="/join" class="join-button">Join Now</a></li>
-        </ul>
-    </nav>
-</header>
-<div class="menu-overlay"></div>
 
 <!-- URGENCY TICKER -->
 <div class="ticker">
   <div class="ticker-dot"></div>
   <span>Only <strong id="plots-left">18 plots</strong> remaining at ₦10,000/sqm — price increases once current phase sells out</span>
 </div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Allocation is Instant</div>
+    <h1 class="hero-h1">Claim Your Plot in<br><em>Africa's Future</em></h1>
+    <p class="hero-sub">2 Seasons — Africa's first regenerative innovation village. Kobape, Abeokuta.<br>Fixed price. Full title documents. No middlemen.</p>
+    <div class="hero-pills">
+      <div class="pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Deed of Assignment
+      </div>
+      <div class="pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        Registered Survey Plan
+      </div>
+      <div class="pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+        ₦10,000 / sqm Fixed
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
@@ -619,6 +579,18 @@ body {
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
     Live rep available now
   </div>
+</div>
+
+<!-- SOCIAL PROOF -->
+<div class="proof-strip">
+  <div class="proof-faces">
+    <div class="proof-face">T</div>
+    <div class="proof-face">A</div>
+    <div class="proof-face">K</div>
+    <div class="proof-face">O</div>
+    <div class="proof-face">F</div>
+  </div>
+  <span class="proof-text"><strong>47 people</strong> have already claimed their plot this month &nbsp;·&nbsp; Last claimed <strong>2 hours ago</strong></span>
 </div>
 
 <!-- WHAT HAPPENS NEXT -->
@@ -647,7 +619,9 @@ body {
 </div>
 
 <!-- FORM -->
-<section class="form-section" id="claim" style="scroll-margin-top: 1rem;">
+<section class="form-section" id="claim">
+
+  <!-- Scarcity -->
   <div class="scarcity">
     <div class="scarcity-icon">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -662,6 +636,7 @@ body {
   </div>
 
   <div class="form-card">
+
     <div class="plot-chosen" id="plot-chosen">
       <div>
         <div class="pc-label">Your Selection</div>
@@ -675,33 +650,33 @@ body {
 
     <div class="form-field">
       <label class="form-label">Full Name</label>
-      <input type="text" class="form-input" id="f-name" name="fullName" placeholder="Your full name" required>
+      <input type="text" class="form-input" id="f-name" placeholder="Your full name">
     </div>
 
     <div class="form-field">
       <label class="form-label">Email Address</label>
-      <input type="email" class="form-input" id="f-email" name="email" placeholder="your@email.com" required>
+      <input type="email" class="form-input" id="f-email" placeholder="your@email.com">
     </div>
 
     <div class="form-field">
       <label class="form-label">Phone Number</label>
-      <input type="tel" class="form-input" id="f-phone" name="phone" placeholder="+234 800 000 0000" required>
+      <input type="tel" class="form-input" id="f-phone" placeholder="+234 800 000 0000">
     </div>
 
     <div class="form-field">
       <label class="form-label">What Would You Like to Own?</label>
       <div class="plot-options">
-        <div class="plot-opt" data-size="150" data-price="1500000">
+        <div class="plot-opt" onclick="pickPlot(this, 150)">
           <div class="po-size">150<span class="po-unit"> sqm</span></div>
           <div class="po-price">₦1.5M</div>
           <div class="po-tag">Starter</div>
         </div>
-        <div class="plot-opt" data-size="300" data-price="3000000">
+        <div class="plot-opt" onclick="pickPlot(this, 300)">
           <div class="po-size">300<span class="po-unit"> sqm</span></div>
           <div class="po-price">₦3M</div>
           <div class="po-tag">⭐ Popular</div>
         </div>
-        <div class="plot-opt" data-size="500" data-price="5000000">
+        <div class="plot-opt" onclick="pickPlot(this, 500)">
           <div class="po-size">500<span class="po-unit"> sqm</span></div>
           <div class="po-price">₦5M</div>
           <div class="po-tag">Premium</div>
@@ -712,18 +687,19 @@ body {
     <div class="form-field">
       <label class="form-label">Number of Plots</label>
       <div class="qty-row">
-        <button type="button" class="qty-btn" id="qty-minus">−</button>
+        <button class="qty-btn" onclick="changeQty(-1)">−</button>
         <div class="qty-num" id="qty">1</div>
-        <button type="button" class="qty-btn" id="qty-plus">+</button>
+        <button class="qty-btn" onclick="changeQty(1)">+</button>
       </div>
     </div>
 
+    <!-- Risk reversal -->
     <div class="risk-reversal">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       <span>Submitting this form does not commit you to payment. A consultant will call you first to answer every question before you decide.</span>
     </div>
 
-    <button type="button" class="form-submit" id="submitBtn" disabled>
+    <button class="form-submit" onclick="submitForm()">
       Claim My Plot — Allocation is Instant
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
@@ -731,22 +707,23 @@ body {
     <p class="form-note">By submitting, you agree to receive communications from 2 Seasons. Your data is never sold. <a href="/privacy">Privacy Policy</a>.</p>
 
     <div class="doc-links">
-      <button type="button" class="doc-link-btn" onclick="openDoc('deed')">
+      <button class="doc-link-btn" onclick="openDoc('deed')">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         View Deed of Assignment
       </button>
-      <button type="button" class="doc-link-btn" onclick="openDoc('survey')">
+      <button class="doc-link-btn" onclick="openDoc('survey')">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
         View Registered Survey
       </button>
     </div>
+
   </div>
 </section>
 
 <!-- DOC MODAL -->
 <div class="overlay" id="doc-ov" onclick="if(event.target===this)closeDoc()">
   <div class="modal">
-    <button type="button" class="modal-x" onclick="closeDoc()">×</button>
+    <button class="modal-x" onclick="closeDoc()">×</button>
     <div id="doc-body"></div>
   </div>
 </div>
@@ -775,150 +752,93 @@ body {
       </div>
     </div>
 
-    <p style="font-size:0.75rem;color:var(--muted);margin-bottom:1.25rem">Redirecting you home...</p>
+    <button onclick="document.getElementById('success-ov').classList.remove('open');"
+      style="background:var(--brown);color:#fff;border:none;padding:0.82rem 2rem;font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;width:100%;">
+      OK →
+    </button>
   </div>
 </div>
 
-<footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>2 Seasons</h3>
-            <p>Africa's First Regenerative Innovation & Lifestyle Village</p>
-        </div>
-        <div class="footer-section">
-            <h3>Contact</h3>
-            <p>Abeokuta, Nigeria</p>
-            <p>Email: 2seasonsabk@2seasonsabk.store</p>
-        </div>
-        <div class="footer-section">
-            <h3>Follow Us</h3>
-            <div class="social-links">
-                <a href="https://www.instagram.com/2seasonsabk" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="https://x.com/2seasonsabk?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2025 2 Seasons. All rights reserved.</p>
-        <a href="/privacy" class="privacy-policy-btn">Privacy Policy</a>
-    </div>
-</footer>
-
-<script src="script.js"></script>
 <script>
 // ── STATE ──
-var qty = 1, selPlot = null;
-const FORMSPREE_URL = 'https://formspree.io/f/xvgrzrnp';
-const REDIRECT_URL = 'https://www.2seasonsabk.com/';
+let qty = 1, selPlot = null;
 
 // ── PLOT ──
-document.querySelectorAll('.plot-opt').forEach(function(el) {
-  el.addEventListener('click', function() {
-    document.querySelectorAll('.plot-opt').forEach(function(o) { o.classList.remove('active'); });
-    el.classList.add('active');
-    selPlot = { size: parseInt(el.dataset.size, 10), price: parseInt(el.dataset.price, 10) };
-    updateSummary();
-    checkFormValid();
-  });
-});
-
-document.getElementById('qty-minus').addEventListener('click', function() {
-  qty = Math.max(1, qty - 1);
-  document.getElementById('qty').textContent = qty;
+function pickPlot(el, size) {
+  document.querySelectorAll('.plot-opt').forEach(o => o.classList.remove('active'));
+  el.classList.add('active');
+  selPlot = size;
   updateSummary();
-  checkFormValid();
-});
-
-document.getElementById('qty-plus').addEventListener('click', function() {
-  qty = Math.min(10, qty + 1);
-  document.getElementById('qty').textContent = qty;
-  updateSummary();
-  checkFormValid();
-});
-
+}
 function updateSummary() {
   if (!selPlot) return;
-  const total = selPlot.price * qty;
-  document.getElementById('pc-size').textContent = selPlot.size + ' sqm × ' + qty + ' plot' + (qty > 1 ? 's' : '');
+  const total = selPlot * 10000 * qty;
+  document.getElementById('pc-size').textContent = selPlot + ' sqm × ' + qty + ' plot' + (qty > 1 ? 's' : '');
   document.getElementById('pc-price').textContent = '₦' + total.toLocaleString();
   document.getElementById('plot-chosen').style.display = 'flex';
 }
-
-// ── FORM VALIDATION & SUBMIT ──
-['f-name','f-email','f-phone'].forEach(function(id) {
-  document.getElementById(id).addEventListener('input', checkFormValid);
-});
-
-function checkFormValid() {
-  const n = document.getElementById('f-name').value.trim();
-  const e = document.getElementById('f-email').value.trim();
-  const p = document.getElementById('f-phone').value.trim();
-  document.getElementById('submitBtn').disabled = !(n && e && p && selPlot);
+function changeQty(d) {
+  qty = Math.max(1, qty + d);
+  document.getElementById('qty').textContent = qty;
+  updateSummary();
 }
 
-document.getElementById('submitBtn').addEventListener('click', function() {
+// ── FORM ──
+function submitForm() {
   const n = document.getElementById('f-name').value.trim();
   const e = document.getElementById('f-email').value.trim();
   const p = document.getElementById('f-phone').value.trim();
-  if (!n || !e || !p || !selPlot) return;
-
-  var btn = this;
-  btn.disabled = true;
-  btn.innerHTML = 'Submitting... <span style="opacity:0.7">please wait</span>';
-
-  var formData = new FormData();
-  formData.append('fullName', n);
-  formData.append('email', e);
-  formData.append('phone', p);
-  formData.append('plotSize', selPlot.size + ' sqm');
-  formData.append('quantity', qty);
-  formData.append('totalPrice', '₦' + (selPlot.price * qty).toLocaleString());
-  formData.append('_redirect', REDIRECT_URL);
-
-  fetch(FORMSPREE_URL, {
-    method: 'POST',
-    body: formData,
-    headers: { 'Accept': 'application/json' }
-  })
-  .then(function(r) { return r.json(); })
-  .then(function(data) {
-    if (data.ok) {
-      if (typeof fbq !== 'undefined') fbq('track', 'Lead');
-      document.getElementById('success-ov').classList.add('open');
-      setTimeout(function() {
-        window.location.href = REDIRECT_URL;
-      }, 2500);
-    } else {
-      btn.disabled = false;
-      btn.innerHTML = 'Claim My Plot — Allocation is Instant <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-      alert('Something went wrong. Please try again.');
-    }
-  })
-  .catch(function() {
-    btn.disabled = false;
-    btn.innerHTML = 'Claim My Plot — Allocation is Instant <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-    alert('Connection error. Please check your internet and try again.');
-  });
-});
+  if (!n || !e || !p) { alert('Please fill in your name, email, and phone number.'); return; }
+  document.getElementById('success-ov').classList.add('open');
+}
 
 // ── DOCS ──
-var docs = {
+const docs = {
   deed: {
     title: 'Deed of Assignment',
     sub: '2 Seasons Innovation Village — Official Title Transfer Document',
-    html: '<p style="margin-bottom:1rem">Official Deed of Assignment template for 2 Seasons Regenerative Innovation Village, Kobape, Abeokuta, Ogun State.</p><img src="100plots/deed.png" alt="Deed of Assignment" style="width:100%;height:auto;display:block;border:1px solid var(--border);">'
+    html: `
+      <h3>PARTIES</h3>
+      <p>This Deed of Assignment is made between <strong>2 Seasons Development Company Ltd</strong> ("the Vendor") and the Purchaser whose details are set out in the attached Schedule.</p>
+      <div class="doc-stamp">2 Seasons · Official Document · Preview Copy</div>
+      <h3>PROPERTY DESCRIPTION</h3>
+      <p>The Vendor hereby assigns to the Purchaser all that piece and parcel of land situated within the 2 Seasons Regenerative Innovation Village, Kobape, Abeokuta, Ogun State, as demarcated on the Registered Survey Plan attached as Exhibit A.</p>
+      <h3>CONSIDERATION</h3>
+      <p>In consideration of <strong>₦10,000 (Ten Thousand Naira) per square metre</strong>, the receipt of which the Vendor acknowledges, the Vendor assigns the Property to the Purchaser absolutely.</p>
+      <h3>VENDOR COVENANTS</h3>
+      <p>The Vendor covenants that good title exists, the right to assign is held, and that the Purchaser shall enjoy quiet possession free from all encumbrances.</p>
+      <h3>PURCHASER COVENANTS</h3>
+      <p>The Purchaser covenants to use the property for residential or approved purposes in line with the estate master plan and applicable land-use regulations.</p>
+      <div class="doc-stamp">Fully Executed Document Issued Upon Payment Completion</div>
+      <p style="font-size:0.72rem;color:var(--muted);margin-top:0.75rem">This is the standard template for all 2 Seasons transactions. The executed deed will include your personal details, plot beacon coordinates, and will be notarised by a qualified legal practitioner.</p>
+    `
   },
   survey: {
     title: 'Registered Survey Plan',
     sub: '2 Seasons Innovation Village — State Survey Registry Reference',
-    html: '<p style="margin-bottom:1rem">Prepared by a Licensed Surveyor and registered with the Ogun State Surveyor-General\'s Office in compliance with the Survey Act. Kobape, Abeokuta, Ogun State.</p><img src="100plots/survey-registered.jpg" alt="Registered Survey Plan" style="width:100%;height:auto;display:block;border:1px solid var(--border);">'
+    html: `
+      <h3>SURVEY PARTICULARS</h3>
+      <p>Prepared by a Licensed Surveyor and registered with the Ogun State Surveyor-General's Office in compliance with the Survey Act.</p>
+      <div class="doc-stamp">Registered Survey · Preview · 2 Seasons</div>
+      <h3>LOCATION</h3>
+      <p>Kobape, Abeokuta, Ogun State. All plots are identified by unique beacon numbers and GPS coordinates recorded in the State Land Registry, with permanent beacons installed on all four corners of each plot.</p>
+      <h3>PLOT DIMENSIONS</h3>
+      <p><strong>150 sqm:</strong> approx. 15m × 10m &nbsp;|&nbsp; <strong>300 sqm:</strong> approx. 20m × 15m &nbsp;|&nbsp; <strong>500 sqm:</strong> approx. 25m × 20m</p>
+      <h3>ENCUMBRANCES</h3>
+      <p>The land is confirmed free from government acquisition, adverse claims, power-line corridors, and drainage restrictions as at the registration date.</p>
+      <h3>INDEPENDENT VERIFICATION</h3>
+      <p>Survey Plan numbers are issued upon purchase and are independently verifiable at the Ogun State Surveyor-General's office.</p>
+      <div class="doc-stamp">Full Plan with Beacon Coordinates Issued Upon Purchase</div>
+    `
   }
 };
-
 function openDoc(type) {
-  var d = docs[type];
-  document.getElementById('doc-body').innerHTML = '<h2 class="modal-title">' + d.title + '</h2><p class="modal-sub">' + d.sub + '</p><div class="doc-body">' + d.html + '</div>';
+  const d = docs[type];
+  document.getElementById('doc-body').innerHTML = `
+    <h2 class="modal-title">${d.title}</h2>
+    <p class="modal-sub">${d.sub}</p>
+    <div class="doc-body">${d.html}</div>
+  `;
   document.getElementById('doc-ov').classList.add('open');
 }
 function closeDoc() { document.getElementById('doc-ov').classList.remove('open'); }
