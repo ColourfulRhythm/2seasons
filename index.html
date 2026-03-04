@@ -183,9 +183,9 @@
             <div class="scroll-expand-inner">
                 <div class="scroll-expand-media-wrap" id="scroll-expand-media">
                     <div class="scroll-expand-video">
-                        <video autoplay muted loop playsinline preload="auto" poster="wellnesshub/scene7.jpg">
+                        <video id="scroll-expand-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="wellnesshub/scene7.jpg">
+                            <source src="100plots/droneview.mp4" type="video/mp4">
                             <source src="100plots/droneview.mov" type="video/quicktime">
-                            <source src="100plots/droneview.mov" type="video/mp4">
                         </video>
                         <div class="scroll-expand-video-overlay"></div>
                     </div>
@@ -408,9 +408,31 @@
             var hint = document.getElementById('scroll-hint');
             var word1 = document.getElementById('scroll-word-1');
             var word2 = document.getElementById('scroll-word-2');
+            var scrollVideo = document.getElementById('scroll-expand-video');
             var isMobile = window.innerWidth < 768;
             var startW = 300, endW = isMobile ? 950 : 1550;
             var startH = 400, endH = isMobile ? 600 : 800;
+
+            // Mobile: force video to play on first user interaction (autoplay is often blocked)
+            function playScrollVideo() {
+                if (scrollVideo && !scrollVideo.ended) {
+                    scrollVideo.muted = true;
+                    scrollVideo.play().catch(function() {});
+                }
+            }
+            if (scrollVideo) {
+                scrollVideo.muted = true;
+                scrollVideo.setAttribute('muted', '');
+                scrollVideo.setAttribute('playsinline', '');
+                scrollVideo.setAttribute('webkit-playsinline', '');
+                ['touchstart', 'touchend', 'touchmove', 'scroll', 'click'].forEach(function(ev) {
+                    document.addEventListener(ev, playScrollVideo, { once: true, passive: true });
+                });
+                if (isMobile) {
+                    setTimeout(playScrollVideo, 300);
+                    setTimeout(playScrollVideo, 800);
+                }
+            }
 
             function updateUI() {
                 var w = startW + progress * (endW - startW);

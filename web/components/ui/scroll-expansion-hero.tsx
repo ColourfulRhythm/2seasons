@@ -39,6 +39,7 @@ const ScrollExpandMedia = ({
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const touchStartYRef = useRef<number>(0);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     setScrollProgress(0);
@@ -128,6 +129,25 @@ const ScrollExpandMedia = ({
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
+  // Mobile: force video play on first user interaction (autoplay often blocked)
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || mediaType !== 'video') return;
+    const playVideo = () => {
+      video.muted = true;
+      video.play().catch(() => {});
+    };
+    const events = ['touchstart', 'touchend', 'touchmove', 'scroll', 'click'] as const;
+    events.forEach((ev) => document.addEventListener(ev, playVideo, { once: true, passive: true }));
+    const t1 = setTimeout(playVideo, 300);
+    const t2 = setTimeout(playVideo, 800);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      events.forEach((ev) => document.removeEventListener(ev, playVideo));
+    };
+  }, [mediaType]);
+
   const mediaWidth = 300 + scrollProgress * (isMobileState ? 650 : 1250);
   const mediaHeight = 400 + scrollProgress * (isMobileState ? 200 : 400);
   const textTranslateX = scrollProgress * (isMobileState ? 180 : 150);
@@ -175,16 +195,19 @@ const ScrollExpandMedia = ({
                 {mediaType === 'video' ? (
                   <div className="relative w-full h-full pointer-events-none">
                     <video
-                      src={mediaSrc}
+                      ref={videoRef}
                       poster={posterSrc}
                       autoPlay
                       muted
                       loop
                       playsInline
                       preload="auto"
-                      className="w-full h-full object-cover rounded-xl"
+                      className="w-full h-full object-cover rounded-xl bg-black"
                       controls={false}
-                    />
+                    >
+                      <source src={mediaSrc.replace(/\.mov$/i, '.mp4')} type="video/mp4" />
+                      <source src={mediaSrc} type="video/quicktime" />
+                    </video>
                     <motion.div
                       className="absolute inset-0 bg-black/30 rounded-xl"
                       initial={{ opacity: 0.7 }}
