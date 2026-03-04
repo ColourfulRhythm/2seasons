@@ -11,10 +11,9 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       <ScrollExpandMedia
-        mediaType="video"
-        mediaSrc="/100plots/droneview.mov"
-        posterSrc="/100plots/drone-image.jpg"
-        bgImageSrc="/100plots/drone-image.jpg"
+        mediaType="image"
+        mediaSrc="/wellnesshub/scene7.jpg"
+        bgImageSrc="/wellnesshub/scene7.jpg"
         title="Welcome to 2 Seasons"
         date="Kobape, Abeokuta"
         scrollToExpand="Scroll to expand"
