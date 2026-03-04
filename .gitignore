@@ -27,3 +27,4 @@ build/
 # Secrets (API keys)
 .env
 .env.local
+.vercel

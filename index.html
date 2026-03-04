@@ -174,33 +174,44 @@
     <div class="menu-overlay"></div>
 
     <main>
-        <section class="hero" style="background: transparent !important; background-image: none !important; background-color: transparent !important;">
-            <video id="hero-video" autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="allow" preload="auto" style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; z-index: 1 !important; display: block !important; visibility: visible !important; opacity: 1 !important;">
-                <source src="100plots/droneview.mov" type="video/quicktime">
-                <source src="100plots/droneview.mov" type="video/mp4">
-            </video>
-            <div class="hero-content" style="position: relative; z-index: 10;">
-                <h1 class="hero-title">
-                    <span class="hero-title-main">Welcome to</span>
-                    <span class="hero-title-highlight">2 Seasons</span>
-                </h1>
-                <p class="hero-subtitle">Africa's First Regenerative Innovation & Lifestyle Village</p>
-                <a href="/explore" class="cta-button-luxury">Explore Our World</a>
+        <!-- Scroll Expansion Hero -->
+        <section id="scroll-expand-hero" class="scroll-expand-section">
+            <div class="scroll-expand-bg" id="scroll-expand-bg">
+                <img src="100plots/drone-image.jpg" alt="">
+                <div class="scroll-expand-bg-overlay"></div>
             </div>
-        </section>
-
-        <!-- Exclusivity Section -->
-        <section class="exclusivity-section">
-            <div class="content-wrapper">
-                <div class="exclusivity-badge">Limited Opportunity</div>
-                <h2 class="exclusivity-title">So few,<br>so unique</h2>
-                <p class="exclusivity-subtitle">Africa's First Regenerative Innovation Village</p>
-                <p class="exclusivity-description">
-                    2 Seasons represents a once-in-a-generation opportunity to be part of Africa's pioneering eco-friendly 
-                    lifestyle village. This exclusive development in Kobape, Abeokuta combines sustainable living with 
-                    world-class amenities, creating a new standard for regenerative communities in Nigeria.
-                </p>
+            <div class="scroll-expand-inner">
+                <div class="scroll-expand-media-wrap" id="scroll-expand-media">
+                    <div class="scroll-expand-video">
+                        <video autoplay muted loop playsinline preload="auto">
+                            <source src="100plots/droneview.mov" type="video/quicktime">
+                            <source src="100plots/droneview.mov" type="video/mp4">
+                        </video>
+                        <div class="scroll-expand-video-overlay"></div>
+                    </div>
+                    <p class="scroll-expand-hint" id="scroll-hint">Scroll to expand</p>
+                </div>
+                <div class="scroll-expand-title-wrap">
+                    <h1 class="scroll-expand-title">
+                        <span class="scroll-expand-word" id="scroll-word-1">Welcome to</span>
+                        <span class="scroll-expand-word" id="scroll-word-2">2 Seasons</span>
+                    </h1>
+                    <p class="scroll-expand-subtitle">Africa's First Regenerative Innovation & Lifestyle Village</p>
+                </div>
             </div>
+            <section class="scroll-expand-content" id="scroll-expand-content">
+                <div class="content-wrapper">
+                    <div class="exclusivity-badge">Limited Opportunity</div>
+                    <h2 class="exclusivity-title">So few,<br>so unique</h2>
+                    <p class="exclusivity-subtitle">Africa's First Regenerative Innovation Village</p>
+                    <p class="exclusivity-description">
+                        2 Seasons represents a once-in-a-generation opportunity to be part of Africa's pioneering eco-friendly 
+                        lifestyle village. This exclusive development in Kobape, Abeokuta combines sustainable living with 
+                        world-class amenities, creating a new standard for regenerative communities in Nigeria.
+                    </p>
+                    <a href="/explore" class="cta-button-luxury">Explore Our World</a>
+                </div>
+            </section>
         </section>
 
         <!-- Residential Section -->
@@ -387,6 +398,101 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Scroll Expansion Hero
+        (function() {
+            var progress = 0, expanded = false;
+            var media = document.getElementById('scroll-expand-media');
+            var bg = document.getElementById('scroll-expand-bg');
+            var content = document.getElementById('scroll-expand-content');
+            var hint = document.getElementById('scroll-hint');
+            var word1 = document.getElementById('scroll-word-1');
+            var word2 = document.getElementById('scroll-word-2');
+            var isMobile = window.innerWidth < 768;
+            var startW = 300, endW = isMobile ? 950 : 1550;
+            var startH = 400, endH = isMobile ? 600 : 800;
+
+            function updateUI() {
+                var w = startW + progress * (endW - startW);
+                var h = startH + progress * (endH - startH);
+                media.style.width = Math.min(w, 95 * window.innerWidth / 100) + 'px';
+                media.style.height = Math.min(h, 85 * window.innerHeight / 100) + 'px';
+                bg.style.opacity = 1 - progress;
+                var tx = progress * (isMobile ? 15 : 12);
+                if (word1) word1.style.transform = 'translateX(-' + tx + 'vw)';
+                if (word2) word2.style.transform = 'translateX(' + tx + 'vw)';
+                if (progress >= 1) {
+                    expanded = true;
+                    if (content) content.classList.add('revealed');
+                    if (hint) hint.style.opacity = '0';
+                } else {
+                    if (progress < 0.75 && content) content.classList.remove('revealed');
+                    if (hint) hint.style.opacity = '1';
+                }
+            }
+
+            function onWheel(e) {
+                if (expanded && e.deltaY < 0 && window.scrollY <= 5) {
+                    expanded = false;
+                    progress = 0;
+                    updateUI();
+                    e.preventDefault();
+                    return;
+                }
+                if (!expanded) {
+                    e.preventDefault();
+                    progress = Math.min(1, Math.max(0, progress + e.deltaY * 0.001));
+                    updateUI();
+                    if (progress >= 1) expanded = true;
+                }
+            }
+
+            var touchStartY = 0;
+            function onTouchStart(e) { touchStartY = e.touches[0].clientY; }
+            function onTouchMove(e) {
+                if (!touchStartY) return;
+                var dy = touchStartY - e.touches[0].clientY;
+                if (expanded && dy < -20 && window.scrollY <= 5) {
+                    expanded = false;
+                    progress = 0;
+                    updateUI();
+                    e.preventDefault();
+                    touchStartY = e.touches[0].clientY;
+                    return;
+                }
+                if (!expanded) {
+                    e.preventDefault();
+                    progress = Math.min(1, Math.max(0, progress + dy * 0.005));
+                    updateUI();
+                    if (progress >= 1) expanded = true;
+                    touchStartY = e.touches[0].clientY;
+                }
+            }
+            function onTouchEnd() { touchStartY = 0; }
+
+            function onScroll() {
+                if (!expanded) window.scrollTo(0, 0);
+            }
+
+            function onResize() {
+                isMobile = window.innerWidth < 768;
+                endW = isMobile ? 950 : 1550;
+                endH = isMobile ? 600 : 800;
+                updateUI();
+            }
+
+            if (media) {
+                media.style.width = startW + 'px';
+                media.style.height = startH + 'px';
+                window.addEventListener('wheel', onWheel, { passive: false });
+                window.addEventListener('scroll', onScroll);
+                window.addEventListener('touchstart', onTouchStart, { passive: false });
+                window.addEventListener('touchmove', onTouchMove, { passive: false });
+                window.addEventListener('touchend', onTouchEnd);
+                window.addEventListener('resize', onResize);
+            }
+        })();
+    </script>
     <script>
         // Support both .store and .com domains - set meta tags dynamically
         (function() {

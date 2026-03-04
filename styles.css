@@ -1208,6 +1208,138 @@ footer {
 }
 
 /* ============================================
+   SCROLL EXPANSION HERO
+   ============================================ */
+.scroll-expand-section {
+  position: relative;
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+.scroll-expand-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+.scroll-expand-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.scroll-expand-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.1);
+}
+.scroll-expand-inner {
+  position: relative;
+  z-index: 10;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+.scroll-expand-media-wrap {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  transition: width 0.1s, height 0.1s;
+}
+.scroll-expand-video {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.scroll-expand-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.scroll-expand-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  transition: opacity 0.2s;
+}
+.scroll-expand-hint {
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.9);
+  margin-top: 0.75rem;
+  font-weight: 500;
+}
+.scroll-expand-title-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.scroll-expand-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: rgba(255,255,255,0.95);
+  line-height: 1.2;
+  transition: transform 0.1s;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+.scroll-expand-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 300;
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+.scroll-expand-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 6rem 2rem 8rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s ease;
+  background: linear-gradient(135deg, #f8f5f0 0%, #ffffff 100%);
+}
+.scroll-expand-content.revealed {
+  opacity: 1;
+  pointer-events: auto;
+}
+.scroll-expand-content .content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.scroll-expand-content .exclusivity-badge,
+.scroll-expand-content .exclusivity-title,
+.scroll-expand-content .exclusivity-subtitle,
+.scroll-expand-content .exclusivity-description {
+  color: var(--text-color);
+}
+.scroll-expand-content .cta-button-luxury {
+  margin-top: 2rem;
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  background: transparent !important;
+}
+.scroll-expand-content .cta-button-luxury:hover {
+  color: white !important;
+  border-color: var(--secondary-color) !important;
+}
+@media (max-width: 768px) {
+  .scroll-expand-title { font-size: clamp(1.75rem, 6vw, 2.5rem); }
+}
+
+/* ============================================
    LUXURY DESIGN ENHANCEMENTS
    ============================================ */
 
