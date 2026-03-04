@@ -1248,14 +1248,18 @@ footer {
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   transition: width 0.1s, height 0.1s;
+  display: flex;
+  flex-direction: column;
 }
 .scroll-expand-video {
   position: relative;
   width: 100%;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
 }
-.scroll-expand-video video,
-.scroll-expand-video .scroll-expand-img {
+.scroll-expand-video video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
