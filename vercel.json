@@ -2,6 +2,16 @@
   "framework": null,
   "rewrites": [
     { "source": "/join", "destination": "/join.html" },
-    { "source": "/explore", "destination": "/explore.html" }
+    { "source": "/explore", "destination": "/explore.html" },
+    { "source": "/residential", "destination": "/residential.html" },
+    { "source": "/villas", "destination": "/villas.html" },
+    { "source": "/wellness", "destination": "/wellness.html" },
+    { "source": "/hyggetown", "destination": "/hyggetown.html" },
+    { "source": "/100plots", "destination": "/100plots.html" },
+    { "source": "/paymentplan", "destination": "/paymentplan.html" },
+    { "source": "/partners", "destination": "/partners.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/tucks", "destination": "/tucks.html" },
+    { "source": "/2saffiliate", "destination": "/2saffiliate/index.html" }
   ]
 }
