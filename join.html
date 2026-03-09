@@ -586,6 +586,29 @@ footer {
   .plot-options { grid-template-columns: 1fr; }
   footer { padding: 40px 24px; }
 }
+
+/* ── Phases Section ── */
+.phases-section { padding: 60px 24px; background: #0d0d0d; text-align: center; }
+.phases-eyebrow { font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: #a0855a; margin-bottom: 12px; }
+.phases-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); color: #f5f0e8; font-weight: 400; margin-bottom: 40px; }
+.phases-title em { font-style: italic; color: #c9a96e; }
+.phases-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; max-width: 1000px; margin: 0 auto; }
+.phase-card { padding: 48px 32px; text-align: left; display: flex; flex-direction: column; }
+.phase-card--one { background: #161616; border: 1px solid #2a2a2a; }
+.phase-card--two { background: #1a1510; border: 1px solid #3a2e1e; }
+.phase-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: #666; margin-bottom: 12px; }
+.phase-card--two .phase-label { color: #a0855a; }
+.phase-name { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.5vw, 1.9rem); color: #f5f0e8; font-weight: 400; margin: 0 0 8px; }
+.phase-price { font-size: 0.8rem; color: #c9a96e; letter-spacing: 0.05em; margin-bottom: 20px; font-weight: 500; }
+.phase-description { font-size: 0.9rem; color: #9a9a9a; line-height: 1.7; margin-bottom: 24px; }
+.phase-cta { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: #f5f0e8; text-decoration: none; border-bottom: 1px solid #444; padding-bottom: 4px; transition: color 0.3s, border-color 0.3s; align-self: flex-start; }
+.phase-card--two .phase-cta { color: #c9a96e; border-color: #c9a96e55; }
+.phase-cta:hover { color: #c9a96e; border-color: #c9a96e; }
+@media (max-width: 768px) {
+  .phases-section { padding: 48px 20px; }
+  .phases-grid { grid-template-columns: 1fr; }
+  .phase-card { padding: 36px 24px; }
+}
 </style>
 </head>
 <body>
@@ -595,10 +618,8 @@ footer {
   <a href="/" class="logo">2 Seasons</a>
   <ul class="join-nav-links">
     <li><a href="/#residential">Residential</a></li>
-    <li><a href="/#villas">Villas</a></li>
     <li><a href="/#wellness">Wellness</a></li>
-    <li><a href="/hyggetown">Hygge</a></li>
-    <li><a href="/100plots">100 Plots</a></li>
+    <li><a href="/50plots">50 Plots</a></li>
     <li><a href="/paymentplan">Payment Plan</a></li>
     <li><a href="/partners">Partners</a></li>
     <li><a href="/2saffiliate">Affiliates</a></li>
@@ -627,6 +648,30 @@ footer {
   <div class="trust-item"><i class="fas fa-check-circle"></i> Instant allocation</div>
   <div class="trust-item"><i class="fas fa-user-tie"></i> Live rep available now</div>
 </div>
+
+<!-- PHASES -->
+<section class="phases-section">
+  <div class="phases-header">
+    <p class="phases-eyebrow">The 2 Seasons Story</p>
+    <h2 class="phases-title">Two phases. <em>One vision.</em></h2>
+  </div>
+  <div class="phases-grid">
+    <div class="phase-card phase-card--one">
+      <div class="phase-label">Phase 1</div>
+      <h3 class="phase-name">Tucks</h3>
+      <p class="phase-price">Starting from ₦1,500,000</p>
+      <p class="phase-description">Own land you can actually live on and grow from. Agro Tucks are farmstead-style plots where you build your home and cultivate your own food — a quiet, rooted lifestyle on the edge of Nigeria's most exciting new community.</p>
+      <a href="/50plots" class="phase-cta">Secure Your Agro Tuck <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="phase-card phase-card--two">
+      <div class="phase-label">Phase 2</div>
+      <h3 class="phase-name">The Lifestyle City</h3>
+      <p class="phase-price">Premium Residential from ₦10,000,000</p>
+      <p class="phase-description">This is the full vision. Residential living inside Africa's first regenerative lifestyle city — with a private racing circuit, wellness village, concert ground, co-working spaces, and a community built for Nigeria's next generation.</p>
+      <a href="/residential" class="phase-cta">Explore Phase 2 <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
 
 <!-- SCARCITY -->
 <div class="scarcity-bar">
@@ -792,9 +837,7 @@ footer {
     </div>
     <div class="footer-links">
       <a href="/#residential">Residential</a>
-      <a href="/villas">Villas</a>
       <a href="/wellness">Wellness</a>
-      <a href="/hyggetown">Hygge</a>
       <a href="/partners">Partners</a>
       <a href="/privacy">Privacy</a>
     </div>
