@@ -117,11 +117,138 @@
         "keywords": "regenerative innovation village, eco-friendly Nigeria, off-grid living, luxury villas, wellness retreat, youth sports academy, sustainable development, Kobape Abeokuta, Ogun State tourism"
     }
     </script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="/favicon.png">
     
+    <style>
+        /* ── Phases Section ── */
+        .phases-section {
+            padding: 100px 40px;
+            background: #0d0d0d;
+            text-align: center;
+        }
+        .phases-eyebrow {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: #a0855a;
+            margin-bottom: 12px;
+        }
+        .phases-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            color: #f5f0e8;
+            font-weight: 400;
+            margin-bottom: 60px;
+        }
+        .phases-title em {
+            font-style: italic;
+            color: #c9a96e;
+        }
+        .phases-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .phase-card {
+            padding: 60px 48px;
+            text-align: left;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .phase-card--one {
+            background: #161616;
+            border: 1px solid #2a2a2a;
+        }
+        .phase-card--two {
+            background: #1a1510;
+            border: 1px solid #3a2e1e;
+        }
+        .phase-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 16px;
+        }
+        .phase-card--two .phase-label {
+            color: #a0855a;
+        }
+        .phase-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            color: #f5f0e8;
+            font-weight: 400;
+            margin: 0 0 8px;
+        }
+        .phase-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: #c9a96e;
+            letter-spacing: 0.05em;
+            margin-bottom: 28px;
+            font-weight: 500;
+        }
+        .phase-description {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.92rem;
+            color: #9a9a9a;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .phase-infra {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.82rem;
+            color: #6a6a6a;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+        .phase-tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            color: #7a7a7a;
+            font-style: italic;
+            margin-bottom: 36px;
+            flex-grow: 1;
+        }
+        .phase-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #f5f0e8;
+            text-decoration: none;
+            border-bottom: 1px solid #444;
+            padding-bottom: 4px;
+            transition: color 0.3s, border-color 0.3s;
+            align-self: flex-start;
+        }
+        .phase-card--two .phase-cta {
+            color: #c9a96e;
+            border-color: #c9a96e55;
+        }
+        .phase-cta:hover {
+            color: #c9a96e;
+            border-color: #c9a96e;
+        }
+        @media (max-width: 768px) {
+            .phases-section { padding: 70px 24px; }
+            .phases-grid { grid-template-columns: 1fr; }
+            .phase-card { padding: 48px 28px; }
+        }
+    </style>
+
     <!-- TikTok Pixel Code Start -->
     <script>
     !function (w, d, t) {
@@ -177,15 +304,15 @@
         <!-- Scroll Expansion Hero -->
         <section id="scroll-expand-hero" class="scroll-expand-section">
             <div class="scroll-expand-bg" id="scroll-expand-bg">
-                <img src="wellnesshub/scene7.jpg" alt="">
+                <img src="/wellnesshub/scene7.jpg" alt="2 Seasons wellness and lifestyle scene in Kobape, Abeokuta">
                 <div class="scroll-expand-bg-overlay"></div>
             </div>
             <div class="scroll-expand-inner">
                 <div class="scroll-expand-media-wrap" id="scroll-expand-media">
                     <div class="scroll-expand-video">
-                        <video id="scroll-expand-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="wellnesshub/scene7.jpg">
-                            <source src="100plots/droneview.mp4" type="video/mp4">
-                            <source src="100plots/droneview.mov" type="video/quicktime">
+                        <video id="scroll-expand-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/wellnesshub/scene7.jpg" title="Aerial drone view of 2 Seasons village in Kobape, Abeokuta" aria-label="Drone video of 2 Seasons regenerative innovation village">
+                            <source src="/100plots/droneview.mp4" type="video/mp4">
+                            <source src="/100plots/droneview.mov" type="video/quicktime">
                         </video>
                         <div class="scroll-expand-video-overlay"></div>
                     </div>
@@ -214,11 +341,44 @@
             </section>
         </section>
 
+        <!-- Phases Section -->
+        <section class="phases-section">
+            <div class="phases-header">
+                <p class="phases-eyebrow">The 2 Seasons Story</p>
+                <h2 class="phases-title">Two phases. <em>One vision.</em></h2>
+            </div>
+            <div class="phases-grid">
+                <!-- Phase 1 -->
+                <div class="phase-card phase-card--one">
+                    <div class="phase-label">Phase 1</div>
+                    <h3 class="phase-name">Tucks</h3>
+                    <p class="phase-price">Starting from ₦1,500,000</p>
+                    <p class="phase-description">
+                        Own land you can actually live on and grow from. Agro Tucks are farmstead-style plots where you build your home and cultivate your own food — a quiet, rooted lifestyle on the edge of Nigeria's most exciting new community.
+                    </p>
+                    <p class="phase-infra">Basic infrastructure included: internal roads, street lighting, and drainage.</p>
+                    <p class="phase-tagline">This is where the 2 Seasons story begins.</p>
+                    <a href="/100plots" class="phase-cta">Secure Your Agro Tuck <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Phase 2 -->
+                <div class="phase-card phase-card--two">
+                    <div class="phase-label">Phase 2</div>
+                    <h3 class="phase-name">The Lifestyle City</h3>
+                    <p class="phase-price">Premium Residential from ₦10,000,000</p>
+                    <p class="phase-description">
+                        This is the full vision. Residential living inside Africa's first regenerative lifestyle city — with a private racing circuit, wellness village, concert ground, co-working spaces, and a community built for Nigeria's next generation.
+                    </p>
+                    <p class="phase-tagline">If Phase 1 is the roots, Phase 2 is everything that grows from them.</p>
+                    <a href="/residential" class="phase-cta">Explore Phase 2 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
         <!-- Residential Section -->
         <section id="residential" class="luxury-section residential-section">
             <div class="luxury-section-content">
                 <div class="luxury-section-image">
-                    <img src="assets/images/modern-homes.jpg" alt="2 Seasons Residential - Modern Sustainable Living">
+                    <img src="/assets/images/modern-homes.jpg" alt="2 Seasons Residential - Modern Sustainable Living">
                 </div>
                 <div class="luxury-section-text">
                     <h2 class="luxury-section-title">
@@ -232,11 +392,29 @@
             </div>
         </section>
 
+        <!-- Villas Section -->
+        <section id="villas" class="luxury-section villas-section">
+            <div class="luxury-section-content reverse">
+                <div class="luxury-section-image">
+                    <img src="/assets/images/luxury-villas.jpg" alt="True Vine Villas - Luxury Lakefront Living">
+                </div>
+                <div class="luxury-section-text">
+                    <h2 class="luxury-section-title">
+                        True Vine <em>Villas</em>
+                    </h2>
+                    <p class="luxury-section-description">
+                        Premium lakefront villas overlooking our stunning 4-acre artificial lake. Each villa combines luxury with eco-friendly design, perfect for second homes, vacation rentals, or Airbnb investments. Experience exclusive living with breathtaking views and world-class amenities in the heart of 2 Seasons.
+                    </p>
+                    <a href="/villas" class="luxury-section-link">Discover Villas <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
         <!-- Wellness Section -->
         <section id="wellness" class="luxury-section wellness-section">
             <div class="luxury-section-content">
                 <div class="luxury-section-image">
-                    <img src="assets/images/natural-therapy-and-spa.jpg" alt="Wellness Hub - Holistic Health & Fitness">
+                    <img src="/assets/images/natural-therapy-and-spa.jpg" alt="Wellness Hub - Holistic Health & Fitness">
                 </div>
                 <div class="luxury-section-text">
                     <h2 class="luxury-section-title">
@@ -246,6 +424,24 @@
                         A holistic wellness center dedicated to fitness, healing, and mental well-being. Featuring spa services, yoga pavilions, outdoor fitness areas, world-class sports facilities, and plant-based dining. Our wellness hub also includes a dynamic youth sports academy training 100 youths annually in football, tennis, and athletics.
                     </p>
                     <a href="/wellness" class="luxury-section-link">Visit Wellness Hub <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hygge Town Section -->
+        <section id="content" class="luxury-section hygge-section">
+            <div class="luxury-section-content reverse">
+                <div class="luxury-section-image">
+                    <img src="/assets/images/content-and-creator-zone.jpg" alt="Hygge Town - Creative Innovation Hub">
+                </div>
+                <div class="luxury-section-text">
+                    <h2 class="luxury-section-title">
+                        Hygge <em>Town</em>
+                    </h2>
+                    <p class="luxury-section-description">
+                        Nigeria's first fully integrated creative and innovation hub. Featuring content studios, startup incubation spaces, co-working pods, and a comprehensive support ecosystem with cloud services, VC events, and innovation grants. Powered by Starlink high-speed internet for seamless collaboration and creation.
+                    </p>
+                    <a href="/hyggetown" class="luxury-section-link">Experience Hygge <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
@@ -329,7 +525,7 @@
                 </div>
                 <div class="booking-contact-info">
                     <p>Contact Our Concierge</p>
-                    <p class="booking-email">2seasonsabk@2seasonsabk.store</p>
+                    <p class="booking-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a092d3c5c1d3cfced3c1c2cbe092d3c5c1d3cfced3c1c2cb8ed3d4cfd2c5">[email&#160;protected]</a></p>
                 </div>
             </div>
         </section>
@@ -344,7 +540,7 @@
             <div class="footer-section">
                 <h3>Contact</h3>
                 <p>Kobape, Abeokuta, Ogun State, Nigeria</p>
-                <p>Email: 2seasonsabk@2seasonsabk.store</p>
+                <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1c2e6f797d6f73726f7d7e775c2e6f797d6f73726f7d7e77326f68736e79">[email&#160;protected]</a></p>
             </div>
             <div class="footer-section">
                 <h3>Follow Us</h3>
@@ -361,10 +557,11 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/script.js"></script>
     <script>
-        // Scroll Expansion Hero — scroll-driven video expand
+        // Scroll Expansion Hero
         (function() {
+            var progress = 0, expanded = false;
             var media = document.getElementById('scroll-expand-media');
             var bg = document.getElementById('scroll-expand-bg');
             var content = document.getElementById('scroll-expand-content');
@@ -372,68 +569,110 @@
             var word1 = document.getElementById('scroll-word-1');
             var word2 = document.getElementById('scroll-word-2');
             var scrollVideo = document.getElementById('scroll-expand-video');
-            var hero = document.getElementById('scroll-expand-hero');
             var isMobile = window.innerWidth < 768;
-            var startW = isMobile ? 280 : 320;
-            var endW = isMobile ? window.innerWidth * 0.95 : 1550;
-            var startH = isMobile ? 300 : 420;
-            var endH = isMobile ? window.innerHeight * 0.75 : 820;
+            var startW = 300, endW = isMobile ? 950 : 1550;
+            var startH = 400, endH = isMobile ? 600 : 800;
 
-            // Autoplay video
+            // Mobile: force video to play on first user interaction (autoplay is often blocked)
+            function playScrollVideo() {
+                if (scrollVideo && !scrollVideo.ended) {
+                    scrollVideo.muted = true;
+                    scrollVideo.play().catch(function() {});
+                }
+            }
             if (scrollVideo) {
                 scrollVideo.muted = true;
                 scrollVideo.setAttribute('muted', '');
                 scrollVideo.setAttribute('playsinline', '');
-                scrollVideo.play().catch(function() {});
-                document.addEventListener('touchstart', function() {
-                    scrollVideo.play().catch(function() {});
-                }, { once: true, passive: true });
+                scrollVideo.setAttribute('webkit-playsinline', '');
+                ['touchstart', 'touchend', 'touchmove', 'scroll', 'click'].forEach(function(ev) {
+                    document.addEventListener(ev, playScrollVideo, { once: true, passive: true });
+                });
+                if (isMobile) {
+                    setTimeout(playScrollVideo, 300);
+                    setTimeout(playScrollVideo, 800);
+                }
             }
 
-            // bg is hidden via CSS — no scroll trap
-
-            // Set initial media size
-            if (media) {
-                media.style.width = startW + 'px';
-                media.style.height = startH + 'px';
-            }
-
-            // Animate expansion on scroll — purely visual, never blocks scrolling
-            function onScroll() {
-                if (!hero || !media) return;
-                var heroRect = hero.getBoundingClientRect();
-                var heroH = hero.offsetHeight;
-                // progress 0→1 as user scrolls through the hero section
-                var scrolled = -heroRect.top;
-                var progress = Math.min(1, Math.max(0, scrolled / (heroH * 0.5)));
-
+            function updateUI() {
                 var w = startW + progress * (endW - startW);
                 var h = startH + progress * (endH - startH);
-                media.style.width = Math.min(w, window.innerWidth * 0.95) + 'px';
-                media.style.height = Math.min(h, window.innerHeight * 0.85) + 'px';
-
-                var tx = progress * (isMobile ? 14 : 11);
+                media.style.width = Math.min(w, 95 * window.innerWidth / 100) + 'px';
+                media.style.height = Math.min(h, 85 * window.innerHeight / 100) + 'px';
+                bg.style.opacity = 1 - progress;
+                var tx = progress * (isMobile ? 15 : 12);
                 if (word1) word1.style.transform = 'translateX(-' + tx + 'vw)';
                 if (word2) word2.style.transform = 'translateX(' + tx + 'vw)';
-
-                if (progress >= 0.9) {
+                if (progress >= 1) {
+                    expanded = true;
                     if (content) content.classList.add('revealed');
                     if (hint) hint.style.opacity = '0';
                 } else {
-                    if (content) content.classList.remove('revealed');
+                    if (progress < 0.75 && content) content.classList.remove('revealed');
                     if (hint) hint.style.opacity = '1';
                 }
             }
 
-            window.addEventListener('scroll', onScroll, { passive: true });
-            window.addEventListener('resize', function() {
-                isMobile = window.innerWidth < 768;
-                endW = isMobile ? window.innerWidth * 0.95 : 1550;
-                endH = isMobile ? window.innerHeight * 0.75 : 820;
-                onScroll();
-            });
+            function onWheel(e) {
+                if (expanded && e.deltaY < 0 && window.scrollY <= 5) {
+                    expanded = false;
+                    progress = 0;
+                    updateUI();
+                    e.preventDefault();
+                    return;
+                }
+                if (!expanded) {
+                    e.preventDefault();
+                    progress = Math.min(1, Math.max(0, progress + e.deltaY * 0.001));
+                    updateUI();
+                    if (progress >= 1) expanded = true;
+                }
+            }
 
-            onScroll();
+            var touchStartY = 0;
+            function onTouchStart(e) { touchStartY = e.touches[0].clientY; }
+            function onTouchMove(e) {
+                if (!touchStartY) return;
+                var dy = touchStartY - e.touches[0].clientY;
+                if (expanded && dy < -20 && window.scrollY <= 5) {
+                    expanded = false;
+                    progress = 0;
+                    updateUI();
+                    e.preventDefault();
+                    touchStartY = e.touches[0].clientY;
+                    return;
+                }
+                if (!expanded) {
+                    e.preventDefault();
+                    progress = Math.min(1, Math.max(0, progress + dy * 0.005));
+                    updateUI();
+                    if (progress >= 1) expanded = true;
+                    touchStartY = e.touches[0].clientY;
+                }
+            }
+            function onTouchEnd() { touchStartY = 0; }
+
+            function onScroll() {
+                if (!expanded) window.scrollTo(0, 0);
+            }
+
+            function onResize() {
+                isMobile = window.innerWidth < 768;
+                endW = isMobile ? 950 : 1550;
+                endH = isMobile ? 600 : 800;
+                updateUI();
+            }
+
+            if (media) {
+                media.style.width = startW + 'px';
+                media.style.height = startH + 'px';
+                window.addEventListener('wheel', onWheel, { passive: false });
+                window.addEventListener('scroll', onScroll);
+                window.addEventListener('touchstart', onTouchStart, { passive: false });
+                window.addEventListener('touchmove', onTouchMove, { passive: false });
+                window.addEventListener('touchend', onTouchEnd);
+                window.addEventListener('resize', onResize);
+            }
         })();
     </script>
     <script>
@@ -451,12 +690,4 @@
             if (twitterUrl) twitterUrl.setAttribute('content', currentUrl);
             
             // Set OG and Twitter images
-            const ogImage = document.getElementById('og-image');
-            const twitterImage = document.getElementById('twitter-image');
-            const imageUrl = `https://${baseDomain}/assets/images/site-map.JPG`;
-            if (ogImage) ogImage.setAttribute('content', imageUrl);
-            if (twitterImage) twitterImage.setAttribute('content', imageUrl);
-        })();
-    </script>
-</body>
-</html> 
+            const ogImage = document.ge

@@ -1216,11 +1216,12 @@ footer {
   overflow-x: hidden;
 }
 .scroll-expand-bg {
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
+  opacity: 0;
 }
 .scroll-expand-bg img {
   width: 100%;

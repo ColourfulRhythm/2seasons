@@ -12,6 +12,8 @@
     { "source": "/partners", "destination": "/partners.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/tucks", "destination": "/tucks.html" },
+    { "source": "/membership", "destination": "/membership/index.html" },
+    { "source": "/hiddenleafvillage", "destination": "/hiddenleafvillage.html" },
     { "source": "/2saffiliate", "destination": "/2saffiliate/index.html" }
   ]
 }
