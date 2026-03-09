@@ -58,11 +58,11 @@
     /* ── NAV ── */
     .luxury-header {
         position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-        background: linear-gradient(to bottom, var(--bg)f0, transparent);
+        background: linear-gradient(to bottom, rgba(13, 13, 13, 0.95), rgba(13, 13, 13, 0.7));
         transition: background 0.4s;
     }
     .luxury-header.scrolled {
-        background: var(--bg)f5;
+        background: rgba(13, 13, 13, 0.98);
         border-bottom: 1px solid var(--border);
     }
     .luxury-nav {
@@ -74,20 +74,30 @@
     .logo-luxury {
         font-family: 'Playfair Display', serif; font-size: 1.15rem;
         color: var(--text); text-decoration: none;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     }
     .nav-links-luxury {
         display: flex; gap: 28px; list-style: none;
     }
     .nav-links-luxury li a {
         font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
-        color: var(--text-muted); text-decoration: none; transition: color 0.3s;
+        color: rgba(245, 240, 232, 0.95); text-decoration: none; transition: color 0.3s;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
     }
-    .nav-links-luxury li a:hover { color: var(--gold); }
+    .nav-links-luxury li a:hover { color: var(--gold-light); }
     .cta-nav {
-        color: var(--gold) !important;
-        border: 1px solid var(--gold-dim);
+        color: var(--gold-light) !important;
+        border: 1px solid var(--gold);
         padding: 8px 20px !important;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
     }
+    .mobile-menu-btn {
+        display: flex; align-items: center; gap: 8px;
+        background: none; border: none; cursor: pointer;
+        color: var(--text); padding: 8px 0;
+    }
+    .mobile-menu-btn .menu-icon span { background: var(--text); }
+    .mobile-menu-btn .menu-text { color: var(--text); text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
 
     /* ── HERO ── */
     .pitch-hero {
@@ -392,7 +402,21 @@
     @media (max-width: 900px) {
         .luxury-nav { padding: 16px 24px; }
         .luxury-header.scrolled .luxury-nav { padding: 12px 24px; }
-        .nav-links-luxury { display: none; }
+        .nav-links-luxury {
+            display: none;
+            position: fixed; top: 0; right: -100%;
+            width: 70%; max-width: 400px; height: 100vh;
+            background: var(--bg-card); flex-direction: column;
+            justify-content: flex-start; padding: 5rem 1.5rem 1.5rem;
+            gap: 0.8rem; transition: right 0.4s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            z-index: 999; border-left: 1px solid var(--border);
+        }
+        .nav-links-luxury.active {
+            display: flex; right: 0;
+        }
+        .mobile-menu-btn { display: flex !important; }
+        .menu-icon { display: flex !important; }
         .pitch-hero { padding: 0 24px 80px; }
         .btn-ghost { min-height: 52px; padding: 14px 24px; }
         .benefits-section, .visual-section, .partners-section, .conversion-section { padding: 70px 24px; }
