@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Meta Pixel Code -->
 <script>
@@ -41,592 +42,607 @@ fbq('track', 'PageView');
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --brown: #3B1F0C;
-  --brown-mid: #5C3317;
-  --gold: #C8922A;
-  --gold-light: #E8B84B;
-  --cream: #FAF7F2;
-  --sand: #EDE4D4;
-  --border: #D9CEBB;
-  --text: #1C1008;
-  --muted: #7A6552;
-  --white: #fff;
+  --gold: #c9a96e;
+  --gold-light: #e0c99a;
+  --gold-dim: #a0855a;
+  --bg: #0d0d0d;
+  --bg-2: #111;
+  --bg-card: #161616;
+  --text: #f5f0e8;
+  --text-muted: #9a9a9a;
+  --text-dim: #666;
+  --border: #2a2a2a;
+  --border-gold: #3a2e1e;
   --green: #22c55e;
-  --red-soft: #fef2f2;
-  --red: #dc2626;
+  --red: #ef4444;
 }
 
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Outfit', sans-serif;
-  background: var(--cream);
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
 }
 
-/* ─── URGENCY TICKER ─── */
+/* ── TICKER ── */
 .ticker {
-  background: var(--brown);
-  padding: 0.4rem 0.75rem;
+  background: #0a0a0a;
+  border-bottom: 1px solid var(--border-gold);
+  padding: 12px 24px;
   text-align: center;
   font-size: 0.68rem;
-  color: rgba(255,255,255,0.85);
-  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 10px;
 }
-@media (min-width: 769px) {
-  .ticker { padding: 0.55rem 1rem; font-size: 0.72rem; }
-}
-.ticker strong { color: var(--gold-light); }
+.ticker strong { color: var(--gold); }
 .ticker-dot {
-  width: 7px; height: 7px;
+  width: 6px; height: 6px;
   background: var(--green);
   border-radius: 50%;
   animation: blink 2s infinite;
   flex-shrink: 0;
 }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-/* ─── HERO ─── */
-.hero {
+/* ── NAV ── */
+.join-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 24px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, var(--bg)ee, transparent);
+  transition: background 0.4s, padding 0.3s;
+}
+.join-nav.scrolled {
+  background: #0d0d0df5;
+  padding: 16px 60px;
+  border-bottom: 1px solid var(--border);
+}
+.join-nav .logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--text);
+  text-decoration: none;
+}
+.join-nav-links {
+  display: flex; gap: 28px; list-style: none;
+}
+.join-nav-links a {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.join-nav-links a:hover { color: var(--gold); }
+
+/* ── HERO ── */
+.join-hero {
+  min-height: 55vh;
   position: relative;
-  padding: 2rem 1rem 2rem;
-  text-align: center;
-  min-height: auto;
-  background-color: #1a0e06;
-  background-image:
-    linear-gradient(160deg, rgba(20,8,2,0.75) 0%, rgba(35,15,3,0.65) 50%, rgba(20,8,2,0.8) 100%),
-    url('/join-background-image.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+  padding: 120px 60px 70px;
+  background:
+    linear-gradient(to top, var(--bg) 0%, var(--bg)88 40%, transparent 80%),
+    url('join-background-image.jpg') center/cover no-repeat;
   overflow: hidden;
 }
-@media (min-width: 769px) {
-  .hero { padding: 4rem 1.5rem 4rem; }
-}
-
-.hero::before {
+.join-hero::after {
   content: '';
-  position: absolute; inset: 0;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
 }
-
-.hero-inner {
+.join-hero-content {
   position: relative;
-  max-width: 600px;
-  margin: 0 auto;
-  animation: fadeUp 0.9s ease both;
+  z-index: 2;
+  max-width: 640px;
 }
-
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  background: rgba(200,146,42,0.18);
-  border: 1px solid rgba(200,146,42,0.45);
-  color: var(--gold-light);
-  font-size: 0.67rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+.join-hero-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  padding: 0.35rem 0.9rem;
-  border-radius: 100px;
-  margin-bottom: 0.75rem;
+  color: var(--gold-dim);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-@media (min-width: 769px) {
-  .hero-tag { margin-bottom: 1.4rem; }
-}
-.hero-tag::before {
+.join-hero-label::before {
   content: '';
-  width: 6px; height: 6px;
-  background: var(--green);
-  border-radius: 50%;
-  animation: blink 2s infinite;
+  width: 28px; height: 1px;
+  background: var(--gold-dim);
 }
-
-.hero-h1 {
+.join-hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 5vw, 3.75rem);
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 20px;
 }
-@media (min-width: 769px) {
-  .hero-h1 { font-size: clamp(2.3rem, 6vw, 3.75rem); margin-bottom: 1rem; }
-}
-.hero-h1 em { font-style: italic; color: var(--gold-light); }
-
-.hero-sub {
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.62);
-  line-height: 1.6;
-  font-weight: 300;
-  margin-bottom: 0.75rem;
-}
-@media (min-width: 769px) {
-  .hero-sub { font-size: 0.95rem; line-height: 1.75; margin-bottom: 2rem; }
+.join-hero h1 em { font-style: italic; color: var(--gold); }
+.join-hero p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 500px;
 }
 
-.hero-pills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.4rem;
-  margin-bottom: 0.5rem;
-}
-@media (min-width: 769px) {
-  .hero-pills { gap: 0.5rem; margin-bottom: 0; }
-}
-.pill {
-  display: flex; align-items: center; gap: 0.35rem;
-  background: rgba(0,0,0,0.4);
-  border: 1px solid rgba(255,255,255,0.25);
-  color: rgba(255,255,255,0.95);
-  font-size: 0.72rem;
-  padding: 0.38rem 0.8rem;
-  border-radius: 100px;
-}
-.pill svg { color: var(--gold-light); }
-
-.hero-scroll-hint {
-  display: none;
-  margin-top: 0.75rem;
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.9);
-  text-decoration: none;
-  animation: bounce 2s infinite;
-}
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
-}
-@media (max-width: 768px) {
-  .hero-scroll-hint { display: block; }
-}
-
-/* Compact trust bar & proof on mobile */
-@media (max-width: 768px) {
-  .trust-bar { padding: 0.75rem 1rem; gap: 1rem; }
-  .proof-strip { padding: 0.6rem 1rem; }
-  .next-steps { padding: 1.5rem 1rem; }
-  .next-title { margin-bottom: 1rem; font-size: 1.2rem; }
-  .form-section { padding: 1.5rem 1rem 3rem; padding-bottom: 5rem; }
-}
-
-/* ─── TRUST BAR ─── */
+/* ── TRUST BAR ── */
 .trust-bar {
-  background: var(--white);
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 1.25rem 1.5rem;
+  padding: 28px 60px;
   display: flex;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 60px;
   flex-wrap: wrap;
 }
 .trust-item {
-  display: flex; align-items: center; gap: 0.5rem;
-  font-size: 0.75rem; font-weight: 500; color: var(--brown-mid);
-}
-.trust-item svg { color: var(--gold); flex-shrink: 0; }
-
-/* ─── SOCIAL PROOF ─── */
-.proof-strip {
-  background: #fffcf5;
-  border-bottom: 1px solid var(--border);
-  padding: 1rem 1.5rem;
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  align-items: center;
+  display: flex; align-items: center; gap: 10px;
   font-size: 0.75rem;
-  color: var(--muted);
-  flex-wrap: wrap;
-  text-align: center;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
 }
-.proof-faces { display: flex; }
-.proof-face {
-  width: 28px; height: 28px; border-radius: 50%;
-  border: 2px solid #fff;
-  overflow: hidden;
-  margin-left: -8px;
-  background: var(--sand);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.6rem; font-weight: 700; color: var(--brown);
-  font-family: 'Playfair Display', serif;
-}
-.proof-face:first-child { margin-left: 0; }
-.proof-text strong { color: var(--brown); }
+.trust-item i { color: var(--gold); font-size: 0.8rem; }
 
-/* ─── WHAT HAPPENS NEXT ─── */
-.next-steps {
-  background: var(--white);
-  padding: 2.5rem 1.5rem;
+/* ── SCARCITY ── */
+.scarcity-bar {
+  background: #1a0a0a;
+  border-bottom: 1px solid #3a1a1a;
+  padding: 18px 60px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.scarcity-bar-text {
+  font-size: 0.78rem;
+  color: #e88;
+  flex: 1;
+}
+.scarcity-bar-text strong { color: #faa; }
+.progress-bar-wrap {
+  flex: 1;
+  max-width: 300px;
+}
+.progress-label {
+  display: flex; justify-content: space-between;
+  font-size: 0.6rem; color: #b04; margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+.progress-track {
+  height: 4px; background: #3a1a1a; border-radius: 2px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%; width: 73%;
+  background: linear-gradient(90deg, #dc2626, #ef4444);
+  animation: growBar 1.5s ease both 0.5s;
+}
+@keyframes growBar { from{width:0} to{width:73%} }
+
+/* ── STEPS ── */
+.steps-section {
+  padding: 70px 60px;
+  background: var(--bg-2);
   border-bottom: 1px solid var(--border);
 }
-.next-inner { max-width: 640px; margin: 0 auto; }
-.next-label {
-  font-size: 0.62rem; font-weight: 600;
-  letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 0.5rem;
+.steps-inner {
+  max-width: 900px;
+  margin: 0 auto;
   text-align: center;
 }
-.next-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.4rem; font-weight: 600;
-  color: var(--brown); text-align: center;
-  margin-bottom: 2rem;
+.steps-eyebrow {
+  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold-dim); margin-bottom: 12px;
 }
-.steps-row {
+.steps-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 52px;
+}
+.steps-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
   position: relative;
 }
-.steps-row::before {
+.steps-grid::before {
   content: '';
   position: absolute;
-  top: 20px; left: 16.66%; right: 16.66%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
-  opacity: 0.35;
+  top: 20px; left: 16%; right: 16%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-dim));
+  opacity: 0.3;
 }
 .step {
   display: flex; flex-direction: column;
   align-items: center; text-align: center;
-  padding: 0 1rem;
+  padding: 0 24px;
 }
 .step-num {
   width: 40px; height: 40px; border-radius: 50%;
-  background: var(--brown);
-  color: #fff;
+  background: var(--bg-card);
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.85rem; font-weight: 700;
-  margin-bottom: 0.75rem;
+  font-size: 0.82rem; font-weight: 600;
+  margin-bottom: 20px;
   position: relative; z-index: 1;
+  font-family: 'Playfair Display', serif;
 }
-.step-title { font-size: 0.82rem; font-weight: 600; color: var(--brown); margin-bottom: 0.3rem; }
-.step-desc { font-size: 0.74rem; color: var(--muted); line-height: 1.55; }
+.step-title {
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--text); margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+.step-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.7; }
 
-.plots-wrap { background: var(--cream); padding: 0.5rem 1.5rem 0; }
-
-/* ─── FORM SECTION ─── */
+/* ── FORM SECTION ── */
 .form-section {
-  padding: 2.5rem 1.5rem 5rem;
-  max-width: 640px;
+  padding: 80px 60px 100px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
-.scarcity {
-  background: var(--red-soft);
-  border: 1px solid #fecaca;
-  padding: 0.8rem 1.1rem;
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.scarcity-icon { flex-shrink: 0; }
-.scarcity-text { font-size: 0.78rem; color: var(--red); line-height: 1.5; }
-.scarcity-text strong { font-weight: 700; }
-
-.progress-wrap { margin-top: 0.5rem; }
-.progress-label {
-  display: flex; justify-content: space-between;
-  font-size: 0.62rem; color: #b91c1c; margin-bottom: 0.3rem; font-weight: 500;
-}
-.progress-bar {
-  height: 5px; background: #fee2e2; border-radius: 3px; overflow: hidden;
-}
-.progress-fill {
-  height: 100%; width: 73%;
-  background: linear-gradient(90deg, #dc2626, #ef4444);
-  border-radius: 3px;
-  animation: growBar 1.5s ease both 0.5s;
-}
-@keyframes growBar { from { width: 0; } to { width: 73%; } }
-
 .form-card {
-  background: var(--white);
+  background: var(--bg-card);
   border: 1px solid var(--border);
-  padding: 2.5rem;
-  box-shadow: 0 4px 30px rgba(59,31,12,0.07);
+  padding: 56px 52px;
 }
+
+.form-header {
+  margin-bottom: 40px;
+}
+.form-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.form-header h2 em { font-style: italic; color: var(--gold); }
+.form-header p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.7; }
 
 .plot-chosen {
   display: none;
-  background: #fdf9f2;
-  border: 1px solid rgba(200,146,42,0.35);
-  padding: 0.9rem 1.1rem;
-  margin-bottom: 1.5rem;
+  background: #1a1510;
+  border: 1px solid var(--border-gold);
+  padding: 20px 24px;
+  margin-bottom: 32px;
   justify-content: space-between;
   align-items: center;
   animation: fadeIn 0.3s ease;
 }
+@keyframes fadeIn { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
 .pc-label {
-  font-size: 0.6rem; font-weight: 600;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 0.15rem;
+  font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--text-dim); margin-bottom: 4px;
 }
 .pc-val {
   font-family: 'Playfair Display', serif;
-  font-size: 1.05rem; color: var(--brown); font-weight: 600;
+  font-size: 1.1rem; color: var(--gold-light);
 }
 
-.form-field { margin-bottom: 1.2rem; }
-
+.form-field { margin-bottom: 24px; }
 .form-label {
-  display: block; font-size: 0.68rem; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 0.4rem;
+  display: block; font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 10px;
 }
-
 .form-input, .form-select {
   width: 100%;
-  padding: 0.8rem 1rem;
+  padding: 14px 18px;
   border: 1px solid var(--border);
-  background: var(--cream);
-  font-family: 'Outfit', sans-serif;
+  background: #111;
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.88rem; color: var(--text);
-  outline: none; border-radius: 0;
+  outline: none;
   transition: border-color 0.2s, background 0.2s;
   -webkit-appearance: none;
 }
-.form-input::placeholder { color: #c0b0a0; }
+.form-input::placeholder { color: var(--text-dim); }
 .form-input:focus, .form-select:focus {
-  border-color: var(--brown); background: #fff;
+  border-color: var(--gold-dim); background: #151515;
 }
+.form-select option { background: #111; color: var(--text); }
 
 .plot-options {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.6rem;
-  margin-top: 0.4rem;
+  gap: 8px;
+  margin-top: 4px;
 }
 .plot-opt {
-  border: 1.5px solid var(--border);
-  padding: 0.85rem 0.4rem;
+  border: 1px solid var(--border);
+  padding: 20px 8px;
   text-align: center; cursor: pointer;
-  transition: all 0.2s; background: var(--cream);
+  transition: all 0.2s; background: #111;
   position: relative;
 }
-.plot-opt:hover { border-color: var(--gold); }
+.plot-opt:hover { border-color: var(--gold-dim); }
 .plot-opt.active {
-  border-color: var(--brown); background: #fdf9f2;
-  box-shadow: 0 0 0 1px var(--brown);
+  border-color: var(--gold);
+  background: #1a1510;
 }
 .plot-opt.active::after {
   content: '✓';
-  position: absolute; top: 4px; right: 7px;
-  font-size: 0.58rem; color: var(--brown); font-weight: 800;
+  position: absolute; top: 6px; right: 8px;
+  font-size: 0.55rem; color: var(--gold);
 }
-.po-size { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--brown); line-height: 1; }
-.po-unit { font-size: 0.58rem; color: var(--muted); font-family: 'Outfit', sans-serif; }
-.po-price { font-size: 0.7rem; font-weight: 600; color: var(--text); margin-top: 0.25rem; }
-.po-tag { font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-top: 0.2rem; }
+.po-size {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; color: var(--text); line-height: 1;
+}
+.po-unit { font-size: 0.58rem; color: var(--text-dim); font-family: 'Montserrat', sans-serif; }
+.po-price { font-size: 0.7rem; color: var(--gold); margin-top: 6px; font-weight: 500; }
+.po-tag { font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-top: 4px; }
 
 .qty-row {
   display: inline-flex; align-items: center;
-  border: 1px solid var(--border); background: var(--cream);
-  margin-top: 0.4rem;
+  border: 1px solid var(--border);
+  margin-top: 4px;
 }
 .qty-btn {
-  width: 38px; height: 38px;
+  width: 40px; height: 40px;
   display: flex; align-items: center; justify-content: center;
   background: none; border: none;
-  font-size: 1.1rem; color: var(--brown);
+  font-size: 1.1rem; color: var(--gold);
   cursor: pointer; transition: background 0.2s;
+  font-family: 'Playfair Display', serif;
 }
-.qty-btn:hover { background: var(--sand); }
+.qty-btn:hover { background: var(--border); }
 .qty-num {
-  width: 44px; text-align: center;
-  font-size: 0.9rem; font-weight: 600; color: var(--brown);
+  width: 48px; text-align: center;
+  font-size: 0.9rem; color: var(--text);
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
-  padding: 0.35rem 0;
+  padding: 8px 0;
+  font-weight: 500;
 }
 
-.risk-reversal {
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  padding: 0.85rem 1rem;
-  margin-bottom: 1.25rem;
-  display: flex; align-items: flex-start; gap: 0.6rem;
-  font-size: 0.76rem; color: #15803d; line-height: 1.55;
+.risk-note {
+  background: #0a130a;
+  border: 1px solid #1a3a1a;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 0.76rem; color: #6aaa6a; line-height: 1.6;
 }
-.risk-reversal svg { flex-shrink: 0; margin-top: 1px; }
+.risk-note i { flex-shrink: 0; margin-top: 2px; font-size: 0.8rem; }
 
 .form-submit {
   width: 100%;
-  padding: 1.05rem;
-  background: var(--brown); color: #fff; border: none;
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.85rem; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  cursor: pointer; transition: all 0.25s;
-  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-  margin-top: 0.5rem;
+  padding: 18px;
+  background: var(--gold);
+  color: #0d0d0d;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  cursor: pointer; transition: background 0.3s, transform 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin-top: 4px;
 }
-.form-submit:hover:not(:disabled) { background: var(--gold); color: var(--brown); transform: translateY(-1px); }
-.form-submit:disabled {
-  background: #b0b0b0;
-  cursor: not-allowed;
-  transform: none;
-}
+.form-submit:hover:not(:disabled) { background: var(--gold-light); transform: translateY(-1px); }
+.form-submit:disabled { background: #333; color: #666; cursor: not-allowed; transform: none; }
 
-.form-note { font-size: 0.68rem; color: var(--muted); line-height: 1.6; margin-top: 0.9rem; text-align: center; }
-.form-note a { color: var(--gold); text-decoration: none; }
+.form-note {
+  font-size: 0.65rem; color: var(--text-dim);
+  line-height: 1.7; margin-top: 16px; text-align: center;
+}
+.form-note a { color: var(--gold-dim); text-decoration: none; }
 
 .doc-links {
-  display: flex; gap: 0.75rem;
-  margin-top: 1.4rem; padding-top: 1.4rem;
+  display: flex; gap: 20px;
+  margin-top: 24px; padding-top: 24px;
   border-top: 1px solid var(--border); flex-wrap: wrap;
 }
 .doc-link-btn {
-  display: inline-flex; align-items: center; gap: 0.38rem;
-  font-size: 0.7rem; color: var(--muted);
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.68rem; color: var(--text-dim);
   cursor: pointer; text-decoration: underline;
   text-underline-offset: 3px;
   background: none; border: none;
-  font-family: 'Outfit', sans-serif; transition: color 0.2s;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
 }
-.doc-link-btn:hover { color: var(--brown); }
+.doc-link-btn:hover { color: var(--gold); }
 
-/* ─── MODAL ─── */
+/* ── MODAL ── */
 .overlay {
   display: none;
   position: fixed; inset: 0;
-  background: rgba(20,8,2,0.85);
+  background: rgba(0,0,0,0.9);
   z-index: 900; align-items: center; justify-content: center;
-  padding: 1rem; backdrop-filter: blur(6px);
+  padding: 20px; backdrop-filter: blur(8px);
 }
 .overlay.open { display: flex; }
-
 .modal {
-  background: var(--cream); width: 100%; max-width: 640px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  width: 100%; max-width: 640px;
   max-height: 86vh; overflow-y: auto;
-  padding: 2.25rem; position: relative;
-  animation: fadeUp 0.3s ease;
+  padding: 40px; position: relative;
 }
 .modal-x {
-  position: absolute; top: 1rem; right: 1rem;
+  position: absolute; top: 16px; right: 20px;
   background: none; border: none;
-  font-size: 1.4rem; cursor: pointer;
-  color: var(--muted); line-height: 1;
+  font-size: 1.3rem; cursor: pointer;
+  color: var(--text-dim); line-height: 1;
 }
-.modal-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; color: var(--brown); margin-bottom: 0.25rem; }
-.modal-sub { font-size: 0.72rem; color: var(--muted); margin-bottom: 1.5rem; }
+.modal-x:hover { color: var(--text); }
+.modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 400; color: var(--text); margin-bottom: 6px;
+}
+.modal-sub { font-size: 0.72rem; color: var(--text-dim); margin-bottom: 24px; letter-spacing: 0.05em; }
 .doc-body {
-  background: #fff; border: 1px solid var(--border);
-  padding: 1.5rem; font-size: 0.81rem; line-height: 1.9; color: var(--text);
+  background: #111; border: 1px solid var(--border);
+  padding: 24px; font-size: 0.82rem; line-height: 1.9; color: var(--text-muted);
 }
-.doc-body h3 { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--brown); margin: 1.2rem 0 0.35rem; font-weight: 600; }
+.doc-body h3 {
+  font-family: 'Playfair Display', serif; font-size: 0.95rem;
+  color: var(--text); margin: 20px 0 8px; font-weight: 400;
+}
 .doc-body h3:first-child { margin-top: 0; }
-.doc-stamp {
-  text-align: center; font-size: 0.58rem;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--gold); margin: 1.25rem 0;
-  display: flex; align-items: center; gap: 0.75rem;
-}
-.doc-stamp::before, .doc-stamp::after {
-  content: ''; flex: 1; height: 1px;
-  background: var(--gold); opacity: 0.35;
-}
 
+/* Success modal */
 .success-modal { text-align: center; max-width: 480px; }
 .success-icon {
-  width: 64px; height: 64px; border-radius: 50%;
-  background: var(--brown);
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--gold);
   display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 1.25rem;
+  margin: 0 auto 24px;
 }
 .success-steps {
-  background: var(--cream); border: 1px solid var(--border);
-  padding: 1.25rem; margin: 1.25rem 0; text-align: left;
+  background: #111; border: 1px solid var(--border);
+  padding: 24px; margin: 24px 0; text-align: left;
 }
 .ss-item {
-  display: flex; align-items: flex-start; gap: 0.65rem;
-  padding: 0.55rem 0; border-bottom: 1px solid var(--border);
-  font-size: 0.8rem; line-height: 1.5; color: var(--text);
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+  font-size: 0.8rem; line-height: 1.6; color: var(--text-muted);
 }
 .ss-item:last-child { border-bottom: none; padding-bottom: 0; }
 .ss-num {
   width: 22px; height: 22px; border-radius: 50%;
-  background: var(--gold); color: var(--brown);
+  background: var(--gold); color: #0d0d0d;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.65rem; font-weight: 800; flex-shrink: 0;
+  font-size: 0.62rem; font-weight: 800; flex-shrink: 0;
 }
 
-@media (max-width: 540px) {
-  .steps-row { grid-template-columns: 1fr; gap: 1.25rem; }
-  .steps-row::before { display: none; }
-  .form-card { padding: 1.5rem; }
-  .trust-bar { gap: 1.1rem; }
+/* ── FOOTER ── */
+footer {
+  background: #080808;
+  border-top: 1px solid var(--border);
+  padding: 48px 60px;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; color: var(--text); text-decoration: none;
+}
+.footer-tagline {
+  font-size: 0.72rem; color: var(--text-dim);
+  margin-top: 6px; line-height: 1.6;
+}
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+.footer-links a {
+  font-size: 0.7rem; color: var(--text-dim); text-decoration: none;
+  letter-spacing: 0.08em; transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-social { display: flex; gap: 16px; }
+.footer-social a {
+  color: var(--text-dim); font-size: 1rem; transition: color 0.3s;
+}
+.footer-social a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.08em;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom a { color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
+.footer-bottom a:hover { color: var(--gold); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .join-nav { padding: 16px 24px; }
+  .join-nav.scrolled { padding: 12px 24px; }
+  .join-nav-links { display: none; }
+  .join-hero { padding: 100px 24px 60px; }
+  .trust-bar { padding: 20px 24px; gap: 20px; }
+  .scarcity-bar { flex-direction: column; padding: 16px 24px; }
+  .progress-bar-wrap { max-width: 100%; }
+  .steps-section { padding: 52px 24px; }
+  .steps-grid { grid-template-columns: 1fr; gap: 32px; }
+  .steps-grid::before { display: none; }
+  .form-section { padding: 52px 24px 80px; }
+  .form-card { padding: 36px 24px; }
   .plot-options { grid-template-columns: 1fr; }
+  footer { padding: 40px 24px; }
 }
 </style>
 </head>
 <body>
 
-<header>
-    <nav>
-        <a href="/" class="logo">2 Seasons</a>
-        <button type="button" class="mobile-menu-btn" aria-label="Toggle Menu">
-            <i class="fas fa-bars"></i>
-            <span>Menu</span>
-        </button>
-        <ul class="nav-links">
-            <li><a href="/#residential">Residential</a></li>
-            <li><a href="/#villas">True Vine Villas</a></li>
-            <li><a href="/#wellness">Wellness Hub</a></li>
-            <li><a href="/hyggetown">Hygge Town</a></li>
-            <li><a href="/100plots">100 Plots</a></li>
-            <li><a href="/paymentplan">Payment Plan</a></li>
-            <li><a href="/partners">Partners</a></li>
-            <li><a href="/2saffiliate">Affiliates</a></li>
-            <li><a href="/join" class="join-button">Join Now</a></li>
-        </ul>
-    </nav>
-</header>
-<div class="menu-overlay"></div>
+<!-- NAV -->
+<nav class="join-nav" id="join-nav">
+  <a href="/" class="logo">2 Seasons</a>
+  <ul class="join-nav-links">
+    <li><a href="/#residential">Residential</a></li>
+    <li><a href="/#villas">Villas</a></li>
+    <li><a href="/#wellness">Wellness</a></li>
+    <li><a href="/hyggetown">Hygge</a></li>
+    <li><a href="/100plots">100 Plots</a></li>
+    <li><a href="/paymentplan">Payment Plan</a></li>
+    <li><a href="/partners">Partners</a></li>
+    <li><a href="/2saffiliate">Affiliates</a></li>
+  </ul>
+</nav>
 
-<!-- URGENCY TICKER -->
-<div class="ticker">
+<!-- TICKER -->
+<div class="ticker" style="margin-top: 0; padding-top: 72px;">
   <div class="ticker-dot"></div>
-  <span>Only <strong id="plots-left">18 plots</strong> remaining at ₦10,000/sqm — price increases once current phase sells out</span>
+  <span>Only <strong id="plots-left">18 plots</strong> remaining at current pricing — allocation is instant on submission</span>
 </div>
+
+<!-- HERO -->
+<section class="join-hero">
+  <div class="join-hero-content">
+    <p class="join-hero-label">Claim Your Plot</p>
+    <h1>Secure your<br><em>allocation</em></h1>
+    <p>Fill in the form below. Your plot is held the moment you submit — a consultant will call you within 2 hours to walk you through the rest.</p>
+  </div>
+</section>
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
-  <div class="trust-item">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    Deed of Assignment issued
-  </div>
-  <div class="trust-item">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-    State-registered survey
-  </div>
-  <div class="trust-item">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-    Instant allocation
-  </div>
-  <div class="trust-item">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    Live rep available now
+  <div class="trust-item"><i class="fas fa-shield-alt"></i> Deed of Assignment issued</div>
+  <div class="trust-item"><i class="fas fa-map-marked-alt"></i> State-registered survey</div>
+  <div class="trust-item"><i class="fas fa-check-circle"></i> Instant allocation</div>
+  <div class="trust-item"><i class="fas fa-user-tie"></i> Live rep available now</div>
+</div>
+
+<!-- SCARCITY -->
+<div class="scarcity-bar">
+  <div class="scarcity-bar-text"><strong>Moving fast.</strong> 73% of this phase is already claimed.</div>
+  <div class="progress-bar-wrap">
+    <div class="progress-label"><span>Claimed</span><span>27% left</span></div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
   </div>
 </div>
 
-<!-- WHAT HAPPENS NEXT -->
-<div class="next-steps">
-  <div class="next-inner">
-    <div class="next-label">Simple Process</div>
-    <div class="next-title">What Happens After You Submit</div>
-    <div class="steps-row">
+<!-- STEPS -->
+<div class="steps-section">
+  <div class="steps-inner">
+    <p class="steps-eyebrow">Simple Process</p>
+    <h2 class="steps-title">What happens after you submit</h2>
+    <div class="steps-grid">
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-title">Submit the form</div>
@@ -647,21 +663,13 @@ body {
 </div>
 
 <!-- FORM -->
-<section class="form-section" id="claim" style="scroll-margin-top: 1rem;">
-  <div class="scarcity">
-    <div class="scarcity-icon">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    </div>
-    <div>
-      <div class="scarcity-text"><strong>Moving fast.</strong> 73% of this phase is already claimed.</div>
-      <div class="progress-wrap">
-        <div class="progress-label"><span>Claimed</span><span>27% left</span></div>
-        <div class="progress-bar"><div class="progress-fill"></div></div>
-      </div>
-    </div>
-  </div>
-
+<section class="form-section" id="claim">
   <div class="form-card">
+    <div class="form-header">
+      <h2>Your <em>allocation</em></h2>
+      <p>Submitting this form does not commit you to payment. A consultant will call you first to answer every question before you decide.</p>
+    </div>
+
     <div class="plot-chosen" id="plot-chosen">
       <div>
         <div class="pc-label">Your Selection</div>
@@ -675,17 +683,17 @@ body {
 
     <div class="form-field">
       <label class="form-label">Full Name</label>
-      <input type="text" class="form-input" id="f-name" name="fullName" placeholder="Your full name" required>
+      <input type="text" class="form-input" id="f-name" placeholder="Your full name" required>
     </div>
 
     <div class="form-field">
       <label class="form-label">Email Address</label>
-      <input type="email" class="form-input" id="f-email" name="email" placeholder="your@email.com" required>
+      <input type="email" class="form-input" id="f-email" placeholder="your@email.com" required>
     </div>
 
     <div class="form-field">
       <label class="form-label">Phone Number</label>
-      <input type="tel" class="form-input" id="f-phone" name="phone" placeholder="+234 800 000 0000" required>
+      <input type="tel" class="form-input" id="f-phone" placeholder="+234 800 000 0000" required>
     </div>
 
     <div class="form-field">
@@ -718,26 +726,24 @@ body {
       </div>
     </div>
 
-    <div class="risk-reversal">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <div class="risk-note">
+      <i class="fas fa-lock"></i>
       <span>Submitting this form does not commit you to payment. A consultant will call you first to answer every question before you decide.</span>
     </div>
 
     <button type="button" class="form-submit" id="submitBtn" disabled>
       Claim My Plot — Allocation is Instant
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <i class="fas fa-arrow-right"></i>
     </button>
 
     <p class="form-note">By submitting, you agree to receive communications from 2 Seasons. Your data is never sold. <a href="/privacy">Privacy Policy</a>.</p>
 
     <div class="doc-links">
       <button type="button" class="doc-link-btn" onclick="openDoc('deed')">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        View Deed of Assignment
+        <i class="fas fa-file-alt"></i> View Deed of Assignment
       </button>
       <button type="button" class="doc-link-btn" onclick="openDoc('survey')">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-        View Registered Survey
+        <i class="fas fa-map"></i> View Registered Survey
       </button>
     </div>
   </div>
@@ -755,11 +761,10 @@ body {
 <div class="overlay" id="success-ov">
   <div class="modal success-modal">
     <div class="success-icon">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+      <i class="fas fa-check" style="color:#0d0d0d; font-size:1.3rem;"></i>
     </div>
-    <h2 style="font-family:'Playfair Display',serif;font-size:1.65rem;font-weight:700;color:var(--brown);margin-bottom:0.5rem">Your Plot is Allocated ✓</h2>
-    <p style="color:var(--muted);font-size:0.83rem;line-height:1.7">Your details are saved and your plot is held for you. Here's exactly what happens next:</p>
-
+    <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:400;color:var(--text);margin-bottom:10px">Your Plot is <em style="color:var(--gold);font-style:italic">Allocated</em></h2>
+    <p style="color:var(--text-muted);font-size:0.83rem;line-height:1.7;margin-bottom:4px">Your details are saved and your plot is held for you. Here's what happens next:</p>
     <div class="success-steps">
       <div class="ss-item">
         <div class="ss-num">1</div>
@@ -774,68 +779,59 @@ body {
         <div>Once payment is complete, your <strong>Deed of Assignment</strong> and <strong>Survey Plan</strong> are issued immediately.</div>
       </div>
     </div>
-
-    <p style="font-size:0.75rem;color:var(--muted);margin-bottom:1.25rem">Redirecting you home...</p>
+    <p style="font-size:0.72rem;color:var(--text-dim)">Redirecting you home...</p>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h3>2 Seasons</h3>
-            <p>Africa's First Regenerative Innovation & Lifestyle Village</p>
-        </div>
-        <div class="footer-section">
-            <h3>Contact</h3>
-            <p>Abeokuta, Nigeria</p>
-            <p>Email: 2seasonsabk@2seasonsabk.store</p>
-        </div>
-        <div class="footer-section">
-            <h3>Follow Us</h3>
-            <div class="social-links">
-                <a href="https://www.instagram.com/2seasonsabk" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="https://x.com/2seasonsabk?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-            </div>
-        </div>
+  <div class="footer-inner">
+    <div>
+      <a href="/" class="footer-logo">2 Seasons</a>
+      <p class="footer-tagline">Africa's First Regenerative Innovation<br>& Lifestyle Village</p>
     </div>
-    <div class="footer-bottom">
-        <p>&copy; 2025 2 Seasons. All rights reserved.</p>
-        <a href="/privacy" class="privacy-policy-btn">Privacy Policy</a>
+    <div class="footer-links">
+      <a href="/#residential">Residential</a>
+      <a href="/villas">Villas</a>
+      <a href="/wellness">Wellness</a>
+      <a href="/hyggetown">Hygge</a>
+      <a href="/partners">Partners</a>
+      <a href="/privacy">Privacy</a>
     </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/2seasonsabk" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://x.com/2seasonsabk?s=21" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 2 Seasons. All rights reserved.</p>
+    <p>Kobape, Abeokuta, Ogun State, Nigeria &nbsp;·&nbsp; 2seasonsabk@2seasonsabk.store</p>
+  </div>
 </footer>
 
 <script src="script.js"></script>
 <script>
-// ── STATE ──
-var qty = 1, selPlot = null;
 const FORMSPREE_URL = 'https://formspree.io/f/xvgrzrnp';
 const REDIRECT_URL = 'https://www.2seasonsabk.com/';
+var qty = 1, selPlot = null;
 
-// ── PLOT ──
+// Nav scroll
+const nav = document.getElementById('join-nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+// Plot selection
 document.querySelectorAll('.plot-opt').forEach(function(el) {
   el.addEventListener('click', function() {
-    document.querySelectorAll('.plot-opt').forEach(function(o) { o.classList.remove('active'); });
+    document.querySelectorAll('.plot-opt').forEach(o => o.classList.remove('active'));
     el.classList.add('active');
-    selPlot = { size: parseInt(el.dataset.size, 10), price: parseInt(el.dataset.price, 10) };
-    updateSummary();
-    checkFormValid();
+    selPlot = { size: parseInt(el.dataset.size), price: parseInt(el.dataset.price) };
+    updateSummary(); checkFormValid();
   });
 });
 
-document.getElementById('qty-minus').addEventListener('click', function() {
-  qty = Math.max(1, qty - 1);
-  document.getElementById('qty').textContent = qty;
-  updateSummary();
-  checkFormValid();
-});
-
-document.getElementById('qty-plus').addEventListener('click', function() {
-  qty = Math.min(10, qty + 1);
-  document.getElementById('qty').textContent = qty;
-  updateSummary();
-  checkFormValid();
-});
+document.getElementById('qty-minus').addEventListener('click', () => { qty = Math.max(1,qty-1); document.getElementById('qty').textContent=qty; updateSummary(); checkFormValid(); });
+document.getElementById('qty-plus').addEventListener('click', () => { qty = Math.min(10,qty+1); document.getElementById('qty').textContent=qty; updateSummary(); checkFormValid(); });
 
 function updateSummary() {
   if (!selPlot) return;
@@ -845,10 +841,7 @@ function updateSummary() {
   document.getElementById('plot-chosen').style.display = 'flex';
 }
 
-// ── FORM VALIDATION & SUBMIT ──
-['f-name','f-email','f-phone'].forEach(function(id) {
-  document.getElementById(id).addEventListener('input', checkFormValid);
-});
+['f-name','f-email','f-phone'].forEach(id => document.getElementById(id).addEventListener('input', checkFormValid));
 
 function checkFormValid() {
   const n = document.getElementById('f-name').value.trim();
@@ -862,63 +855,41 @@ document.getElementById('submitBtn').addEventListener('click', function() {
   const e = document.getElementById('f-email').value.trim();
   const p = document.getElementById('f-phone').value.trim();
   if (!n || !e || !p || !selPlot) return;
-
   var btn = this;
   btn.disabled = true;
-  btn.innerHTML = 'Submitting... <span style="opacity:0.7">please wait</span>';
-
+  btn.innerHTML = 'Submitting... <span style="opacity:0.6">please wait</span>';
   var formData = new FormData();
-  formData.append('fullName', n);
-  formData.append('email', e);
-  formData.append('phone', p);
-  formData.append('plotSize', selPlot.size + ' sqm');
-  formData.append('quantity', qty);
+  formData.append('fullName', n); formData.append('email', e); formData.append('phone', p);
+  formData.append('plotSize', selPlot.size + ' sqm'); formData.append('quantity', qty);
   formData.append('totalPrice', '₦' + (selPlot.price * qty).toLocaleString());
   formData.append('_redirect', REDIRECT_URL);
-
-  fetch(FORMSPREE_URL, {
-    method: 'POST',
-    body: formData,
-    headers: { 'Accept': 'application/json' }
-  })
-  .then(function(r) { return r.json(); })
-  .then(function(data) {
-    if (data.ok) {
-      if (typeof fbq !== 'undefined') fbq('track', 'Lead');
-      document.getElementById('success-ov').classList.add('open');
-      setTimeout(function() {
-        window.location.href = REDIRECT_URL;
-      }, 2500);
-    } else {
-      btn.disabled = false;
-      btn.innerHTML = 'Claim My Plot — Allocation is Instant <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-      alert('Something went wrong. Please try again.');
-    }
-  })
-  .catch(function() {
-    btn.disabled = false;
-    btn.innerHTML = 'Claim My Plot — Allocation is Instant <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-    alert('Connection error. Please check your internet and try again.');
-  });
+  fetch(FORMSPREE_URL, { method:'POST', body:formData, headers:{'Accept':'application/json'} })
+    .then(r => r.json())
+    .then(data => {
+      if (data.ok) {
+        if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+        document.getElementById('success-ov').classList.add('open');
+        setTimeout(() => { window.location.href = REDIRECT_URL; }, 2500);
+      } else { btn.disabled=false; btn.innerHTML='Claim My Plot — Allocation is Instant <i class="fas fa-arrow-right"></i>'; alert('Something went wrong. Please try again.'); }
+    })
+    .catch(() => { btn.disabled=false; btn.innerHTML='Claim My Plot — Allocation is Instant <i class="fas fa-arrow-right"></i>'; alert('Connection error. Please check your internet and try again.'); });
 });
 
-// ── DOCS ──
 var docs = {
   deed: {
     title: 'Deed of Assignment',
     sub: '2 Seasons Innovation Village — Official Title Transfer Document',
-    html: '<p style="margin-bottom:1rem">Official Deed of Assignment template for 2 Seasons Regenerative Innovation Village, Kobape, Abeokuta, Ogun State.</p><img src="100plots/deed.png" alt="Deed of Assignment" style="width:100%;height:auto;display:block;border:1px solid var(--border);">'
+    html: '<p style="margin-bottom:16px">Official Deed of Assignment template for 2 Seasons Regenerative Innovation Village, Kobape, Abeokuta, Ogun State.</p><img src="100plots/deed.png" alt="Deed of Assignment" style="width:100%;height:auto;display:block;border:1px solid var(--border);">'
   },
   survey: {
     title: 'Registered Survey Plan',
     sub: '2 Seasons Innovation Village — State Survey Registry Reference',
-    html: '<p style="margin-bottom:1rem">Prepared by a Licensed Surveyor and registered with the Ogun State Surveyor-General\'s Office in compliance with the Survey Act. Kobape, Abeokuta, Ogun State.</p><img src="100plots/survey-registered.jpg" alt="Registered Survey Plan" style="width:100%;height:auto;display:block;border:1px solid var(--border);">'
+    html: '<p style="margin-bottom:16px">Prepared by a Licensed Surveyor and registered with the Ogun State Surveyor-General\'s Office.</p><img src="100plots/survey-registered.jpg" alt="Registered Survey Plan" style="width:100%;height:auto;display:block;border:1px solid var(--border);">'
   }
 };
-
 function openDoc(type) {
   var d = docs[type];
-  document.getElementById('doc-body').innerHTML = '<h2 class="modal-title">' + d.title + '</h2><p class="modal-sub">' + d.sub + '</p><div class="doc-body">' + d.html + '</div>';
+  document.getElementById('doc-body').innerHTML = '<h2 class="modal-title">'+d.title+'</h2><p class="modal-sub">'+d.sub+'</p><div class="doc-body">'+d.html+'</div>';
   document.getElementById('doc-ov').classList.add('open');
 }
 function closeDoc() { document.getElementById('doc-ov').classList.remove('open'); }

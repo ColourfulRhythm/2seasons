@@ -202,7 +202,7 @@ const ScrollExpandMedia = ({
                       loop
                       playsInline
                       preload="auto"
-                      className="w-full h-full object-cover rounded-xl bg-black"
+                      className="w-full h-full object-cover rounded-xl bg-[#f5f5f5]"
                       controls={false}
                     >
                       <source src={mediaSrc.replace(/\.mov$/i, '.mp4')} type="video/mp4" />
