@@ -805,30 +805,30 @@
                 <p class="section-subtitle">Select a plot size to see pricing and payment options</p>
                 
                 <div class="plot-cards-grid" id="plotCards">
-                    <div class="plot-card" data-size="150" data-price="1500000">
+                    <div class="plot-card" data-size="150" data-price="3000000">
                         <div class="plot-size">150 SQM</div>
-                        <div class="plot-price">₦1,500,000</div>
-                        <div class="plot-unit">₦10,000 per SQM</div>
-                            </div>
-                    <div class="plot-card" data-size="300" data-price="3000000">
-                        <div class="plot-size">300 SQM</div>
                         <div class="plot-price">₦3,000,000</div>
-                        <div class="plot-unit">₦10,000 per SQM</div>
-                            </div>
-                    <div class="plot-card" data-size="500" data-price="5000000">
+                        <div class="plot-unit">₦20,000 per SQM · Starter</div>
+                    </div>
+                    <div class="plot-card" data-size="300" data-price="6000000">
+                        <div class="plot-size">300 SQM</div>
+                        <div class="plot-price">₦6,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM · Popular</div>
+                    </div>
+                    <div class="plot-card" data-size="500" data-price="10000000">
                         <div class="plot-size">500 SQM</div>
-                        <div class="plot-price">₦5,000,000</div>
-                        <div class="plot-unit">₦10,000 per SQM</div>
-                        </div>
-                    <div class="plot-card" data-size="1000" data-price="10000000">
-                        <div class="plot-size">1,000 SQM</div>
                         <div class="plot-price">₦10,000,000</div>
-                        <div class="plot-unit">₦10,000 per SQM</div>
-                        </div>
-                    <div class="plot-card" data-size="1500" data-price="15000000">
+                        <div class="plot-unit">₦20,000 per SQM · Premium</div>
+                    </div>
+                    <div class="plot-card" data-size="1000" data-price="20000000">
+                        <div class="plot-size">1,000 SQM</div>
+                        <div class="plot-price">₦20,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM</div>
+                    </div>
+                    <div class="plot-card" data-size="1500" data-price="30000000">
                         <div class="plot-size">1,500 SQM</div>
-                        <div class="plot-price">₦15,000,000</div>
-                        <div class="plot-unit">₦10,000 per SQM</div>
+                        <div class="plot-price">₦30,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM</div>
                     </div>
                 </div>
             </div>
@@ -999,10 +999,10 @@
         const fruitTreeInput = document.getElementById('fruitTreeInput');
         let plotType = 'residential'; // 'residential' or 'agro'
         
-        // Agro Tucks pricing: 4000 sqm = ₦5,000,000, so 1500 sqm = (1500/4000) * 5,000,000 = ₦1,875,000
+        // Agro Tucks pricing: 500 sqm = ₦1,500,000 | 4,000 sqm (1 acre) = ₦6,500,000
         const AGRO_PRICING = {
-            1500: 1875000,
-            4000: 5000000
+            500: 1500000,
+            4000: 6500000
         };
         
         toggleButtons.forEach(btn => {
@@ -1146,12 +1146,12 @@
             const plotCardsContainer = document.getElementById('plotCards');
             
             if (plotType === 'agro') {
-                // Show only 1500 sqm and 4000 sqm for Agro Tucks
+                // Show only 500 sqm and 4000 sqm for Agro Tucks
                 plotCardsContainer.innerHTML = `
-                    <div class="plot-card" data-size="1500" data-price="${AGRO_PRICING[1500]}">
-                        <div class="plot-size">1,500 SQM</div>
-                        <div class="plot-price">₦${AGRO_PRICING[1500].toLocaleString()}</div>
-                        <div class="plot-unit">~0.37 Acres</div>
+                    <div class="plot-card" data-size="500" data-price="${AGRO_PRICING[500]}">
+                        <div class="plot-size">500 SQM</div>
+                        <div class="plot-price">₦${AGRO_PRICING[500].toLocaleString()}</div>
+                        <div class="plot-unit">Starter</div>
                     </div>
                     <div class="plot-card" data-size="4000" data-price="${AGRO_PRICING[4000]}">
                         <div class="plot-size">4,000 SQM</div>
@@ -1163,32 +1163,32 @@
                 // Re-attach event listeners
                 attachPlotCardListeners();
             } else {
-                // Show residential plots
+                // Show residential plots (₦20,000/sqm)
                 plotCardsContainer.innerHTML = `
-                    <div class="plot-card" data-size="150" data-price="1500000">
+                    <div class="plot-card" data-size="150" data-price="3000000">
                         <div class="plot-size">150 SQM</div>
-                        <div class="plot-price">₦1,500,000</div>
-                        <div class="plot-unit">₦10,000 per SQM</div>
-                    </div>
-                    <div class="plot-card" data-size="300" data-price="3000000">
-                        <div class="plot-size">300 SQM</div>
                         <div class="plot-price">₦3,000,000</div>
-                        <div class="plot-unit">₦10,000 per SQM</div>
+                        <div class="plot-unit">₦20,000 per SQM · Starter</div>
                     </div>
-                    <div class="plot-card" data-size="500" data-price="5000000">
+                    <div class="plot-card" data-size="300" data-price="6000000">
+                        <div class="plot-size">300 SQM</div>
+                        <div class="plot-price">₦6,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM · Popular</div>
+                    </div>
+                    <div class="plot-card" data-size="500" data-price="10000000">
                         <div class="plot-size">500 SQM</div>
-                        <div class="plot-price">₦5,000,000</div>
-                        <div class="plot-unit">₦10,000 per SQM</div>
-                    </div>
-                    <div class="plot-card" data-size="1000" data-price="10000000">
-                        <div class="plot-size">1,000 SQM</div>
                         <div class="plot-price">₦10,000,000</div>
-                        <div class="plot-unit">₦10,000 per SQM</div>
+                        <div class="plot-unit">₦20,000 per SQM · Premium</div>
                     </div>
-                    <div class="plot-card" data-size="1500" data-price="15000000">
+                    <div class="plot-card" data-size="1000" data-price="20000000">
+                        <div class="plot-size">1,000 SQM</div>
+                        <div class="plot-price">₦20,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM</div>
+                    </div>
+                    <div class="plot-card" data-size="1500" data-price="30000000">
                         <div class="plot-size">1,500 SQM</div>
-                        <div class="plot-price">₦15,000,000</div>
-                        <div class="plot-unit">₦10,000 per SQM</div>
+                        <div class="plot-price">₦30,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM</div>
                     </div>
                 `;
                 
@@ -1506,7 +1506,7 @@
             doc.text(`Plot Type: ${isAgro ? 'Agro Tucks (Farming & Farmstead)' : 'Residential'}`, 20, yPos);
             yPos += 8;
             yPos = checkPageBreak(yPos, 8);
-            doc.text(`Plot Size: ${plot.size.toLocaleString()} Square Meters${isAgro && plot.size === 4000 ? ' (1 Acre)' : isAgro && plot.size === 1500 ? ' (~0.37 Acres)' : ''}`, 20, yPos);
+            doc.text(`Plot Size: ${plot.size.toLocaleString()} Square Meters${isAgro && plot.size === 4000 ? ' (1 Acre)' : isAgro && plot.size === 500 ? ' (~0.12 Acres)' : ''}`, 20, yPos);
             yPos += 8;
             if (!isAgro) {
                 yPos = checkPageBreak(yPos, 8);

@@ -19,11 +19,9 @@ const SYS_PROMPT = `You are Amara, a warm, knowledgeable land sales consultant f
 • Twitter/X: @2seasonsabk
 • Website: www.2seasonsabk.store
 
-**Plot Prices (Residential):**
-• 150 sqm = ₦1,500,000 (Starter)
-• 300 sqm = ₦3,000,000 (Popular)
-• 500 sqm = ₦5,000,000 (Premium)
-• Price: ₦10,000 per sqm — fixed, no negotiation
+**Plot Prices:**
+• Phase 1 Agro Tucks: 500 sqm = ₦1,500,000 | 4,000 sqm (1 acre) = ₦6,500,000
+• Phase 2 Residential: ₦20,000 per sqm — 150 sqm = ₦3M, 300 sqm = ₦6M, 500 sqm = ₦10M, 1,000 sqm = ₦20M, 1,500 sqm = ₦30M
 
 **Documents:**
 • Deed of Assignment + Registered Survey Plan (both viewable on the page)
@@ -39,8 +37,6 @@ const SYS_PROMPT = `You are Amara, a warm, knowledgeable land sales consultant f
 **Amenities:**
 • Youth Sports Academy (100 youths/year in football, tennis, athletics)
 • Wellness Hub (spa, yoga, gym, swimming pools, plant-based dining)
-• True Vine Villas (luxury lakefront)
-• Hygge Town (content studios, startup incubation, Starlink internet)
 • 4-acre artificial lake with waterfall
 • Fruit forest (3,000+ fruit trees)
 • Eco-friendly, off-grid, regenerative development

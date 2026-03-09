@@ -586,6 +586,16 @@ footer {
   .plot-options { grid-template-columns: 1fr; }
   footer { padding: 40px 24px; }
 }
+.phase-toggle { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.phase-toggle-btn {
+  padding: 10px 20px; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--bg-card); color: var(--text-muted);
+  border: 1px solid var(--border); border-radius: 6px;
+  cursor: pointer; transition: all 0.3s;
+}
+.phase-toggle-btn:hover { border-color: var(--gold-dim); color: var(--text); }
+.phase-toggle-btn.active { background: rgba(201,169,110,0.15); color: var(--gold); border-color: var(--gold-dim); }
 
 /* ── Phases Section ── */
 .phases-section { padding: 60px 24px; background: #0d0d0d; text-align: center; }
@@ -659,14 +669,14 @@ footer {
     <div class="phase-card phase-card--one">
       <div class="phase-label">Phase 1</div>
       <h3 class="phase-name">Tucks</h3>
-      <p class="phase-price">Starting from ₦1,500,000</p>
+      <p class="phase-price">500 sqm ₦1,500,000 · 1 acre ₦6,500,000</p>
       <p class="phase-description">Own land you can actually live on and grow from. Agro Tucks are farmstead-style plots where you build your home and cultivate your own food — a quiet, rooted lifestyle on the edge of Nigeria's most exciting new community.</p>
       <a href="/50plots" class="phase-cta">Secure Your Agro Tuck <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="phase-card phase-card--two">
       <div class="phase-label">Phase 2</div>
       <h3 class="phase-name">The Lifestyle City</h3>
-      <p class="phase-price">Premium Residential from ₦10,000,000</p>
+      <p class="phase-price">From ₦3M (₦20,000/sqm)</p>
       <p class="phase-description">This is the full vision. Residential living inside Africa's first regenerative lifestyle city — with a private racing circuit, wellness village, concert ground, co-working spaces, and a community built for Nigeria's next generation.</p>
       <a href="/residential" class="phase-cta">Explore Phase 2 <i class="fas fa-arrow-right"></i></a>
     </div>
@@ -742,22 +752,51 @@ footer {
     </div>
 
     <div class="form-field">
+      <label class="form-label">Phase</label>
+      <div class="phase-toggle">
+        <button type="button" class="phase-toggle-btn active" data-phase="tucks">Phase 1 — Tucks</button>
+        <button type="button" class="phase-toggle-btn" data-phase="residential">Phase 2 — Residential</button>
+      </div>
+    </div>
+    <div class="form-field">
       <label class="form-label">What Would You Like to Own?</label>
-      <div class="plot-options">
-        <div class="plot-opt" data-size="150" data-price="1500000">
-          <div class="po-size">150<span class="po-unit"> sqm</span></div>
-          <div class="po-price">₦1.5M</div>
+      <div class="plot-options" id="plot-options">
+        <!-- Phase 1 Agro Tucks -->
+        <div class="plot-opt phase-tucks" data-size="500" data-price="1500000">
+          <div class="po-size">500<span class="po-unit"> sqm</span></div>
+          <div class="po-price">₦1,500,000</div>
           <div class="po-tag">Starter</div>
         </div>
-        <div class="plot-opt" data-size="300" data-price="3000000">
-          <div class="po-size">300<span class="po-unit"> sqm</span></div>
+        <div class="plot-opt phase-tucks" data-size="4000" data-price="6500000">
+          <div class="po-size">4,000<span class="po-unit"> sqm</span></div>
+          <div class="po-price">₦6,500,000</div>
+          <div class="po-tag">1 Acre</div>
+        </div>
+        <!-- Phase 2 Residential (hidden by default) -->
+        <div class="plot-opt phase-residential" data-size="150" data-price="3000000" style="display:none">
+          <div class="po-size">150<span class="po-unit"> sqm</span></div>
           <div class="po-price">₦3M</div>
+          <div class="po-tag">Starter</div>
+        </div>
+        <div class="plot-opt phase-residential" data-size="300" data-price="6000000" style="display:none">
+          <div class="po-size">300<span class="po-unit"> sqm</span></div>
+          <div class="po-price">₦6M</div>
           <div class="po-tag">⭐ Popular</div>
         </div>
-        <div class="plot-opt" data-size="500" data-price="5000000">
+        <div class="plot-opt phase-residential" data-size="500" data-price="10000000" style="display:none">
           <div class="po-size">500<span class="po-unit"> sqm</span></div>
-          <div class="po-price">₦5M</div>
+          <div class="po-price">₦10M</div>
           <div class="po-tag">Premium</div>
+        </div>
+        <div class="plot-opt phase-residential" data-size="1000" data-price="20000000" style="display:none">
+          <div class="po-size">1,000<span class="po-unit"> sqm</span></div>
+          <div class="po-price">₦20M</div>
+          <div class="po-tag">₦20,000/sqm</div>
+        </div>
+        <div class="plot-opt phase-residential" data-size="1500" data-price="30000000" style="display:none">
+          <div class="po-size">1,500<span class="po-unit"> sqm</span></div>
+          <div class="po-price">₦30M</div>
+          <div class="po-tag">₦20,000/sqm</div>
         </div>
       </div>
     </div>
@@ -858,6 +897,26 @@ footer {
 const FORMSPREE_URL = 'https://formspree.io/f/xvgrzrnp';
 const REDIRECT_URL = 'https://www.2seasonsabk.com/';
 var qty = 1, selPlot = null;
+var currentPhase = 'tucks';
+
+// Phase toggle
+document.querySelectorAll('.phase-toggle-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.phase-toggle-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    currentPhase = this.dataset.phase;
+    document.querySelectorAll('.plot-opt').forEach(function(opt) {
+      var isTucks = opt.classList.contains('phase-tucks');
+      opt.style.display = (currentPhase === 'tucks' && isTucks) || (currentPhase === 'residential' && !isTucks) ? '' : 'none';
+    });
+    document.querySelectorAll('.plot-opt.active').forEach(o => o.classList.remove('active'));
+    selPlot = null;
+    document.getElementById('pc-size').textContent = '—';
+    document.getElementById('pc-price').textContent = '—';
+    document.getElementById('plot-chosen').style.display = 'none';
+    checkFormValid();
+  });
+});
 
 // Nav scroll
 const nav = document.getElementById('join-nav');
@@ -904,6 +963,7 @@ document.getElementById('submitBtn').addEventListener('click', function() {
   var formData = new FormData();
   formData.append('fullName', n); formData.append('email', e); formData.append('phone', p);
   formData.append('plotSize', selPlot.size + ' sqm'); formData.append('quantity', qty);
+  formData.append('phase', currentPhase === 'tucks' ? 'Phase 1 Tucks' : 'Phase 2 Residential');
   formData.append('totalPrice', '₦' + (selPlot.price * qty).toLocaleString());
   formData.append('_redirect', REDIRECT_URL);
   fetch(FORMSPREE_URL, { method:'POST', body:formData, headers:{'Accept':'application/json'} })

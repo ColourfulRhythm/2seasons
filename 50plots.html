@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>50 Prime Plots — 2 Seasons Nigeria</title>
-    <meta name="description" content="Secure your plot in Africa's first regenerative lifestyle village. 50 prime plots starting from ₦1,500,000. Instant allocation. Kobape, Abeokuta.">
+    <meta name="description" content="Secure your plot in Africa's first regenerative lifestyle village. Phase 1 from ₦1,500,000 · Phase 2 from ₦3M. Instant allocation. Kobape, Abeokuta.">
     <meta property="og:title" content="50 Prime Plots — 2 Seasons Nigeria">
     <meta property="og:description" content="Secure your piece of Africa's first regenerative innovation village. Limited plots available.">
     <meta property="og:image" content="" id="og-image-50plots">
@@ -118,10 +118,11 @@
     .hero-phase-label {
         display: inline-flex; align-items: center; gap: 12px;
         font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
-        color: var(--gold-dim); margin-bottom: 20px;
+        color: var(--gold-light); margin-bottom: 20px;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
     }
     .hero-phase-label::before {
-        content: ''; width: 28px; height: 1px; background: var(--gold-dim);
+        content: ''; width: 28px; height: 1px; background: var(--gold-light);
     }
     .pitch-headline {
         font-family: 'Playfair Display', serif;
@@ -131,10 +132,11 @@
     }
     .pitch-headline em { font-style: italic; color: var(--gold); }
     .pitch-subheadline {
-        font-size: 0.92rem; color: var(--text-muted); line-height: 1.8;
+        font-size: 0.92rem; color: rgba(245, 240, 232, 0.95); line-height: 1.8;
         margin-bottom: 40px; max-width: 500px;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     }
-    .hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
     .btn-primary {
         display: inline-flex; align-items: center; gap: 10px;
         background: var(--gold); color: #0d0d0d;
@@ -147,18 +149,19 @@
     .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
     .btn-ghost {
         display: inline-flex; align-items: center; gap: 10px;
-        background: transparent; color: var(--text-muted);
+        background: rgba(0, 0, 0, 0.3); color: var(--gold-light);
         font-family: 'Montserrat', sans-serif;
-        font-size: 0.72rem; font-weight: 500;
+        font-size: 0.72rem; font-weight: 600;
         letter-spacing: 0.15em; text-transform: uppercase;
         text-decoration: none; padding: 16px 32px;
-        border: 1px solid var(--border);
-        transition: border-color 0.3s, color 0.3s;
+        border: 2px solid var(--gold-dim);
+        transition: border-color 0.3s, color 0.3s, background 0.3s;
     }
-    .btn-ghost:hover { border-color: var(--gold-dim); color: var(--gold); }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); background: rgba(201, 169, 110, 0.15); }
     .pitch-cta-secondary {
         display: block; margin-top: 12px;
-        font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.05em;
+        font-size: 0.72rem; color: rgba(245, 240, 232, 0.85); letter-spacing: 0.05em;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
     }
 
     /* ── SCARCITY STRIP ── */
@@ -391,6 +394,7 @@
         .luxury-header.scrolled .luxury-nav { padding: 12px 24px; }
         .nav-links-luxury { display: none; }
         .pitch-hero { padding: 0 24px 80px; }
+        .btn-ghost { min-height: 52px; padding: 14px 24px; }
         .benefits-section, .visual-section, .partners-section, .conversion-section { padding: 70px 24px; }
         .benefits-grid { grid-template-columns: 1fr; }
         .visual-grid { grid-template-columns: 1fr 1fr; }
@@ -443,7 +447,7 @@
                     Your land.<br>Your <em>legacy.</em>
                 </h1>
                 <p class="pitch-subheadline">
-                    50 prime plots inside Africa's first regenerative lifestyle village. Starting from ₦1,500,000. Instant allocation, full documentation, and a community built for Nigeria's next generation.
+                    50 prime plots inside Africa's first regenerative lifestyle village. Phase 1 from ₦1,500,000 · Phase 2 from ₦3M. Instant allocation, full documentation, and a community built for Nigeria's next generation.
                 </p>
                 <div class="hero-cta-row">
                     <a href="#claim-plot" class="btn-primary">Claim Your Plot <i class="fas fa-arrow-right"></i></a>
@@ -597,7 +601,7 @@
                             <label for="plots">Number of Plots</label>
                             <select id="plots" name="plots" required>
                                 <option value="">Select number of plots</option>
-                                <option value="1">1 Plot (from ₦1,500,000)</option>
+                                <option value="1">1 Plot (Phase 1 from ₦1,500,000 · Phase 2 from ₦3M)</option>
                                 <option value="2">2 Plots</option>
                                 <option value="3">3 Plots</option>
                                 <option value="4+">4+ Plots (Contact for discount)</option>
