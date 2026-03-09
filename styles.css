@@ -1220,6 +1220,7 @@ footer {
   inset: 0;
   z-index: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 .scroll-expand-bg img {
   width: 100%;
