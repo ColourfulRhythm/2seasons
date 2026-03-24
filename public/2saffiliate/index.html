@@ -1,0 +1,1735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 Seasons Affiliates - Earn Rewards. Share Opportunities.</title>
+    <meta name="description" content="Join the 2 Seasons Affiliates Program. Earn rewards by sharing opportunities with your network.">
+    <link rel="stylesheet" href="/styles.css?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- TikTok Pixel Code Start -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+      ttq.load('D55QDRBC77U5DJL51OS0');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f7;
+            color: #000000;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: transparent !important;
+            background-image: none !important;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section video {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            z-index: 1 !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-title {
+            font-size: 5.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            letter-spacing: -0.01em;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+        }
+        }
+        
+        /* Product Modules Container */
+        .modules-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .module {
+            background: #ffffff;
+            border-radius: 18px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .module:not(.expanded) {
+            max-height: 120px;
+        }
+        
+        .module.expanded {
+            max-height: 2000px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transform: scale(1.02);
+            z-index: 10;
+        }
+        
+        .module-header {
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+        
+        .module.expanded .module-header {
+            border-bottom: 1px solid #f5f5f7;
+            padding-bottom: 2rem;
+        }
+        
+        .module-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #ff662a;
+        }
+        
+        .module-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ff662a;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .module.expanded .module-icon {
+            transform: rotate(180deg);
+            background: #ff662a;
+        }
+        
+        .module-icon i {
+            font-size: 1.5rem;
+            color: white;
+            transition: color 0.3s ease;
+        }
+        
+        .module.expanded .module-icon i {
+            color: white;
+        }
+        
+        .module-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .module.expanded .module-content {
+            max-height: 2000px;
+            padding: 2.5rem;
+        }
+        
+        /* Membership Plans */
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .plan-card {
+            background: #f5f5f7;
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .plan-card:hover {
+            background: #ffffff;
+            border-color: #ff662a;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 102, 42, 0.15);
+        }
+        
+        .plan-card-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e5e7;
+        }
+        
+        .plan-share-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #f5f5f7;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #1d1d1f;
+        }
+        
+        .plan-share-btn:hover {
+            background: #ff662a;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .plan-register-btn {
+            padding: 0.75rem 2rem;
+            background: #ff662a;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .plan-register-btn:hover {
+            background: #61310d;
+            transform: translateY(-2px);
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #61310d;
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #ff662a;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .plan-features {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .plan-features li {
+            padding: 0.8rem 0;
+            color: #86868b;
+            font-size: 1rem;
+            border-bottom: 1px solid #f5f5f7;
+        }
+        
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .plan-features li i {
+            color: #ff662a;
+            margin-right: 0.8rem;
+        }
+        
+        /* Merch Products */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .product-item {
+            background: #f5f5f7;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-item:hover {
+            background: #ffffff;
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f5f5f7, #e5e5e7);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 102, 42, 0.1), rgba(255, 102, 42, 0.05));
+        }
+        
+        .product-image i {
+            font-size: 4rem;
+            color: #86868b;
+            z-index: 1;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #61310d;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            font-size: 1.1rem;
+            color: #86868b;
+        }
+        
+        /* Seeds Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .category-card {
+            background: #f5f5f7;
+            border-radius: 16px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .category-card:hover {
+            background: #ffffff;
+            border-color: #ff662a;
+            transform: translateY(-5px);
+        }
+        
+        .category-card.expanded {
+            background: #ffffff;
+            border-color: #ff662a;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .category-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #61310d;
+        }
+        
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            background: #ff662a;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-icon i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .category-items {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .category-card.expanded .category-items {
+            max-height: 500px;
+            margin-top: 1.5rem;
+        }
+        
+        .category-item {
+            padding: 1rem;
+            background: #f5f5f7;
+            border-radius: 10px;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            color: #000000;
+            transition: all 0.2s ease;
+        }
+        
+        .category-item:hover {
+            background: #e5e5e7;
+            transform: translateX(5px);
+        }
+        
+        /* Form Modal Overlay */
+        .form-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 2rem;
+        }
+        
+        .form-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .form-modal {
+            background: #ffffff;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .form-modal-overlay.active .form-modal {
+            transform: scale(1) translateY(0);
+        }
+        
+        .form-modal-header {
+            padding: 2.5rem 2.5rem 1.5rem;
+            border-bottom: 1px solid #f5f5f7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .form-modal-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+        
+        .form-modal-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #f5f5f7;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #1d1d1f;
+        }
+        
+        .form-modal-close:hover {
+            background: #e5e5e7;
+            transform: rotate(90deg);
+        }
+        
+        .form-modal-body {
+            padding: 2.5rem;
+        }
+        
+        /* Apple-style Form Fields */
+        .apple-form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .apple-form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #86868b;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .apple-form-input,
+        .apple-form-select,
+        .apple-form-textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            color: #1d1d1f;
+        }
+        
+        .apple-form-input:focus,
+        .apple-form-select:focus,
+        .apple-form-textarea:focus {
+            outline: none;
+            border-color: #ff662a;
+            box-shadow: 0 0 0 4px rgba(255, 102, 42, 0.1);
+        }
+        
+        .apple-form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .apple-form-submit {
+            width: 100%;
+            padding: 1.25rem;
+            background: #ff662a;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: -0.01em;
+            margin-top: 1rem;
+        }
+        
+        .apple-form-submit:hover {
+            background: #61310d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 102, 42, 0.3);
+        }
+        
+        .apple-form-submit:active {
+            transform: translateY(0);
+        }
+        
+        /* Success Animation */
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 20000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .success-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .success-checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #34c759;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            transform: scale(0);
+            animation: checkmarkPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s forwards;
+        }
+        
+        .success-checkmark i {
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        @keyframes checkmarkPop {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .success-message {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .success-subtitle {
+            font-size: 1rem;
+            color: #86868b;
+            text-align: center;
+        }
+        
+        /* Welcome Screen */
+        .welcome-screen {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+            background: #ffffff;
+        }
+        
+        .welcome-title {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .welcome-subtitle {
+            font-size: 1.25rem;
+            color: #86868b;
+            margin-bottom: 3rem;
+        }
+        
+        /* Registration Form (Old - Keep for affiliate form) */
+        .form-section {
+            max-width: 600px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+        
+        .form-container {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 3rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-title {
+                font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            color: #ff662a;
+        }
+        
+        .form-subtitle {
+            text-align: center;
+            color: #86868b;
+            margin-bottom: 3rem;
+                font-size: 1.1rem;
+            }
+            
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #000000;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            font-size: 1rem;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #ff662a;
+            box-shadow: 0 0 0 4px rgba(255, 102, 42, 0.1);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .checkbox-input {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: #ff662a;
+        }
+        
+        .checkbox-label {
+            font-size: 0.95rem;
+            color: #000000;
+            line-height: 1.5;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 1.2rem;
+            background: #ff662a;
+            color: white;
+            border: none;
+            border-radius: 12px;
+                font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: -0.01em;
+        }
+        
+        .submit-button:hover {
+            background: #61310d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 102, 42, 0.3);
+        }
+        
+        .submit-button:active {
+            transform: translateY(0);
+        }
+        
+        /* Navigation */
+        .nav-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ff662a;
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-link {
+            color: #000000;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #ff662a;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .modules-container {
+                padding: 2rem 1rem;
+            }
+            
+            .module {
+                border-radius: 12px;
+                margin-bottom: 1.5rem;
+            }
+            
+            .module-header {
+                padding: 1.5rem;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .module-title {
+                font-size: 1.4rem;
+                line-height: 1.3;
+                flex: 1;
+                min-width: 0;
+                word-wrap: break-word;
+            }
+            
+            .module-icon {
+                width: 40px;
+                height: 40px;
+                flex-shrink: 0;
+            }
+            
+            .module-icon i {
+                font-size: 1.2rem;
+            }
+            
+            .module.expanded .module-header {
+                padding-bottom: 1.5rem;
+            }
+            
+            .module-content {
+                padding: 1.5rem !important;
+            }
+            
+            .plans-grid,
+            .products-grid,
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-top: 1.5rem;
+            }
+            
+            .plan-card {
+                padding: 1.5rem;
+                border-radius: 12px;
+            }
+            
+            .plan-name {
+                font-size: 1.3rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .plan-price {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .plan-features {
+                margin: 1rem 0;
+            }
+            
+            .plan-features li {
+                padding: 0.6rem 0;
+                font-size: 0.9rem;
+            }
+            
+            .plan-card-actions {
+                margin-top: 1.5rem;
+                padding-top: 1.5rem;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .plan-share-btn {
+                width: 100%;
+                border-radius: 12px;
+            }
+            
+            .plan-register-btn {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+                width: 100%;
+            }
+            
+            .product-item {
+                padding: 1.5rem;
+            }
+            
+            .product-image {
+                height: 180px;
+                margin-bottom: 1rem;
+            }
+            
+            .product-name {
+                font-size: 1.1rem;
+            }
+            
+            .category-card {
+                padding: 1.5rem;
+            }
+            
+            .category-name {
+                font-size: 1.3rem;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+                border-radius: 16px;
+            }
+            
+            .form-title {
+                font-size: 2rem;
+            }
+            
+            .form-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .form-group {
+                margin-bottom: 1.5rem;
+            }
+            
+            .form-input {
+                padding: 0.875rem 1rem;
+                font-size: 0.95rem;
+            }
+            
+            .form-modal {
+                max-width: 100%;
+                margin: 1rem;
+                border-radius: 16px;
+            }
+            
+            .form-modal-header {
+                padding: 1.5rem;
+            }
+            
+            .form-modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .form-modal-body {
+                padding: 1.5rem;
+            }
+            
+            .apple-form-group {
+                margin-bottom: 1.5rem;
+            }
+            
+            .apple-form-input,
+            .apple-form-select,
+            .apple-form-textarea {
+                padding: 0.875rem 1rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="nav-header">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">2 Seasons</a>
+            <a href="/join" class="nav-link">Join Now</a>
+        </div>
+    </header>
+
+        <!-- Hero Section -->
+    <section class="hero-section">
+        <video id="hero-video" autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="allow" preload="auto" style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; z-index: 1 !important; display: block !important; visibility: visible !important; opacity: 1 !important;">
+            <source src="/100plots/droneview.mp4" type="video/mp4">
+            <source src="/100plots/droneview.mov" type="video/quicktime">
+        </video>
+        <div class="hero-content" style="position: relative; z-index: 10;">
+            <h1 class="hero-title">2 Seasons Affiliates</h1>
+            <p class="hero-subtitle">Earn rewards. Share opportunities. Grow with the community.</p>
+            </div>
+        </section>
+
+    <!-- Interactive Product Modules -->
+    <div class="modules-container">
+        <!-- Module 1: Wellness Hub Membership -->
+        <div class="module" data-module="wellness">
+            <div class="module-header">
+                <h2 class="module-title">Wellness Hub Membership</h2>
+                <div class="module-icon">
+                    <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+            <div class="module-content">
+                <div class="plans-grid">
+                    <div class="plan-card" data-plan="individual">
+                        <div class="plan-name">Individual</div>
+                        <div class="plan-price">₦500,000<span style="font-size: 1rem; color: #86868b;">/6 months</span></div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 1 x 24-hour stay per month</li>
+                            <li><i class="fas fa-check"></i> All-time access to all amenities</li>
+                            <li><i class="fas fa-check"></i> Full access to spa & wellness facilities</li>
+                            <li><i class="fas fa-check"></i> Gym & fitness classes</li>
+                            <li><i class="fas fa-check"></i> Yoga & meditation sessions</li>
+                            <li><i class="fas fa-check"></i> Plant-based dining discounts</li>
+                        </ul>
+                        <div class="plan-card-actions">
+                            <button class="plan-share-btn" onclick="event.stopPropagation(); sharePlan('individual')" title="Share">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                            <button class="plan-register-btn" onclick="event.stopPropagation(); openRegistrationForm('individual')">Register</button>
+                        </div>
+                    </div>
+                    <div class="plan-card" data-plan="team">
+                        <div class="plan-name">Team</div>
+                        <div class="plan-price">₦1,000,000<span style="font-size: 1rem; color: #86868b;">/6 months</span></div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 2 x 24-hour stays per month</li>
+                            <li><i class="fas fa-check"></i> All-time access to all amenities</li>
+                            <li><i class="fas fa-check"></i> Everything in Individual</li>
+                            <li><i class="fas fa-check"></i> For 2 people</li>
+                            <li><i class="fas fa-check"></i> Priority booking</li>
+                            <li><i class="fas fa-check"></i> Exclusive team events</li>
+                        </ul>
+                        <div class="plan-card-actions">
+                            <button class="plan-share-btn" onclick="event.stopPropagation(); sharePlan('team')" title="Share">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                            <button class="plan-register-btn" onclick="event.stopPropagation(); openRegistrationForm('team')">Register</button>
+                    </div>
+                </div>
+                    <div class="plan-card" data-plan="corporate">
+                        <div class="plan-name">Corporate</div>
+                        <div class="plan-price">₦10,000,000<span style="font-size: 1rem; color: #86868b;">/6 months</span></div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 3 days per month</li>
+                            <li><i class="fas fa-check"></i> All-time access to all amenities</li>
+                            <li><i class="fas fa-check"></i> Everything in Team</li>
+                            <li><i class="fas fa-check"></i> For up to 5 people</li>
+                            <li><i class="fas fa-check"></i> Corporate wellness programs</li>
+                            <li><i class="fas fa-check"></i> Dedicated support</li>
+                        </ul>
+                        <div class="plan-card-actions">
+                            <button class="plan-share-btn" onclick="event.stopPropagation(); sharePlan('corporate')" title="Share">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                            <button class="plan-register-btn" onclick="event.stopPropagation(); openRegistrationForm('corporate')">Register</button>
+            </div>
+                        </div>
+                    </div>
+                <div style="margin-top: 2rem; padding: 1.5rem; background: #f5f5f7; border-radius: 12px;">
+                    <p style="color: #86868b; font-size: 0.95rem;"><strong style="color: #000000;">Commission:</strong> Earn 10% on every membership sale. Plus, get a free membership for yourself based on the type you sell!</p>
+                        </div>
+                            </div>
+                            </div>
+
+        <!-- Module 2: Merch Store -->
+        <div class="module" data-module="merch">
+            <div class="module-header">
+                <h2 class="module-title">Official Merch</h2>
+                <div class="module-icon">
+                    <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+            <div class="module-content">
+                <div class="products-grid">
+                    <div class="product-item">
+                        <div class="product-image">
+                            <i class="fas fa-tshirt"></i>
+                    </div>
+                        <div class="product-name">Premium T-Shirt</div>
+                        <div class="product-price">₦15,000</div>
+                </div>
+                    <div class="product-item">
+                        <div class="product-image">
+                            <i class="fas fa-tshirt"></i>
+            </div>
+                        <div class="product-name">Hoodie</div>
+                        <div class="product-price">₦25,000</div>
+                        </div>
+                    <div class="product-item">
+                        <div class="product-image">
+                            <i class="fas fa-hat-cowboy"></i>
+                    </div>
+                        <div class="product-name">Cap</div>
+                        <div class="product-price">₦8,000</div>
+                        </div>
+                    <div class="product-item">
+                        <div class="product-image">
+                            <i class="fas fa-tshirt"></i>
+                    </div>
+                        <div class="product-name">Shorts</div>
+                        <div class="product-price">₦12,000</div>
+                </div>
+            </div>
+                <div style="margin-top: 2rem; padding: 1.5rem; background: #f5f5f7; border-radius: 12px;">
+                    <p style="color: #86868b; font-size: 0.95rem;"><strong style="color: #000000;">Commission:</strong> Earn 20% on every product sale - our highest commission rate!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module 3: Seeds -->
+        <div class="module" data-module="seeds">
+            <div class="module-header">
+                <h2 class="module-title">Seeds & Grow Kits <span style="font-size: 1rem; color: #86868b; font-weight: 400;">(Coming Soon)</span></h2>
+                <div class="module-icon">
+                    <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+            <div class="module-content">
+                <div class="categories-grid">
+                    <div class="category-card" data-category="flowers">
+                        <div class="category-header">
+                            <div class="category-name">Flowers</div>
+                            <div class="category-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                        </div>
+                        <div class="category-items">
+                            <div class="category-item">Rose Seeds</div>
+                            <div class="category-item">Sunflower Seeds</div>
+                            <div class="category-item">Hibiscus Seeds</div>
+                            <div class="category-item">Marigold Seeds</div>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="fruits">
+                        <div class="category-header">
+                            <div class="category-name">Fruits</div>
+                            <div class="category-icon">
+                                <i class="fas fa-apple-alt"></i>
+                    </div>
+                </div>
+                        <div class="category-items">
+                            <div class="category-item">Pineapple Suckers</div>
+                            <div class="category-item">Plantain Suckers</div>
+                            <div class="category-item">Mango Seedlings</div>
+                            <div class="category-item">Orange Seedlings</div>
+            </div>
+                    </div>
+                    <div class="category-card" data-category="trees">
+                        <div class="category-header">
+                            <div class="category-name">Trees</div>
+                            <div class="category-icon">
+                                <i class="fas fa-tree"></i>
+                    </div>
+                </div>
+                        <div class="category-items">
+                            <div class="category-item">Palm Tree Seedlings</div>
+                            <div class="category-item">Coconut Seedlings</div>
+                            <div class="category-item">Bamboo Seedlings</div>
+                            <div class="category-item">Ornamental Trees</div>
+            </div>
+                    </div>
+                    </div>
+                <div style="margin-top: 2rem; padding: 1.5rem; background: #f5f5f7; border-radius: 12px;">
+                    <p style="color: #86868b; font-size: 0.95rem;"><strong style="color: #000000;">Coming Soon:</strong> Be among the first to earn when we launch our seeds & plants store!</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+    <!-- Registration Form -->
+    <section class="form-section">
+        <div class="form-container">
+            <h2 class="form-title">Join the Program</h2>
+            <p class="form-subtitle">Start earning rewards today</p>
+            
+            <form id="affiliateForm" action="https://formspree.io/f/xvgrzrnp" method="POST">
+                <input type="hidden" name="_subject" value="New Affiliate Registration - 2 Seasons">
+                <input type="hidden" name="_redirect" value="/2saffiliate?success=true">
+                
+                <div class="form-group">
+                    <label class="form-label" for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" class="form-input" required>
+            </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+            </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" required>
+            </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agree" name="agree" class="checkbox-input" required>
+                    <label for="agree" class="checkbox-label">I agree to join the 2 Seasons Affiliate Program.</label>
+                </div>
+                
+                <button type="submit" class="submit-button">Join Now</button>
+            </form>
+            </div>
+        </section>
+
+    <script>
+        // Video Autoplay Handling
+        const heroVideo = document.getElementById('hero-video');
+        const heroSection = document.querySelector('.hero-section');
+        
+        if (heroVideo && heroSection) {
+            // Force video to play - especially for mobile
+            heroVideo.muted = true;
+            heroVideo.playsInline = true;
+            heroVideo.setAttribute('autoplay', '');
+            heroVideo.setAttribute('muted', '');
+            heroVideo.setAttribute('loop', '');
+            heroVideo.setAttribute('playsinline', '');
+            heroVideo.setAttribute('webkit-playsinline', '');
+            
+            // Try to play immediately
+            const playVideo = () => {
+                heroVideo.play().catch(error => {
+                    console.log('Video autoplay prevented:', error);
+                });
+            };
+            
+            // Play on load
+            heroVideo.addEventListener('loadeddata', function() {
+                console.log('Video loaded, attempting to play');
+                playVideo();
+            });
+            heroVideo.addEventListener('canplay', function() {
+                console.log('Video can play, attempting to play');
+                playVideo();
+            });
+            heroVideo.addEventListener('loadedmetadata', function() {
+                playVideo();
+            });
+            
+            // Mobile autoplay - trigger on first interaction
+            let videoPlayed = false;
+            const initVideoPlay = () => {
+                if (!videoPlayed) {
+                    playVideo();
+                    videoPlayed = true;
+                }
+            };
+            
+            // Play on any user interaction - especially for mobile
+            ['click', 'touchstart', 'touchend', 'scroll', 'mousemove', 'touchmove'].forEach(event => {
+                document.addEventListener(event, initVideoPlay, { once: true, passive: true });
+            });
+            
+            // Also try on page load for mobile
+            if (window.innerWidth <= 768) {
+                // Try immediately on mobile
+                setTimeout(playVideo, 100);
+                setTimeout(playVideo, 500);
+                setTimeout(playVideo, 1000);
+            }
+        }
+        
+        // Module Expansion/Collapse
+        document.querySelectorAll('.module').forEach(module => {
+            module.addEventListener('click', function(e) {
+                // Don't expand if clicking inside expanded content
+                if (this.classList.contains('expanded') && !e.target.closest('.module-header')) {
+                    return;
+                }
+                
+                const wasExpanded = this.classList.contains('expanded');
+                
+                // Close all modules first
+                document.querySelectorAll('.module').forEach(m => {
+                    m.classList.remove('expanded');
+                });
+                
+                // Toggle clicked module
+                if (!wasExpanded) {
+                    this.classList.add('expanded');
+                    
+                    // Scroll module into view smoothly
+                    setTimeout(() => {
+                        this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 100);
+                }
+            });
+        });
+        
+        // Category Expansion
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent module from collapsing
+                this.classList.toggle('expanded');
+            });
+        });
+        
+        // Auto-collapse on scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const modules = document.querySelectorAll('.module.expanded');
+            
+            modules.forEach(module => {
+                const moduleRect = module.getBoundingClientRect();
+                const isVisible = moduleRect.top < window.innerHeight && moduleRect.bottom > 0;
+                
+                if (!isVisible) {
+                    module.classList.remove('expanded');
+                }
+            });
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Form Submission
+        document.getElementById('affiliateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Generate affiliate ID BEFORE submitting so it's included in the email
+            const affiliateID = '2S' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            
+            const formData = new FormData(this);
+            // Add affiliate ID to form data so it's included in the email
+            formData.append('affiliateID', affiliateID);
+            // Update subject to include affiliate ID
+            formData.set('_subject', 'New Affiliate Registration - 2 Seasons (Affiliate ID: ' + affiliateID + ')');
+            
+            const submitButton = this.querySelector('.submit-button');
+            const originalText = submitButton.textContent;
+            
+            submitButton.textContent = 'Joining...';
+            submitButton.disabled = true;
+            
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    submitButton.textContent = '✓ Joined Successfully!';
+                    submitButton.style.background = '#ff662a';
+                    
+                    // Show success message
+                    setTimeout(() => {
+                        alert(`Welcome to 2 Seasons Affiliates!\n\nYour Affiliate ID: ${affiliateID}\n\nCheck your email for your confirmation and quick start guide.`);
+                        this.reset();
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                        submitButton.style.background = '#ff662a';
+                    }, 1000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                submitButton.textContent = 'Try Again';
+                submitButton.disabled = false;
+                alert('Something went wrong. Please try again or contact us at 2seasonsabk@2seasonsabk.store');
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+        
+        // Success message from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            setTimeout(() => {
+                alert('Thank you for joining! Check your email for your affiliate ID and welcome guide.');
+            }, 500);
+        }
+        
+        // Membership Registration Functions
+        let currentPlanType = null;
+        let currentAffiliateId = null;
+        
+        // Check for affiliate ID in URL
+        const affiliateIdFromUrl = urlParams.get('affiliate');
+        if (affiliateIdFromUrl) {
+            currentAffiliateId = affiliateIdFromUrl;
+        }
+        
+        function openRegistrationForm(planType) {
+            currentPlanType = planType;
+            const modal = document.getElementById('registrationModal');
+            const formContainer = document.getElementById('formContainer');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            // Set modal title
+            const planNames = {
+                individual: 'Individual Membership',
+                team: 'Team Membership',
+                corporate: 'Corporate Membership'
+            };
+            modalTitle.textContent = planNames[planType] || 'Register';
+            
+            // Generate form based on plan type
+            formContainer.innerHTML = generateFormHTML(planType);
+            
+            // Auto-fill affiliate ID if present
+            if (currentAffiliateId) {
+                const affiliateInput = formContainer.querySelector('[name="affiliateId"]');
+                if (affiliateInput) {
+                    affiliateInput.value = currentAffiliateId;
+                }
+            }
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Make plan cards clickable
+        document.querySelectorAll('.plan-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Don't trigger if clicking buttons
+                if (e.target.closest('.plan-share-btn') || e.target.closest('.plan-register-btn')) {
+                    return;
+                }
+                const planType = this.getAttribute('data-plan');
+                if (planType) {
+                    openRegistrationForm(planType);
+                }
+            });
+        });
+        
+        function closeRegistrationForm() {
+            const modal = document.getElementById('registrationModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function generateFormHTML(planType) {
+            const planNames = {
+                individual: 'Individual Membership',
+                team: 'Team Membership',
+                corporate: 'Corporate Membership'
+            };
+            
+            if (planType === 'individual') {
+                return `
+                    <form id="membershipForm" onsubmit="handleFormSubmit(event, 'individual')">
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Full Name</label>
+                            <input type="text" name="fullName" class="apple-form-input" required>
+            </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Email</label>
+                            <input type="email" name="email" class="apple-form-input" required>
+            </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Phone Number</label>
+                            <input type="tel" name="phone" class="apple-form-input" required>
+                </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Membership Period</label>
+                            <select name="membershipPeriod" class="apple-form-select" required>
+                                <option value="">Select Period</option>
+                                <option value="first-half">First Half of the Year</option>
+                                <option value="second-half">Second Half of the Year</option>
+                            </select>
+            </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Affiliate That Invited You</label>
+                            <input type="text" name="affiliateId" class="apple-form-input" placeholder="Enter affiliate ID" ${currentAffiliateId ? `value="${currentAffiliateId}" readonly` : ''}>
+        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Additional Notes (Optional)</label>
+                            <textarea name="notes" class="apple-form-textarea" placeholder="Any additional information..."></textarea>
+        </div>
+                        <button type="submit" class="apple-form-submit">Submit Registration</button>
+                    </form>
+                `;
+            } else if (planType === 'team') {
+                return `
+                    <form id="membershipForm" onsubmit="handleFormSubmit(event, 'team')">
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Team Leader Full Name</label>
+                            <input type="text" name="teamLeaderName" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Team Leader Email</label>
+                            <input type="email" name="teamLeaderEmail" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Team Leader Phone</label>
+                            <input type="tel" name="teamLeaderPhone" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Team Member 1 Name</label>
+                            <input type="text" name="member1Name" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Team Member 2 Name</label>
+                            <input type="text" name="member2Name" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Membership Period</label>
+                            <select name="membershipPeriod" class="apple-form-select" required>
+                                <option value="">Select Period</option>
+                                <option value="first-half">First Half of the Year</option>
+                                <option value="second-half">Second Half of the Year</option>
+                            </select>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Name</label>
+                            <input type="text" name="affiliateId" class="apple-form-input" placeholder="Enter name" ${currentAffiliateId ? `value="${currentAffiliateId}" readonly` : ''}>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Additional Notes (Optional)</label>
+                            <textarea name="notes" class="apple-form-textarea" placeholder="Any additional information..."></textarea>
+                        </div>
+                        <button type="submit" class="apple-form-submit">Submit Registration</button>
+                    </form>
+                `;
+            } else if (planType === 'corporate') {
+                return `
+                    <form id="membershipForm" onsubmit="handleFormSubmit(event, 'corporate')">
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Company Name</label>
+                            <input type="text" name="companyName" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Contact Person Full Name</label>
+                            <input type="text" name="contactName" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Contact Person Email</label>
+                            <input type="email" name="contactEmail" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Contact Person Phone</label>
+                            <input type="tel" name="contactPhone" class="apple-form-input" required>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Number of Staff (Optional)</label>
+                            <input type="number" name="numberOfStaff" class="apple-form-input" min="1">
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Membership Period</label>
+                            <select name="membershipPeriod" class="apple-form-select" required>
+                                <option value="">Select Period</option>
+                                <option value="first-half">First Half of the Year</option>
+                                <option value="second-half">Second Half of the Year</option>
+                            </select>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Name</label>
+                            <input type="text" name="affiliateId" class="apple-form-input" placeholder="Enter name" ${currentAffiliateId ? `value="${currentAffiliateId}" readonly` : ''}>
+                        </div>
+                        <div class="apple-form-group">
+                            <label class="apple-form-label">Additional Notes (Optional)</label>
+                            <textarea name="notes" class="apple-form-textarea" placeholder="Any additional information..."></textarea>
+                        </div>
+                        <button type="submit" class="apple-form-submit">Submit Registration</button>
+                    </form>
+                `;
+            }
+        }
+        
+        function handleFormSubmit(e, planType) {
+            e.preventDefault();
+            const form = e.target;
+            
+            // Generate affiliate ID for the member
+            const memberAffiliateID = '2S' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            data.membershipType = planType;
+            data.timestamp = new Date().toISOString();
+            data.affiliateID = memberAffiliateID;
+            
+            // Prepare data for email submission
+            const emailData = new FormData();
+            emailData.append('_to', '2seasonsabk@2seasonsabk.store');
+            emailData.append('_subject', `New ${planType.charAt(0).toUpperCase() + planType.slice(1)} Membership Registration - Affiliate ID: ${memberAffiliateID}`);
+            emailData.append('membershipType', planType);
+            emailData.append('affiliateID', memberAffiliateID);
+            
+            // Add all form fields to email
+            for (const [key, value] of formData.entries()) {
+                emailData.append(key, value);
+            }
+            
+            // Show success animation
+            showSuccessAnimation();
+            
+            // Send to Formspree or your email service
+            fetch('https://formspree.io/f/xvgrzrnp', {
+                method: 'POST',
+                body: emailData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Membership form submitted:', data);
+                } else {
+                    console.error('Form submission error');
+                }
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+            });
+            
+            // Show welcome screen after delay
+            setTimeout(() => {
+                closeRegistrationForm();
+                showWelcomeScreen();
+            }, 2000);
+        }
+        
+        function showSuccessAnimation() {
+            const successOverlay = document.getElementById('successOverlay');
+            successOverlay.classList.add('active');
+        }
+        
+        function showWelcomeScreen() {
+            // Create welcome screen
+            const welcomeHTML = `
+                <div class="welcome-screen">
+                    <h1 class="welcome-title">Welcome to the Wellness Hub</h1>
+                    <p class="welcome-subtitle">Your registration has been received. We'll be in touch soon!</p>
+                </div>
+            `;
+            document.body.innerHTML = welcomeHTML;
+        }
+        
+        function sharePlan(planType) {
+            // Generate affiliate ID (in production, get from logged-in user)
+            const affiliateId = localStorage.getItem('affiliateId') || '2S' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            
+            // Generate shareable link
+            const baseUrl = window.location.origin + window.location.pathname;
+            const shareUrl = `${baseUrl}?plan=${planType}&affiliate=${affiliateId}`;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(shareUrl).then(() => {
+                alert('Affiliate link copied to clipboard!\n\n' + shareUrl);
+            }).catch(() => {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = shareUrl;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('Affiliate link copied to clipboard!\n\n' + shareUrl);
+            });
+        }
+        
+        // Check URL for plan and affiliate parameters
+        const planFromUrl = urlParams.get('plan');
+        if (planFromUrl && ['individual', 'team', 'corporate'].includes(planFromUrl)) {
+            setTimeout(() => {
+                openRegistrationForm(planFromUrl);
+            }, 500);
+        }
+        
+        // Close modal on overlay click
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('registrationModal');
+            if (e.target === modal) {
+                closeRegistrationForm();
+            }
+        });
+    </script>
+    
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="form-modal-overlay">
+        <div class="form-modal">
+            <div class="form-modal-header">
+                <h2 class="form-modal-title" id="modalTitle">Register</h2>
+                <button class="form-modal-close" onclick="closeRegistrationForm()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="form-modal-body" id="formContainer">
+                <!-- Form will be inserted here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Success Overlay -->
+    <div id="successOverlay" class="success-overlay">
+        <div class="success-checkmark">
+            <i class="fas fa-check"></i>
+        </div>
+        <div class="success-message">Registration Successful!</div>
+        <div class="success-subtitle">Thank you for joining the Wellness Hub</div>
+    </div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 {
-  "framework": null,
+  "framework": "nextjs",
   "rewrites": [
     { "source": "/join", "destination": "/join.html" },
     { "source": "/explore", "destination": "/explore.html" },
