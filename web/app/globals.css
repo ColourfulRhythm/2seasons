@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

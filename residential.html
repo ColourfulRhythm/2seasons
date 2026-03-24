@@ -23,6 +23,54 @@
     <!-- TikTok Pixel Code End -->
     
     <style>
+        /* Nav visibility over hero - same as 50plots */
+        .luxury-header {
+            background: linear-gradient(to bottom, rgba(97, 48, 13, 0.92), rgba(97, 48, 13, 0.75)) !important;
+            backdrop-filter: blur(8px);
+        }
+        .luxury-header.scrolled {
+            background: rgba(97, 48, 13, 0.98) !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+        .logo-luxury {
+            color: rgba(255, 255, 255, 0.95) !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+        .nav-links-luxury li a {
+            color: rgba(255, 255, 255, 0.95) !important;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+        }
+        .nav-links-luxury li a:hover {
+            color: var(--accent-color) !important;
+        }
+        .nav-links-luxury li a::after {
+            background: var(--accent-color);
+        }
+        .cta-nav {
+            background: var(--accent-color) !important;
+            color: var(--primary-color) !important;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            text-shadow: none;
+        }
+        .mobile-menu-btn {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+        .mobile-menu-btn .menu-icon span {
+            background: rgba(255, 255, 255, 0.95) !important;
+        }
+        .mobile-menu-btn .menu-text {
+            color: rgba(255, 255, 255, 0.95) !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        }
+        @media (max-width: 768px) {
+            .nav-links-luxury {
+                background: rgba(97, 48, 13, 0.98) !important;
+            }
+            .nav-links-luxury li a {
+                color: rgba(255, 255, 255, 0.95) !important;
+            }
+        }
+
         .residential-luxury-hero {
             height: 80vh;
             background: linear-gradient(135deg, rgba(97, 48, 13, 0.8), rgba(230, 137, 70, 0.7)), 

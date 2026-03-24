@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SiteHeader } from "@/components/ui/site-header";
 
 export const metadata: Metadata = {
   title: "2 Seasons Nigeria - Africa's First Regenerative Innovation Village",
@@ -13,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <SiteHeader />
+        {children}
+      </body>
     </html>
   );
 }
