@@ -101,7 +101,9 @@ export default function CurrentVisitorsPage() {
     }
   }, [visitorId, refreshLive])
 
-  const markers = live?.visitors ?? []
+  // Stable empty-array ref when live is null — otherwise `?? []` is a new [] each render and the
+  // Globe effect (depends on markers) would tear down WebGL every frame, so the map never appears.
+  const markers = useMemo(() => live?.visitors ?? [], [live])
 
   const arcs = useMemo(() => {
     if (!live?.visitors.length) return []
