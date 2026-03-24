@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore 2 Seasons Nigeria - Interactive Tour | Eco-Friendly Off-Grid Development</title>
+    <meta name="description" content="Take an interactive tour of 2 Seasons Nigeria. Discover our youth sports academy, wellness hub, luxury villas, and sustainable living in Kobape, Abeokuta.">
+    
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- TikTok Pixel Code Start -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+      ttq.load('D55QDRBC77U5DJL51OS0');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+    
+    <style>
+        /* Progress Indicator */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        /* Sticky Section Nav */
+        .section-nav {
+            position: fixed;
+            right: 3rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 1rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-nav-item {
+            display: block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .section-nav-item:hover {
+            background: var(--secondary-color);
+            transform: scale(1.3);
+        }
+
+        .section-nav-item.active {
+            background: var(--secondary-color);
+            transform: scale(1.5);
+        }
+
+        .section-nav-item::after {
+            content: attr(data-title);
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .section-nav-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .explore-hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(97, 48, 13, 0.85), rgba(230, 137, 70, 0.75)),
+                        url('100plots/drone-image.jpg') center/cover no-repeat fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .explore-hero-content {
+            max-width: 1000px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .explore-hero h1 {
+            font-size: 4.5rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .explore-hero h1 em {
+            font-style: italic;
+            color: var(--accent-color);
+        }
+
+        .explore-hero p {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .explore-cta {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--accent-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(247, 225, 184, 0.4);
+        }
+
+        .explore-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(247, 225, 184, 0.6);
+            background: white;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 2rem;
+            color: white;
+            opacity: 0.8;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+
+        /* Interactive Map Section */
+        .map-section {
+            padding: 8rem 2rem;
+            background: white;
+        }
+
+        .map-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+        }
+
+        .map-intro h2 {
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .map-intro em {
+            font-style: italic;
+            color: var(--secondary-color);
+        }
+
+        .map-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .map-image {
+            width: 100%;
+            height: 700px;
+            position: relative;
+            background: #f0f0f0;
+        }
+
+        .map-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .map-points {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+
+        .map-point {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: var(--secondary-color);
+            border: 3px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(230, 137, 70, 0.5);
+            animation: pulse-point 2s infinite;
+        }
+
+        @keyframes pulse-point {
+            0%, 100% { box-shadow: 0 4px 15px rgba(230, 137, 70, 0.5); }
+            50% { box-shadow: 0 4px 30px rgba(230, 137, 70, 0.8), 0 0 0 10px rgba(230, 137, 70, 0.2); }
+        }
+
+        .map-point:hover {
+            transform: translate(-50%, -50%) scale(1.3);
+            background: var(--accent-color);
+            animation: none;
+        }
+
+        .feature-info {
+            position: absolute;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 100;
+            max-width: 320px;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: fadeInUp 0.3s ease;
+        }
+
+        .feature-info.active {
+            display: block;
+        }
+
+        .feature-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+
+        .feature-info p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Feature Cards Section */
+        .features-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #fafaf8, #ffffff);
+        }
+
+        .features-header {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 5rem;
+        }
+
+        .features-header h2 {
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .feature-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .feature-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .feature-card:hover .feature-card-image img {
+            transform: scale(1.1);
+        }
+
+        .feature-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(97, 48, 13, 0.8) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+        }
+
+        .feature-card-overlay i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+        }
+
+        .feature-card-content {
+            padding: 2rem;
+        }
+
+        .feature-card-content h3 {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card-content p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card-link {
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .feature-card-link:hover {
+            gap: 1rem;
+        }
+
+        /* Stats Counter Section */
+        .stats-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), #4a1f0a);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .stat-item.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .final-cta-section {
+            padding: 8rem 2rem;
+            background: white;
+            text-align: center;
+        }
+
+        .final-cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .final-cta-content h2 {
+            font-size: 3.5rem;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .final-cta-content p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button-primary {
+            padding: 1.3rem 3rem;
+            background: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(230, 137, 70, 0.3);
+        }
+
+        .cta-button-primary:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(97, 48, 13, 0.4);
+        }
+
+        .cta-button-secondary {
+            padding: 1.3rem 3rem;
+            background: transparent;
+            color: var(--primary-color);
+            text-decoration: none;
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .section-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .explore-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .map-intro h2,
+            .features-header h2,
+            .final-cta-content h2 {
+                font-size: 2.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-button-primary,
+            .cta-button-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" style="width: 0%"></div>
+
+    <!-- Section Navigation -->
+    <nav class="section-nav">
+        <a href="#hero" class="section-nav-item active" data-title="Welcome"></a>
+        <a href="#map" class="section-nav-item" data-title="Interactive Map"></a>
+        <a href="#features" class="section-nav-item" data-title="Features"></a>
+        <a href="#stats" class="section-nav-item" data-title="By The Numbers"></a>
+        <a href="#cta" class="section-nav-item" data-title="Get Started"></a>
+    </nav>
+
+    <header class="luxury-header">
+        <nav class="luxury-nav">
+            <a href="/" class="logo-luxury">2 Seasons</a>
+            <button type="button" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="menu-text">Menu</span>
+            </button>
+            <ul class="nav-links-luxury">
+                <li><a href="/#residential">Residential</a></li>
+                <li><a href="/#villas">Villas</a></li>
+                <li><a href="/#wellness">Wellness</a></li>
+                <li><a href="/hyggetown">Hygge</a></li>
+                <li><a href="/50plots">50 Plots</a></li>
+                <li><a href="/paymentplan">Payment Plan</a></li>
+                <li><a href="/partners">Partners</a></li>
+                <li><a href="/2saffiliate">Affiliates</a></li>
+                <li><a href="/join" class="cta-nav">Book Preview</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="menu-overlay"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="explore-hero" id="hero">
+            <div class="explore-hero-content">
+                <h1>Explore <em>2 Seasons</em></h1>
+                <p>Take an interactive journey through Africa's first regenerative innovation village in Kobape, Abeokuta, Ogun State, Nigeria</p>
+                <a href="#map" class="explore-cta">Start Your Tour</a>
+            </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- Interactive Map Section -->
+        <section class="map-section" id="map">
+            <div class="map-intro">
+                <h2>Interactive <em>Site Map</em></h2>
+                <p>Click on the glowing points to discover each unique feature of 2 Seasons</p>
+            </div>
+            <div class="map-container">
+                <div class="map-image">
+                    <img src="./assets/images/site-map.JPG" alt="2 Seasons Interactive Site Map">
+                    <div class="map-points">
+                        <!-- Points will be added via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section" id="features">
+            <div class="features-header">
+                <h2>Discover Our <em>Amenities</em></h2>
+                <p style="font-size: 1.1rem; color: #666;">World-class facilities designed for your lifestyle</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card-image">
+                        <img src="assets/images/modern-homes.jpg" alt="2 Seasons Residential">
+                        <div class="feature-card-overlay">
+                    <i class="fas fa-home"></i>
+                        </div>
+                    </div>
+                    <div class="feature-card-content">
+                        <h3>2 Seasons Residential</h3>
+                        <p>Modern sustainable homes with landscaped streets, active lifestyle amenities, and essential facilities for families.</p>
+                        <a href="/residential" class="feature-card-link">Explore Residential <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image">
+                        <img src="assets/images/luxury-villas.jpg" alt="True Vine Villas">
+                        <div class="feature-card-overlay">
+                    <i class="fas fa-building"></i>
+                        </div>
+                    </div>
+                    <div class="feature-card-content">
+                        <h3>True Vine Villas</h3>
+                        <p>Premium lakefront villas perfect for vacation rentals, Airbnb, and second homes with stunning lake views.</p>
+                        <a href="/villas" class="feature-card-link">Discover Villas <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image">
+                        <img src="assets/images/natural-therapy-and-spa.jpg" alt="Wellness Hub">
+                        <div class="feature-card-overlay">
+                    <i class="fas fa-spa"></i>
+                        </div>
+                    </div>
+                    <div class="feature-card-content">
+                        <h3>Wellness Hub</h3>
+                        <p>Holistic wellness center with spa, yoga, fitness facilities, and a dynamic youth sports academy.</p>
+                        <a href="/wellness" class="feature-card-link">Visit Wellness Hub <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image">
+                        <img src="assets/images/content-and-creator-zone.jpg" alt="Hygge Town">
+                        <div class="feature-card-overlay">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                    </div>
+                    <div class="feature-card-content">
+                        <h3>Hygge Town</h3>
+                        <p>Nigeria's first creative and innovation hub with content studios, startup spaces, and Starlink connectivity.</p>
+                        <a href="/hyggetown" class="feature-card-link">Experience Hygge <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image">
+                        <img src="assets/images/artificial-lake.jpg" alt="4-Acre Lake">
+                        <div class="feature-card-overlay">
+                    <i class="fas fa-water"></i>
+                        </div>
+                    </div>
+                    <div class="feature-card-content">
+                        <h3>4-Acre Artificial Lake</h3>
+                        <p>Stunning waterfront with cascading waterfall, perfect for water activities and scenic relaxation.</p>
+                        <a href="/villas" class="feature-card-link">See Lake Views <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-image">
+                        <img src="assets/images/farming-nature.jpg" alt="Fruit Forest">
+                        <div class="feature-card-overlay">
+                    <i class="fas fa-leaf"></i>
+                        </div>
+                    </div>
+                    <div class="feature-card-content">
+                        <h3>Fruit Forest</h3>
+                        <p>Expansive orchard with over 3,000 fruit trees providing fresh harvests and shaded walkways.</p>
+                        <a href="/#residential" class="feature-card-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section" id="stats">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Total Plots Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="4">0</div>
+                    <div class="stat-label">Acres of Artificial Lake</div>
+                    </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="3000">0</div>
+                    <div class="stat-label">Fruit Trees Planted</div>
+                    </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Youth Trained Annually</div>
+                    </div>
+                    </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta-section" id="cta">
+            <div class="final-cta-content">
+                <h2>Ready to Be Part of 2 Seasons?</h2>
+                <p>Join Africa's first regenerative innovation village. Limited plots available in Stage 2. Don't miss this opportunity to own your future.</p>
+                <div class="cta-buttons">
+                    <a href="/50plots" class="cta-button-primary">View Available Plots</a>
+                    <a href="/join" class="cta-button-secondary">Book Your Preview</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>2 Seasons</h3>
+                <p>Africa's First Regenerative Innovation & Lifestyle Village</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Kobape, Abeokuta, Ogun State, Nigeria</p>
+                <p>Email: 2seasonsabk@2seasonsabk.store</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/2seasonsabk" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/2seasonsabk?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 2 Seasons. All rights reserved.</p>
+            <a href="/privacy" class="privacy-policy-btn">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+    <script>
+        // Reading Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.reading-progress').style.width = scrolled + '%';
+        });
+
+        // Section Navigation Active State
+        const sections = document.querySelectorAll('section[id]');
+        const navItems = document.querySelectorAll('.section-nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === '#' + current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth Scroll for Nav Items
+        document.querySelectorAll('.section-nav-item, a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animate Feature Cards on Scroll
+        const featureCards = document.querySelectorAll('.feature-card');
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate-in');
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        featureCards.forEach(card => cardObserver.observe(card));
+
+        // Animated Stats Counter
+        const statItems = document.querySelectorAll('.stat-item');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    const target = parseInt(statNumber.getAttribute('data-target'));
+                    const increment = target / 50;
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            statNumber.textContent = Math.ceil(current);
+                            setTimeout(updateCounter, 30);
+                        } else {
+                            statNumber.textContent = target + '+';
+                        }
+                    };
+                    updateCounter();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statItems.forEach(item => statsObserver.observe(item));
+
+        // Interactive Map Points
+        const mapPoints = document.querySelector('.map-points');
+        if (mapPoints) {
+            const features = [
+                { x: 41.6, y: 24.3, title: '2 Seasons Residential', description: 'Modern sustainable homes with landscaped streets and active lifestyle amenities.' },
+                { x: 57.3, y: 50.7, title: 'Wellness Hub', description: 'Holistic wellness center with spa, gym, yoga pavilion, and sports academy.' },
+                { x: 51.2, y: 62.1, title: 'Fruit Forest', description: 'Over 3,000 fruit trees providing fresh harvests and connection to nature.' },
+                { x: 63.0, y: 61.1, title: 'True Vine Villas', description: 'Luxury lakefront villas perfect for vacation rentals and second homes.' },
+                { x: 61.3, y: 69.9, title: '4-Acre Lake', description: 'Artificial lake with cascading waterfall for water activities and scenic views.' },
+                { x: 71.8, y: 73.8, title: 'Sports Academy', description: 'Training 100 youths annually in football, tennis, and athletics.' },
+                { x: 64.4, y: 87.3, title: 'Hygge Town', description: 'Creative and innovation hub with content studios and startup spaces.' }
+            ];
+
+            features.forEach((feature) => {
+                const point = document.createElement('div');
+                point.className = 'map-point';
+                point.style.left = `${feature.x}%`;
+                point.style.top = `${feature.y}%`;
+
+                const info = document.createElement('div');
+                info.className = 'feature-info';
+                info.innerHTML = `
+                    <h3>${feature.title}</h3>
+                    <p>${feature.description}</p>
+                `;
+
+                point.appendChild(info);
+                mapPoints.appendChild(point);
+
+                point.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    document.querySelectorAll('.feature-info').forEach(i => i.classList.remove('active'));
+                    info.classList.add('active');
+                });
+            });
+
+            document.addEventListener('click', () => {
+                document.querySelectorAll('.feature-info').forEach(i => i.classList.remove('active'));
+            });
+        }
+    </script>
+</body>
+</html> 

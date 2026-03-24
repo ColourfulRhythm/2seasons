@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Tucks — Phase 1 | 2 Seasons Nigeria</title>
+    <meta name="description" content="Own farmstead-style land in Africa's first regenerative lifestyle village. Plant, build, farm or land bank — starting from ₦1,500,000 in Kobape, Abeokuta.">
+    <link rel="canonical" href="https://www.2seasonsabk.com/tucks">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="stylesheet" href="/styles.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --gold: #c9a96e;
+            --gold-light: #e0c99a;
+            --gold-dim: #a0855a;
+            --bg: #0d0d0d;
+            --bg-2: #111;
+            --bg-card: #161616;
+            --text: #f5f0e8;
+            --text-muted: #9a9a9a;
+            --text-dim: #666;
+            --border: #2a2a2a;
+            --border-gold: #3a2e1e;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ── HERO ── */
+        .tucks-hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 60px 90px;
+            overflow: hidden;
+        }
+
+        .tucks-hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to top, #0d0d0d 0%, #0d0d0d33 40%, transparent 70%),
+                linear-gradient(to right, #0d0d0d 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        /* Organic grain texture */
+        .tucks-hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 2;
+        }
+
+        .tucks-hero-visual {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 70% 40%, #2a1f0a44 0%, transparent 60%),
+                radial-gradient(ellipse at 30% 70%, #1a2a0a33 0%, transparent 50%),
+                #0d0d0d;
+            z-index: 0;
+        }
+
+        /* Decorative soil/earth lines */
+        .tucks-hero-lines {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 55%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .tucks-hero-lines::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                168deg,
+                transparent,
+                transparent 60px,
+                #c9a96e08 60px,
+                #c9a96e08 61px
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 680px;
+        }
+
+        .hero-phase-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.65rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            margin-bottom: 28px;
+        }
+
+        .hero-phase-label::before {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 1px;
+            background: var(--gold-dim);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            line-height: 0.9;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: var(--text-muted);
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .hero-price-badge {
+            display: inline-block;
+            background: var(--border-gold);
+            border: 1px solid var(--gold-dim);
+            color: var(--gold-light);
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            padding: 10px 24px;
+            font-weight: 500;
+            margin-bottom: 44px;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gold);
+            color: #0d0d0d;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 16px 32px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--text-muted);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 16px 32px;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s, color 0.3s;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--gold-dim);
+            color: var(--gold);
+        }
+
+        /* Scroll indicator */
+        .scroll-hint-tucks {
+            position: absolute;
+            bottom: 40px;
+            right: 60px;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.6rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        .scroll-hint-tucks::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(to bottom, var(--gold-dim), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.1); }
+        }
+
+        /* ── INTRO STRIP ── */
+        .intro-strip {
+            padding: 80px 60px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .intro-strip-number {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(5rem, 10vw, 9rem);
+            color: var(--border);
+            line-height: 1;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .intro-strip-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .intro-strip-text h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .intro-strip-text p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.9;
+            max-width: 620px;
+        }
+
+        /* ── WHAT YOU CAN DO ── */
+        .landlord-section {
+            padding: 110px 60px;
+            background: var(--bg);
+        }
+
+        .section-eyebrow {
+            font-size: 0.65rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .section-eyebrow::after {
+            content: '';
+            display: block;
+            width: 48px;
+            height: 1px;
+            background: var(--gold-dim);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 70px;
+            line-height: 1.15;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .landlord-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+            max-width: 1100px;
+        }
+
+        .landlord-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 52px 48px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.4s;
+        }
+
+        .landlord-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 3px;
+            height: 0;
+            background: var(--gold);
+            transition: height 0.5s ease;
+        }
+
+        .landlord-card:hover {
+            border-color: var(--border-gold);
+        }
+
+        .landlord-card:hover::before {
+            height: 100%;
+        }
+
+        .landlord-card-icon {
+            font-size: 1.4rem;
+            color: var(--gold-dim);
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .landlord-card-number {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--border);
+            line-height: 1;
+            user-select: none;
+        }
+
+        .landlord-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .landlord-card h3 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .landlord-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.85;
+        }
+
+        .landlord-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 28px;
+        }
+
+        .tag {
+            font-size: 0.62rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            border: 1px solid var(--border-gold);
+            padding: 5px 12px;
+        }
+
+        /* ── INFRA SECTION ── */
+        .infra-section {
+            padding: 100px 60px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+        }
+
+        .infra-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1100px;
+        }
+
+        .infra-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 28px;
+            line-height: 1.2;
+        }
+
+        .infra-text h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .infra-text p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .infra-list {
+            list-style: none;
+            margin-top: 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .infra-list li {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            padding: 18px 0;
+            border-bottom: 1px solid var(--border);
+            letter-spacing: 0.02em;
+        }
+
+        .infra-list li:last-child { border-bottom: none; }
+
+        .infra-list li i {
+            color: var(--gold);
+            font-size: 0.8rem;
+            width: 16px;
+            flex-shrink: 0;
+        }
+
+        .infra-visual {
+            position: relative;
+        }
+
+        .infra-box {
+            background: #1a1510;
+            border: 1px solid var(--border-gold);
+            padding: 52px 48px;
+        }
+
+        .infra-box-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+            margin-bottom: 20px;
+        }
+
+        .infra-price-display {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: var(--gold-light);
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .infra-price-sub {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+            margin-bottom: 36px;
+        }
+
+        .infra-divider {
+            height: 1px;
+            background: var(--border-gold);
+            margin-bottom: 36px;
+        }
+
+        .infra-note {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* ── PHASE STORY ── */
+        .story-section {
+            padding: 110px 60px;
+            background: var(--bg);
+            text-align: center;
+        }
+
+        .story-inner {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .story-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.5;
+            margin-bottom: 28px;
+        }
+
+        .story-quote em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .story-attribution {
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        /* ── CTA SECTION ── */
+        .tucks-cta-section {
+            padding: 110px 60px;
+            background: #111008;
+            border-top: 1px solid var(--border-gold);
+            text-align: center;
+        }
+
+        .tucks-cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .tucks-cta-section h2 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .tucks-cta-section p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ── FOOTER STRIP ── */
+        .tucks-footer-strip {
+            padding: 40px 60px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .tucks-footer-strip a {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+
+        .tucks-footer-strip a:hover { color: var(--gold); }
+
+        .tucks-footer-strip .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        /* ── NAV ── */
+        .tucks-nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 28px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, #0d0d0dee, transparent);
+            transition: background 0.4s;
+        }
+
+        .tucks-nav.scrolled {
+            background: #0d0d0df5;
+            padding: 20px 60px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tucks-nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .tucks-nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .tucks-nav-links a {
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .tucks-nav-links a:hover { color: var(--gold); }
+
+        .tucks-nav-links .nav-cta a {
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            padding: 8px 20px;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .tucks-hero { padding: 120px 28px 80px; }
+            .tucks-nav { padding: 20px 28px; }
+            .tucks-nav.scrolled { padding: 16px 28px; }
+            .tucks-nav-links { display: none; }
+            .intro-strip { flex-direction: column; gap: 24px; padding: 60px 28px; }
+            .intro-strip-number { font-size: 5rem; }
+            .landlord-section { padding: 70px 28px; }
+            .landlord-grid { grid-template-columns: 1fr; }
+            .landlord-card { padding: 40px 28px; }
+            .infra-section { padding: 70px 28px; }
+            .infra-inner { grid-template-columns: 1fr; gap: 40px; }
+            .story-section { padding: 70px 28px; }
+            .tucks-cta-section { padding: 70px 28px; }
+            .tucks-footer-strip { padding: 32px 28px; }
+            .scroll-hint-tucks { right: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="tucks-nav" id="tucks-nav">
+        <a href="/" class="logo">2 Seasons</a>
+        <ul class="tucks-nav-links">
+            <li><a href="/#residential">Residential</a></li>
+            <li><a href="/#villas">Villas</a></li>
+            <li><a href="/#wellness">Wellness</a></li>
+            <li><a href="/hyggetown">Hygge</a></li>
+            <li><a href="/50plots">50 Plots</a></li>
+            <li class="nav-cta"><a href="/join">Book Preview</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="tucks-hero">
+        <div class="tucks-hero-visual"></div>
+        <div class="tucks-hero-lines"></div>
+        <div class="tucks-hero-bg"></div>
+
+        <div class="hero-content">
+            <p class="hero-phase-label">Phase 1 &nbsp;·&nbsp; 2 Seasons</p>
+            <h1 class="tucks-hero-title" style="font-family:'Playfair Display',serif; font-size:clamp(3.5rem,8vw,7rem); line-height:0.9; font-weight:400; color:#f5f0e8; margin-bottom:12px;">
+                Agro<br><em style="font-style:italic; color:#c9a96e;">Tucks</em>
+            </h1>
+            <p class="hero-subtitle">Farmstead land you can live on, grow from, and build toward.</p>
+            <div class="hero-price-badge">500 sqm ₦1,500,000 · 1 acre ₦6,500,000</div>
+            <div class="hero-cta-row">
+                <a href="/50plots" class="btn-primary">Secure Your Tuck <i class="fas fa-arrow-right"></i></a>
+                <a href="#what-you-can-do" class="btn-ghost">See What's Possible</a>
+            </div>
+        </div>
+
+        <div class="scroll-hint-tucks">Scroll</div>
+    </section>
+
+    <!-- INTRO STRIP -->
+    <div class="intro-strip">
+        <div class="intro-strip-number">01</div>
+        <div class="intro-strip-text">
+            <h2>Land you can actually <em>do something with</em></h2>
+            <p>
+                Agro Tucks are farmstead-style plots inside 2 Seasons — Africa's first regenerative lifestyle village in Kobape, Abeokuta. This is Phase 1: the foundation. Own a piece of land where you set the terms — plant a garden, build a home, operate a small farm, or simply hold a growing asset in one of Nigeria's most compelling new communities.
+            </p>
+        </div>
+    </div>
+
+    <!-- WHAT YOU CAN DO -->
+    <section class="landlord-section" id="what-you-can-do">
+        <p class="section-eyebrow">Your land, your terms</p>
+        <h2 class="section-title">Four ways to <em>be a landlord</em></h2>
+
+        <div class="landlord-grid">
+
+            <!-- Plant -->
+            <div class="landlord-card">
+                <span class="landlord-card-number">01</span>
+                <i class="fas fa-seedling landlord-card-icon"></i>
+                <h3>Plant &amp; <em>Cultivate</em></h3>
+                <p>
+                    Grow your own food on land that was made for it. Agro Tucks are designed for smallholder cultivation — herbs, vegetables, fruit trees, or a full kitchen garden. Live quietly and eat from your own earth inside one of Nigeria's greenest new communities.
+                </p>
+                <div class="landlord-card-tags">
+                    <span class="tag">Kitchen Garden</span>
+                    <span class="tag">Fruit Trees</span>
+                    <span class="tag">Subsistence Farm</span>
+                </div>
+            </div>
+
+            <!-- Build Farmstead -->
+            <div class="landlord-card">
+                <span class="landlord-card-number">02</span>
+                <i class="fas fa-home landlord-card-icon"></i>
+                <h3>Build a <em>Farmstead</em></h3>
+                <p>
+                    Your plot, your home. Build a compact farmstead-style dwelling surrounded by your own land. Wake up to clean air, your garden outside, and the 2 Seasons village around you — with all the amenities of Phase 2 a short walk away as they develop.
+                </p>
+                <div class="landlord-card-tags">
+                    <span class="tag">Self-Build</span>
+                    <span class="tag">Eco Dwelling</span>
+                    <span class="tag">Off-Grid Ready</span>
+                </div>
+            </div>
+
+            <!-- Farm -->
+            <div class="landlord-card">
+                <span class="landlord-card-number">03</span>
+                <i class="fas fa-tractor landlord-card-icon"></i>
+                <h3>Operate a <em>Small Farm</em></h3>
+                <p>
+                    Run a productive micro-farm within the 2 Seasons ecosystem. With proximity to a growing community of residents, wellness visitors, and urban dwellers, your produce has a ready market right on your doorstep. Farm smart in a community that values what you grow.
+                </p>
+                <div class="landlord-card-tags">
+                    <span class="tag">Micro-Farm</span>
+                    <span class="tag">Community Market</span>
+                    <span class="tag">Agro Business</span>
+                </div>
+            </div>
+
+            <!-- Land Bank -->
+            <div class="landlord-card">
+                <span class="landlord-card-number">04</span>
+                <i class="fas fa-chart-line landlord-card-icon"></i>
+                <h3>Land <em>Bank</em></h3>
+                <p>
+                    Not ready to build or farm yet? Secure your plot now at Phase 1 pricing and let the land appreciate as 2 Seasons grows. As the lifestyle city takes shape around your Tuck, your entry price becomes your most powerful asset. Early allocation, maximum upside.
+                </p>
+                <div class="landlord-card-tags">
+                    <span class="tag">Instant Allocation</span>
+                    <span class="tag">Capital Growth</span>
+                    <span class="tag">Hold &amp; Gain</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INFRASTRUCTURE + PRICING -->
+    <section class="infra-section">
+        <div class="infra-inner">
+            <div class="infra-text">
+                <p class="section-eyebrow">What's included</p>
+                <h2>Built-in from <em>day one</em></h2>
+                <p>
+                    Every Agro Tuck comes with basic infrastructure already in place — so you can move forward on your terms without waiting for the community to catch up.
+                </p>
+                <ul class="infra-list">
+                    <li><i class="fas fa-road"></i> Internal roads throughout the estate</li>
+                    <li><i class="fas fa-lightbulb"></i> Street lighting on all roads</li>
+                    <li><i class="fas fa-tint"></i> Drainage network across the site</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Instant allocation on purchase</li>
+                    <li><i class="fas fa-file-alt"></i> Proper documentation &amp; title</li>
+                    <li><i class="fas fa-city"></i> Access to Phase 2 amenities as they open</li>
+                </ul>
+            </div>
+
+            <div class="infra-visual">
+                <div class="infra-box">
+                    <p class="infra-box-label">Phase 1 Entry Price</p>
+                    <p class="infra-price-display">₦1,500,000 — ₦6,500,000</p>
+                    <p class="infra-price-sub">Per plot · Instant allocation</p>
+                    <div class="infra-divider"></div>
+                    <p class="infra-note">
+                        This is where the 2 Seasons story begins. Phase 1 pricing reflects the earliest entry point — as the community grows, so does the value of every plot inside it.
+                    </p>
+                    <br>
+                    <a href="/50plots" class="btn-primary" style="margin-top:8px; display:inline-flex;">
+                        Secure Your Tuck <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY QUOTE -->
+    <section class="story-section">
+        <div class="story-inner">
+            <p class="story-quote">
+                "If Phase 1 is the <em>roots</em>, Phase 2 is everything that grows from them."
+            </p>
+            <p class="story-attribution">— The 2 Seasons Vision</p>
+        </div>
+    </section>
+
+    <!-- PHASE 2 TEASER / CTA -->
+    <section class="tucks-cta-section">
+        <h2>Ready to own your <em>Tuck?</em></h2>
+        <p>Secure your plot today with instant allocation. Be part of Nigeria's most exciting new community from the very beginning.</p>
+        <div class="cta-row">
+            <a href="/50plots" class="btn-primary">Secure Your Agro Tuck <i class="fas fa-arrow-right"></i></a>
+            <a href="/residential" class="btn-ghost">Explore Phase 2 <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- FOOTER STRIP -->
+    <div class="tucks-footer-strip">
+        <a href="/" class="logo">2 Seasons</a>
+        <div style="display:flex; gap:32px; flex-wrap:wrap;">
+            <a href="/#residential">Residential</a>
+            <a href="/villas">Villas</a>
+            <a href="/wellness">Wellness</a>
+            <a href="/hyggetown">Hygge</a>
+            <a href="/join">Book Preview</a>
+        </div>
+        <p style="font-size:0.7rem; color:#444; letter-spacing:0.08em;">© 2025 2 Seasons. All rights reserved.</p>
+    </div>
+
+    <script>
+        // Nav scroll behaviour
+        const nav = document.getElementById('tucks-nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // Fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.style.opacity = '1';
+                    e.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.landlord-card, .infra-box, .story-inner').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

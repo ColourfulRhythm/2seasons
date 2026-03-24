@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Plan - 2 Seasons | Own Your Plot Today</title>
+    <meta name="description" content="Select your plot size and get your personalized payment plan. Flexible payment options available.">
+    
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- jsPDF for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <!-- TikTok Pixel Code Start -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+      ttq.load('D55QDRBC77U5DJL51OS0');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header - consistent with 50plots/residential visibility */
+        .luxury-header {
+            backdrop-filter: blur(12px);
+            background: linear-gradient(to bottom, rgba(97, 48, 13, 0.95), rgba(97, 48, 13, 0.9)) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        .luxury-header.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(97, 48, 13, 0.98) !important;
+        }
+        
+        .luxury-nav {
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo-luxury {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-links-luxury {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links-luxury li a {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-links-luxury li a:hover {
+            color: #F7E1B8;
+        }
+        
+        .cta-nav {
+            background: #F7E1B8;
+            color: #61300D;
+            padding: 0.75rem 1.8rem;
+            border-radius: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-nav:hover {
+            background: #fff;
+            color: #61300D;
+            transform: translateY(-2px);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .menu-icon span {
+            width: 24px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.95);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-text {
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        /* Hero Section */
+        .payment-hero {
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            padding: 7rem 2rem 4rem;
+            text-align: center;
+        }
+        
+        .payment-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .payment-hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .payment-hero-content p {
+            font-size: 1.25rem;
+            color: #86868b;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+        
+        /* Plot Selection Section */
+        .plot-selection-section {
+            padding: 4rem 2rem;
+            background: #ffffff;
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #86868b;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .plot-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .plot-card {
+            background: #f5f5f7;
+            border-radius: 18px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plot-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 102, 42, 0.05), rgba(255, 102, 42, 0.02));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .plot-card:hover::before {
+            opacity: 1;
+        }
+        
+        .plot-card:hover {
+            transform: translateY(-8px);
+            border-color: #ff662a;
+            box-shadow: 0 12px 40px rgba(255, 102, 42, 0.15);
+        }
+        
+        .plot-card.selected {
+            background: #ff662a;
+            border-color: #ff662a;
+            color: white;
+        }
+        
+        .plot-card.selected::before {
+            opacity: 0;
+        }
+        
+        .plot-card.selected .plot-size,
+        .plot-card.selected .plot-price {
+            color: white;
+        }
+        
+        .plot-size {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .plot-price {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #ff662a;
+            letter-spacing: -0.02em;
+        }
+        
+        .plot-card.selected .plot-price {
+            color: white;
+        }
+        
+        .plot-unit {
+            font-size: 0.875rem;
+            color: #86868b;
+            margin-top: 0.25rem;
+        }
+        
+        .plot-card.selected .plot-unit {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Form Section */
+        .form-section {
+            padding: 4rem 2rem;
+            background: #f5f5f7;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-title {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1d1d1f;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .form-subtitle {
+            font-size: 1rem;
+            color: #86868b;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #86868b;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            font-size: 1rem;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            color: #1d1d1f;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #ff662a;
+            box-shadow: 0 0 0 4px rgba(255, 102, 42, 0.1);
+        }
+        
+        .payment-option-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .payment-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .payment-option {
+            padding: 1rem;
+            border: 2px solid #d2d2d7;
+            border-radius: 12px;
+            background: #f5f5f7;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .payment-option:hover {
+            border-color: #ff662a;
+            background: #fff5f0;
+        }
+        
+        .payment-option.selected {
+            border-color: #ff662a;
+            background: #ff662a;
+            color: white;
+        }
+
+        .payment-option-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .payment-option-desc {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        .form-submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #ff662a;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: -0.01em;
+            margin-top: 1rem;
+        }
+        
+        .form-submit-btn:hover:not(:disabled) {
+            background: #61310d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 102, 42, 0.3);
+        }
+        
+        .form-submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .discount-message {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            min-height: 1.25rem;
+        }
+        
+        .discount-message.valid {
+            color: #34c759;
+            font-weight: 500;
+        }
+        
+        .discount-message.invalid {
+            color: #ff3b30;
+        }
+        
+        .discount-badge {
+            display: inline-block;
+            background: #34c759;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        .plot-price-original {
+            text-decoration: line-through;
+            color: #86868b;
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+        
+        .plot-price-discounted {
+            color: #34c759;
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            padding: 4rem 2rem;
+            background: #ffffff;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .benefit-card {
+            background: #f5f5f7;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            background: #ff662a;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .benefit-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .benefit-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.5rem;
+        }
+        
+        .benefit-desc {
+            font-size: 0.9rem;
+            color: #86868b;
+            line-height: 1.5;
+        }
+        
+        /* Toggle Button */
+        .plot-type-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+        
+        .toggle-btn {
+            padding: 0.75rem 2rem;
+            border: 2px solid #d2d2d7;
+            background: #f5f5f7;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #1d1d1f;
+        }
+        
+        .toggle-btn:hover {
+            border-color: #ff662a;
+            background: #fff5f0;
+        }
+        
+        .toggle-btn.active {
+            background: #ff662a;
+            border-color: #ff662a;
+            color: white;
+        }
+        
+        /* Fruit Tree Input */
+        .fruit-tree-input {
+            display: none;
+        }
+        
+        .fruit-tree-input.show {
+            display: block;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-section {
+            padding: 3rem 2rem;
+            background: #f5f5f7;
+            text-align: center;
+        }
+        
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 2.5rem;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-button:hover {
+            background: #20BA5A;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .whatsapp-button i {
+            font-size: 1.5rem;
+        }
+        
+        .whatsapp-message {
+            font-size: 1rem;
+            color: #86868b;
+            margin-top: 1rem;
+        }
+        
+        /* Success Animation */
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .success-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .success-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 400px;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .success-overlay.active .success-content {
+            transform: scale(1);
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: #34c759;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .success-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .success-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.5rem;
+        }
+        
+        .success-message {
+            font-size: 1rem;
+            color: #86868b;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .nav-links-luxury {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 400px;
+                height: 100vh;
+                background: rgba(97, 48, 13, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 5rem 1.5rem 1.5rem;
+                gap: 0.8rem;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+                overflow-y: auto;
+                z-index: 999;
+            }
+            
+            .nav-links-luxury.active {
+                right: 0;
+            }
+            
+            .nav-links-luxury li {
+                width: 100%;
+                text-align: left;
+            }
+            
+            .nav-links-luxury li a {
+                font-size: 1.1rem;
+                display: block;
+                padding: 0.5rem 0;
+                color: rgba(255, 255, 255, 0.95) !important;
+            }
+
+            .payment-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .payment-hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .plot-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .plot-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .plot-size {
+                font-size: 1.25rem;
+            }
+            
+            .plot-price {
+                font-size: 1.5rem;
+            }
+            
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .plot-cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="luxury-header" id="luxury-header">
+        <nav class="luxury-nav">
+            <a href="/" class="logo-luxury">2 Seasons</a>
+            <button type="button" class="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="menu-text">Menu</span>
+            </button>
+            <ul class="nav-links-luxury">
+                <li><a href="/#residential">Residential</a></li>
+                <li><a href="/#villas">Villas</a></li>
+                <li><a href="/#wellness">Wellness</a></li>
+                <li><a href="/hyggetown">Hygge</a></li>
+                <li><a href="/50plots">50 Plots</a></li>
+                <li><a href="/paymentplan">Payment Plan</a></li>
+                <li><a href="/partners">Partners</a></li>
+                <li><a href="/2saffiliate">Affiliates</a></li>
+                <li><a href="/join" class="cta-nav">Book Preview</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="menu-overlay"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="payment-hero">
+            <div class="payment-hero-content">
+                <h1>Select Your Plot</h1>
+                <p>Choose your plot size and get your personalized payment plan</p>
+            </div>
+        </section>
+
+        <!-- Plot Selection Section -->
+        <section class="plot-selection-section">
+            <div class="section-container">
+                <div class="plot-type-toggle">
+                    <button type="button" class="toggle-btn active" data-type="residential">2 Seasons Residential</button>
+                    <button type="button" class="toggle-btn" data-type="agro">2 Seasons Agro Tucks</button>
+                </div>
+                
+                <h2 class="section-title">Choose Your Plot Size</h2>
+                <p class="section-subtitle">Select a plot size to see pricing and payment options</p>
+                
+                <div class="plot-cards-grid" id="plotCards">
+                    <div class="plot-card" data-size="150" data-price="3000000">
+                        <div class="plot-size">150 SQM</div>
+                        <div class="plot-price">₦3,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM · Starter</div>
+                    </div>
+                    <div class="plot-card" data-size="300" data-price="6000000">
+                        <div class="plot-size">300 SQM</div>
+                        <div class="plot-price">₦6,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM · Popular</div>
+                    </div>
+                    <div class="plot-card" data-size="500" data-price="10000000">
+                        <div class="plot-size">500 SQM</div>
+                        <div class="plot-price">₦10,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM · Premium</div>
+                    </div>
+                    <div class="plot-card" data-size="1000" data-price="20000000">
+                        <div class="plot-size">1,000 SQM</div>
+                        <div class="plot-price">₦20,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM</div>
+                    </div>
+                    <div class="plot-card" data-size="1500" data-price="30000000">
+                        <div class="plot-size">1,500 SQM</div>
+                        <div class="plot-price">₦30,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Section -->
+        <section class="form-section">
+            <div class="form-container">
+                <h2 class="form-title">Complete Your Details</h2>
+                <p class="form-subtitle">Fill in your information to receive your payment plan</p>
+                
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label class="form-label" for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" class="form-input" required>
+                        </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" required>
+                        </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="discountCode">Discount Code (Optional)</label>
+                        <div style="position: relative;">
+                            <input type="text" id="discountCode" name="discountCode" class="form-input" placeholder="Enter discount code">
+                            <div id="discountMessage" style="margin-top: 0.5rem; font-size: 0.875rem; min-height: 1.25rem;"></div>
+                        </div>
+                        </div>
+
+                    <div class="form-group fruit-tree-input" id="fruitTreeInput">
+                        <label class="form-label" for="fruitTrees">Fruit Trees of Your Choice (10 trees included)</label>
+                        <input type="text" id="fruitTrees" name="fruitTrees" class="form-input" placeholder="e.g., Mango, Orange, Avocado, etc.">
+                        <p style="font-size: 0.875rem; color: #86868b; margin-top: 0.5rem;">Specify the 10 fruit trees you'd like (separated by commas)</p>
+                        </div>
+
+                    <div class="payment-option-group">
+                        <label class="form-label">Payment Option</label>
+                        <div class="payment-options">
+                            <div class="payment-option" data-option="installment">
+                                <div class="payment-option-name">Installment</div>
+                                <div class="payment-option-desc">Flexible payment plan</div>
+                    </div>
+                            <div class="payment-option selected" data-option="full">
+                                <div class="payment-option-name">Full Payment</div>
+                                <div class="payment-option-desc">Pay once & save</div>
+                </div>
+            </div>
+                    </div>
+
+                    <button type="submit" class="form-submit-btn" id="submitBtn" disabled>
+                        Get Payment Plan
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="benefits-section">
+            <div class="section-container">
+                <h2 class="section-title" id="benefitsTitle">As a Landlord, You're Entitled To</h2>
+                <p class="section-subtitle" id="benefitsSubtitle">Everything you need to secure your investment</p>
+                
+                <div class="benefits-grid" id="benefitsGrid">
+                    <!-- Benefits will be dynamically updated based on plot type -->
+                        </div>
+                    </div>
+        </section>
+    </main>
+
+    <!-- WhatsApp Section -->
+    <section class="whatsapp-section">
+        <a href="https://wa.me/2348156901392" target="_blank" rel="noopener noreferrer" class="whatsapp-button">
+            <i class="fab fa-whatsapp"></i>
+            <span>Chat with us on WhatsApp</span>
+        </a>
+        <p class="whatsapp-message">Have questions? We're here to help!</p>
+    </section>
+
+    <!-- Success Overlay -->
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-content">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+                        </div>
+            <h2 class="success-title">Payment Plan Generated!</h2>
+            <p class="success-message">Your payment plan PDF has been downloaded. We'll contact you shortly.</p>
+                    </div>
+                        </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>2 Seasons</h3>
+                <p>Africa's First Regenerative Innovation & Lifestyle Village</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Kobape, Abeokuta, Ogun State, Nigeria</p>
+                <p>Email: 2seasonsabk@2seasonsabk.store</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/2seasonsabk" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com/2seasonsabk?s=21" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 2 Seasons. All rights reserved.</p>
+            <a href="/privacy" class="privacy-policy-btn">Privacy Policy</a>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links-luxury');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        
+        if (mobileMenuBtn && navLinks && menuOverlay) {
+            mobileMenuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+
+            menuOverlay.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        mobileMenuBtn.classList.remove('active');
+                        navLinks.classList.remove('active');
+                        menuOverlay.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    }
+                });
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.luxury-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Plot Type Toggle
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+        const fruitTreeInput = document.getElementById('fruitTreeInput');
+        let plotType = 'residential'; // 'residential' or 'agro'
+        
+        // Agro Tucks pricing: 500 sqm = ₦1,500,000 | 4,000 sqm (1 acre) = ₦6,500,000
+        const AGRO_PRICING = {
+            500: 1500000,
+            4000: 6500000
+        };
+        
+        toggleButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                toggleButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                plotType = this.dataset.type;
+                
+                // Show/hide fruit tree input
+                if (plotType === 'agro') {
+                    fruitTreeInput.classList.add('show');
+                    } else {
+                    fruitTreeInput.classList.remove('show');
+                }
+                
+                // Update plot cards
+                updatePlotCards();
+                
+                // Update benefits section
+                updateBenefitsSection();
+                
+                // Reset selection
+                if (plotCards) {
+                    plotCards.forEach(c => c.classList.remove('selected'));
+                }
+                selectedPlot = null;
+                submitBtn.disabled = true;
+            });
+        });
+        
+        // Function to update benefits section
+        function updateBenefitsSection() {
+            const benefitsGrid = document.getElementById('benefitsGrid');
+            const benefitsTitle = document.getElementById('benefitsTitle');
+            const benefitsSubtitle = document.getElementById('benefitsSubtitle');
+            
+            if (plotType === 'agro') {
+                benefitsTitle.textContent = 'As an Agro Tucks Owner, You\'re Entitled To';
+                benefitsSubtitle.textContent = 'Everything you need for your farming and farmstead';
+                
+                benefitsGrid.innerHTML = `
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-receipt"></i>
+                        </div>
+                        <h3 class="benefit-title">Receipt of Payment</h3>
+                        <p class="benefit-desc">Official documentation for all payments made</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3 class="benefit-title">Survey Plan</h3>
+                        <p class="benefit-desc">Detailed survey plan (10% of plot price)</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <h3 class="benefit-title">Deed of Assignment</h3>
+                        <p class="benefit-desc">Legal deed of assignment (10% of plot price)</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3 class="benefit-title">100 Plantain/Banana Suckers</h3>
+                        <p class="benefit-desc">Included with 1 acre (4,000 sqm) purchase</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h3 class="benefit-title">10 Fruit Trees</h3>
+                        <p class="benefit-desc">Your choice of fruit trees (specify in form)</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="benefit-title">Instant Allocation</h3>
+                        <p class="benefit-desc">Immediate plot allocation after full payment</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-tractor"></i>
+                        </div>
+                        <h3 class="benefit-title">Strictly for Farming</h3>
+                        <p class="benefit-desc">Designated for farming and farmstead purposes only</p>
+                    </div>
+                `;
+                } else {
+                benefitsTitle.textContent = 'As a Landlord, You\'re Entitled To';
+                benefitsSubtitle.textContent = 'Everything you need to secure your investment';
+                
+                benefitsGrid.innerHTML = `
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-receipt"></i>
+                        </div>
+                        <h3 class="benefit-title">Receipt of Payment</h3>
+                        <p class="benefit-desc">Official documentation for all payments made</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3 class="benefit-title">Survey Plan</h3>
+                        <p class="benefit-desc">Detailed survey plan of your allocated plot</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <h3 class="benefit-title">Deed of Sale</h3>
+                        <p class="benefit-desc">Legal deed of sale for your property</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3 class="benefit-title">Landlord Box</h3>
+                        <p class="benefit-desc">T-shirt, hoodie, brochure, and other free gifts</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="benefit-title">Instant Allocation</h3>
+                        <p class="benefit-desc">Immediate plot allocation after full payment</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Initialize benefits section
+        updateBenefitsSection();
+        
+        // Function to update plot cards based on type
+        function updatePlotCards() {
+            const plotCardsContainer = document.getElementById('plotCards');
+            
+            if (plotType === 'agro') {
+                // Show only 500 sqm and 4000 sqm for Agro Tucks
+                plotCardsContainer.innerHTML = `
+                    <div class="plot-card" data-size="500" data-price="${AGRO_PRICING[500]}">
+                        <div class="plot-size">500 SQM</div>
+                        <div class="plot-price">₦${AGRO_PRICING[500].toLocaleString()}</div>
+                        <div class="plot-unit">Starter</div>
+                    </div>
+                    <div class="plot-card" data-size="4000" data-price="${AGRO_PRICING[4000]}">
+                        <div class="plot-size">4,000 SQM</div>
+                        <div class="plot-price">₦${AGRO_PRICING[4000].toLocaleString()}</div>
+                        <div class="plot-unit">1 Acre</div>
+                    </div>
+                `;
+                
+                // Re-attach event listeners
+                attachPlotCardListeners();
+            } else {
+                // Show residential plots (₦20,000/sqm)
+                plotCardsContainer.innerHTML = `
+                    <div class="plot-card" data-size="150" data-price="3000000">
+                        <div class="plot-size">150 SQM</div>
+                        <div class="plot-price">₦3,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM · Starter</div>
+                    </div>
+                    <div class="plot-card" data-size="300" data-price="6000000">
+                        <div class="plot-size">300 SQM</div>
+                        <div class="plot-price">₦6,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM · Popular</div>
+                    </div>
+                    <div class="plot-card" data-size="500" data-price="10000000">
+                        <div class="plot-size">500 SQM</div>
+                        <div class="plot-price">₦10,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM · Premium</div>
+                    </div>
+                    <div class="plot-card" data-size="1000" data-price="20000000">
+                        <div class="plot-size">1,000 SQM</div>
+                        <div class="plot-price">₦20,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM</div>
+                    </div>
+                    <div class="plot-card" data-size="1500" data-price="30000000">
+                        <div class="plot-size">1,500 SQM</div>
+                        <div class="plot-price">₦30,000,000</div>
+                        <div class="plot-unit">₦20,000 per SQM</div>
+                    </div>
+                `;
+                
+                // Re-attach event listeners
+                attachPlotCardListeners();
+            }
+        }
+        
+        // Function to attach plot card listeners
+        function attachPlotCardListeners() {
+            plotCards = document.querySelectorAll('.plot-card');
+            plotCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    plotCards.forEach(c => c.classList.remove('selected'));
+                    this.classList.add('selected');
+                    const originalPrice = parseInt(this.dataset.price);
+                    const discountedPrice = discountApplied ? Math.round(originalPrice * (1 - DISCOUNT_PERCENTAGE)) : originalPrice;
+                    selectedPlot = {
+                        size: parseInt(this.dataset.size),
+                        price: discountedPrice,
+                        originalPrice: originalPrice,
+                        discount: discountApplied ? Math.round(originalPrice * DISCOUNT_PERCENTAGE) : 0
+                    };
+                    submitBtn.disabled = false;
+                    
+                    // Smooth scroll to form
+                    document.querySelector('.form-section').scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+            });
+        });
+            });
+        }
+        
+        // Plot Card Selection
+        let plotCards = document.querySelectorAll('.plot-card');
+        const submitBtn = document.getElementById('submitBtn');
+        let selectedPlot = null;
+        let selectedPaymentOption = 'full';
+        let discountApplied = false;
+        let currentDiscountPercentage = 0;
+        const DISCOUNT_CODES = {
+            'sirdavid': 0.15, // 15%
+            'dec25': 0.20     // 20%
+        };
+
+        // Function to update plot prices with discount
+        function updatePlotPrices(applyDiscount, discountPercent = 0.15) {
+            plotCards.forEach(card => {
+                const originalPrice = parseInt(card.dataset.price);
+                const priceElement = card.querySelector('.plot-price');
+                
+                if (applyDiscount) {
+                    const discountedPrice = Math.round(originalPrice * (1 - discountPercent));
+                    const discountPercentDisplay = Math.round(discountPercent * 100);
+                    priceElement.innerHTML = `
+                        <span class="plot-price-original">₦${originalPrice.toLocaleString()}</span>
+                        <span class="plot-price-discounted">₦${discountedPrice.toLocaleString()}</span>
+                        <span class="discount-badge">${discountPercentDisplay}% OFF</span>
+                    `;
+                } else {
+                    priceElement.innerHTML = `₦${originalPrice.toLocaleString()}`;
+                }
+            });
+            
+            // Update selected plot if one is selected
+            if (selectedPlot) {
+                const originalPrice = plotType === 'agro' 
+                    ? (AGRO_PRICING[selectedPlot.size] || selectedPlot.originalPrice)
+                    : (selectedPlot.originalPrice || selectedPlot.size * 20000);
+                if (applyDiscount) {
+                    selectedPlot.originalPrice = originalPrice;
+                    selectedPlot.price = Math.round(originalPrice * (1 - discountPercent));
+                    selectedPlot.discount = originalPrice - selectedPlot.price;
+                } else {
+                    selectedPlot.price = originalPrice;
+                    selectedPlot.originalPrice = originalPrice;
+                    selectedPlot.discount = 0;
+                }
+            }
+        }
+
+        // Initial plot card listeners
+        attachPlotCardListeners();
+        
+        // Discount Code Validation
+        const discountCodeInput = document.getElementById('discountCode');
+        const discountMessage = document.getElementById('discountMessage');
+        
+        discountCodeInput.addEventListener('input', function() {
+            const code = this.value.trim().toLowerCase();
+            
+            if (code === '') {
+                discountMessage.textContent = '';
+                discountMessage.className = 'discount-message';
+                discountApplied = false;
+                currentDiscountPercentage = 0;
+                updatePlotPrices(false);
+                // Reset selected plot price if one is selected
+                if (selectedPlot) {
+                    selectedPlot.price = selectedPlot.originalPrice || parseInt(selectedPlot.size * 20000);
+                    selectedPlot.discount = 0;
+                }
+            } else if (DISCOUNT_CODES.hasOwnProperty(code)) {
+                // Apply discount based on plot type: Agro gets 15%, Residential gets 20% (for dec25 code)
+                if (plotType === 'agro') {
+                    currentDiscountPercentage = 0.15; // 15% for Agro trucks
+                } else {
+                    currentDiscountPercentage = DISCOUNT_CODES[code]; // Use code discount for residential
+                }
+                const discountPercentDisplay = Math.round(currentDiscountPercentage * 100);
+                discountMessage.textContent = `✓ Valid discount code! ${discountPercentDisplay}% discount applied.`;
+                discountMessage.className = 'discount-message valid';
+                discountApplied = true;
+                updatePlotPrices(true, currentDiscountPercentage);
+                // Update selected plot price if one is selected
+                if (selectedPlot) {
+                    const originalPrice = selectedPlot.originalPrice || parseInt(selectedPlot.size * 20000);
+                    selectedPlot.price = Math.round(originalPrice * (1 - currentDiscountPercentage));
+                    selectedPlot.discount = originalPrice - selectedPlot.price;
+                }
+            } else {
+                discountMessage.textContent = 'Invalid discount code';
+                discountMessage.className = 'discount-message invalid';
+                discountApplied = false;
+                currentDiscountPercentage = 0;
+                updatePlotPrices(false);
+                // Reset selected plot price if one is selected
+                if (selectedPlot) {
+                    selectedPlot.price = selectedPlot.originalPrice || parseInt(selectedPlot.size * 20000);
+                    selectedPlot.discount = 0;
+                }
+            }
+        });
+
+        // Payment Option Selection
+        const paymentOptions = document.querySelectorAll('.payment-option');
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                paymentOptions.forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedPaymentOption = this.dataset.option;
+            });
+        });
+
+        // Form Submission
+        const paymentForm = document.getElementById('paymentForm');
+        const successOverlay = document.getElementById('successOverlay');
+
+        paymentForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!selectedPlot) {
+                alert('Please select a plot size first');
+                return;
+            }
+
+            const formData = new FormData(this);
+            const fullName = formData.get('fullName');
+            const phone = formData.get('phone');
+            const email = formData.get('email');
+            const discountCode = formData.get('discountCode') || '';
+            const codeLower = discountCode.trim().toLowerCase();
+            const hasDiscount = DISCOUNT_CODES.hasOwnProperty(codeLower);
+            // Apply discount based on plot type: Agro gets 15%, Residential gets code discount
+            const discountPercent = hasDiscount ? (plotType === 'agro' ? 0.15 : DISCOUNT_CODES[codeLower]) : 0;
+            const fruitTrees = formData.get('fruitTrees') || '';
+
+            // Generate and download PDF
+            generateAndDownloadPDF(selectedPlot, fullName, phone, email, selectedPaymentOption, hasDiscount, plotType, fruitTrees, discountPercent);
+
+            // Show success animation
+            successOverlay.classList.add('active');
+
+            // Prepare email data
+            const emailData = new FormData();
+            emailData.append('_to', '2seasonsabk@2seasonsabk.store');
+            emailData.append('_subject', `New Payment Plan Request - ${fullName}`);
+            emailData.append('fullName', fullName);
+            emailData.append('phone', phone);
+            emailData.append('email', email);
+            emailData.append('plotType', plotType);
+            emailData.append('plotSize', selectedPlot.size);
+            emailData.append('plotPrice', selectedPlot.price);
+            emailData.append('originalPrice', selectedPlot.originalPrice || selectedPlot.price);
+            emailData.append('discount', selectedPlot.discount || 0);
+            emailData.append('discountCode', discountCode);
+            emailData.append('paymentOption', selectedPaymentOption);
+            if (plotType === 'agro') {
+                emailData.append('fruitTrees', fruitTrees);
+            }
+
+            // Submit to Formspree
+            try {
+                await fetch('https://formspree.io/f/xvgrzrnp', {
+                    method: 'POST',
+                    body: emailData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+            } catch (error) {
+                console.error('Form submission error:', error);
+            }
+
+            // Hide success overlay after 3 seconds
+            setTimeout(() => {
+                successOverlay.classList.remove('active');
+                paymentForm.reset();
+                plotCards.forEach(c => c.classList.remove('selected'));
+                selectedPlot = null;
+                submitBtn.disabled = true;
+            }, 3000);
+        });
+
+        // PDF Generation Function
+        function generateAndDownloadPDF(plot, fullName, phone, email, paymentOption, hasDiscount = false, plotTypeParam = 'residential', fruitTrees = '', discountPercent = 0.15) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            const isAgro = plotTypeParam === 'agro';
+            const RESIDENTIAL_PRICE_PER_SQM = 20000; // ₦20,000/sqm
+            const originalBasePrice = plot.originalPrice || (isAgro ? AGRO_PRICING[plot.size] : (plot.size * RESIDENTIAL_PRICE_PER_SQM));
+            const codeDiscount = hasDiscount ? Math.round(originalBasePrice * discountPercent) : 0;
+            const basePrice = hasDiscount ? (originalBasePrice - codeDiscount) : originalBasePrice;
+            
+            // Page dimensions
+            const pageHeight = doc.internal.pageSize.height;
+            const pageWidth = doc.internal.pageSize.width;
+            const margin = 20;
+            const maxY = pageHeight - margin;
+            
+            // Helper function to check if we need a new page
+            function checkPageBreak(yPos, spaceNeeded = 10) {
+                if (yPos + spaceNeeded > maxY) {
+                    doc.addPage();
+                    return margin + 20; // Return new starting Y position
+                }
+                return yPos;
+            }
+            const isFullPayment = paymentOption === 'full';
+            
+            // For Agro Tucks: 10% for deed of assignment and survey plan
+            const agroDocumentFee = isAgro ? Math.round(basePrice * 0.10) : 0;
+            
+            // Calculate payment plan
+            // For Agro Tucks, add documentation fee to base price before calculating payment plan
+            const priceBeforePaymentPlan = isAgro ? (basePrice + agroDocumentFee) : basePrice;
+            let totalPrice = priceBeforePaymentPlan;
+            let monthlyPayment = 0;
+            let duration = 0;
+            let paymentDiscount = 0;
+            
+            if (isFullPayment) {
+                paymentDiscount = priceBeforePaymentPlan * 0.05; // 5% discount for full payment
+                totalPrice = priceBeforePaymentPlan - paymentDiscount;
+            } else {
+                // Installment plan: 6 months with 5% interest
+                duration = 6;
+                const interest = priceBeforePaymentPlan * 0.05;
+                totalPrice = priceBeforePaymentPlan + interest;
+                monthlyPayment = Math.ceil(totalPrice / duration);
+            }
+
+            // Header
+            doc.setFontSize(24);
+            doc.setFont(undefined, 'bold');
+            doc.text('2 SEASONS', 105, 30, { align: 'center' });
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            doc.text('Africa\'s First Regenerative Innovation & Lifestyle Village', 105, 38, { align: 'center' });
+
+            // Line
+            doc.setLineWidth(0.5);
+            doc.line(20, 45, 190, 45);
+
+            // Title
+            doc.setFontSize(18);
+            doc.setFont(undefined, 'bold');
+            doc.text('Payment Plan', 105, 60, { align: 'center' });
+
+            // Date
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            doc.text(`Generated: ${today}`, 105, 70, { align: 'center' });
+
+            // Customer Details
+            let yPos = 90;
+            doc.setFontSize(12);
+            doc.setFont(undefined, 'bold');
+            doc.text('Customer Details:', 20, yPos);
+            yPos += 10;
+            
+            doc.setFont(undefined, 'normal');
+            yPos = checkPageBreak(yPos, 8);
+            doc.text(`Name: ${fullName}`, 20, yPos);
+            yPos += 8;
+            yPos = checkPageBreak(yPos, 8);
+            doc.text(`Phone: ${phone}`, 20, yPos);
+            yPos += 8;
+            yPos = checkPageBreak(yPos, 8);
+            doc.text(`Email: ${email}`, 20, yPos);
+            yPos += 15;
+            
+            // Plot Details
+            yPos = checkPageBreak(yPos, 10);
+            doc.setFont(undefined, 'bold');
+            doc.text('Plot Details:', 20, yPos);
+            yPos += 10;
+
+            doc.setFont(undefined, 'normal');
+            yPos = checkPageBreak(yPos, 8);
+            doc.text(`Plot Type: ${isAgro ? 'Agro Tucks (Farming & Farmstead)' : 'Residential'}`, 20, yPos);
+            yPos += 8;
+            yPos = checkPageBreak(yPos, 8);
+            doc.text(`Plot Size: ${plot.size.toLocaleString()} Square Meters${isAgro && plot.size === 4000 ? ' (1 Acre)' : isAgro && plot.size === 500 ? ' (~0.12 Acres)' : ''}`, 20, yPos);
+            yPos += 8;
+            if (!isAgro) {
+                yPos = checkPageBreak(yPos, 8);
+                doc.text(`Price per SQM: ₦${RESIDENTIAL_PRICE_PER_SQM.toLocaleString()}`, 20, yPos);
+                yPos += 8;
+            }
+            if (hasDiscount) {
+                yPos = checkPageBreak(yPos, 8);
+                doc.text(`Original Price: ₦${originalBasePrice.toLocaleString()}`, 20, yPos);
+                yPos += 8;
+                yPos = checkPageBreak(yPos, 8);
+            doc.setFont(undefined, 'bold');
+                const discountPercentDisplay = Math.round(discountPercent * 100);
+                doc.text(`Discount Code (${discountPercentDisplay}%): -₦${codeDiscount.toLocaleString()}`, 20, yPos);
+                yPos += 8;
+            doc.setFont(undefined, 'normal');
+            }
+            yPos = checkPageBreak(yPos, 8);
+            doc.text(`Base Price: ₦${basePrice.toLocaleString()}`, 20, yPos);
+            if (isAgro && agroDocumentFee > 0) {
+                yPos += 8;
+                yPos = checkPageBreak(yPos, 14);
+                doc.text(`Documentation Fee (10%): ₦${agroDocumentFee.toLocaleString()}`, 20, yPos);
+                doc.text(`(Deed of Assignment & Survey Plan)`, 30, yPos + 6);
+                yPos += 6;
+            }
+            yPos += 15;
+            
+            // Payment Plan
+            yPos = checkPageBreak(yPos, 10);
+            doc.setFont(undefined, 'bold');
+            doc.text('Payment Plan:', 20, yPos);
+            yPos += 10;
+
+            doc.setFont(undefined, 'normal');
+            if (isFullPayment) {
+                yPos = checkPageBreak(yPos, 8);
+                doc.text(`Payment Option: Full Payment`, 20, yPos);
+                yPos += 8;
+                yPos = checkPageBreak(yPos, 8);
+                doc.text(`Additional Discount (5%): -₦${paymentDiscount.toLocaleString()}`, 20, yPos);
+                yPos += 8;
+                yPos = checkPageBreak(yPos, 8);
+            doc.setFont(undefined, 'bold');
+                doc.text(`Total Amount: ₦${totalPrice.toLocaleString()}`, 20, yPos);
+                doc.setFont(undefined, 'normal');
+            } else {
+                yPos = checkPageBreak(yPos, 8);
+                doc.text(`Payment Option: Installment Plan (6 months)`, 20, yPos);
+                yPos += 8;
+                yPos = checkPageBreak(yPos, 8);
+                doc.text(`Interest (5%): ₦${(totalPrice - priceBeforePaymentPlan).toLocaleString()}`, 20, yPos);
+                yPos += 8;
+                yPos = checkPageBreak(yPos, 8);
+                doc.setFont(undefined, 'bold');
+                doc.text(`Total Amount: ₦${totalPrice.toLocaleString()}`, 20, yPos);
+                doc.setFont(undefined, 'normal');
+                yPos += 8;
+                yPos = checkPageBreak(yPos, 8);
+                doc.text(`Monthly Payment: ₦${monthlyPayment.toLocaleString()}`, 20, yPos);
+                yPos += 10;
+                
+                yPos = checkPageBreak(yPos, 8);
+                doc.setFont(undefined, 'bold');
+                doc.text('Payment Schedule:', 20, yPos);
+                yPos += 8;
+            doc.setFont(undefined, 'normal');
+                for (let i = 1; i <= duration; i++) {
+                    yPos = checkPageBreak(yPos, 6);
+                    const isLastMonth = i === duration;
+                    const payment = isLastMonth ? totalPrice - (monthlyPayment * (duration - 1)) : monthlyPayment;
+                    doc.text(`Month ${i}: ₦${payment.toLocaleString()}`, 20, yPos);
+                    yPos += 6;
+                }
+            }
+            
+            yPos += 10;
+
+            // Payment Information - CRITICAL: Always ensure this section is visible
+            yPos = checkPageBreak(yPos, 40);
+            doc.setFont(undefined, 'bold');
+            doc.text('Payment Information:', 20, yPos);
+            yPos += 8;
+            doc.setFont(undefined, 'normal');
+            yPos = checkPageBreak(yPos, 8);
+            doc.text('Bank Name: Providus Bank', 20, yPos);
+            yPos += 8;
+            yPos = checkPageBreak(yPos, 14);
+            doc.text('Account Number:', 20, yPos);
+            yPos += 6;
+            doc.setFont(undefined, 'bold');
+            doc.setFontSize(13);
+            doc.text('1308300050', 20, yPos);
+            doc.setFontSize(12);
+            doc.setFont(undefined, 'normal');
+            yPos += 8;
+            yPos = checkPageBreak(yPos, 8);
+            doc.text('Account Name: Focal Point Property dev.', 20, yPos);
+            yPos += 15;
+            
+            // Benefits
+            yPos = checkPageBreak(yPos, 50);
+            doc.setFont(undefined, 'bold');
+            if (isAgro) {
+                doc.text('As an Agro Tucks Owner, You\'re Entitled To:', 20, yPos);
+                yPos += 8;
+                doc.setFont(undefined, 'normal');
+                const agroBenefits = [
+                    '✓ Receipt of Payment',
+                    '✓ Survey Plan (10% of plot price)',
+                    '✓ Deed of Assignment (10% of plot price)',
+                    plot.size === 4000 ? '✓ 100 Plantain/Banana Suckers' : '',
+                    fruitTrees ? `✓ 10 Fruit Trees: ${fruitTrees}` : '✓ 10 Fruit Trees of Your Choice',
+                    '✓ Instant Allocation',
+                    '✓ Strictly for Farming & Farmstead'
+                ].filter(b => b);
+                
+                agroBenefits.forEach(benefit => {
+                    yPos = checkPageBreak(yPos, 6);
+                    doc.text(benefit, 20, yPos);
+                    yPos += 6;
+                });
+            } else {
+                doc.text('As a Landlord, You\'re Entitled To:', 20, yPos);
+                yPos += 8;
+                doc.setFont(undefined, 'normal');
+                const benefits = [
+                    '✓ Receipt of Payment',
+                    '✓ Survey Plan',
+                    '✓ Deed of Sale',
+                    '✓ Landlord Box (T-shirt, Hoodie, Brochure & Free Gifts)',
+                    isFullPayment ? '✓ Instant Allocation' : ''
+                ].filter(b => b);
+                
+                benefits.forEach(benefit => {
+                    yPos = checkPageBreak(yPos, 6);
+                    doc.text(benefit, 20, yPos);
+                    yPos += 6;
+                });
+            }
+
+            // Footer
+            yPos += 10;
+            yPos = checkPageBreak(yPos, 30);
+            doc.setLineWidth(0.5);
+            doc.line(20, yPos, 190, yPos);
+            yPos += 8;
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            doc.text('Contact Information:', 20, yPos);
+            yPos += 8;
+            doc.setFont(undefined, 'normal');
+            yPos = checkPageBreak(yPos, 6);
+            doc.text('Email: 2seasonsabk@2seasonsabk.store', 20, yPos);
+            yPos += 6;
+            yPos = checkPageBreak(yPos, 6);
+            doc.text('Location: Kobape, Abeokuta, Ogun State, Nigeria', 20, yPos);
+
+            // Save PDF
+            const fileName = `2-Seasons-Payment-Plan-${plot.size}sqm-${fullName.replace(/\s+/g, '-')}.pdf`;
+            doc.save(fileName);
+        }
+    </script>
+</body>
+</html>
