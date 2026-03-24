@@ -11,6 +11,7 @@ const navLinks = [
   { href: '/paymentplan', label: 'Payment Plan' },
   { href: '/partners', label: 'Partners' },
   { href: '/2saffiliate', label: 'Affiliates' },
+  { href: '/current-visitors', label: 'Current Visitors' },
   { href: '/join', label: 'Book Preview', cta: true },
 ];
 
@@ -47,7 +48,7 @@ export function SiteHeader() {
                     {label}
                   </a>
                 ) : (
-                  <Link
+                  <a
                     href={href}
                     className={`text-xs tracking-[0.08em] uppercase transition-colors hover:text-[#c9a96e] ${
                       cta
@@ -56,7 +57,7 @@ export function SiteHeader() {
                     }`}
                   >
                     {label}
-                  </Link>
+                  </a>
                 )}
               </li>
             ))}
@@ -112,7 +113,7 @@ export function SiteHeader() {
                   {label}
                 </a>
               ) : (
-                <Link
+                <a
                   href={href}
                   onClick={closeMenu}
                   className={`block py-2.5 text-sm border-b border-white/5 transition-colors hover:text-[#c9a96e] last:border-0 ${
@@ -120,7 +121,7 @@ export function SiteHeader() {
                   }`}
                 >
                   {label}
-                </Link>
+                </a>
               )}
             </li>
           ))}
