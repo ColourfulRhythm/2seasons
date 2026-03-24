@@ -2,6 +2,9 @@
 
 import React, { useEffect, useState } from 'react';
 
+// Default dimensions for SSR (avoids hydration mismatch with window-dependent values)
+const DEFAULT_DIMENSIONS = { radius: 480, cardSize: 120 };
+
 type ArcGalleryHeroProps = {
   images: string[];
   startAngle?: number;
@@ -35,12 +38,11 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
   primaryCta = { label: 'Explore Our World', href: '/explore' },
   secondaryCta = { label: 'How It Works', href: '#how-it-works' },
 }) => {
-  const [dimensions, setDimensions] = useState({
-    radius: radiusLg,
-    cardSize: cardSizeLg,
-  });
+  const [mounted, setMounted] = useState(false);
+  const [dimensions, setDimensions] = useState(DEFAULT_DIMENSIONS);
 
   useEffect(() => {
+    setMounted(true);
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 640) {
@@ -59,6 +61,21 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
 
   const count = Math.max(images.length, 2);
   const step = (endAngle - startAngle) / (count - 1);
+
+  // Avoid hydration mismatch: render static placeholder until mounted
+  if (!mounted) {
+    return (
+      <section className={`relative overflow-hidden bg-[#2d1f14] text-white min-h-screen flex flex-col pt-14 md:pt-16 ${className}`}>
+        <div className="relative mx-auto" style={{ width: '100%', height: DEFAULT_DIMENSIONS.radius * 1.2 }} />
+        <div className="relative z-10 flex-1 flex items-center justify-center px-6 -mt-40 md:-mt-52 lg:-mt-64">
+          <div className="text-center max-w-2xl px-6">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">{title}</h1>
+            <p className="mt-4 text-lg text-white/80">{subtitle}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className={`relative overflow-hidden bg-[#2d1f14] text-white min-h-screen flex flex-col pt-14 md:pt-16 ${className}`}>

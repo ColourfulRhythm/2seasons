@@ -225,10 +225,11 @@ export function Globe({
   }, [markers, arcs, markerColor, baseColor, arcColor, glowColor, dark, mapBrightness, markerSize, markerElevation, arcWidth, arcHeight, speed, theta, diffuse, mapSamples])
 
   return (
-    <div className={`relative aspect-square select-none ${className}`}>
+    <div className={`relative aspect-square select-none ${className}`} suppressHydrationWarning>
       <canvas
         ref={canvasRef}
         onPointerDown={handlePointerDown}
+        suppressHydrationWarning
         style={{
           width: "100%",
           height: "100%",
