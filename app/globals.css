@@ -16,6 +16,12 @@ body {
   }
 }
 
+/* Hero: never rely on Tailwind alone — production builds can miss arbitrary colors */
+.hero-2seasons-shell {
+  background-color: #2d1f14;
+  color: #ffffff;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
