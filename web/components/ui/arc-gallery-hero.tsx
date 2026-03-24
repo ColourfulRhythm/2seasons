@@ -62,15 +62,27 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
   const count = Math.max(images.length, 2);
   const step = (endAngle - startAngle) / (count - 1);
 
+  const shellStyle: React.CSSProperties = {
+    backgroundColor: '#2d1f14',
+    color: '#ffffff',
+  };
+
   // Avoid hydration mismatch: render static placeholder until mounted
   if (!mounted) {
     return (
-      <section className={`relative overflow-hidden bg-[#2d1f14] text-white min-h-screen flex flex-col pt-14 md:pt-16 ${className}`}>
+      <section
+        className={`hero-2seasons-shell relative overflow-hidden min-h-screen flex flex-col pt-14 md:pt-16 ${className}`}
+        style={shellStyle}
+      >
         <div className="relative mx-auto" style={{ width: '100%', height: DEFAULT_DIMENSIONS.radius * 1.2 }} />
         <div className="relative z-10 flex-1 flex items-center justify-center px-6 -mt-40 md:-mt-52 lg:-mt-64">
-          <div className="text-center max-w-2xl px-6">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">{title}</h1>
-            <p className="mt-4 text-lg text-white/80">{subtitle}</p>
+          <div className="text-center max-w-2xl px-6" style={{ color: '#ffffff' }}>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight" style={{ color: '#ffffff' }}>
+              {title}
+            </h1>
+            <p className="mt-4 text-lg" style={{ color: 'rgba(255,255,255,0.85)' }}>
+              {subtitle}
+            </p>
           </div>
         </div>
       </section>
@@ -78,7 +90,10 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
   }
 
   return (
-    <section className={`relative overflow-hidden bg-[#2d1f14] text-white min-h-screen flex flex-col pt-14 md:pt-16 ${className}`}>
+    <section
+      className={`hero-2seasons-shell relative overflow-hidden min-h-screen flex flex-col pt-14 md:pt-16 ${className}`}
+      style={shellStyle}
+    >
       <div
         className="relative mx-auto"
         style={{
@@ -96,16 +111,15 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
             return (
               <div
                 key={i}
-                className="absolute opacity-0 animate-fade-in-up"
+                className="absolute"
                 style={{
                   width: dimensions.cardSize,
                   height: dimensions.cardSize,
                   left: `calc(50% + ${x}px)`,
                   bottom: `${y}px`,
                   transform: `translate(-50%, 50%)`,
-                  animationDelay: `${i * 100}ms`,
-                  animationFillMode: 'forwards',
                   zIndex: count - i,
+                  opacity: 1,
                 }}
               >
                 <div
@@ -129,11 +143,11 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
       </div>
 
       <div className="relative z-10 flex-1 flex items-center justify-center px-6 -mt-40 md:-mt-52 lg:-mt-64">
-        <div className="text-center max-w-2xl px-6 opacity-0 animate-fade-in" style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">
+        <div className="text-center max-w-2xl px-6" style={{ color: '#ffffff' }}>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight" style={{ color: '#ffffff' }}>
             {title}
           </h1>
-          <p className="mt-4 text-lg text-white/80">
+          <p className="mt-4 text-lg" style={{ color: 'rgba(255,255,255,0.88)' }}>
             {subtitle}
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -153,38 +167,6 @@ export const ArcGalleryHero: React.FC<ArcGalleryHeroProps> = ({
         </div>
       </div>
 
-      <style>{`
-        @keyframes fade-in-up {
-          from {
-            opacity: 0;
-            transform: translate(-50%, 60%);
-          }
-          to {
-            opacity: 1;
-            transform: translate(-50%, 50%);
-          }
-        }
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fade-in-up {
-          animation-name: fade-in-up;
-          animation-duration: 0.8s;
-          animation-timing-function: ease-out;
-        }
-        .animate-fade-in {
-          animation-name: fade-in;
-          animation-duration: 0.8s;
-          animation-timing-function: ease-out;
-        }
-      `}</style>
     </section>
   );
 };
