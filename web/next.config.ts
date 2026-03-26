@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
         destination: "/blog/oil-palm-manual",
         permanent: true,
       },
+      {
+        source: "/Greenhouseindex.html",
+        destination: "/blog/greenhouse-bell-pepper-guide",
+        permanent: true,
+      },
     ];
   },
   async rewrites() {
@@ -26,6 +31,10 @@ const nextConfig: NextConfig = {
       {
         source: "/blog/oil-palm-manual",
         destination: "/Oil_Palm_Manual_Web.html",
+      },
+      {
+        source: "/blog/greenhouse-bell-pepper-guide",
+        destination: "/Greenhouseindex.html",
       },
       { source: "/join", destination: "/join.html" },
       { source: "/explore", destination: "/explore.html" },
