@@ -819,30 +819,30 @@
                 <p class="section-subtitle">Select a plot size to see pricing and payment options</p>
                 
                 <div class="plot-cards-grid" id="plotCards">
-                    <div class="plot-card" data-size="150" data-price="3000000">
+                    <div class="plot-card" data-size="150" data-price="1500000">
                         <div class="plot-size">150 SQM</div>
-                        <div class="plot-price">₦3,000,000</div>
-                        <div class="plot-unit">₦20,000 per SQM · Starter</div>
+                        <div class="plot-price">₦1,500,000</div>
+                        <div class="plot-unit">₦10,000 per SQM · Starter</div>
                     </div>
-                    <div class="plot-card" data-size="300" data-price="6000000">
+                    <div class="plot-card" data-size="300" data-price="3000000">
                         <div class="plot-size">300 SQM</div>
-                        <div class="plot-price">₦6,000,000</div>
-                        <div class="plot-unit">₦20,000 per SQM · Popular</div>
+                        <div class="plot-price">₦3,000,000</div>
+                        <div class="plot-unit">₦10,000 per SQM · Popular</div>
                     </div>
-                    <div class="plot-card" data-size="500" data-price="10000000">
+                    <div class="plot-card" data-size="500" data-price="5000000">
                         <div class="plot-size">500 SQM</div>
-                        <div class="plot-price">₦10,000,000</div>
-                        <div class="plot-unit">₦20,000 per SQM · Premium</div>
+                        <div class="plot-price">₦5,000,000</div>
+                        <div class="plot-unit">₦10,000 per SQM · Premium</div>
                     </div>
-                    <div class="plot-card" data-size="1000" data-price="20000000">
+                    <div class="plot-card" data-size="1000" data-price="10000000">
                         <div class="plot-size">1,000 SQM</div>
-                        <div class="plot-price">₦20,000,000</div>
-                        <div class="plot-unit">₦20,000 per SQM</div>
+                        <div class="plot-price">₦10,000,000</div>
+                        <div class="plot-unit">₦10,000 per SQM</div>
                     </div>
-                    <div class="plot-card" data-size="1500" data-price="30000000">
+                    <div class="plot-card" data-size="1500" data-price="15000000">
                         <div class="plot-size">1,500 SQM</div>
-                        <div class="plot-price">₦30,000,000</div>
-                        <div class="plot-unit">₦20,000 per SQM</div>
+                        <div class="plot-price">₦15,000,000</div>
+                        <div class="plot-unit">₦10,000 per SQM</div>
                     </div>
                 </div>
             </div>
@@ -889,13 +889,23 @@
                         <div class="payment-options">
                             <div class="payment-option" data-option="installment">
                                 <div class="payment-option-name">Installment</div>
-                                <div class="payment-option-desc">Flexible payment plan</div>
+                                <div class="payment-option-desc">Spread your payment</div>
                     </div>
                             <div class="payment-option selected" data-option="full">
                                 <div class="payment-option-name">Full Payment</div>
                                 <div class="payment-option-desc">Pay once & save</div>
                 </div>
             </div>
+                    </div>
+
+                    <div class="form-group" id="installmentMonthsGroup" style="display:none;">
+                        <label class="form-label" for="installmentMonths">Spread payment across</label>
+                        <select id="installmentMonths" name="installmentMonths" class="form-input">
+                            <option value="3">3 months</option>
+                            <option value="6" selected>6 months</option>
+                            <option value="9">9 months</option>
+                            <option value="12">12 months</option>
+                        </select>
                     </div>
 
                     <button type="submit" class="form-submit-btn" id="submitBtn" disabled>
@@ -1177,32 +1187,32 @@
                 // Re-attach event listeners
                 attachPlotCardListeners();
             } else {
-                // Show residential plots (₦20,000/sqm)
+                // Show residential plots (₦10,000/sqm)
                 plotCardsContainer.innerHTML = `
-                    <div class="plot-card" data-size="150" data-price="3000000">
+                    <div class="plot-card" data-size="150" data-price="1500000">
                         <div class="plot-size">150 SQM</div>
-                        <div class="plot-price">₦3,000,000</div>
-                        <div class="plot-unit">₦20,000 per SQM · Starter</div>
+                        <div class="plot-price">₦1,500,000</div>
+                        <div class="plot-unit">₦10,000 per SQM · Starter</div>
                     </div>
-                    <div class="plot-card" data-size="300" data-price="6000000">
+                    <div class="plot-card" data-size="300" data-price="3000000">
                         <div class="plot-size">300 SQM</div>
-                        <div class="plot-price">₦6,000,000</div>
-                        <div class="plot-unit">₦20,000 per SQM · Popular</div>
+                        <div class="plot-price">₦3,000,000</div>
+                        <div class="plot-unit">₦10,000 per SQM · Popular</div>
                     </div>
-                    <div class="plot-card" data-size="500" data-price="10000000">
+                    <div class="plot-card" data-size="500" data-price="5000000">
                         <div class="plot-size">500 SQM</div>
-                        <div class="plot-price">₦10,000,000</div>
-                        <div class="plot-unit">₦20,000 per SQM · Premium</div>
+                        <div class="plot-price">₦5,000,000</div>
+                        <div class="plot-unit">₦10,000 per SQM · Premium</div>
                     </div>
-                    <div class="plot-card" data-size="1000" data-price="20000000">
+                    <div class="plot-card" data-size="1000" data-price="10000000">
                         <div class="plot-size">1,000 SQM</div>
-                        <div class="plot-price">₦20,000,000</div>
-                        <div class="plot-unit">₦20,000 per SQM</div>
+                        <div class="plot-price">₦10,000,000</div>
+                        <div class="plot-unit">₦10,000 per SQM</div>
                     </div>
-                    <div class="plot-card" data-size="1500" data-price="30000000">
+                    <div class="plot-card" data-size="1500" data-price="15000000">
                         <div class="plot-size">1,500 SQM</div>
-                        <div class="plot-price">₦30,000,000</div>
-                        <div class="plot-unit">₦20,000 per SQM</div>
+                        <div class="plot-price">₦15,000,000</div>
+                        <div class="plot-unit">₦10,000 per SQM</div>
                     </div>
                 `;
                 
@@ -1272,7 +1282,7 @@
             if (selectedPlot) {
                 const originalPrice = plotType === 'agro' 
                     ? (AGRO_PRICING[selectedPlot.size] || selectedPlot.originalPrice)
-                    : (selectedPlot.originalPrice || selectedPlot.size * 20000);
+                    : (selectedPlot.originalPrice || selectedPlot.size * 10000);
                 if (applyDiscount) {
                     selectedPlot.originalPrice = originalPrice;
                     selectedPlot.price = Math.round(originalPrice * (1 - discountPercent));
@@ -1303,7 +1313,7 @@
                 updatePlotPrices(false);
                 // Reset selected plot price if one is selected
                 if (selectedPlot) {
-                    selectedPlot.price = selectedPlot.originalPrice || parseInt(selectedPlot.size * 20000);
+                    selectedPlot.price = selectedPlot.originalPrice || parseInt(selectedPlot.size * 10000);
                     selectedPlot.discount = 0;
                 }
             } else if (DISCOUNT_CODES.hasOwnProperty(code)) {
@@ -1320,7 +1330,7 @@
                 updatePlotPrices(true, currentDiscountPercentage);
                 // Update selected plot price if one is selected
                 if (selectedPlot) {
-                    const originalPrice = selectedPlot.originalPrice || parseInt(selectedPlot.size * 20000);
+                    const originalPrice = selectedPlot.originalPrice || parseInt(selectedPlot.size * 10000);
                     selectedPlot.price = Math.round(originalPrice * (1 - currentDiscountPercentage));
                     selectedPlot.discount = originalPrice - selectedPlot.price;
                 }
@@ -1332,7 +1342,7 @@
                 updatePlotPrices(false);
                 // Reset selected plot price if one is selected
                 if (selectedPlot) {
-                    selectedPlot.price = selectedPlot.originalPrice || parseInt(selectedPlot.size * 20000);
+                    selectedPlot.price = selectedPlot.originalPrice || parseInt(selectedPlot.size * 10000);
                     selectedPlot.discount = 0;
                 }
             }
@@ -1340,11 +1350,16 @@
 
         // Payment Option Selection
         const paymentOptions = document.querySelectorAll('.payment-option');
+        const installmentMonthsGroup = document.getElementById('installmentMonthsGroup');
+        const installmentMonthsSelect = document.getElementById('installmentMonths');
         paymentOptions.forEach(option => {
             option.addEventListener('click', function() {
                 paymentOptions.forEach(o => o.classList.remove('selected'));
                 this.classList.add('selected');
                 selectedPaymentOption = this.dataset.option;
+                if (installmentMonthsGroup) {
+                    installmentMonthsGroup.style.display = selectedPaymentOption === 'installment' ? 'block' : 'none';
+                }
             });
         });
 
@@ -1371,8 +1386,23 @@
             const discountPercent = hasDiscount ? (plotType === 'agro' ? 0.15 : DISCOUNT_CODES[codeLower]) : 0;
             const fruitTrees = formData.get('fruitTrees') || '';
 
+            const installmentMonths = selectedPaymentOption === 'installment'
+                ? parseInt((installmentMonthsSelect && installmentMonthsSelect.value) || '6')
+                : 0;
+
             // Generate and download PDF
-            generateAndDownloadPDF(selectedPlot, fullName, phone, email, selectedPaymentOption, hasDiscount, plotType, fruitTrees, discountPercent);
+            generateAndDownloadPDF(
+                selectedPlot,
+                fullName,
+                phone,
+                email,
+                selectedPaymentOption,
+                hasDiscount,
+                plotType,
+                fruitTrees,
+                discountPercent,
+                installmentMonths
+            );
 
             // Show success animation
             successOverlay.classList.add('active');
@@ -1391,6 +1421,9 @@
             emailData.append('discount', selectedPlot.discount || 0);
             emailData.append('discountCode', discountCode);
             emailData.append('paymentOption', selectedPaymentOption);
+            if (selectedPaymentOption === 'installment') {
+                emailData.append('installmentMonths', String(installmentMonths || 6));
+            }
             if (plotType === 'agro') {
                 emailData.append('fruitTrees', fruitTrees);
             }
@@ -1419,12 +1452,12 @@
         });
 
         // PDF Generation Function
-        function generateAndDownloadPDF(plot, fullName, phone, email, paymentOption, hasDiscount = false, plotTypeParam = 'residential', fruitTrees = '', discountPercent = 0.15) {
+        function generateAndDownloadPDF(plot, fullName, phone, email, paymentOption, hasDiscount = false, plotTypeParam = 'residential', fruitTrees = '', discountPercent = 0.15, installmentMonths = 0) {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
 
             const isAgro = plotTypeParam === 'agro';
-            const RESIDENTIAL_PRICE_PER_SQM = 20000; // ₦20,000/sqm
+            const RESIDENTIAL_PRICE_PER_SQM = 10000; // ₦10,000/sqm
             const originalBasePrice = plot.originalPrice || (isAgro ? AGRO_PRICING[plot.size] : (plot.size * RESIDENTIAL_PRICE_PER_SQM));
             const codeDiscount = hasDiscount ? Math.round(originalBasePrice * discountPercent) : 0;
             const basePrice = hasDiscount ? (originalBasePrice - codeDiscount) : originalBasePrice;
@@ -1460,8 +1493,8 @@
                 paymentDiscount = priceBeforePaymentPlan * 0.05; // 5% discount for full payment
                 totalPrice = priceBeforePaymentPlan - paymentDiscount;
             } else {
-                // Installment plan: 6 months with 5% interest
-                duration = 6;
+                // Installment plan: user-selected months with 5% interest
+                duration = Math.max(3, Math.min(12, installmentMonths || 6));
                 const interest = priceBeforePaymentPlan * 0.05;
                 totalPrice = priceBeforePaymentPlan + interest;
                 monthlyPayment = Math.ceil(totalPrice / duration);
@@ -1569,7 +1602,7 @@
                 doc.setFont(undefined, 'normal');
             } else {
                 yPos = checkPageBreak(yPos, 8);
-                doc.text(`Payment Option: Installment Plan (6 months)`, 20, yPos);
+                doc.text(`Payment Option: Installment Plan (${duration} months)`, 20, yPos);
                 yPos += 8;
                 yPos = checkPageBreak(yPos, 8);
                 doc.text(`Interest (5%): ₦${(totalPrice - priceBeforePaymentPlan).toLocaleString()}`, 20, yPos);

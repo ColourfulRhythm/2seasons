@@ -110,7 +110,7 @@ export default function HomePage() {
           <div className="bg-[#1a1510] border border-[#3a2e1e] p-8 md:p-12 flex flex-col">
             <span className="text-[#a0855a] text-[10px] tracking-[0.3em] uppercase mb-4">Phase 2</span>
             <h3 className="text-xl md:text-2xl text-[#f5f0e8] font-serif mb-2">The Lifestyle City</h3>
-            <p className="text-[#c9a96e] text-sm tracking-wide mb-6 font-medium">From ₦3M (₦20,000/sqm)</p>
+            <p className="text-[#c9a96e] text-sm tracking-wide mb-6 font-medium">From ₦1.5M (₦10,000/sqm)</p>
             <p className="text-[#9a9a9a] text-sm leading-relaxed mb-4">
               This is the full vision. Residential living inside Africa&apos;s first regenerative lifestyle city — with a private racing circuit, wellness village, concert ground, co-working spaces, and a community built for Nigeria&apos;s next generation.
             </p>

@@ -99,6 +99,20 @@
     .mobile-menu-btn .menu-icon span { background: var(--text); }
     .mobile-menu-btn .menu-text { color: var(--text); text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
 
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 98;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .menu-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
     /* ── HERO ── */
     .pitch-hero {
         min-height: 100vh;
@@ -689,6 +703,30 @@
         // Nav scroll
         const header = document.getElementById('luxury-header');
         window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
+
+        // Mobile menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links-luxury');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        function closeMenu() {
+            if (!mobileMenuBtn || !navLinks || !menuOverlay) return;
+            mobileMenuBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+        if (mobileMenuBtn && navLinks && menuOverlay) {
+            mobileMenuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+            menuOverlay.addEventListener('click', closeMenu);
+            navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+                if (window.innerWidth <= 900) closeMenu();
+            }));
+        }
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => {
