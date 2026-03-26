@@ -1,6 +1,9 @@
 {
   "framework": "nextjs",
   "rewrites": [
+    { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/blog/rubber-plantation-manual", "destination": "/Rubber_Plantation_Manual_Web.html" },
+    { "source": "/blog/oil-palm-manual", "destination": "/Oil_Palm_Manual_Web.html" },
     { "source": "/join", "destination": "/join.html" },
     { "source": "/explore", "destination": "/explore.html" },
     { "source": "/residential", "destination": "/residential.html" },

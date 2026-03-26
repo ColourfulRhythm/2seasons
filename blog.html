@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - 2 Seasons</title>
+  <meta name="description" content="Insights, guides, and updates from 2 Seasons.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --card: #161616;
+      --text: #f5f0e8;
+      --muted: #a7a7a7;
+      --gold: #c9a96e;
+      --border: #2a2a2a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    .container { max-width: 960px; margin: 0 auto; }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      gap: 16px;
+    }
+    .home-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+    h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      margin-bottom: 8px;
+    }
+    .lead {
+      color: var(--muted);
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+    .card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .tag {
+      display: inline-block;
+      border: 1px solid #4a3a22;
+      color: var(--gold);
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .desc {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn.primary {
+      border-color: var(--gold);
+      color: #0d0d0d;
+      background: var(--gold);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top">
+      <a class="home-link" href="/">← Back to Home</a>
+    </div>
+
+    <h1>2 Seasons Blog</h1>
+    <p class="lead">Stories, practical guides, and real field insights.</p>
+
+    <article class="card">
+      <span class="tag">First Post</span>
+      <h2 class="title">Rubber Plantation - Complete Farmer's Manual</h2>
+      <p class="desc">
+        A practical manual for setting up and managing a profitable rubber plantation in Nigeria.
+      </p>
+      <div class="actions">
+        <a class="btn" href="/blog/rubber-plantation-manual">Read article</a>
+        <a class="btn primary" href="https://selar.com/74u1tq4776" target="_blank" rel="noopener noreferrer">Buy manual</a>
+      </div>
+    </article>
+
+    <div style="height:14px"></div>
+
+    <article class="card">
+      <span class="tag">New</span>
+      <h2 class="title">Oil Palm Plantation - Complete Farmer's Manual</h2>
+      <p class="desc">
+        A practical manual for starting and managing an oil palm plantation in Nigeria.
+      </p>
+      <div class="actions">
+        <a class="btn" href="/blog/oil-palm-manual">Read article</a>
+        <a class="btn primary" href="https://selar.com/p7637l74c3" target="_blank" rel="noopener noreferrer">Buy manual</a>
+      </div>
+    </article>
+  </div>
+</body>
+</html>
